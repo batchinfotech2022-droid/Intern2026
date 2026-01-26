@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" >
+  </head>
+  <body class="bg-secondary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="light-gray">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="data:image/png;base64,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" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Bi
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#About us">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#Contact">Contact</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+<div class="row">
+        <div class="col-md-7"><br><br><br><br><br><br><br><br>
+            <figure class="text-center" >
+            <blockquote class="blockquote">
+            <h1 class="display-1" style="text-decoration: underline;font-family: 'Times New Roman', Times, serif;" class="align-self-center">Batch Infotech</p>
+                </blockquote>
+            <h2 class="display-4" class="align-self-center">Innovate.Integrate.Transform</h2>
+                <h3 class="display-8" class="align-self-center">Design is thinking made visual...</h3>
+                
+    </figure>
+        </div>
+        <div class="col-md-5"><br><br><br>
+            <a class="navbar-brand" href="#"><br>
+      <img src="https://signinfotech.com/wp-content/themes/sign/assets/img/project-start1.png">
+    </a>
+    
+   
+        </div>
+
+</div><br><br><br>
+
+<div id="Services" class="bg-white">
+    <h1 class="text-center" style="padding-top:5%"><b>Services</b></h1>
+    <div class="row" >
+        <div class="col-md-6" style="padding: 50px;">
+            <a class="navbar-brand" href="#"><br>
+      <img src="images/i3.jpeg" width="700" height="500">
+    </a>
+    <h2 class="display-4" class="align-self-center">Software Development</h2>
+    <p >We create unique mobile and web applications that give our clients a competitive edge and boost their operational effectiveness by utilizing the newest IT advancements. We provide unrivaled full-cycle software development services and foster dependable, open communication. We develop off-shore software tools serving enormous amount of information. We mostly serve off-shore clients.</p>
+    
+
+        </div>
+        <div class="col-md-6" style="padding: 50px;">
+            <a class="navbar-brand" href="#"><br>
+      <img src="images/i4.png" width="700" height="500">
+    </a>
+    <h2 class="display-4" class="align-self-center">AI Inovation</h2>
+    <p>Being the most reputable AI development business in India makes us proud. Our goal is to change enterprises and encourage innovation by offering cutting-edge artificial intelligence solutions. Our team of skilled developers and AI specialists has over ten years of competence, and we have dedicated ourselves to satisfying our clients with personalized, high-quality AI solutions.</p>
+   
+        </div>
+
+</div>
+</div>
+
+<div id="About us">
+    <div class="bg-secondary" width="1600" height="15">
+    <div class="text-center" style="padding-top:5%" ><h1 clas="display-1">
+        About us</h1>
+    </div>
+    </div>
+  <div style="padding: 50px;">
+<h2  style="color:white">Who we are:</h2>
+<p>At Batch Infotech, we excel in innovation, crafting code into effective solutions. Our digital workspace is where creativity meets precision, and each line of code narrates a tale of expertise.</p><br>
+<h2 style="color:white">Mision & Vision:</h2>
+<p>We embark on a mission to drive change through advanced technology, aiming to reshape success. Our vision is a tech landscape where innovation is dynamic, creating endless possibilities</p><br>
+<h2 style="color: white">Our Values:</h2>
+<p>In the dynamic field of technology, Batch Infotech envisions a world of boundless innovation. Our vision is to lead digital evolution, unlocking new dimensions.</p>
+</div>
+</div>
+<div id="Contact" class="bg-white">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+    <div class="text-center" style="padding-top:5%" ><h1 clas="display-1">
+        Contact</h1>
+    </div>
+    <div class="form-floating mb-3">
+  <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" style="outline-style:auto;
+  outline-color: black;" autofocus>
+  <label for="floatingInput">Full name</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" style="outline-style: auto;
+  outline-color: black;" required>
+  <label for="floatingInput">Email Address</label>
+</div>
+<div class="form-floating mb-3">
+  <input type="phonenumber" class="form-control" id="floatingInput" placeholder="name@example.com" style="outline-style: auto;
+  outline-color: black;">
+  <label for="floatingInput">Phone number</label>
+</div>
+<div class="form-check">
+    <h6> Gender</h6>
+  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+  <label class="form-check-label" for="radioDefault1">
+    Male
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
+  <label class="form-check-label" for="radioDefault2">
+    Female
+  </label>
+</div><br>
+<div class="form-floating">
+  <textarea class="form-control" style="outline-style: auto;
+  outline-color: black;" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" ></textarea>
+  <label for="floatingTextarea2">Comments</label>
+</div><br>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  
+
+  <button type="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+</div>
+
+</div>
+<div class="col-md-3"></div>
+
+
+
+
+</div>
+<script>
+function myFunction() {
+  alert("The form was submitted. Thank You!!");
+}
+</script>
+    <script src="js/bootstrap.bundle.min.js" ></script>
+    
+  </body>
+</html>
