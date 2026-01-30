@@ -17,6 +17,7 @@ namespace CsharpConsoleChApp
             Console.WriteLine("Id" + Id);
             Console.WriteLine("Name" + Name);
             Console.WriteLine("Marks" + marks);
+            //heeloo
 
         }
         public student()
