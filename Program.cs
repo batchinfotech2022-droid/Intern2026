@@ -40,7 +40,7 @@ namespace CsharpConsoleChApp
             nm();
             Stringhandling();
             TryCatch();*/
-            student student1 = new student(7, "Channel");
+           // student student1 = new student(7, "Channel");
             //student1.Id = 1;
             //student1.Name = "Chithra";
             student1.marks = 9.9m;
