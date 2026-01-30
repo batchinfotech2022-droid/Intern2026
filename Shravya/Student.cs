@@ -54,9 +54,62 @@ namespace CSharp_console_app
             int result = x * y;
             Console.WriteLine("Multiplication: " + result);
         }
-//hiiii
-//hellooo
+
     }
+
+
+    public class Teacher
+    {
+        private int _id;
+        private string _name;
+        private decimal _marks;
+
+
+        public int Id
+        {
+
+            get { return _id; }
+
+        }
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+
+        }
+        public decimal Marks
+        {
+            set
+            {
+                _marks = value;
+            }
+        }
+        
+        public Teacher(int id, string name, decimal marks)
+        {
+            Id = id;
+            Name = name;
+            Marks = marks;
+        }
+
+        public string display()
+        {
+            string test = Marks;
+        }
+    }
+
+    public class Animal
+    {
+        protected string des = "hi";
+    }
+    public class Dog : Animal
+    {
+//hiiiii
+    }
+    {
+
+    }
+
 
 }
 

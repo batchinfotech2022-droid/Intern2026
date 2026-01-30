@@ -53,7 +53,7 @@ namespace CSharp_console_app
             //StringHandlingExample();
 
             //TryCatchExample();
-
+            //hi
 
             //Student student1 = new Student(1,"shru",80);//class from Student
             //student1.Id = 1;
@@ -65,8 +65,12 @@ namespace CSharp_console_app
             // Student.CollegeName = student1.Name;
             //bool res=  Student.IsCollegeValid(); 
             // Console.WriteLine(res);
-            double res=Add(1, 5.09);
-            Console.WriteLine(res);
+
+
+            Teachaer t = new Teacher();
+            t.Id = 101;
+            t.Name = "Mr. Smith";
+            t.Marks =95;
             Console.ReadLine();
             
         }
@@ -226,6 +230,8 @@ namespace CSharp_console_app
                 Console.WriteLine("THis is final");
             }
         }
+
+
 
 
         
