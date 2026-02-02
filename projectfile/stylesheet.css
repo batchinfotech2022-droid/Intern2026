@@ -1,0 +1,31 @@
+body {
+   
+    padding: 10px;
+    padding-bottom: 80px;   
+    color: black;
+}
+.content-box {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 25px;
+}
+.form-card {
+    max-width: 420px;
+}
+.sitefooter {
+    font-size: 14px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.2s ease-in-out;
+}
+
+  .content-box {
+    max-width: 700px;   
+    margin: auto;      
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+

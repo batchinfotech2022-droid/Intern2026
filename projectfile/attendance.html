@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="css/bootswatchjj.min.css.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <img src="https://cdn.vectorstock.com/i/1000v/83/29/ss-or-s-initial-letter-logo-design-vector-41418329.jpg"
+                width="30" height="30">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Action</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+
+               
+            </div>
+        </div>
+    </nav>
+  <div class="container mt-4 mb-5 " >
+  <div class="content-box shadow">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+
+        <form>
+
+          <div class="mb-3">
+            <label class="form-label">Intern ID</label>
+            <input type="number" class="form-control" placeholder="Enter Intern ID" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Attendance Date</label>
+            <input type="date" class="form-control" required>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label">Status</label>
+            <select class="form-select" required>
+              <option value="">-- Select Status --</option>
+              <option value="P">Present (P)</option>
+              <option value="A">Absent (A)</option>
+              <option value="L">Leave (L)</option>
+            </select>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <a href="mainpage.html" class="btn btn-primary btn-sm">Back to Home</a>
+            <button type="submit" class="btn btn-primary btn-sm">Update Attendance</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <div class="bg-success-subtle p-2 text-center fixed-bottom">
+        © 2026 Intern Attendance System</span>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
