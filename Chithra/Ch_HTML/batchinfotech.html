@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <style>
+        .container{
+            width: 5px;
+            height: 100px;
+            margin: 20px;
+            padding:10px;
+            background-color: lightgray;      
+        }
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <div class="container">
+ <input type="text" id="myTextbox" readonly><br>
+<br>
+
+<button type="button" class="btn btn-success" id="btn1" onclick="displayNumber(1)">1</button>
+<button type="button" class="btn btn-primary" id="btn2" onclick="displayNumber(2)">2</button>
+<button type="button" class="btn btn-info" id="btn3" onclick="displayNumber(3)">+</button>
+<button type="button" class="btn btn-warning" id="btn4" onclick="displayNumber(4)">=</button>
+
+<script>
+  function displayNumber(number) {
+      document.getElementById("numberInput").value = number;
+    }
+</script>
+        
+    
+ 
+</body>
+</html>

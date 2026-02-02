@@ -79,31 +79,63 @@
 
 <body>
     <div class="row">
-        <div class="col-md-7">
-            <figure class="text-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-6 mt-3">
+      <div class="card  card shadow-lg" style="width: 25rem ;">
+        <img class="card-img-top" src="images/create.jpg" alt="Card image cap" style="height: 175px;" />
 
-                <h1 class="display-1"
-                    style="text-decoration: dotted;font-family: 'Times New Roman', Times, serif;padding:100px">Task &
-                    Issue Tracker</h1>
-                <h3>What Is a Task Tracker and Why Do You Need One?</h3>
+        <form>
+          <div class="mb-3">
+            <div class="form-floating mb-3">
+              <input type="text" maxlength="100" class="form-control" id="floatingInput" placeholder="name@example.com"
+                style="outline-style:auto;
+                " required>
+              <label for="floatingInput">First Name</label>
+            </div>
+          </div>
 
-                <a type="button" size="10" class="btn btn-outline-secondary mt-5" href="task.html">AssignTask</a>
-                <a type="button" class="btn btn-outline-success mt-5" href="status.html">TaskStatusMaster</a>
-                <a type="button" class="btn btn-outline-danger mt-5" href="history.html">TaskStatusHistory</a>
-            </figure>
-        </div>
-        <div class="col-md-5">
-            <figure class="img-zoom">
+          <div class="mb-3">
+            <div class="form-floating mb-3">
+              <input type="text" size="30" maxlength="50" class="form-control" id="floatingInput"
+                placeholder="name@example.com" style="outline-style:auto; ">
+              <label for="floatingInput">User Name</label>
 
-                <img src="https://www.computerhope.com/jargon/t/task.png" style=" padding:100px">
-            </figure>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-floating mb-3">
+              <input type="password" maxlength="20" class="form-control" id="floatingInput"
+                placeholder="name@example.com" style="outline-style:auto;
+                " required>
+              <label for="floatingInput">Password</label>
+            </div>
+          </div>
+          <label for="exampleInpuName1" class="form-label">Role</label>
+          <div class="form-check">
 
+            <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1" />
 
-        </div>
-
+            <label class="form-check-label" for="radioDefault1">
+              Intern
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked />
+            <label class="form-check-label" for="radioDefault2">
+              Admin
+            </label>
+          </div>
+          <div class="d-grid mt-3 mb-3">
+            <button class="btn btn-primary" onclick="myFunction()" type="button" id="register">Register</button>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
+  </div>
 
+  <div class="col-md-3"></div>
+  </div>
+  </div>
 
 
     <div class="bg-primary p-2 text-center fixed-bottom ">
