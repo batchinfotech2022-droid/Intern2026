@@ -1,0 +1,52 @@
+
+.custom-navbar {
+    background-color: #deb3e9;
+}
+
+.navbar-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 15%;
+}
+
+
+.home-section {
+    margin: 20px;
+}
+
+.home-img {
+    width: 1500px;
+    height: 600px;         
+   
+}
+
+
+.login-wrapper {
+    background: url("../images/login1.jpeg") no-repeat center center/cover;
+}
+
+
+.login-title {
+    background-color: rgb(238, 152, 206);
+}
+
+
+.back-btn {
+    background-color: rgb(241, 240, 238);
+    padding: 6px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+#custom-cards .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.action-item {
+  font-size: 18px;
+  font-weight: 500;
+}
+

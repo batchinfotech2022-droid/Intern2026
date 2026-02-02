@@ -1,55 +1,62 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Contact Manager</title>
-    <link href="bootstraplux.css" rel="stylesheet">
+
+    <link href="css/bootstraplux.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!--login start-->
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center login-wrapper">
 
-    <div class="containerr" id="loginsec">
-        <img src="login1.png" class="card-img" alt="..." style="width:1520px;height:710px">
-        <div class="card-img-overlay">
-            <div class="row">
-                <div class="col-md-5"></div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 35rem; height:35rem; margin-top:80px; ">
-                        <div class="card-body">
-                            <h2 class="login"
-                                style="text-align:center; padding:20px; background-color:rgb(238, 152, 206);">LogIn</h2>
-                            <form class="px-5 py-5">
-                                <div class="mb-5">
-                                    <label for="loginemail" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="loginemail"
-                                        placeholder="email@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="loginpassword" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="loginpassword"
-                                        placeholder="Password">
-                                </div><br>
-                            
-                                <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-primary"  onclick:"loginuser">Log in</button>
-                            </div>
-                            <div class="d-flex justify-content-start">
-                                <a href="dashboard.html" class="back-btn" style="background-color:rgb(241, 240, 238);"><strong>← Back</strong></a>
-                            </div>
-                            </form>
-                            
+    <div class="row w-100 justify-content-center">
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+
+            <div class="card shadow">
+                <h2 class="text-center p-4 login-title">LogIn</h2>
+
+                <form class="px-4 py-4">
+
+                    <div class="mb-4">
+                        <label class="form-label">Email address</label>
+                        <input type="email" class="form-control"
+                               placeholder="email@example.com">
                     </div>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
 
-        </div>
+                    <div class="mb-4">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control"
+                               placeholder="Password">
+                    </div>
 
-        <script src="js/bootstrap.bundle.min.js"></script>
+                    <div class="d-flex justify-content-center mb-3">
+                        <button class="btn btn-primary">Log in</button>
+                    </div>
+
+                
+                
+
+                </form>
+            
+
+       
+        
+                    <div class="text-start">
+                        <a href="dashboard.html" class="back-btn">
+                            <strong>← Back</strong>
+                        </a>
+                    </div>
+                     </div>
+                      </div>
+                    
+    </div>
+
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
