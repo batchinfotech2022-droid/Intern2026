@@ -67,10 +67,16 @@ namespace CSharp_console_app
             // Console.WriteLine(res);
 
 
-            Teachaer t = new Teacher();
-            t.Id = 101;
-            t.Name = "Mr. Smith";
-            t.Marks =95;
+            //Teachaer t = new Teacher();
+            //t.Id = 101;
+            //t.Name = "Mr. Smith";
+            //t.Marks =95;
+            //Console.ReadLine();
+
+            Contact c1 = new Contact();
+            c1._id = 1;
+            c1._fullName = "silsa";
+            Console.WriteLine();
             Console.ReadLine();
             
         }

@@ -85,30 +85,30 @@ namespace CSharp_console_app
             }
         }
         
-        public Teacher(int id, string name, decimal marks)
-        {
-            Id = id;
-            Name = name;
-            Marks = marks;
-        }
+//        public Teacher(int id, string name, decimal marks)
+//        {
+//            Id = id;
+//            Name = name;
+//            Marks = marks;
+//        }
 
-        public string display()
-        {
-            string test = Marks;
-        }
+//        public string display()
+//        {
+//            string test = Marks;
+//        }
     }
 
-    public class Animal
-    {
-        protected string des = "hi";
-    }
-    public class Dog : Animal
-    {
-//hiiiii
-    }
-    {
+//    public class Animal
+//    {
+//        protected string des = "hi";
+//    }
+//    public class Dog : Animal
+//    {
+////hiiiii
+//    }
+//    {
 
-    }
+//    }
 
 
 }
