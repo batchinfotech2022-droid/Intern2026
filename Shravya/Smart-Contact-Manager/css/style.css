@@ -1,14 +1,26 @@
-
-.custom-navbar {
-    background-color: #deb3e9;
+.custom-navbar{
+  background: url("../images/up4.jpeg") no-repeat center center/cover;
+  height: 80px;
 }
+
+
+.custom-navbar .nav-link,
+.custom-navbar .btn-link {
+  color: #000 !important;
+  font-weight: 600;
+}
+
 
 .navbar-logo {
     width: 50px;
-    height: 50px;
+    height: 40px;
     object-fit: cover;
     border-radius: 15%;
 }
+.nav-link.active {
+  border-bottom: 2px solid #000;
+}
+
 
 
 .home-section {
@@ -40,6 +52,20 @@
     color: #000;
 }
 
+.btn:hover {
+  transform: translateY(-1px);
+  transition: 0.2s;
+}
+
+.table thead {
+  background-color: #ececff;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f5f7ff;
+}
+
+
 #custom-cards .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
@@ -48,5 +74,19 @@
 .action-item {
   font-size: 18px;
   font-weight: 500;
+}
+
+.input-group-text,
+.form-control,
+.form-select {
+  border-radius: 6px;
+}
+.input-group-text img {
+  opacity: 0.6;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
