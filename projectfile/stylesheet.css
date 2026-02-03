@@ -1,5 +1,4 @@
 body {
-    
     background-color: #f9d3d3;
     background-image: repeating-linear-gradient(
         45deg,
@@ -9,68 +8,63 @@ body {
         transparent 20px
     );
     padding: 10px;
-    padding-bottom: 80px;   
-    color: black;
+    padding-bottom: 80px;
+    color: #212529;
 }
 
-.form-card {
-    max-width: 420px;
+.content-box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
 }
-  
-  .sitefooter {
-    font-size: 0.8rem;
-  }
-  
 
-  .card {
+.card {
+    border-radius: 12px;
     transition: 0.2s;
 }
+
 .card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
-    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.18);
+    transform: translateY(-3px);
 }
 
-  .content-box {
-    max-width: 100%;  
-    margin: 0 auto 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+.form-control,
+.form-select {
+    border-radius: 8px;
 }
 
-
-.content-box img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+.btn {
+    border-radius: 8px;
 }
 
 .login-wrapper {
-            min-height: 100vh;
-        }
+    min-height: 100vh;
+}
 
 .login-box {
-            max-width: 420px;
-            width: 100%;
-        }
+    max-width: 420px;
+    width: 100%;
+}
 
+.sitefooter {
+    font-size: 0.8rem;
+}
 
-.login-box input {
-    border-radius: 5px;
+.table {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.table thead {
+    background-color: #f8f9fa;
 }
 
 
-.login-box button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
-    transition: 0.2s;
-}
-
-
-@media (max-width: 768px) {
-    .login-box {
-        margin-top: 20px;
-        padding: 25px 20px;
-    }
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
 }
