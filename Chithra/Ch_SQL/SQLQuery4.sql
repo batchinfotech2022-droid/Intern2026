@@ -1,0 +1,76 @@
+USE BITECH
+GO
+--CREATE TABLE Employee(
+--Id INT IDENTITY(1,1) PRIMARY KEY,
+--FirstName VARCHAR(MAX) NOT NULL,
+--LastName VARCHAR(MAX) NOT NULL,
+--[Role] VARCHAR(MAX) NOT NULL,
+--PhoneNo VARCHAR(MAX) NOT NULL,
+--Email VARCHAR(MAX) NOT NULL,
+--[Address] VARCHAR(MAX) NOT NULL,
+--Salary DECIMAL(18,4) NOT NULL,
+--CreatedBy varchar(max),
+--CreatedDate datetime NOT NULL,
+--ModifiedBy varchar(max) NOT NULL,
+--ModifiedDate datetime NOT NULL,
+--isDeleted bit NOT NULL
+--);
+
+
+--INSERT INTO Employee (
+--    FirstName, LastName, [Role], PhoneNo, Email, [Address],
+--    Salary, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy, isDeleted
+--)
+--VALUES
+--('Srujan', 'Shetty', 'Software Engineer', '555-0101', 'alice.j@bitech.com', '123 Tech Lane, San Francisco, CA', 95000.00, GETDATE(), 'Admin', GETDATE(), 'Admin', 0),
+--('Archana', 'Acharya', 'Data Analyst', '555-0102', 'bob.smith@bitech.com', '456 Data Drive, Austin, TX', 78000.00, GETDATE(), 'Admin', GETDATE(), 'Admin', 0),
+--('Murali', 'Davis', 'Project Manager', '555-0103', 'c.davis@bitech.com', '789 Agile Way, Seattle, WA', 105000.00, GETDATE(), 'Admin', GETDATE(), 'Admin', 0),
+--('Hemanth', 'Acharya', 'HR Specialist', '555-0104', 'diana.p@bitech.com', '101 People St, Chicago, IL', 65000.00, GETDATE(), 'Admin', GETDATE(), 'Admin', 0),
+--('Sankalp', 'Shet', 'DevOps Engineer', '555-0105', 'e.hunt@bitech.com', '202 Cloud Ave, New York, NY', 115000.00, GETDATE(), 'Admin', GETDATE(), 'Admin', 0);
+--GO
+
+---- Verify the data
+--SELECT * FROM EMPLOYEE;
+--CREATE TABLE MENTOR
+--(
+-- Id INT IDENTITY(1,1) PRIMARY KEY,
+-- EmpId INT NOT NULL,
+-- IntId INT NOT NULL,
+--    CreatedDate  DATETIME      NOT NULL,
+--    CreatedBy    NVARCHAR(50)  NOT NULL,
+--    ModifiedDate DATETIME      NOT NULL,
+--    ModifiedBy   NVARCHAR(50)  NOT NULL,
+--    isDeleted    BIT           NOT NULL
+--)
+--INSERT INTO [dbo].[MENTOR]
+--    ([EmpId], [IntId], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy], [isDeleted])
+--VALUES
+--    (2, 1, GETDATE(), 'ad', GETDATE(), 'ad', 0), (2, 2, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (2, 3, GETDATE(), 'ad', GETDATE(), 'ad', 0), (2, 4, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (2, 5, GETDATE(), 'ad', GETDATE(), 'ad', 0), (3, 6, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (3, 7, GETDATE(), 'ad', GETDATE(), 'ad', 0), (3, 8, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (3, 9, GETDATE(), 'ad', GETDATE(), 'ad', 0), (3, 10, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (4, 1, GETDATE(), 'ad', GETDATE(), 'ad', 0), (4, 2, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (4, 3, GETDATE(), 'ad', GETDATE(), 'ad', 0), (4, 4, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (4, 5, GETDATE(), 'ad', GETDATE(), 'ad', 0), (5, 6, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (5, 7, GETDATE(), 'ad', GETDATE(), 'ad', 0), (5, 8, GETDATE(), 'ad', GETDATE(), 'ad', 0),
+--    (5, 9, GETDATE(), 'ad', GETDATE(), 'ad', 0), (5, 10, GETDATE(), 'ad', GETDATE(), 'ad', 0);
+--GO
+--SELECT DISTINCT Fname,LastName FROM Interns INNER JOIN  MENTOR ON MENTOR.IntId=Interns.id;
+--SELECT 
+--DISTINCT I.Fname ,I.LastName 
+--FROM Interns I
+--	INNER JOIN  
+--		MENTOR M ON M.IntId=I.id
+--	INNER JOIN
+--		EMPLOYEE E ON E.Id=M.EmpId
+--WHERE 
+--	E.Id= 4;
+--SELECT 
+--FirstName,Salary 
+--FROM EMPLOYEE
+--WHERE Salary>(SELECT AVG(Salary) FROM EMPLOYEE);
+
+--UPDATE EMPLOYEE 
+--SET Salary=Salary+2000 
+--WHERE isDeleted=0;
