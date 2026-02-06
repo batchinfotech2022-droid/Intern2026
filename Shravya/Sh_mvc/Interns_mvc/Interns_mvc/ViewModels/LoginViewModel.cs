@@ -1,29 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Interns_mvc.ViewModels
 {
     public class LoginViewModel
     {
-        [DisplayName("User")]
-        public string username
-        { get; set; }
-        [Required]
-        public string password { get; set; }
+        [DisplayName("Username")]
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; }
 
-        public LoginViewModel()
-        {
-
-        }
-
-        public LoginViewModel(string username, string password)
-        {
-            this.username = username;
-            this.password = password;
-        }
+        [DisplayName("Password")]
+        [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

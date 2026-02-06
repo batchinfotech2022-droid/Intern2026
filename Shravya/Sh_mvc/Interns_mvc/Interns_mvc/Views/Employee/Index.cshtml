@@ -1,0 +1,38 @@
+﻿@model Interns_mvc.ViewModels.Employee
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>Employee Form</h2>
+
+@using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+{
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        <label>Section</label>
+        @Html.DropDownListFor(
+           m=>m.Id,
+            Model.SectionList,
+            new { @class = "form-select" }
+        )
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+}
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:green">@ViewBag.Message</p>
+}
