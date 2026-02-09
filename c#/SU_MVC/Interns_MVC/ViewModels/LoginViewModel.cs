@@ -9,7 +9,7 @@ namespace Interns_MVC.ViewModels
 {
     public class LoginViewModel
     {
-        [DisplayName("User")]
+        
         public string username
         { get; set; }
         [Required]
