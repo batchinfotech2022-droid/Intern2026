@@ -1,0 +1,45 @@
+﻿@model Intern_MVC.ViewModels.DashboardViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<main>
+    <div class="row">
+        <div class="col-4">
+            <div class="card" style="width: 16rem;">
+                <div class="card-body">
+                    <h5 class="card-title">TotalEmployees</h5>
+                    <p> @Model.TotalEmployees</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 16rem">
+                <div class="card-body">
+                    <h5 class="card-title">Totaltasks</h5>
+                    <p> @Model.TotalTasks</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card" style="width:16rem">
+                <div class="card-body">
+                    <h5 class="card-title">Active Project</h5>
+                    <p>Task&Issue Tracker</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownListFor(m => m.Status, Model.StatusList)
+        <input type="submit" value="Submit" />
+    }
+
+
+
+</main>
