@@ -62,6 +62,7 @@ namespace Intern_MVC.ViewModels
         private DateTime _created;
         private DateTime _updated;
         private string _status;
+        
 
         public int Id { get { return _id; } set { _id = value; } }
         public string Title { get { return _title; } set { _title = value; } }
@@ -90,6 +91,12 @@ namespace Intern_MVC.ViewModels
         public int TotalTasks { get; set; }
         public string Status { get; set; }
         public IEnumerable<SelectListItem> StatusList { get; set; }
+        public int NewEmployeeId { get; set; }
+        public string NewEmployeeName { get; set; }
+        public string NewEmployeeAddress { get; set; }
+        public string NewEmployeePhone { get; set; }
+        public string NewEmployeeEmail { get; set; }
+
 
 
         public DashboardViewModel()
