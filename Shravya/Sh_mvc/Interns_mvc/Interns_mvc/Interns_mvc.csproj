@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BIController.cs" />
+    <Compile Include="Controllers\ContactManagerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -129,7 +130,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ContactManagerViewModel.cs" />
     <Compile Include="ViewModels\Employee.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\Student.cs" />
@@ -215,10 +218,13 @@
     <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Table.cshtml" />
+    <Content Include="Views\ContactManager\Index.cshtml" />
+    <Content Include="Views\ContactManager\Create.cshtml" />
+    <Content Include="Views\ContactManager\View.cshtml" />
+    <Content Include="Views\ContactManager\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\BI\" />
   </ItemGroup>
   <ItemGroup>

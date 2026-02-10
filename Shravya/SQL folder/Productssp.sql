@@ -6,11 +6,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_Create]
-    @FirstName    VARCHAR(MAX),
-	@LastName    VARCHAR(MAX),
-	@Email    VARCHAR(MAX),
-	@Phone    VARCHAR(MAX),
+CREATE PROCEDURE [dbo].[Products_Create]
+    @ProductName    VARCHAR(MAX),
+	@Price    DECIMAL(18,4),
+	@StockQuantity    INT,
+	@Category    VARCHAR(MAX),
     @CreatedBy      VARCHAR(MAX),
     @CreatedDate    DATETIME,
     @ModifiedBy     VARCHAR(MAX),
@@ -21,14 +21,14 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO [dbo].[Customers]
+    INSERT INTO [dbo].[Products]
     (
-        FirstName, LastName, Email,Phone,
+        ProductName, Price , StockQuantity,Category,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
     )
     VALUES
     (
-        @FirstName, @LastName, @Email, @Phone,
+        @ProductName, @Price, @StockQuantity, @Category,
         @CreatedBy, @CreatedDate, @ModifiedBy, @ModifiedDate, @IsDeleted
     );
 
@@ -37,13 +37,13 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Customers_Delete]    ******/
+/****** Object:  StoredProcedure [dbo].[Products_Delete]    ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[Customers_Delete]
+Create PROCEDURE [dbo].[Products_Delete]
    @Id INT,
    @ModifiedBy VARCHAR(MAX),
    @ModifiedDate  DATETIME
@@ -51,8 +51,8 @@ Create PROCEDURE [dbo].[Customers_Delete]
 AS 
 BEGIN
     SET NOCOUNT ON;
-    -- delete from Customers where ID=@ID
-    update Customers
+    -- delete from Products where ID=@ID
+    update Products
     SET IsDeleted=1
     ,ModifiedBy=@ModifiedBy
     ,ModifiedDate=@ModifiedDate
@@ -62,57 +62,57 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Customers_ReadAll]     ******/
+/****** Object:  StoredProcedure [dbo].[Products_ReadAll]     ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_ReadAll]
+CREATE PROCEDURE [dbo].[products_ReadAll]
 AS
 BEGIN
     SET NOCOUNT ON;
 
     SELECT
-         FirstName, LastName, Email, Phone,
+         ProductName, Price , StockQuantity,Category,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
-    FROM Customers
+    FROM Products
     WHERE IsDeleted = 0;
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[Customers_ReadByID]     ******/
+/****** Object:  StoredProcedure [dbo].[Products_ReadByID]     ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_ReadByID]
+CREATE PROCEDURE [dbo].[Products_ReadByID]
     @Id INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
     SELECT
-        FirstName, LastName, Email, Phone,
+        ProductName, Price , StockQuantity,Category,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
-    FROM Customers
+    FROM Products
     WHERE Id = @Id
       AND IsDeleted = 0;
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[Customers_Update]   ******/
+/****** Object:  StoredProcedure [dbo].[Products_Update]   ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-  ALTER PROCEDURE [dbo].[Customers_Update]
-	@FirstName    VARCHAR(MAX),
-    @LastName        VARCHAR(MAX),
-    @Email          VARCHAR(MAX),
-    @Phone       VARCHAR(13),
+Create     PROCEDURE [dbo].[Products_Update]
+	@ProductName    VARCHAR(MAX),
+    @LastName         DECIMAL(18,4),
+    @Email           INT,
+    @Phone       VARCHAR(MAX),
     @CreatedBy    VARCHAR(MAX),
     @CreatedDate      DATETIME,
     @ModifiedBy     VARCHAR(MAX),
@@ -131,7 +131,7 @@ BEGIN
     Phone = @Phone,
 	CreatedBy=@CreatedBy,
     CreatedDate=@CreatedDate,
-	 ModifiedBy=@ModifiedBy,
+	ModifiedBy=@ModifiedBy,
     ModifiedDate=@ModifiedDate,
     IsDeleted=@IsDeleted
     where 
