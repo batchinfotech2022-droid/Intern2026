@@ -222,6 +222,7 @@
     <Content Include="Views\ContactManager\Create.cshtml" />
     <Content Include="Views\ContactManager\View.cshtml" />
     <Content Include="Views\ContactManager\Edit.cshtml" />
+    <Content Include="Views\ContactManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

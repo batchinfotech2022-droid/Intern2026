@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using Interns_mvc.Models;
 using Intern_MVC.ViewModels;
+using Interns_mvc.Models;
 using Interns_mvc.ViewModels;
 
 namespace Interns_mvc.Controllers
@@ -68,11 +69,27 @@ namespace Interns_mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ContactManager mngss)
+        public ActionResult Edit(ContactManager model)
         {
-            ContactManager.Update(mngss);
-            
-                return View();
+            if (ModelState.IsValid)
+            {
+                // Get existing contact from data source using Id
+                ContactManager contact = ContactManager.ReadById(model.Id);
+
+                // Update properties from model
+                contact.FirstName = model.FirstName;
+                contact.LastName = model.LastName;
+                contact.Email = model.Email;
+                contact.Phone = model.Phone;
+               
+
+                // Save updated contact
+                ContactManager.Update(contact);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
 
     }
