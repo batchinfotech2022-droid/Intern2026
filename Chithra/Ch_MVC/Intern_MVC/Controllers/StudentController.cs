@@ -27,11 +27,11 @@ namespace Intern_MVC.Controllers
    
 
         [HttpPost]
-        public ActionResult Create(StudentViewModel model)
+        public ActionResult Create()
         {
 
             
-            return View(model);
+            return View();
         }
 
 

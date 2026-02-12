@@ -37,22 +37,22 @@ namespace Intern_MVC.Controllers
             return View(Model);
         }
         [HttpPost]
-        public ActionResult Create(Tasks newModel)
+        public ActionResult Create(TaskViewModel newModel)
         {
-            //if (ModelState.IsValid)
-            //{
-                
-            //  Tasks task=new Tasks(newModel);
-            //    newModel.Id = 20;
-            //    Tasks.AddOrUpdateTask(task);
-            //    TempData["toastr-success"] = "Employee created successfully";
-            //    return RedirectToAction("Index");
-            //}
-            //if (!ModelState.IsValid)
-            //{
-            //    TempData["toastr-error"] = "Please fill all required fields";
-               
-            //}
+            if (ModelState.IsValid)
+            {
+
+                Tasks task = new Tasks(newModel);
+                newModel.Id = 20;
+                Tasks.AddOrUpdateTask(task);
+                TempData["toastr-success"] = "Employee created successfully";
+                return RedirectToAction("Index");
+            }
+            if (!ModelState.IsValid)
+            {
+                TempData["toastr-error"] = "Please fill all required fields";
+
+            }
             return RedirectToAction("Create");
         }
         public ActionResult View(int id)
@@ -89,6 +89,31 @@ namespace Intern_MVC.Controllers
 
             return View(model);
         }
+        // GET: Tasks/Delete/5
+
+        public ActionResult Delete(int id)
+        {
+            Tasks task = Tasks.GetTaskById(id);
+            TaskViewModel model = new TaskViewModel(task);
+            return View(model);
+        }
+
+
+        // POST: Tasks/Delete/5
+        [HttpPost]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            bool isDeleted = Tasks.DeleteTask(id);
+
+            // optional: you can check result if needed
+            if (!isDeleted)
+            {
+                return HttpNotFound();
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
 
 

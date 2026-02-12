@@ -29,13 +29,14 @@ namespace Intern_MVC.ViewModels
             { return _section; }
             set { _section = value; }
         }
-        public double Marks
-        { get
-            { return _marks; }
-            set {
-                _marks = value; }
+        public string Marks
+        {
+            get
+            { return Marks; }
+            set { _section = value; }
         }
-    public StudentViewModel() {
+
+        public StudentViewModel() {
           
             _name = "undefined";
             _section = "undefined";

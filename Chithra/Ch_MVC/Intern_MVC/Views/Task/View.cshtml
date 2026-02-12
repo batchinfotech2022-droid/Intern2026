@@ -29,18 +29,17 @@
             </label>
             <div class="col-sm-9">
                 <p class="form-control-plaintext">
-                    @Model.CreatedDate.ToShortDateString()
+                    @Model.CreatedDate
                 </p>
             </div>
         </div>
 
-        <!-- Is Active -->
         <div class="form-group row">
             <label class="col-sm-3 col-form-label">
 
                 @Html.CheckBoxFor(m => m.IsActive, new { disabled = "disabled" })
                 @Html.LabelFor(m => m.IsActive)
-
+                </label>
         </div>
 
 
