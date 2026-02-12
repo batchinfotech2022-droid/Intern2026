@@ -38,9 +38,11 @@
                 <td>@item.Activitytext</td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Activityid }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Activityid }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Activityid })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Activityid }, new { @class = "btn btn-success btn-sm" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Activityid }, new { @class = "btn btn-danger btn-sm" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Activityid }, new { @class = "btn btn-success btn-sm" })
+
+
                 </td>
             </tr>
         }
