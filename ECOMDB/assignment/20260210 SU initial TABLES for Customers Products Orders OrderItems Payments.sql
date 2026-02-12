@@ -1,3 +1,8 @@
+USE master;
+GO
+CREATE DATABASE EcomDB;
+GO
+	
 USE [EcomDB]
 GO
 /****** Object:  Table [dbo].[Customers]    Script Date: 10-02-2026 09:43:43 PM ******/
