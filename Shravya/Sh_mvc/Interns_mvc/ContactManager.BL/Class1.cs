@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContactManager.DL
+namespace ContactManager.BL
 {
     public class Class1
     {
-
     }
 }

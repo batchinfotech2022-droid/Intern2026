@@ -15,10 +15,10 @@ namespace Interns_mvc.Controllers
         // GET: ContactManager
         public ActionResult Index()
         {
-            List<ContactManager> lstContact= ContactManager.ReadAll();
+            List<DummyContactManager> lstContact= DummyContactManager.ReadAll();
             List<ContactManagerViewModel> tempList = new List<ContactManagerViewModel>();
 
-            foreach (ContactManager m in lstContact)
+            foreach (DummyContactManager m in lstContact)
             {
                 ContactManagerViewModel model = new ContactManagerViewModel(m);
                 tempList.Add(model);
@@ -42,8 +42,8 @@ namespace Interns_mvc.Controllers
             if (ModelState.IsValid)
             {
                 newmodel.Id = 50;
-                ContactManager cnt=new ContactManager(newmodel);
-                ContactManager.Create(cnt);
+                DummyContactManager cnt=new DummyContactManager(newmodel);
+                DummyContactManager.Create(cnt);
                 TempData["success"] = "Contact created successfully";
                 return RedirectToAction("Index");
             }
@@ -57,24 +57,24 @@ namespace Interns_mvc.Controllers
 
         public ActionResult View(int id)
         {
-            ContactManager manager= ContactManager.ReadById(id);
+            DummyContactManager manager= DummyContactManager.ReadById(id);
             ContactManagerViewModel mdl = new ContactManagerViewModel(manager);
             return View(mdl);
         }
         public ActionResult Edit(int id)
         {
-            ContactManager mng = ContactManager.ReadById(id);
+            DummyContactManager mng = DummyContactManager.ReadById(id);
             ContactManagerViewModel vmdl = new ContactManagerViewModel(mng);
             return View(vmdl);
         }
 
         [HttpPost]
-        public ActionResult Edit(ContactManager model)
+        public ActionResult Edit(DummyContactManager model)
         {
             if (ModelState.IsValid)
             {
                 // Get existing contact from data source using Id
-                ContactManager contact = ContactManager.ReadById(model.Id);
+                DummyContactManager contact = DummyContactManager.ReadById(model.Id);
 
                 // Update properties from model
                 contact.FirstName = model.FirstName;
@@ -84,13 +84,48 @@ namespace Interns_mvc.Controllers
                
 
                 // Save updated contact
-                ContactManager.Update(contact);
+                DummyContactManager.Update(contact);
 
                 return RedirectToAction("Index");
             }
 
             return View(model);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var contact = DummyContactManager.ReadById(id);
+
+            if (contact == null)
+                return HttpNotFound();
+
+            ContactManagerViewModel model = new ContactManagerViewModel
+            {
+                Id = contact.Id,
+                FirstName = contact.FirstName,
+                LastName = contact.LastName,
+                Email = contact.Email,
+                Phone = contact.Phone
+            };
+
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Delete(ContactManagerViewModel model)
+        {
+            var contact = DummyContactManager.ReadById(model.Id);
+            if (contact != null)
+            {
+                DummyContactManager.Delete(model.Id);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
 
     }
 }

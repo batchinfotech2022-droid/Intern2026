@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD9CB0AC-B5DA-4522-826B-9D1E16698630}</ProjectGuid>
+    <ProjectGuid>{9A6828FC-1BC6-4924-9A40-DCC9A9CAC26A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ContactManager.DL</RootNamespace>
-    <AssemblyName>ContactManager.DL</AssemblyName>
+    <RootNamespace>ContactManager.BL</RootNamespace>
+    <AssemblyName>ContactManager.BL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityData.cs" />
-    <Compile Include="AppExceptionData.cs" />
-    <Compile Include="DataAccess.cs" />
-    <Compile Include="DataReaderExtensions.cs" />
+    <Compile Include="Activity.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContactManager.DL\ContactManager.DL.csproj">
+      <Project>{AD9CB0AC-B5DA-4522-826B-9D1E16698630}</Project>
+      <Name>ContactManager.DL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

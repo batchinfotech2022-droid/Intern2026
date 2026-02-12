@@ -6,7 +6,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_Create]
+CREATE  OR ALTER PROCEDURE [dbo].[Customers_Create]
     @FirstName    VARCHAR(MAX),
 	@LastName    VARCHAR(MAX),
 	@Email    VARCHAR(MAX),
@@ -43,7 +43,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create PROCEDURE [dbo].[Customers_Delete]
+CREATE  OR ALTER PROCEDURE [dbo].[Customers_Delete]
    @Id INT,
    @ModifiedBy VARCHAR(MAX),
    @ModifiedDate  DATETIME
@@ -68,7 +68,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_ReadAll]
+CREATE  OR ALTER PROCEDURE [dbo].[Customers_ReadAll]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -87,7 +87,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Customers_ReadByID]
+CREATE  OR ALTER PROCEDURE [dbo].[Customers_ReadByID]
     @Id INT
 AS
 BEGIN
@@ -108,7 +108,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-  ALTER PROCEDURE [dbo].[Customers_Update]
+  CREATE  OR ALTER PROCEDURE [dbo].[Customers_Update]
 	@FirstName    VARCHAR(MAX),
     @LastName        VARCHAR(MAX),
     @Email          VARCHAR(MAX),

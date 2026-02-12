@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Interns_mvc.Models.ActivityModel>
+@{
+    ViewBag.Title = "Activity List";
+}
+
+
+
+<h2>Activity List</h2>
+
+<p>
+    @Html.ActionLink("Create New Activity", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ActivityId)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            <th>@Html.DisplayNameFor(model => model.Activityon)</th>
+            <th>@Html.DisplayNameFor(model => model.ActivityItem)</th>
+            <th>@Html.DisplayNameFor(model => model.Activitydate)</th>
+            <th>@Html.DisplayNameFor(model => model.Issuccess)</th>
+            <th>@Html.DisplayNameFor(model => model.Activitytext)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ActivityId</td>
+                <td>@item.Username</td>
+                <td>@item.Activityon</td>
+                <td>@item.ActivityItem</td>
+                <td>@item.Activitydate?.ToString("yyyy-MM-dd")</td>
+                <td>@item.Issuccess</td>
+                <td>@item.Activitytext</td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ActivityId }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ActivityId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,16 +1,16 @@
 USE [EcommerceDB]
 GO
-
+/****** Object:  StoredProcedure [dbo].[OrderItems_Create]    Script Date: 11-02-2026 21:00:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE  OR ALTER PROCEDURE [dbo].[Products_Create]
-    @ProductName    VARCHAR(MAX),
+CREATE  OR ALTER PROCEDURE [dbo].[OrderItems_Create]
+    @OrderID    INT,
+	@ProductID    INT,
+	@Quantity    INT,
 	@Price    DECIMAL(18,4),
-	@StockQuantity    INT,
-	@Category    VARCHAR(MAX),
     @CreatedBy      VARCHAR(MAX),
     @CreatedDate    DATETIME,
     @ModifiedBy     VARCHAR(MAX),
@@ -21,14 +21,14 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO [dbo].[Products]
+    INSERT INTO [dbo].[OrderItems]
     (
-        ProductName, Price , StockQuantity,Category,
+        OrderID, ProductID , Quantity,Price,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
     )
     VALUES
     (
-        @ProductName, @Price, @StockQuantity, @Category,
+        @OrderID, @ProductID, @Quantity, @Price,
         @CreatedBy, @CreatedDate, @ModifiedBy, @ModifiedDate, @IsDeleted
     );
 
@@ -37,13 +37,13 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Products_Delete]    ******/
+/****** Object:  StoredProcedure [dbo].[OrderItems_Delete]    Script Date: 11-02-2026 21:00:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE  OR ALTER PROCEDURE [dbo].[Products_Delete]
+CREATE  OR ALTER PROCEDURE [dbo].[OrderItems_Delete]
    @Id INT,
    @ModifiedBy VARCHAR(MAX),
    @ModifiedDate  DATETIME
@@ -51,8 +51,8 @@ CREATE  OR ALTER PROCEDURE [dbo].[Products_Delete]
 AS 
 BEGIN
     SET NOCOUNT ON;
-    -- delete from Products where ID=@ID
-    update Products
+    -- delete from OrderItems where ID=@ID
+    update OrderItems
     SET IsDeleted=1
     ,ModifiedBy=@ModifiedBy
     ,ModifiedDate=@ModifiedDate
@@ -62,58 +62,58 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Products_ReadAll]     ******/
+/****** Object:  StoredProcedure [dbo].[OrderItems_ReadAll]    Script Date: 11-02-2026 21:00:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE  OR ALTER PROCEDURE [dbo].[products_ReadAll]
+CREATE  OR ALTER PROCEDURE [dbo].[OrderItems_ReadAll]
 AS
 BEGIN
     SET NOCOUNT ON;
 
     SELECT
-         ProductName, Price , StockQuantity,Category,
+         OrderID, ProductID , Quantity,Price,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
-    FROM Products
+    FROM OrderItems
     WHERE IsDeleted = 0;
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[Products_ReadByID]     ******/
+/****** Object:  StoredProcedure [dbo].[OrderItems_ReadByID]    Script Date: 11-02-2026 21:00:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE  OR ALTER PROCEDURE [dbo].[Products_ReadByID]
+CREATE  OR ALTER PROCEDURE [dbo].[OrderItems_ReadByID]
     @Id INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
     SELECT
-        ProductName, Price , StockQuantity,Category,
+        OrderID, ProductID , Quantity,Price,
         CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
-    FROM Products
+    FROM OrderItems
     WHERE Id = @Id
       AND IsDeleted = 0;
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[Products_Update]   ******/
+/****** Object:  StoredProcedure [dbo].[OrderItems_Update]    Script Date: 11-02-2026 21:00:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE  OR ALTER    PROCEDURE [dbo].[Products_Update]
-	@ProductName    VARCHAR(MAX),
-    @Price          DECIMAL(18,4),
-    @StockQuantity  INT,
-    @Category       VARCHAR(MAX),
-    @CreatedBy    VARCHAR(MAX),
+CREATE  OR ALTER     PROCEDURE [dbo].[OrderItems_Update]
+	@OrderID    INT,
+	@ProductID    INT,
+	@Quantity    INT,
+	@Price    DECIMAL(18,4),
+    @CreatedBy      VARCHAR(MAX),
     @CreatedDate      DATETIME,
     @ModifiedBy     VARCHAR(MAX),
     @ModifiedDate   DATETIME,
@@ -123,12 +123,12 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    UPDATE Products
+    UPDATE OrderItems
     set 
-    ProductName = @ProductName,
-    Price  = @Price ,
-    StockQuantity = @StockQuantity,
-    Category = @Category,
+    OrderID = @OrderID,
+    ProductID = @ProductID,
+    Quantity = @Quantity,
+    Price = @Price,
 	CreatedBy=@CreatedBy,
     CreatedDate=@CreatedDate,
 	ModifiedBy=@ModifiedBy,
