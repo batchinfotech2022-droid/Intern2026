@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Interns_MVC.Models.ActivityModel>
+
+@{
+    ViewBag.Title = "Activity List";
+}
+
+<h2>Activity List</h2>
+
+<p>
+    @Html.ActionLink("Create New Activity", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Activityid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Activityon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Activityitem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Activitydate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Issuccess)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Activitytext)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activityid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activityon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activityitem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activitydate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Issuccess)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Activitytext)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Activityid }, new { @class = "btn btn-warning btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Activityid }, new { @class = "btn btn-info btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Activityid }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">
+                    No activity records found.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

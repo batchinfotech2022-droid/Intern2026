@@ -6,11 +6,12 @@ using System.Web;
 using System.Web.Mvc;
 using Interns_MVC.ViewModels;
 
+
 namespace Interns_MVC.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: Student
+        [HttpPost]
         public ActionResult Index()
         {
             List <StudentViewModel >students = new List<StudentViewModel>()
@@ -23,12 +24,9 @@ namespace Interns_MVC.Controllers
             new StudentViewModel(106, "Neha Kulkarni", "ECE-4A", 88)
         };
 
-        return View(students); 
+        return View(); 
     }
         
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
     }
 }
