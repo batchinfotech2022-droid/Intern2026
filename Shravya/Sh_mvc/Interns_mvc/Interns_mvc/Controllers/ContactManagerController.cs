@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Interns_mvc.Models;
-using Intern_MVC.ViewModels;
+﻿using Interns_mvc.Models;
 using Interns_mvc.ViewModels;
 
 namespace Interns_mvc.Controllers
@@ -14,7 +8,7 @@ namespace Interns_mvc.Controllers
         // GET: ContactManager
         public ActionResult Index()
         {
-            List<ContactManager> lstContact= ContactManager.ReadAll();
+            List<ContactManager> lstContact = ContactManager.ReadAll();
             List<ContactManagerViewModel> tempList = new List<ContactManagerViewModel>();
 
             foreach (ContactManager m in lstContact)
@@ -33,7 +27,7 @@ namespace Interns_mvc.Controllers
 
             return View(cmodel);
         }
-        
+
         [HttpPost]
 
         public ActionResult Create(ContactManagerViewModel newmodel)
@@ -41,7 +35,7 @@ namespace Interns_mvc.Controllers
             if (ModelState.IsValid)
             {
                 newmodel.Id = 50;
-                ContactManager cnt=new ContactManager(newmodel);
+                ContactManager cnt = new ContactManager(newmodel);
                 ContactManager.Create(cnt);
                 TempData["success"] = "Contact created successfully";
                 return RedirectToAction("Index");
@@ -49,14 +43,14 @@ namespace Interns_mvc.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["error"] = "Error";
-               
+
             }
             return RedirectToAction("Create");
         }
 
         public ActionResult View(int id)
         {
-            ContactManager manager= ContactManager.ReadById(id);
+            ContactManager manager = ContactManager.ReadById(id);
             ContactManagerViewModel mdl = new ContactManagerViewModel(manager);
             return View(mdl);
         }
@@ -71,8 +65,8 @@ namespace Interns_mvc.Controllers
         public ActionResult Edit(ContactManager mngss)
         {
             ContactManager.Update(mngss);
-            
-                return View();
+
+            return View();
         }
 
     }
