@@ -11,7 +11,7 @@ namespace Interns_mvc.Controllers
     public class StudentController : Controller
     {
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Create()
         {
             List<Student> students = new List<Student>
     {
@@ -22,11 +22,11 @@ namespace Interns_mvc.Controllers
         new Student(5, "Arjun Patel", "B", "arjun.patel@gmail.com", 95)
     };
 
-            return View(students);
+            return View();
 
         }
-
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Create(Student stu)
         {
             Student s = new Student();
             return View(s);

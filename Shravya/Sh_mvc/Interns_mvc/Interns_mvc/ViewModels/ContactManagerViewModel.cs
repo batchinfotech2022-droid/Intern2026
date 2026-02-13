@@ -89,6 +89,8 @@ namespace Interns_mvc.ViewModels
             set { _isDeleted = value; }
         }
 
+     
+
         public ContactManagerViewModel()
         {
             _id = 0;
@@ -116,7 +118,7 @@ namespace Interns_mvc.ViewModels
             _modifiedDate = ModifiedDate;
             _isDeleted = IsDeleted;
         }
-        public ContactManagerViewModel(ContactManager manager)
+        public ContactManagerViewModel(DummyContactManager manager)
         {
             _id = manager.Id;
             _firstName = manager.FirstName;

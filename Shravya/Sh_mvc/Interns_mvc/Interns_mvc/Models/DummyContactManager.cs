@@ -7,7 +7,7 @@ using Interns_mvc.ViewModels;
 
 namespace Interns_mvc.Models
 {
-    public class ContactManager
+    public class DummyContactManager
     {
         private int _id;
         private string _firstName;
@@ -71,7 +71,7 @@ namespace Interns_mvc.Models
             set { _isDeleted = value; }
         }
 
-        public ContactManager()
+        public DummyContactManager()
         {
             _id = 0;
             _firstName = "undefined";
@@ -85,7 +85,7 @@ namespace Interns_mvc.Models
             _isDeleted = true;
         }
 
-        public ContactManager(int Id,string FirstName,string LastName,string Email, string Phone,string CreatedBy,DateTime CreatedDate,string ModifiedBy,DateTime ModifiedDate,bool IsDeleted)
+        public DummyContactManager(int Id,string FirstName,string LastName,string Email, string Phone,string CreatedBy,DateTime CreatedDate,string ModifiedBy,DateTime ModifiedDate,bool IsDeleted)
         {
             _id=Id;
             _firstName=FirstName;
@@ -99,31 +99,31 @@ namespace Interns_mvc.Models
             _isDeleted = IsDeleted;
         }
 
-        public static List<ContactManager> Contacts = new List<ContactManager>()
+        public static List<DummyContactManager> Contacts = new List<DummyContactManager>()
         {
-            new ContactManager(1,"Rahul","Shetty","rahul@gmail.com","9876543210","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(2,"Anita","Sharma","anita@gmail.com","9876543211","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(3,"Ravi","Kumar","ravi@gmail.com","9876543212","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(4,"Sneha","Patil","sneha@gmail.com","9876543213","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(5,"Amit","Verma","amit@gmail.com","9876543214","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(6,"Neha","Singh","neha@gmail.com","9876543215","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(7,"Kiran","Rao","kiran@gmail.com","9876543216","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(8,"Pooja","Nair","pooja@gmail.com","9876543217","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(9,"Vikas","Mehta","vikas@gmail.com","9876543218","Admin",DateTime.Now,"Admin",DateTime.Now,false),
-            new ContactManager(10,"Divya","Iyer","divya@gmail.com","9876543219","Admin",DateTime.Now,"Admin",DateTime.Now,false)
+            new DummyContactManager(1,"Rahul","Shetty","rahul@gmail.com","9876543210","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(2,"Anita","Sharma","anita@gmail.com","9876543211","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(3,"Ravi","Kumar","ravi@gmail.com","9876543212","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(4,"Sneha","Patil","sneha@gmail.com","9876543213","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(5,"Amit","Verma","amit@gmail.com","9876543214","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(6,"Neha","Singh","neha@gmail.com","9876543215","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(7,"Kiran","Rao","kiran@gmail.com","9876543216","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(8,"Pooja","Nair","pooja@gmail.com","9876543217","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(9,"Vikas","Mehta","vikas@gmail.com","9876543218","Admin",DateTime.Now,"Admin",DateTime.Now,false),
+            new DummyContactManager(10,"Divya","Iyer","divya@gmail.com","9876543219","Admin",DateTime.Now,"Admin",DateTime.Now,false)
         };
 
-        public static List<ContactManager> ReadAll()
+        public static List<DummyContactManager> ReadAll()
         {
             return Contacts.Where(x => x.IsDeleted == false).ToList();
         }
 
-        public static ContactManager ReadById(int id)
+        public static DummyContactManager ReadById(int id)
         {
             return Contacts.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         }
 
-        public static void Create(ContactManager contact)
+        public static void Create(DummyContactManager contact)
         {
             contact.Id = Contacts.Max(x => x.Id) + 1;
             contact.CreatedDate = DateTime.Now;
@@ -133,7 +133,7 @@ namespace Interns_mvc.Models
             Contacts.Add(contact);
         }
 
-        public static bool Update(ContactManager contact)
+        public static bool Update(DummyContactManager contact)
         {
             var existing = Contacts.FirstOrDefault(x => x.Id == contact.Id && x.IsDeleted == false);
 
@@ -162,7 +162,7 @@ namespace Interns_mvc.Models
 
             return true;
         }
-        public ContactManager(ContactManagerViewModel newmodel)
+        public DummyContactManager(ContactManagerViewModel newmodel)
         {
             _id= newmodel.Id;
             _firstName= newmodel.FirstName;
