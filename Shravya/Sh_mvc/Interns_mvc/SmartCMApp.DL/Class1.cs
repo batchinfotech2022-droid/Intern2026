@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContactManager.BL
+namespace SmartCMApp.DL
 {
     public class Class1
     {

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.DL", "Contac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.BL", "ContactManager.BL\ContactManager.BL.csproj", "{9A6828FC-1BC6-4924-9A40-DCC9A9CAC26A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCMApp.DL", "SmartCMApp.DL\SmartCMApp.DL.csproj", "{0B986AE8-0274-4937-9C38-544F08EE303A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9A6828FC-1BC6-4924-9A40-DCC9A9CAC26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A6828FC-1BC6-4924-9A40-DCC9A9CAC26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A6828FC-1BC6-4924-9A40-DCC9A9CAC26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B986AE8-0274-4937-9C38-544F08EE303A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B986AE8-0274-4937-9C38-544F08EE303A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B986AE8-0274-4937-9C38-544F08EE303A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B986AE8-0274-4937-9C38-544F08EE303A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
