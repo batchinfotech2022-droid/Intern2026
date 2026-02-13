@@ -1,0 +1,15 @@
+﻿@model Interns_mvc.Models.ActivityModel
+
+<h3>Are you sure you want to delete this permanently?</h3>
+
+<p>Name:@Model.Username</p>
+<p>Activity Done:@Model.ActivityItem</p>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ActivityId)
+
+    <button type="submit">Yes Delete</button>
+
+    @Html.ActionLink("Cancel", "Index")
+}

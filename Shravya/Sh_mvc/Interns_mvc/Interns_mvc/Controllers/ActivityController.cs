@@ -13,6 +13,7 @@ namespace Interns_mvc.Controllers
         // GET: Activity
         public ActionResult Index()
         {
+
             return View(GetActivityModelList());
         }
 
@@ -24,7 +25,105 @@ namespace Interns_mvc.Controllers
             {
                 activityModelList.Add(new ActivityModel(a));
             }
-            return activityModelList;
+            return activityModelList
+            .OrderBy(x => x.ActivityId)
+            .ToList();
         }
+
+        // GET: Activity/Create
+        public ActionResult Create()
+        {
+            ActivityModel model = new ActivityModel(new Activity());
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(ActivityModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Activity.Create(
+                    model.Username,
+                    model.Activityon,
+                    model.ActivityItem,
+                    model.Activitydate,
+                    model.Issuccess,
+                    model.Activitytext
+                );
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+
+            if (activity == null)
+                return HttpNotFound();
+
+            ActivityModel model = new ActivityModel(activity);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ActivityModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Activity activity = Activity.RetrieveById(model.ActivityId);
+
+                activity.Username = model.Username;
+                activity.Activityon = model.Activityon;
+                activity.Activityitem = model.ActivityItem;
+                activity.Activitydate = model.Activitydate;
+                activity.Issuccess = model.Issuccess;
+                activity.Activitytext = model.Activitytext;
+
+                activity.Update();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+
+            if (activity == null)
+                return HttpNotFound();
+
+            ActivityModel model = new ActivityModel(activity);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(ActivityModel model)
+        {
+            Activity.Delete(model.ActivityId);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+
+            if (activity == null)
+                return HttpNotFound();
+
+            ActivityModel model = new ActivityModel(activity);
+
+            return View(model);
+        }
+
+
+
     }
 }

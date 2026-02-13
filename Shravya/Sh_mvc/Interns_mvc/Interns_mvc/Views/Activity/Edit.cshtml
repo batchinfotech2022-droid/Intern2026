@@ -1,0 +1,34 @@
+﻿@model Interns_mvc.Models.ActivityModel
+
+<h2>Edit Activity</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m=>m.ActivityId)
+
+    @Html.LabelFor(m => m.Username)
+    @Html.TextBoxFor(m => m.Username)
+    <br />
+
+    @Html.LabelFor(m => m.Activityon)
+    @Html.TextBoxFor(m => m.Activityon)
+    <br />
+
+    @Html.LabelFor(m => m.ActivityItem)
+    @Html.TextBoxFor(m => m.ActivityItem)
+    <br />
+
+    @Html.LabelFor(m => m.Activitydate)
+    @Html.TextBoxFor(m => m.Activitydate, "{0:yyyy-MM-dd}", new { type = "date" })
+    <br />
+
+    @Html.LabelFor(m => m.Issuccess)
+    @Html.CheckBoxFor(m => m.Issuccess)
+    <br />
+
+    @Html.LabelFor(m => m.Activitytext)
+    @Html.TextAreaFor(m => m.Activitytext)
+    <br />
+
+    <button type="submit">Save</button>
+}
