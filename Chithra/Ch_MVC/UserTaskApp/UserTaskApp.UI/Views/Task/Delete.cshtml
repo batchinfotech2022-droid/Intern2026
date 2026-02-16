@@ -1,0 +1,16 @@
+﻿@model UserTaskApp.UI.Models.TaskModel
+
+<h2>Delete Task</h2>
+
+<h4>Are you sure you want to delete this task?</h4>
+
+<div>
+    <p><strong>Title:</strong> @Model.Title</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+</div>
+
+@using (Html.BeginForm("DeleteConfirmed", "Task", new { id = Model.Id }, FormMethod.Post))
+{
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+}
