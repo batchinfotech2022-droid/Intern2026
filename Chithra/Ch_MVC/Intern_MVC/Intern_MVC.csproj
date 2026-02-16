@@ -106,20 +106,27 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\BIController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityModel.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\TaskMaster.cs" />
+    <Compile Include="Models\Tasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Dashboard.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\StudentViewModel.cs" />
+    <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +210,7 @@
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+<<<<<<< HEAD
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +219,45 @@
     <Folder Include="Models\" />
     <Folder Include="Views\BI\" />
   </ItemGroup>
+=======
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
+    <Content Include="Views\Task\View.cshtml" />
+    <Content Include="Views\Task\Delete.cshtml" />
+    <Content Include="Views\Activity\Index.cshtml" />
+    <Content Include="Views\Activity\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\BI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskIssueTracker.BL\TaskIssueTracker.BL.csproj">
+      <Project>{531fb4c1-b7df-4275-804a-46c5889d534b}</Project>
+      <Name>TaskIssueTracker.BL</Name>
+    </ProjectReference>
+  </ItemGroup>
+>>>>>>> 691ae65ad5ab9035bca2fcfd6707ae092725cd7f
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

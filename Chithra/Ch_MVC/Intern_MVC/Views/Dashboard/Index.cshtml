@@ -1,5 +1,8 @@
+
 ﻿
 @model Intern_MVC.ViewModels.DashboardViewModel
+
+
 
 @{
     ViewBag.Title = "Home Page";
@@ -34,6 +37,7 @@
         </div>
     </div>
     <br />
+<<<<<<< HEAD
     @using (Html.BeginForm())
     {
         @Html.DropDownListFor(m => m.Status, Model.lstSelect, "-- Select Status --")
@@ -42,5 +46,35 @@
     }
 
 
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.DropDownListFor(m => m.Status, Model.StatusList)
+        <input type="submit" value="Submit" />
+    }
+    <br />
+    @using (Html.BeginForm("AddEmployee", "Dashboard", FormMethod.Post))
+    {
+
+        @Html.LabelFor(m => m.NewEmployeeId)
+        @Html.EditorFor(m => m.NewEmployeeId, new { htmlAttributes = new { @class = "form-control" } })
+
+        @Html.LabelFor(m => m.NewEmployeeName)
+        @Html.TextBoxFor(m => m.NewEmployeeName, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.NewEmployeeEmail)
+        @Html.TextBoxFor(m => m.NewEmployeeEmail, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.NewEmployeePhone)
+        @Html.TextBoxFor(m => m.NewEmployeePhone, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.NewEmployeeAddress)
+        @Html.TextBoxFor(m => m.NewEmployeeAddress, new { @class = "form-control" })
+
+        <br />
+        <input type="submit" value="Submit" />
+    }
 
 </main>

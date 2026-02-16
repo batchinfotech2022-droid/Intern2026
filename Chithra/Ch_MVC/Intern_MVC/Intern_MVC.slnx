@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../TaskIssueTracker.BL/TaskIssueTracker.BL.csproj" Id="531fb4c1-b7df-4275-804a-46c5889d534b" />
+  <Project Path="../TaskIssueTracker.DL/TaskIssueTracker.DL.csproj" Id="c4989be8-6d5c-43c2-8f60-00ece76cc5e1" />
   <Project Path="Intern_MVC.csproj" Id="8332bdac-2f0b-4762-8cb0-c5bb84e61a21" />
 </Solution>
