@@ -1,3 +1,6 @@
+--Create Database EcommerceDB;
+--GO
+
 USE [EcommerceDB]
 GO
 /****** Object:  Table [dbo].[Customers]    Script Date: 13-02-2026 10:37:17 AM ******/

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SmartCMApp.DL/SmartCMApp.DL.csproj" />
+  <Project Path="SmartCMApp.UI/SmartCMApp.UI.csproj" />
+</Solution>
