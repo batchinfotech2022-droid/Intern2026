@@ -11,7 +11,7 @@ GO
 -- Description:	Adding a new row with supplied values
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[Activity_Create]
+CREATE  OR ALTER PROCEDURE [dbo].[Activity_Create]
 	@Username varchar(20),
 	@Activityon varchar(50),
 	@Activityitem varchar(50),
@@ -41,7 +41,7 @@ GO
 -- Description:	Deleting the row of the given ID value
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[Activity_Delete]
+CREATE  OR ALTER PROCEDURE [dbo].[Activity_Delete]
 	@Activityid int
 AS
 BEGIN
@@ -64,7 +64,7 @@ GO
 -- Description:	Selecting all rows
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[Activity_ReadAll]
+CREATE  OR ALTER PROCEDURE [dbo].[Activity_ReadAll]
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -85,7 +85,7 @@ GO
 -- Description:	Selecting a Row according to given ID
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[Activity_ReadById]
+CREATE  OR ALTER PROCEDURE [dbo].[Activity_ReadById]
 	@Activityid int
 AS
 BEGIN
@@ -108,7 +108,7 @@ GO
 -- Description:	Updating the row of a given ID value with supplied values
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[Activity_Update]
+CREATE  OR ALTER PROCEDURE [dbo].[Activity_Update]
 	@Activityid int,
 	@Username varchar(20),
 	@Activityon varchar(50),
@@ -144,7 +144,7 @@ GO
 -- Description:	Adding a new row with supplied values
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[AppException_Create]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_Create]
 	@Exceptionsource varchar(50),
 	@Exceptiondesc varchar(200),
 	@Exceptiondate datetime,
@@ -173,7 +173,7 @@ GO
 -- Description:	Deleting the row of the given ID value
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[AppException_Delete]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_Delete]
 	@Exceptionid int
 AS
 BEGIN
@@ -196,7 +196,7 @@ GO
 -- Description:	Selecting all rows
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[AppException_ReadAll]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_ReadAll]
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -217,7 +217,7 @@ GO
 -- Description:	Selecting a Row according to given ID
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[AppException_ReadById]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_ReadById]
 	@Exceptionid int
 AS
 BEGIN
@@ -240,8 +240,7 @@ GO
 -- Description:	Read Exception details For Search
 -- Revisions:	
 -- =============================================
-
-CREATE PROCEDURE [dbo].[AppException_ReadForSearch]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_ReadForSearch]
 	@ExceptionSource varchar(50)
 AS
 BEGIN
@@ -266,7 +265,7 @@ GO
 -- Description:	Updating the row of a given ID value with supplied values
 -- Revisions:	
 -- =============================================
-CREATE PROCEDURE [dbo].[AppException_Update]
+CREATE  OR ALTER PROCEDURE [dbo].[AppException_Update]
 	@Exceptionid int,
 	@Exceptionsource varchar(50),
 	@Exceptiondesc varchar(200),
