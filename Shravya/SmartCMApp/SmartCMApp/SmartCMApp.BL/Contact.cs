@@ -12,11 +12,11 @@ namespace SmartCMApp.BL
 {
         public class Contact
         {
-            #region Fields
+        #region Fields
+
 
             private int _id;
             private string _fullName;
-            private string _email;
             private string _phone;
             private string _city;
             private int _categoryId;
@@ -25,6 +25,13 @@ namespace SmartCMApp.BL
             private string _modifiedBy;
             private DateTime _modifiedDate;
             private bool _isDeleted;
+            private string _address;
+            private string _userName;
+            private string _password;
+            private string _roles;
+            private bool _isActive;
+            private bool _isLogged;
+            private int _noOfAttempts;
 
             #endregion
 
@@ -32,7 +39,6 @@ namespace SmartCMApp.BL
 
             public int Id { get { return _id; } set { _id = value; } }
             public string FullName { get { return _fullName; } set { _fullName = value; } }
-            public string Email { get { return _email; } set { _email = value; } }
             public string Phone { get { return _phone; } set { _phone = value; } }
             public string City { get { return _city; } set { _city = value; } }
             public int CategoryId { get { return _categoryId; } set { _categoryId = value; } }
@@ -41,6 +47,13 @@ namespace SmartCMApp.BL
             public string ModifiedBy { get { return _modifiedBy; } set { _modifiedBy = value; } }
             public DateTime ModifiedDate { get { return _modifiedDate; } set { _modifiedDate = value; } }
             public bool IsDeleted { get { return _isDeleted; } set { _isDeleted = value; } }
+            public string Address { get { return _address; } set { _address = value; }  }
+            public string UserName { get { return _userName; } set { _userName = value; }  }
+            public string PassWord { get { return _password; } set { _password = value; }  }
+            public string Role { get { return _roles; } set { _roles = value; }  }
+            public bool IsActive { get { return _isActive; } set { _isActive = value; }  }
+            public bool IsLogged { get { return _isLogged; } set { _isLogged = value; }  }
+            public int  NoOfAttempts { get { return _noOfAttempts; } set { _noOfAttempts = value; }  }
 
             #endregion
 
@@ -50,7 +63,6 @@ namespace SmartCMApp.BL
             {
                 _id = 0;
                 _fullName = "";
-                _email = "";
                 _phone = "";
                 _city = "";
                 _categoryId = 0;
@@ -59,17 +71,26 @@ namespace SmartCMApp.BL
                 _modifiedBy = "";
                 _modifiedDate = DateTime.Now;
                 _isDeleted = false;
+                _address = "";
+                _userName = "";
+                _password = "";
+                _roles = "";
+                _isActive= false;
+                _isLogged= false;
+                _noOfAttempts=0;
+
             }
 
-            public Contact(int id, string fullName, string email,
+            public Contact(int id, string fullName,
                            string phone, string city, int categoryId,
                            string createdBy, DateTime createdDate,
                            string modifiedBy, DateTime modifiedDate,
-                           bool isDeleted)
+                           bool isDeleted, string address,string userName,
+                           string password, string roles, bool isActive,
+                           bool isLogged, int noOfAttempts)
             {
                 _id = id;
                 _fullName = fullName;
-                _email = email;
                 _phone = phone;
                 _city = city;
                 _categoryId = categoryId;
@@ -78,6 +99,13 @@ namespace SmartCMApp.BL
                 _modifiedBy = modifiedBy;
                 _modifiedDate = modifiedDate;
                 _isDeleted = isDeleted;
+            _address = address;
+            _userName = userName;
+            _password = password;
+            _roles = roles;
+            _isActive = isActive;
+            _isLogged = isLogged;
+            _noOfAttempts = noOfAttempts;
             }
 
         
@@ -87,23 +115,27 @@ namespace SmartCMApp.BL
 
         #region CRUD
 
-        public static int Create(string usrName,
-                                     string fullName,
-                                     string email,
-                                     string phone,
+        public static int Create(string fullName,
+                                     string phone, 
                                      string city,
-                                     int categoryId)
+                                     int categoryId,
+                                     string address,
+                                     string userName,
+                                     string password,
+                                     string roles)
             {
-                string createdBy = usrName;
+                string createdBy = userName;
                 DateTime createdDate = DateTime.Now;
-                string modifiedBy = usrName;
+                string modifiedBy = userName;
                 DateTime modifiedDate = DateTime.Now;
                 bool isDeleted = false;
+                bool isActive=false;
+                bool isLogged = false;
+            int noOfAttempts = 0;
 
                 try
                 {
                     int res = ContactData.Create(fullName,
-                                                 email,
                                                  phone,
                                                  city,
                                                  categoryId,
@@ -111,18 +143,25 @@ namespace SmartCMApp.BL
                                                  createdDate,
                                                  modifiedBy,
                                                  modifiedDate,
-                                                 isDeleted);
+                                                 isDeleted,
+                                                 address,
+                                                 userName,
+                                                 password,
+                                                 roles,
+                                                 isActive,
+                                                 isLogged,
+                                                 noOfAttempts);
 
-                    Activity.Create(usrName, "Contact", "Create",
+                    Activity.Create(userName, "Contact", "Create",
                                     DateTime.Now, true,
                                     "FullName:" + fullName +
-                                    " - Email:" + email);
+                                    " UserName:" + userName);
 
                     return res;
                 }
                 catch (Exception)
                 {
-                    Activity.Create(usrName, "Contact", "Create",
+                    Activity.Create(userName, "Contact", "Create",
                                     DateTime.Now, false,
                                     "FullName:" + fullName);
 
@@ -130,7 +169,7 @@ namespace SmartCMApp.BL
                 }
             }
 
-            public static List<Contact> RetrieveAll(string usrName)
+            public static List<Contact> RetrieveAll(string userName)
             {
                 List<Contact> list = new List<Contact>();
 
@@ -145,19 +184,19 @@ namespace SmartCMApp.BL
                     r.Close();
                     dt.Dispose();
 
-                    Activity.Create(usrName, "Contact", "RetrieveAll",
+                    Activity.Create(userName, "Contact", "RetrieveAll",
                                     DateTime.Now, true, "All Records");
                 }
                 catch (Exception)
                 {
-                    Activity.Create(usrName, "Contact", "RetrieveAll",
+                    Activity.Create(userName, "Contact", "RetrieveAll",
                                     DateTime.Now, false, "All Records");
                 }
 
                 return list;
             }
 
-            public static Contact RetrieveById(string usrName, int id)
+            public static Contact RetrieveById(string userName, int id)
             {
                 Contact result = null;
 
@@ -172,23 +211,25 @@ namespace SmartCMApp.BL
                     r.Close();
                     dt.Dispose();
 
-                    Activity.Create(usrName, "Contact", "RetrieveById",
+                    Activity.Create(userName, "Contact", "RetrieveById",
                                     DateTime.Now, true, id.ToString());
                 }
                 catch (Exception)
                 {
-                    Activity.Create(usrName, "Contact", "RetrieveById",
+                    Activity.Create(userName, "Contact", "RetrieveById",
                                     DateTime.Now, false, id.ToString());
                 }
 
                 return result;
             }
 
-            public bool Update(string usrName)
+            public bool Update(string userName)
             {
                 try
                 {
-                    bool returnVal = ContactData.Update(Id,
+                    bool returnVal = ContactData.Update(
+                       
+                        Id,
                                                         FullName,
                                                         Email,
                                                         Phone,
@@ -200,7 +241,7 @@ namespace SmartCMApp.BL
                                                         ModifiedDate,
                                                         IsDeleted);
 
-                    Activity.Create(usrName, "Contact", "Update",
+                    Activity.Create(userName, "Contact", "Update",
                                     DateTime.Now, true,
                                     "FullName:" + FullName);
 
