@@ -1,29 +1,99 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using AttendanceTracker.BL;
+using Intern_MVC.Models;
 using Interns_MVC.Models;
+using AttendanceTracker.BL;
 
-namespace Interns_MVC.Controllers
+namespace Intern_MVC.Controllers
 {
     public class ActivityController : Controller
     {
-        // GET: Activity
+        
         public ActionResult Index()
         {
             return View(GetActivityModelList());
         }
+
         private IEnumerable<ActivityModel> GetActivityModelList()
         {
-            int pageSize = 20;
-            List<ActivityModel> activityModelList = new List<ActivityModel>();
-            foreach (Activity a in Activity.RetrieveAll())
+             List<ActivityModel> list = new List<ActivityModel>();
+
+            foreach (Activity a in Activity.RetrieveAll()
+                            .OrderBy(a => a.Activityid))  
             {
-                activityModelList.Add(new ActivityModel(a));
+                list.Add(new ActivityModel(a));
             }
-            return activityModelList;
+
+            return list;
+        }
+
+        
+        public ActionResult Create()
+        {
+            return View(new ActivityModel());
+        }
+
+        
+        [HttpPost]
+        public ActionResult Create(ActivityModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Activity.Create(
+                    model.Username,
+                    model.Activityon,
+                    model.Activityitem,
+                    model.Activitydate,
+                    model.Issuccess,
+                    model.Activitytext
+                );
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        
+        public ActionResult Details(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+            return View(new ActivityModel(activity));
+        }
+
+           public ActionResult Edit(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+            return View(new ActivityModel(activity));
+        }
+
+        
+        [HttpPost]
+        public ActionResult Edit(ActivityModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.activity.Update();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
+        
+        public ActionResult Delete(int id)
+        {
+            Activity activity = Activity.RetrieveById(id);
+            return View(new ActivityModel(activity));
+        }
+
+        
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            Activity.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
