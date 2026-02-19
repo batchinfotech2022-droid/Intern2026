@@ -228,6 +228,9 @@
     <Content Include="Views\Leave\Edit.cshtml" />
     <Content Include="Views\Leave\Delete.cshtml" />
     <Content Include="Views\Activity\index.cshtml" />
+    <Content Include="Views\Activity\Create.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Activity\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

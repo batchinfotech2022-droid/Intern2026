@@ -30,6 +30,9 @@ Resources/
 *.user
 *.sln.docstates
 *.vs
+*.zip
+bin/
+obj/
 
 # Build results
 
@@ -42,6 +45,7 @@ build/
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+*.zip
 
 *_i.c
 *_p.c

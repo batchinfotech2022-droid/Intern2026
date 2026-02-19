@@ -1,0 +1,136 @@
+﻿body {
+    background-color: #d3f5f4;
+    background-image: repeating-linear-gradient( 45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 10px, transparent 10px, transparent 20px );
+    padding: 10px;
+    padding-bottom: 80px;
+    color: #212529;
+}
+
+.content-box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+}
+
+.card {
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+    .card:hover {
+        box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.18);
+        transform: translateY(-3px);
+    }
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.login-wrapper {
+    min-height: 100vh;
+}
+
+.login-box {
+    max-width: 420px;
+    width: 100%;
+}
+
+.sitefooter {
+    font-size: 0.8rem;
+}
+
+.table {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+}
+
+    .table thead {
+        background-color: #f8f9fa;
+    }
+
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+body {
+    background-color: #d3f5f4;
+    background-image: repeating-linear-gradient( 45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 10px, transparent 10px, transparent 20px );
+    padding: 10px;
+    color: #212529;
+    /* make body a column flex container so footer can sit at the bottom */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* make the main content area grow to fill available space */
+.body-content {
+    flex: 1 0 auto;
+    margin-top: 1rem;
+}
+
+.content-box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    padding: 25px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+}
+
+.card {
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+    .card:hover {
+        box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,.18);
+        transform: translateY(-3px);
+    }
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+/* ensure navbar buttons blend with dark background */
+.navbar .btn {
+    margin-left: 0.5rem;
+}
+
+/* footer styling */
+.sitefooter {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+/* other table and UI styles unchanged */
+.table {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+}
+
+    .table thead {
+        background-color: #f8f9fa;
+    }
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
