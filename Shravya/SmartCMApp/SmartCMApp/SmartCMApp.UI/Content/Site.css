@@ -18,3 +18,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.register-bg {
+    background-image: url('/Content/images/p5.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.login-bg {
+    background-image: url('/Content/images/login.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding-top: 60px;
+}

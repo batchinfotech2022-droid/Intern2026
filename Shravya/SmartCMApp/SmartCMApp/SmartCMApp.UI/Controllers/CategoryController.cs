@@ -63,7 +63,7 @@ namespace SmartCMApp.UI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                string usrName = "Admin";
+                string userName = "Admin";
 
                 Category category = new Category();
                 category.Id = model.Id;

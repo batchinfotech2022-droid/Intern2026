@@ -8,20 +8,21 @@ using System.Web.Mvc;
 
 namespace SmartCMApp.UI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        
+       
 
-public ActionResult Index()
-    {
-        string userName = "Admin";
+        public ActionResult Index()
+        {
+            string userName = "Admin";
 
-        var contacts = Contact.RetrieveAll(userName);
-        var categories = Category.RetrieveAll(userName);
+            var contacts = Contact.RetrieveAll(userName);
+            var categories = Category.RetrieveAll(userName);
 
-        HomeModel model = new HomeModel();
-        model.TotalContacts = contacts.Count;
-        model.TotalCategories = categories.Count;
+            HomeModel model = new HomeModel();
+            model.TotalContacts = contacts.Count;
+            model.TotalCategories = categories.Count;
             model.ActiveContacts = contacts.Count;
 
 
@@ -36,10 +37,10 @@ public ActionResult Index()
                                     Phone = c.Phone
                                 }).ToList();
 
-        return View(model);
+            return View(model);
+        }
+
+
+
     }
-
-
-
-}
 }

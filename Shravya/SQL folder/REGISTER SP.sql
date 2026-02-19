@@ -87,8 +87,13 @@ CREATE OR ALTER PROCEDURE REGISTER_Update
     @IsSystemUser BIT,
     @IsSystemSupervisor BIT,
     @IsActive BIT,
+    @IsLogged BIT,
+    @NoOfAttempts INT,
+    @CreatedBy VARCHAR(100),
+    @CreatedDate DATETIME,
     @ModifiedBy VARCHAR(100),
-    @ModifiedDate DATETIME
+    @ModifiedDate DATETIME,
+    @IsDeleted BIT
 )
 AS
 BEGIN
@@ -106,6 +111,10 @@ BEGIN
         IsSystemUser = @IsSystemUser,
         IsSystemSupervisor = @IsSystemSupervisor,
         IsActive = @IsActive,
+        IsLogged=@IsLogged,
+        NoOfAttempts=@NoOfAttempts,
+        CreatedBy=@CreatedBy,
+        CreatedDate=@CreatedDate,
         ModifiedBy = @ModifiedBy,
         ModifiedDate = @ModifiedDate
     WHERE Id = @Id
@@ -157,7 +166,24 @@ CREATE OR ALTER PROCEDURE Register_RetrieveByUserName
     @UserName VARCHAR(100)
 AS
 BEGIN
-    SELECT *
+    SELECT 
+    @FirstName VARCHAR(100),
+    @LastName VARCHAR(100),
+    @Address VARCHAR(100),
+    @Phone VARCHAR(100),
+    @UserName VARCHAR(100),
+    @Password VARCHAR(100),
+    @IsSystemAdmin BIT,
+    @IsSystemUser BIT,
+    @IsSystemSupervisor BIT,
+    @IsActive BIT,
+    @IsLogged BIT,
+    @NoOfAttempts INT,
+    @CreatedBy VARCHAR(100),
+    @CreatedDate DATETIME,
+    @ModifiedBy VARCHAR(100),
+    @ModifiedDate DATETIME,
+    @IsDeleted BIT
     FROM REGISTER
     WHERE UserName = @UserName
       AND IsDeleted = 0
