@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BiSchool.BL/BiSchool.BL.csproj" />
+  <Project Path="BiSchool.DL/BiSchool.DL.csproj" />
+  <Project Path="BiSchool.UI/BiSchool.UI.csproj" />
+</Solution>
