@@ -10,10 +10,39 @@ namespace BiSchool.UI.Controllers
 {
     public class FeesController : Controller
     {
+        private string userName = "Admin";
+        public ActionResult Index()
+        {
+            var feesList = Fees.RetrieveAll(userName);
 
+            List<FeesViewModel> model = new List<FeesViewModel>();
+
+            foreach (Fees f in feesList)
+            {
+                model.Add(new FeesViewModel
+                {
+                    Id = f.Id,
+                    StudentId = f.StudentId,
+                    StudentName = f.StudentName,
+                    Amount = f.Amount,
+                    Date = f.Date
+                });
+            }
+
+            return View(model);
+        }
         public ActionResult Create()
         {
             FeesViewModel model = new FeesViewModel();
+
+            var students = Student.RetrieveAll(userName);
+
+            model.Students = students.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.FullName
+            });
+
             return View(model);
         }
 
@@ -23,49 +52,129 @@ namespace BiSchool.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    
-                    Fees fees = new Fees();
+                Fees.Create(
+                    userName,
+                    model.StudentId,
+                    model.Amount,
+                    model.Date
+                );
 
-                    Fees.Create("usrName",
-                        model.StudentId,
-                        model.Amount,
-                        model.Date
-                    );
-
-                    return RedirectToAction("Index");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", ex.Message);
-                }
+                return RedirectToAction("Index");
             }
 
-            return View(model);
-        }
+            // If validation fails reload dropdown
+            var students = Student.RetrieveAll(userName);
 
-        public ActionResult Index()
-        {
-
-           
-            var feesList = Fees.RetrieveAll("Admin");
-
-            var model = feesList.Select(f => new FeesViewModel
+            model.Students = students.Select(s => new SelectListItem
             {
-                Id = f.Id,
-                StudentId = f.StudentId,
-                StudentName = f.StudentName,
-                Amount = f.Amount,
-                Date = f.Date
-            }).ToList();
+                Value = s.Id.ToString(),
+                Text = s.FullName
+            });
 
             return View(model);
         }
 
-        public ActionResult Edit(int id=0)
+
+
+        public ActionResult Edit(int id)
         {
-            return View();
+            var fee = Fees.RetrieveById( userName,id);
+
+            if (fee == null)
+                return HttpNotFound();
+
+            FeesViewModel model = new FeesViewModel
+            {
+                Id = fee.Id,
+                StudentId = fee.StudentId,
+                Amount = fee.Amount,
+                Date = fee.Date
+            };
+
+            // Load student dropdown
+            var students = Student.RetrieveAll(userName);
+
+            model.Students = students.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.FullName,
+                Selected = (s.Id == model.StudentId)
+            });
+
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(FeesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var fees = new Fees();
+                fees.Update(
+                    userName);
+
+                return RedirectToAction("Index");
+            }
+
+            // Reload dropdown if validation fails
+            var students = Student.RetrieveAll(userName);
+
+            model.Students = students.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.FullName,
+                Selected = (s.Id == model.StudentId)
+            });
+
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var fee = Fees.RetrieveById( userName,id);
+
+            if (fee == null)
+                return HttpNotFound();
+
+            FeesViewModel model = new FeesViewModel
+            {
+                Id = fee.Id,
+                StudentId = fee.StudentId,
+                StudentName = fee.StudentName,
+                Amount = fee.Amount,
+                Date = fee.Date
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var fee = Fees.RetrieveById( userName,id);
+
+            if (fee == null)
+                return HttpNotFound();
+
+            FeesViewModel model = new FeesViewModel
+            {
+                Id = fee.Id,
+                StudentName = fee.StudentName,
+                Amount = fee.Amount,
+                Date = fee.Date
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Fees.Delete(userName, id);
+            return RedirectToAction("Index");
         }
 
     }

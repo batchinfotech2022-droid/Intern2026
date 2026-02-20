@@ -178,9 +178,25 @@ namespace BiSchool.BL
                     throw new Exception("Delete failed", ex);
                 }
             }
-            #endregion //CRUD
 
-            private static Fees convertReaderToObject(DataTableReader r)
+        public bool Delete(string usrName)
+        {
+            try
+            {
+                bool returnVal = StudentBatchData.Delete(this.Id);
+                Activity.Create(usrName, "Fees", "Delete", DateTime.Now, true, this.Id.ToString());
+                return returnVal;
+            }
+            catch (Exception ex)
+            {
+                Activity.Create(usrName, "Fees" +
+                    "", "Delete", DateTime.Now, false, this.Id.ToString());
+                throw new Exception("Delete failed", ex);
+            }
+        }
+        #endregion //CRUD
+
+        private static Fees convertReaderToObject(DataTableReader r)
             {
                 return new Fees(
                     r.ToInt("Id"),

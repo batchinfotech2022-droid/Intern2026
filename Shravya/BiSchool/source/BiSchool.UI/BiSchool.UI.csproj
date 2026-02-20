@@ -185,6 +185,8 @@
     <Content Include="Views\Fees\Create.cshtml" />
     <Content Include="Views\Fees\Index.cshtml" />
     <Content Include="Views\Fees\Edit.cshtml" />
+    <Content Include="Views\Fees\Details.cshtml" />
+    <Content Include="Views\Fees\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
