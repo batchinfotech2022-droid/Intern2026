@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="UserTaskApp.BL/UserTaskApp.BL.csproj" Id="fe06298d-8973-489a-abde-d07a483abd6e" />
+  <Project Path="UserTaskApp.DL/UserTaskApp.DL.csproj" Id="e42f9c9e-7556-4d0b-a58b-edb1f26deff1" />
+  <Project Path="UserTaskApp.UI/UserTaskApp.UI.csproj" Id="80113e60-5029-4797-b8b3-526da75385cb" />
+</Solution>
