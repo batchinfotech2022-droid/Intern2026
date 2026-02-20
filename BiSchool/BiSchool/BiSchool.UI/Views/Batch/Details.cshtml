@@ -1,0 +1,52 @@
+﻿@model BiSchool.UI.Models.BatchModel
+
+@{
+    ViewBag.Title = "Batch Details";
+}
+
+<h2>Batch Details</h2>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.Title)
+    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @readonly = "readonly" })
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.Timing)
+    @Html.TextBoxFor(m => m.Timing, new { @class = "form-control", @readonly = "readonly" })
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.Subject)
+    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", @readonly = "readonly" })
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.CreatedBy)
+    @Html.TextBoxFor(m => m.CreatedBy, new { @class = "form-control", @readonly = "readonly" })
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.CreatedDate)
+    @Html.TextBoxFor(
+        m => m.CreatedDate,
+        "{0:yyyy-MM-dd}",
+        new { @class = "form-control", @readonly = "readonly" }
+    )
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.ModifiedBy)
+    @Html.TextBoxFor(m => m.ModifiedBy, new { @class = "form-control", @readonly = "readonly" })
+</div>
+
+<div class="mb-3">
+    @Html.LabelFor(m => m.ModifiedDate)
+    @Html.TextBoxFor(
+        m => m.ModifiedDate,
+        "{0:yyyy-MM-dd}",
+        new { @class = "form-control", @readonly = "readonly" }
+    )
+</div>
+
+@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
