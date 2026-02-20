@@ -69,7 +69,7 @@ namespace BiSchool.DL
         }
 
         public static Boolean Update(int id, int studentid, decimal amount, DateTime date,
-                                     string createdby, DateTime createddate, string modifiedby,
+                                      string modifiedby,
                                      DateTime modifieddate,  bool isdeleted)
         {
             bool result = false;

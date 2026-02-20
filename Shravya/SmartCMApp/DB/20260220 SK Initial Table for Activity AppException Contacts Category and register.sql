@@ -1,3 +1,10 @@
+USE [master]
+Go
+
+
+CREATE DATABASE SmartContactManager;
+GO
+
 USE [SmartContactManager]
 GO
 /****** Object:  Table [dbo].[Activity]    Script Date: 17-02-2026 07:29:10 ******/

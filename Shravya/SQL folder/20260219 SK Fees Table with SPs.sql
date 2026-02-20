@@ -26,7 +26,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE   PROCEDURE [dbo].[Fees_Create]
+CREATE OR ALTER  PROCEDURE [dbo].[Fees_Create]
     @StudentId     INT,
     @Amount        DECIMAL(18,4),
     @Date      DATE,
@@ -66,7 +66,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE     PROCEDURE [dbo].[Fees_Delete]
+CREATE OR ALTER     PROCEDURE [dbo].[Fees_Delete]
     @Id INT,
     @ModifiedBy VARCHAR(MAX),
     @ModifiedDate DATETIME
@@ -89,7 +89,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE     PROCEDURE [dbo].[Fees_ReadAll]
+CREATE  OR ALTER    PROCEDURE [dbo].[Fees_ReadAll]
 AS
 BEGIN
     SELECT 
@@ -114,7 +114,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE      PROCEDURE [dbo].[Fees_ReadByID]
+CREATE  OR ALTER     PROCEDURE [dbo].[Fees_ReadByID]
     @Id INT
 AS
 BEGIN
@@ -141,7 +141,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE     PROCEDURE [dbo].[Fees_Update]
+CREATE  OR ALTER    PROCEDURE [dbo].[Fees_Update]
     @StudentId     INT,
     @Amount        DECIMAL(18,4),
     @Date      DATE,

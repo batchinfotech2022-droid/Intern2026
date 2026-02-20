@@ -22,7 +22,7 @@ namespace BiSchool.DL
                     cmd.Parameters.AddWithValue("@Timing", Timing);
                     cmd.Parameters.AddWithValue("@Subject", Subject);
                     cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                    cmd.Parameters.AddWithValue("@ModifiedDate", CreatedDate);
+                    cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
                     cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
                     cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
                     cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted);

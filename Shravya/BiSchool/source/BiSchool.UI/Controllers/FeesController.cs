@@ -63,6 +63,11 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(int id=0)
+        {
+            return View();
+        }
+
     }
 
 

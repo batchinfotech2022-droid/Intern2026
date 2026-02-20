@@ -42,7 +42,7 @@ CREATE OR ALTER  PROCEDURE [dbo].[Student_Create]
     @Password      VARCHAR(MAX),
     @Address       VARCHAR(MAX),
     @Phone         VARCHAR(MAX),
-    @IsAdmin       VARCHAR(MAX),
+    @IsAdmin       BIT,
     @CreatedBy     VARCHAR(MAX),
     @CreatedDate   DATETIME,
     @ModifiedBy    VARCHAR(MAX),
@@ -173,18 +173,16 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE OR ALTER  PROCEDURE [dbo].[Student_Update]
-   @FullName      VARCHAR(MAX),
+CREATE OR ALTER PROCEDURE [dbo].[Student_Update]
+    @FullName      VARCHAR(MAX),
     @Email         VARCHAR(MAX),
     @Password      VARCHAR(MAX),
-     @Address       VARCHAR(MAX),
+    @Address       VARCHAR(MAX),
     @Phone         VARCHAR(MAX),
-    @IsAdmin       VARCHAR(MAX),
-    @CreatedBy     VARCHAR(MAX),
-    @CreatedDate   DATETIME,
+    @IsAdmin       BIT,
     @ModifiedBy    VARCHAR(MAX),
     @ModifiedDate  DATETIME,
-    @IsDeleted     BIT,
+    @IsDeleted    BIT,
     @Id            INT
 AS
 BEGIN
@@ -192,19 +190,18 @@ BEGIN
 
     UPDATE Student
     SET 
-    FullName=@FullName,     
-    Email=@Email,        
-    [Password]=@Password,    
-    [Address]=@Address,      
-    Phone=@Phone,       
-    IsAdmin=@IsAdmin,    
-    CreatedBy=@CreatedBy,    
-    CreatedDate=@CreatedDate,  
-    ModifiedBy=@ModifiedBy,  
-    ModifiedDate=@ModifiedDate,
-    IsDeleted=@IsDeleted
+        FullName     = @FullName,     
+        Email        = @Email,        
+        [Password]   = @Password,    
+        [Address]    = @Address,      
+        Phone        = @Phone,       
+        IsAdmin      = @IsAdmin,    
+        ModifiedBy   = @ModifiedBy,  
+        ModifiedDate = @ModifiedDate,
+        IsDeleted=@IsDeleted
     WHERE Id = @Id
-AND IsDeleted = 0;
+      AND IsDeleted = 0;
+
 
 
     RETURN @@ROWCOUNT;

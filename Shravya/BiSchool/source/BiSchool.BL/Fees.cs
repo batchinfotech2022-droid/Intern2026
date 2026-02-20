@@ -153,7 +153,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = FeesData.Update(Id, StudentId, Amount, Date, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted);
+                    bool returnVal = FeesData.Update(Id, StudentId, Amount, Date,  ModifiedBy, ModifiedDate, IsDeleted);
                     Activity.Create(usrName, "Fees", "Update", DateTime.Now, true, Id.ToString());
                     return returnVal;
                 }
