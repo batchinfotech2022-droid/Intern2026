@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<BiSchool.UI.ViewModels.FeesViewModel>
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between">
+            <h5 class="mb-0">Fees List</h5>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-light btn-sm" })
+        </div>
+
+        <div class="card-body">
+            <table class="table table-striped table-hover table-bordered text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.StudentName</td>
+                                <td>₹ @item.Amount.ToString("N2")</td>
+                                <td>@item.Date.ToString("dd MMM yyyy")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-muted">
+                                No records found
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

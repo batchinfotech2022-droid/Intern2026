@@ -36,7 +36,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Student_Create]
+CREATE OR ALTER  PROCEDURE [dbo].[Student_Create]
     @FullName      VARCHAR(MAX),
     @Email         VARCHAR(MAX),
     @Password      VARCHAR(MAX),
@@ -91,7 +91,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Student_Delete]
+CREATE OR ALTER   PROCEDURE [dbo].[Student_Delete]
     @Id INT,
     @ModifiedBy VARCHAR(MAX),
     @ModifiedDate DATETIME
@@ -114,12 +114,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Student_ReadAll]
+CREATE OR ALTER  PROCEDURE [dbo].[Student_ReadAll]
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT 
+    SELECT
+    Id,
         FullName,
         Email,
         [Password],
@@ -141,13 +142,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Student_ReadByID]
+CREATE OR ALTER  PROCEDURE [dbo].[Student_ReadByID]
     @Id INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    SELECT 
+    SELECT
+    Id,
         FullName,
         Email,
         [Password],
@@ -171,7 +173,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Student_Update]
+CREATE OR ALTER  PROCEDURE [dbo].[Student_Update]
    @FullName      VARCHAR(MAX),
     @Email         VARCHAR(MAX),
     @Password      VARCHAR(MAX),

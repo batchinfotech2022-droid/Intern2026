@@ -1,7 +1,49 @@
 ﻿
+@model BiSchool.UI.ViewModels.FeesViewModel
+
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Fees";
 }
 
-<h2>Create</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
 
+            <h3 class="text-center mb-4">Create Fees</h3>
+
+            @using (Html.BeginForm("Create", "Fees", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card shadow p-4">
+
+                    <div class="mb-3">
+
+                        @Html.LabelFor(model => model.StudentId, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.StudentId,  new { @class = "form-control", type = "number", required = "required" })
+                        @Html.ValidationMessageFor(model => model.StudentId, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Amount, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Amount, new { @class = "form-control", type = "number", step = "0.01", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Date, new { @class = "form-label" })
+                        @Html.TextBoxFor(model => model.Date, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success">Save</button>
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary ms-2" })
+                    </div>
+
+                </div>
+            }
+            </div>
+            </div>
+            </div>

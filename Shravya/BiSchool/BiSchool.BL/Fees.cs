@@ -168,7 +168,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = FeesData.Delete(IdValue);
+                    bool returnVal = FeesData.Delete(IdValue,usrName);
                     Activity.Create(usrName, "Fees", "Delete", DateTime.Now, true, IdValue.ToString());
                     return returnVal;
                 }

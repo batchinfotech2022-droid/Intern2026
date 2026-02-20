@@ -80,8 +80,6 @@ namespace BiSchool.DL
                 cmd.Parameters.AddWithValue("@StudentId", studentid);
                 cmd.Parameters.AddWithValue("@Amount", amount);
                 cmd.Parameters.AddWithValue("@Date", date);
-                cmd.Parameters.AddWithValue("@CreatedBy", createdby);
-                cmd.Parameters.AddWithValue("@CreatedDate", createddate);
                 cmd.Parameters.AddWithValue("@ModifiedBy", modifiedby);
                 cmd.Parameters.AddWithValue("@ModifiedDate", modifieddate);
                 
@@ -98,13 +96,16 @@ namespace BiSchool.DL
             return result;
         }
 
-        public static Boolean Delete(int id)
+        public static Boolean Delete(int id,string modifiedBy)
         {
             bool result = false;
             using (SqlCommand cmd = new SqlCommand("Fees_Delete"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+
                 cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
                 cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
                 SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
