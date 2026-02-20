@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="BiSchool.BL/BiSchool.BL.csproj" />
-  <Project Path="BiSchool.DL/BiSchool.DL.csproj" />
-  <Project Path="BiSchool.UI/BiSchool.UI.csproj" />
+  <Project Path="BiSchool.BL/BiSchool.BL.csproj" Id="71ba861e-4576-4102-946a-454fd47d8b0e" />
+  <Project Path="BiSchool.DL/BiSchool.DL.csproj" Id="f8099384-3df9-4ac9-86de-e18d895e7efd" />
+  <Project Path="BiSchool.UI/BiSchool.UI.csproj" Id="61f08ee0-2138-4b0a-8a52-73ee6882eb39" />
 </Solution>

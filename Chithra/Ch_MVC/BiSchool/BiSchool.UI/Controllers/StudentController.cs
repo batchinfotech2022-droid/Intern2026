@@ -8,7 +8,7 @@ namespace BiSchool.UI.Controllers
 {
     public class StudentController : Controller
     {
-        // GET: Student
+        
         public ActionResult Index()
         {
             return View();
