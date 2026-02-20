@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intern Attendance System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/darkly/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-image: url("https://images.ctfassets.net/nnkxuzam4k38/5GbV8Si50TKkaulnxGwBa/f52a3d7e4d095c0ced0679c79f7d12f6/white-trianglify.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      padding: 25px;
+    }
+
+    .card {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="p-2 text-dark pb-5">
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <img src="https://cdn.vectorstock.com/i/1000v/83/29/ss-or-s-initial-letter-logo-design-vector-41418329.jpg"
+        width="30" height="30">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Action</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+
+        <a href="#" class="btn btn-link btn-primary-subtle">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <h2 class="text-center mt-4">Intern Attendance System</h2>
+
+  <div class="container mt-4">
+    <div class="row align-items-center content-box">
+      <div class="col-md-4 text-center">
+        <img src="https://static.vecteezy.com/system/resources/previews/010/925/508/non_2x/task-management-project-manager-tool-business-software-productivity-online-platform-task-management-application-progress-tracking-flat-design-modern-illustration-vector.jpg"
+          class="img-fluid rounded">
+      </div>
+
+      <div class="col-md-8">
+        <h4 style="font-family: Arial, Helvetica, sans-serif;text-align: center;">Simple and Efficient Intern Management</h4>
+        <p>
+          The Intern Attendance System is designed to manage intern records,
+          daily attendance, and leave applications in an organized manner.
+          This system reduces manual effort and provides accurate reports
+          for better decision-making.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row g-4">
+
+      <div class="col-md-3">
+        <div class="card text-center h-100 shadow-sm">
+          <div class="card-header">Intern Master</div>
+          <div class="card-body p-4">
+            <p class="card-text mb-3">Add, edit, and manage intern details.</p>
+            <a href="intern-master.html" class="btn btn-primary btn-sm">Open</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center h-100 shadow-sm">
+          <div class="card-header">Attendance</div>
+          <div class="card-body p-4">
+            <p class="card-text mb-3">Mark and view daily attendance records.</p>
+            <a href="attendance.html" class="btn btn-primary btn-sm">Open</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center h-100 shadow-sm">
+          <div class="card-header">Leave Application</div>
+          <div class="card-body p-4">
+            <p class="card-text mb-3">Apply and manage intern leave requests.</p>
+            <a href="leave.html" class="btn btn-primary btn-sm">Open</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card text-center h-100 shadow-sm">
+          <div class="card-header">Reports</div>
+          <div class="card-body p-4">
+            <p class="card-text mb-3">View attendance and leave reports.</p>
+            <a href="reports.html" class="btn btn-primary btn-sm">Open</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="bg-success-subtle text-center fixed-bottom py-2">
+    © 2026 Intern Attendance System
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

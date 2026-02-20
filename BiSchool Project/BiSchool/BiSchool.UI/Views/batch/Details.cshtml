@@ -1,0 +1,9 @@
+@model BiSchool.UI.Models.BatchModel
+
+<h2>Batch Details</h2>
+
+<p><strong>Title:</strong> @Model.Title</p>
+<p><strong>Timing:</strong> @Model.Timing</p>
+<p><strong>Subject:</strong> @Model.Subject</p>
+
+@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })

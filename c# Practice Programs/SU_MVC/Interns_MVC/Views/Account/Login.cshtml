@@ -1,0 +1,47 @@
+﻿@model Interns_MVC.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div >
+
+                <div >
+                    <h4>Login</h4>
+                </div>
+
+                <div class="card-body">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.username)
+                            @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                        </div>
+
+                       
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.password)
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control",  })
+                        </div>
+
+                        
+                        <div class="d-grid">
+                            <input type="submit" value="Login" class="btn btn-primary" />
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

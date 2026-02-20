@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="InternLAapp.BL/InternLAapp.BL.csproj" />
+  <Project Path="InternLAapp.DL/InternLAapp.DL.csproj" />
+  <Project Path="InternLAapp.UI/InternLAapp.UI.csproj" />
+</Solution>

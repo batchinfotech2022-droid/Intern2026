@@ -1,0 +1,58 @@
+﻿@model Intern_MVC.ViewModels.LeaveViewModel
+
+@{
+    ViewBag.Title = "Edit Leave";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h5>Edit Leave</h5>
+    </div>
+
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EmployeeName)
+                @Html.TextBoxFor(model => model.EmployeeName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LeaveType)
+                @Html.TextBoxFor(model => model.LeaveType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LeaveType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FromDate)
+                @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ToDate)
+                @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Reason)
+                @Html.TextAreaFor(model => model.Reason, new { @class = "form-control", rows = 4 })
+                @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    @Html.CheckBoxFor(model => model.IsApproved, new { @class = "form-check-input" })
+                    @Html.LabelFor(model => model.IsApproved, new { @class = "form-check-label" })
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Update</button>
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary ml-2" })
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model Intern_MVC.ViewModels.LeaveViewModel
+
+<div class="card shadow-sm">
+    <div class="card-header">
+        <h5>Apply Leave</h5>
+    </div>
+
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "Leave", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmployeeName)
+                @Html.EditorFor(m => m.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.EmployeeName)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.LeaveType)
+                @Html.EditorFor(m => m.LeaveType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.LeaveType)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FromDate)
+                @Html.EditorFor(m => m.FromDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ToDate)
+                @Html.EditorFor(m => m.ToDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Reason)
+                @Html.TextAreaFor(m => m.Reason, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Reason)
+            </div>
+
+            <div class="form-group form-check">
+                @Html.CheckBoxFor(m => m.IsApproved, new { @class = "form-check-input" })
+                @Html.LabelFor(m => m.IsApproved, new { @class = "form-check-label" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
+            @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary ml-2" })
+        }
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model InternLAApp.UI.Models.InternsModel
+
+<div class="card shadow p-3 mb-3">
+    <div class="card-header">
+        <h3>Intern Details</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>Full Name:</strong> @Model.FullName</p>
+        <p><strong>Date Of Joining:</strong> @Model.DateOfJoining.ToShortDateString()</p>
+        <p><strong>Available Leave:</strong> @Model.AvailableLeave</p>
+        <p><strong>Created By:</strong> @Model.CreatedBy</p>
+        <p><strong>Created Date:</strong> @Model.CreatedDate.ToString("g")</p>
+        <p><strong>Modified By:</strong> @Model.ModifiedBy</p>
+        <p><strong>Modified Date:</strong> @Model.ModifiedDate.ToString("g")</p>
+        <p><strong>Is Deleted:</strong> @(Model.IsDeleted ? "Yes" : "No")</p>
+
+        <a href="/Interns/Edit/@Model.Id" class="btn btn-primary">Edit</a>
+        <a href="/Interns/Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

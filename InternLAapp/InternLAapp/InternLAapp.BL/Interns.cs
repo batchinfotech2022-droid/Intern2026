@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
-using InternLAapp.DAL;
-using InternLAapp.DL;
+using System.Threading.Tasks;
+using InternLAApp.DL;
 
-namespace InternLAapp.ORM
+namespace InternLAApp.BL
 {
     public class Interns
     {

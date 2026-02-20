@@ -1,0 +1,49 @@
+﻿@model Interns_MVC.Models.ActivityModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+<h2>Edit Activity</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.Activityid)
+
+    <p>
+        Username:
+        @Html.TextBoxFor(m => m.Username)
+    </p>
+
+    <p>
+        Activity On:
+        @Html.TextBoxFor(m => m.Activityon)
+    </p>
+
+    <p>
+        Activity Item:
+        @Html.TextBoxFor(m => m.Activityitem)
+    </p>
+
+    <p>
+        Activity Date:
+        @Html.TextBoxFor(m => m.Activitydate, "{0:yyyy-MM-dd}", new { type = "date" })
+    </p>
+
+    <p>
+        Is Success:
+        @Html.CheckBoxFor(m => m.Issuccess)
+    </p>
+
+    <p>
+        Activity Text:
+        @Html.TextBoxFor(m => m.Activitytext)
+    </p>
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,30 @@
+@model BiSchool.UI.Models.BatchModel
+
+<h2>Edit Batch</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Timing)
+        @Html.TextBoxFor(m => m.Timing, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Timing)
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Subject)
+        @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Subject)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+}

@@ -1,0 +1,61 @@
+﻿@model Intern_MVC.ViewModels.LeaveViewModel
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.LabelFor(m => m.EmployeeName)
+            </label>
+            <div class="col-sm-9">
+                <p class="form-control-plaintext">@Model.EmployeeName</p>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.LabelFor(m => m.LeaveType)
+            </label>
+            <div class="col-sm-9">
+                <p class="form-control-plaintext">@Model.LeaveType</p>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.LabelFor(m => m.FromDate)
+            </label>
+            <div class="col-sm-9">
+                <p class="form-control-plaintext">@Model.FromDate</p>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.LabelFor(m => m.ToDate)
+            </label>
+            <div class="col-sm-9">
+                <p class="form-control-plaintext">@Model.ToDate</p>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.LabelFor(m => m.Reason)
+            </label>
+            <div class="col-sm-9">
+                <p class="form-control-plaintext">@Model.Reason</p>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">
+                @Html.CheckBoxFor(m => m.IsApproved, new { disabled = "disabled" })
+                @Html.LabelFor(m => m.IsApproved)
+            </label>
+        </div>
+
+        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary " })
+
+    </div>
+</div>

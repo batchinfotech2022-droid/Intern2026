@@ -3,75 +3,110 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InternLAApp.BL;
+using InternLAApp.UI.Models;
 
-namespace InternLAapp.UI.Controllers
+namespace InternLAApp.UI.Controllers
 {
     public class InternsController : Controller
     {
+        string usrName = "Admin"; // Replace if dynamic user is needed
+
+        // GET: Interns
         public ActionResult Index()
         {
-            return View(GetInternModelList());
+            // RetrieveAll on the BL class `Interns` (no usrName parameter)
+            List<Interns> list = Interns.RetrieveAll();
+            List<InternsModel> model = list.Select(x => new InternsModel(x)).ToList();
+            return View(model);
         }
 
-        private IEnumerable<InternModel> GetInternModelList()
-        {
-            List<InternModel> list = new List<InternModel>();
-            foreach (Interns i in Interns.RetrieveAll("System"))
-            {
-                list.Add(new InternModel(i));
-            }
-            return list.OrderBy(i => i.Id);
-        }
-
+        // GET: Interns/Create
         public ActionResult Create()
         {
-            return View(new InternModel());
+            return View(new InternsModel());
         }
 
+        // POST: Interns/Create
         [HttpPost]
-        public ActionResult Create(InternModel model)
+        public ActionResult Create(InternsModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                model.Create("System"); 
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    // Create signature on BL.Interns accepts usrName + intern fields
+                    Interns.Create(
+                        usrName,
+                        model.FullName,
+                        model.DateOfJoining,
+                        model.AvailableLeave
+                    );
+                    return RedirectToAction("Index");
+                }
+                return View(model);
             }
-            return View(model);
+            catch
+            {
+                return View(model);
+            }
         }
 
-        public ActionResult Details(int id)
-        {
-            Interns intern = Interns.RetrieveById("System", id);
-            return View(new InternModel(intern));
-        }
-
+        // GET: Interns/Edit/5
         public ActionResult Edit(int id)
         {
-            Interns intern = Interns.RetrieveById("System", id);
-            return View(new InternModel(intern));
+            // RetrieveById on BL.Interns accepts only id
+            Interns intern = Interns.RetrieveById(id);
+            return View(new InternsModel(intern));
         }
 
+        // POST: Interns/Edit
         [HttpPost]
-        public ActionResult Edit(InternModel model)
+        public ActionResult Edit(InternsModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                model.Update("System");
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    // Update is an instance method on Interns
+                    // ensure ModifiedBy/ModifiedDate are set if required by business rules
+                    model.Intern.ModifiedBy = usrName;
+                    model.Intern.ModifiedDate = DateTime.Now;
+                    model.Intern.Update();
+                    return RedirectToAction("Index");
+                }
+                return View(model);
             }
-            return View(model);
+            catch
+            {
+                return View(model);
+            }
         }
 
+        // GET: Interns/Details/5
+        public ActionResult Details(int id)
+        {
+            Interns intern = Interns.RetrieveById(id);
+            return View(new InternsModel(intern));
+        }
+
+        // GET: Interns/Delete/5
         public ActionResult Delete(int id)
         {
-            Interns intern = Interns.RetrieveById("System", id);
-            return View(new InternModel(intern));
+            Interns intern = Interns.RetrieveById(id);
+            return View(new InternsModel(intern));
         }
 
+        // POST: Interns/Delete
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Interns.Delete("System", id);
+            // BL.Interns exposes an instance Delete method. Retrieve then delete.
+            Interns intern = Interns.RetrieveById(id);
+            if (intern != null)
+            {
+                intern.Delete();
+            }
             return RedirectToAction("Index");
         }
     }

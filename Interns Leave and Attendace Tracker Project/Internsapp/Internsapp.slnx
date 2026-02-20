@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Internsapp.BL/Internsapp.BL.csproj" Id="d8f012d7-1477-41b8-8b37-2f4924c8ba6f" />
+  <Project Path="Internsapp.DL/Internsapp.DL.csproj" Id="3800d94f-e646-449e-9563-c8ed5435de5f" />
+  <Project Path="Internsapp.UI/Internsapp.UI.csproj" Id="6ebd33c7-32ef-4184-8d87-12dca488be6f" />
+</Solution>
