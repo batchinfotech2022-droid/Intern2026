@@ -182,4 +182,4 @@ $RECYCLE.BIN/
 global.json
 
 # Ignore web.config changes
-*web.config
+#*web.config
