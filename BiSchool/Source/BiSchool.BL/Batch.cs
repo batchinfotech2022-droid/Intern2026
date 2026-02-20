@@ -130,17 +130,17 @@ namespace BiSchool.BL
                 throw new Exception("Update failed", ex);
             }
         }
-        public static bool Delete(string usrName, int idValue)
+        public static bool Delete(string usrName, int id)
         {
             try
             {
-                bool returnVal = BatchData.Delete(idValue);
-                Activity.Create(usrName, "Batch", "Delete", DateTime.Now, true, idValue.ToString());
+                bool returnVal = BatchData.Delete(id,usrName);
+                Activity.Create(usrName, "Batch", "Delete", DateTime.Now, true, id.ToString());
                 return returnVal;
             }
             catch (Exception ex)
             {
-                Activity.Create(usrName, "Batch", "Delete", DateTime.Now, false, idValue.ToString());
+                Activity.Create(usrName, "Batch", "Delete", DateTime.Now, false, id.ToString());
                 throw new Exception("Delete failed", ex);
             }
         }
@@ -148,7 +148,7 @@ namespace BiSchool.BL
         {
             try
             {
-                bool returnVal = BatchData.Delete(this.Id);
+                bool returnVal = BatchData.Delete(Id, usrName);
                 Activity.Create(usrName, "Batch", "Delete", DateTime.Now, true, this.Id.ToString());
                 return returnVal;
             }
@@ -171,5 +171,5 @@ namespace BiSchool.BL
                 , r.ToDateTime("ModifiedDate")
                 , r.ToBool("IsDeleted"));
         }
-    } //Batch
-} //BiSchool.BL
+    } 
+} 

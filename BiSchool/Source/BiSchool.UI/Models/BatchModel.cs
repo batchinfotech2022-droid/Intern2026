@@ -31,9 +31,7 @@ namespace BiSchool.UI.Models
         public string Subject { get { return _batch.Subject; } set { _batch.Subject = value; } }
         
         public string CreatedBy { get { return _batch.CreatedBy; } set { _batch.CreatedBy = value; } }
-
-
-       
+                    
         public DateTime CreatedDate { get { return _batch.CreatedDate; } set { _batch.CreatedDate = value; } }
 
         

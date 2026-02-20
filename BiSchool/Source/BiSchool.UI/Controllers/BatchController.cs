@@ -64,14 +64,24 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
+        public ActionResult Details(int id)
+        {
+            Batch batch = Batch.RetrieveById(userName, id);
 
+            if (batch == null)
+                return HttpNotFound();
+
+            return View(new BatchModel(batch));
+        }
+       
         public ActionResult Delete(int id)
         {
             Batch batch = Batch.RetrieveById(userName, id);
             return View(new BatchModel(batch));
         }
 
-        [HttpPost]
+       
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -79,4 +89,4 @@ namespace BiSchool.UI.Controllers
             return RedirectToAction("Index");
         }
     }
-}
+ }
