@@ -95,7 +95,6 @@ namespace BiSchool.DL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id);
-
                 cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
                 cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
                 SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);

@@ -104,7 +104,7 @@ namespace BiSchool.BL
                 Activity.Create(usrName, "Student", "Create", DateTime.Now, true, "FullName:" + Fullname.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "CreatedBy:" + CreatedBy.ToString() + " - " + "CreatedDate:" + CreatedDate.ToString() + " - " + "ModifiedBy:" + ModifiedBy.ToString() + " - " + "ModifiedDate:" + ModifiedDate.ToString() + " - " + "IsDeleted:" + IsDeleted.ToString());
                 return res;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Activity.Create(usrName, "Student", "Create", DateTime.Now, true, "FullName:" + Fullname.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "CreatedBy:" + CreatedBy.ToString() + " - " + "CreatedDate:" + CreatedDate.ToString() + " - " + "ModifiedBy:" + ModifiedBy.ToString() + " - " + "ModifiedDate:" + ModifiedDate.ToString() + " - " + "IsDeleted:" + IsDeleted.ToString());
                 throw;
@@ -123,7 +123,7 @@ namespace BiSchool.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Activity.Create(usrName, "Student", "RetrieveAll", DateTime.Now, false, "All fields");
                 throw;
@@ -147,7 +147,7 @@ namespace BiSchool.BL
                 Activity.Create(usrName, "Student", "RetrieveById", DateTime.Now, true, id.ToString());
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Activity.Create(usrName, "Student", "RetrieveById", DateTime.Now, false, id.ToString());
                 throw;
@@ -159,12 +159,12 @@ namespace BiSchool.BL
             try
             {
                 bool returnVal = StudentData.Update(Id, FullName, Email, Password, Address, Phone, IsAdmin, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted);
-                Activity.Create(usrName, "Student", "Update", DateTime.Now, true, "FullName:" + FullName.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "Createdby:" + CreatedBy.ToString() + " - " + "Createddate:" + CreatedDate.ToString() + " - " + "Modifiedby:" + ModifiedBy.ToString() + " - " + "Modifieddate:" + ModifiedDate.ToString() + " - " + "Isdeleted:" + IsDeleted.ToString());
+                Activity.Create(usrName, "Student", "Update", DateTime.Now, true, "FullName:" + FullName.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "Createdby:" + CreatedBy.ToString() + " - " + "CreatedDate:" + CreatedDate.ToString() + " - " + "ModifiedBy:" + ModifiedBy.ToString() + " - " + "ModifiedDate:" + ModifiedDate.ToString() + " - " + "IsDeleted:" + IsDeleted.ToString());
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                Activity.Create(usrName, "Student", "Update", DateTime.Now, false, "FullName:" + FullName.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "Createdby:" + CreatedBy.ToString() + " - " + "Createddate:" + CreatedDate.ToString() + " - " + "Modifiedby:" + ModifiedBy.ToString() + " - " + "Modifieddate:" + ModifiedDate.ToString() + " - " + "Isdeleted:" + IsDeleted.ToString());
+                Activity.Create(usrName, "Student", "Update", DateTime.Now, false, "FullName:" + FullName.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "Createdby:" + CreatedBy.ToString() + " - " + "CreatedDate:" + CreatedDate.ToString() + " - " + "ModifiedBy:" + ModifiedBy.ToString() + " - " + "ModifiedDate:" + ModifiedDate.ToString() + " - " + "IsDeleted:" + IsDeleted.ToString());
                 throw;
             }
 
@@ -178,7 +178,7 @@ namespace BiSchool.BL
                 Activity.Create(usrName, "Student", "Delete", DateTime.Now, true, idValue.ToString());
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Activity.Create(usrName, "Student", "Delete", DateTime.Now, false, idValue.ToString());
                 throw;
@@ -194,7 +194,7 @@ namespace BiSchool.BL
                 Activity.Create(usrName, "Student", "Delete", DateTime.Now, true, this.Id.ToString());
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 Activity.Create(usrName, "Student", "Delete", DateTime.Now, false, this.Id.ToString());
                 throw;

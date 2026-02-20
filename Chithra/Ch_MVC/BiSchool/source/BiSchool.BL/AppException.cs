@@ -196,7 +196,7 @@ namespace BiSchool.BL
             {
                 AppExceptionData.CreateXML(xmlPath, exceptionsource, exceptiondesc, exceptiondate, issolved, remarks);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }
@@ -219,7 +219,7 @@ namespace BiSchool.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 //throw new DLException("GetXML failed", ex);
             }
@@ -244,9 +244,9 @@ namespace BiSchool.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw new Exception("Retrieve failed", ex);
+                throw new Exception("Retrieve failed");
             }
 
             return appexceptionlist;

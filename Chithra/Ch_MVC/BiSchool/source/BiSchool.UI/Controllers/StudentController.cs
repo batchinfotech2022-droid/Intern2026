@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BiSchool.BL;
+
 
 namespace BiSchool.UI.Controllers
 {
@@ -40,34 +40,141 @@ namespace BiSchool.UI.Controllers
             }
 
 
-            public ActionResult Create()
+            public ActionResult Edit(int id)
             {
-                return View(new StudentModel());
-            }
+                string usrName = Session["UserName"]?.ToString() ?? "System";
 
+                Student s = Student.RetrieveById(usrName, id);
 
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public ActionResult Create(StudentModel model)
-            {
-                if (ModelState.IsValid)
+                StudentModel model = new StudentModel
                 {
-                    string usrName = Session["UserName"]?.ToString() ?? "System";
-
-                    Student.Create(
-                        usrName,
-                        model.FullName,
-                        model.Email,
-                        model.Password,
-                        model.Address,
-                        model.Phone,
-                        model.IsAdmin
-                    );
-
-                    return RedirectToAction("Index");
-                }
+                    Id = s.Id,
+                    FullName = s.FullName,
+                    Email = s.Email,
+                    Password = s.Password,
+                    Address = s.Address,
+                    Phone = s.Phone,
+                    IsAdmin = s.IsAdmin,
+                    CreatedBy = s.CreatedBy,
+                    CreatedDate = s.CreatedDate,
+                    ModifiedBy = s.ModifiedBy,
+                    ModifiedDate = s.ModifiedDate,
+                    IsDeleted = s.IsDeleted
+                };
 
                 return View(model);
             }
+
+            [HttpPost]
+     
+        public ActionResult Edit(StudentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string usrName = Session["UserName"]?.ToString() ?? "System";
+
+                Student s = Student.RetrieveById(usrName, model.Id);
+
+                // Always check null (safety)
+                if (s == null)
+                {
+                    return HttpNotFound();
+                }
+
+                s.FullName = model.FullName;
+                s.Email = model.Email;
+                s.Password = model.Password;
+                s.Address = model.Address;
+                s.Phone = model.Phone;
+                s.IsAdmin = model.IsAdmin;
+
+                // Preserve original created values
+                s.CreatedBy = model.CreatedBy;
+                s.CreatedDate = model.CreatedDate;
+
+                // Update modified fields
+                s.ModifiedBy = usrName;
+                s.ModifiedDate = DateTime.Now;
+
+                s.IsDeleted = model.IsDeleted;   // IMPORTANT
+
+                s.Update(usrName);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+        public ActionResult Details(int id)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            Student s = Student.RetrieveById(usrName, id);
+
+            if (s == null)
+                return HttpNotFound();
+
+            StudentModel model = new StudentModel
+            {
+                Id = s.Id,
+                FullName = s.FullName,
+                Email = s.Email,
+                Password = s.Password,
+                Address = s.Address,
+                Phone = s.Phone,
+                IsAdmin = s.IsAdmin,
+                CreatedBy = s.CreatedBy,
+                CreatedDate = s.CreatedDate,
+                ModifiedBy = s.ModifiedBy,
+                ModifiedDate = s.ModifiedDate,
+                IsDeleted = s.IsDeleted
+            };
+
+            return View(model);
+        }
+
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            Student s = Student.RetrieveById(usrName, id.Value);
+
+            if (s == null)
+                return HttpNotFound();
+
+            StudentModel model = new StudentModel
+            {
+                Id = s.Id,
+                FullName = s.FullName,
+                Email = s.Email,
+                Password = s.Password,
+                Address = s.Address,
+                Phone = s.Phone,
+                IsAdmin = s.IsAdmin,
+                CreatedBy = s.CreatedBy,
+                CreatedDate = s.CreatedDate,
+                ModifiedBy = s.ModifiedBy,
+                ModifiedDate = s.ModifiedDate,
+                IsDeleted = s.IsDeleted
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            Student.Delete(usrName, id);
+
+            return RedirectToAction("Index");
         }
     }
+}
+    

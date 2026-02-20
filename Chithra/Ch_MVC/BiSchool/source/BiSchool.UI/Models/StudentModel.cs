@@ -20,7 +20,7 @@ namespace BiSchool.UI.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string FullName { get { return _student.FullName; } set { _student.FullName = value; } }
 
-        [Display(Name = "User Name")]
+        [Display(Name = "Email")]
         [Required]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         [EmailAddress(ErrorMessage = "Enter Valid Email")]
@@ -49,22 +49,18 @@ namespace BiSchool.UI.Models
         public bool IsAdmin { get { return _student.IsAdmin; } set { _student.IsAdmin = value; } }
 
         
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+      
         public string CreatedBy { get { return _student.CreatedBy; } set { _student.CreatedBy = value; } }
 
 
        
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        
         public DateTime CreatedDate { get { return _student.CreatedDate; } set { _student.CreatedDate = value; } }
 
-        
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
+  
         public string ModifiedBy { get { return _student.ModifiedBy; } set { _student.ModifiedBy = value; } }
 
         
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ModifiedDate { get { return _student.ModifiedDate; } set { _student.ModifiedDate = value; } }
 
         public bool IsDeleted { get { return _student.IsDeleted; } set { _student.IsDeleted = value; } }
