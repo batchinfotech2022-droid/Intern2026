@@ -1,0 +1,39 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.custom-header {
+    background-color: #fff8dc;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* Card shadow */
+.custom-card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+.center-card {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Better spacing */
+.card-header {
+    font-weight: 600;
+    font-size: 18px;
+}

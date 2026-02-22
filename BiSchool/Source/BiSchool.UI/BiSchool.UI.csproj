@@ -8,17 +8,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6EBD33C7-32EF-4184-8D87-12DCA488BE6F}</ProjectGuid>
+    <ProjectGuid>{A031DAED-DE7A-477E-8DF7-E2A30DD2A52A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Internsapp.UI</RootNamespace>
-    <AssemblyName>Internsapp.UI</AssemblyName>
+    <RootNamespace>BiSchool.UI</RootNamespace>
+    <AssemblyName>BiSchool.UI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44397</IISExpressSSLPort>
+    <IISExpressSSLPort>44320</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -120,19 +120,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AttendanceController.cs" />
-    <Compile Include="Controllers\LeaveController.cs" />
+    <Compile Include="Controllers\BatchController.cs" />
+    <Compile Include="Controllers\FeesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentBatchController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AttendanceModel.cs" />
-    <Compile Include="Models\InternModel.cs" />
-    <Compile Include="Models\LeaveModel.cs" />
+    <Compile Include="IDEncryption\EncryptedActionParameterAttribute.cs" />
+    <Compile Include="IDEncryption\MyExtensions.cs" />
+    <Compile Include="Models\BatchModel.cs" />
+    <Compile Include="Models\FeesModel.cs" />
+    <Compile Include="Models\StudentBatch.cs" />
+    <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AttendanceViewModel.cs" />
-    <Compile Include="ViewModels\InternRegisterViewModel.cs" />
-    <Compile Include="ViewModels\LeaveViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -151,6 +153,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\images\sc.jpg" />
+    <Content Include="Content\images\schooldash.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -182,14 +186,30 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\batch\Create.cshtml" />
+    <Content Include="Views\batch\Delete.cshtml" />
+    <Content Include="Views\batch\Details.cshtml" />
+    <Content Include="Views\batch\Edit.cshtml" />
+    <Content Include="Views\batch\Index.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Fees\Create.cshtml" />
+    <Content Include="Views\Fees\Index.cshtml" />
+    <Content Include="Views\Fees\Details.cshtml" />
+    <Content Include="Views\Fees\Delete.cshtml" />
+    <Content Include="Views\Fees\Edit.cshtml" />
+    <Content Include="Views\StudentBatch\Index.cshtml" />
+    <Content Include="Views\StudentBatch\Create.cshtml" />
+    <Content Include="Views\StudentBatch\Edit.cshtml" />
+    <Content Include="Views\StudentBatch\Details.cshtml" />
+    <Content Include="Views\StudentBatch\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Attendance\" />
-    <Folder Include="Views\Leave\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -219,13 +239,13 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Internsapp.BL\Internsapp.BL.csproj">
-      <Project>{d8f012d7-1477-41b8-8b37-2f4924c8ba6f}</Project>
-      <Name>Internsapp.BL</Name>
+    <ProjectReference Include="..\BiSchool.BL\BiSchool.BL.csproj">
+      <Project>{a2cc39ae-e1eb-4f7c-b005-efecc2fa43c4}</Project>
+      <Name>BiSchool.BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Internsapp.DL\Internsapp.DL.csproj">
-      <Project>{3800d94f-e646-449e-9563-c8ed5435de5f}</Project>
-      <Name>Internsapp.DL</Name>
+    <ProjectReference Include="..\BiSchool.DL\BiSchool.DL.csproj">
+      <Project>{0e5d5dcf-1de7-4010-bc55-7fe33e8928b0}</Project>
+      <Name>BiSchool.DL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -244,9 +264,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61258</DevelopmentServerPort>
+          <DevelopmentServerPort>53233</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44397/</IISUrl>
+          <IISUrl>https://localhost:44320/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,19 @@
+﻿@model BiSchool.UI.Models.StudentBatchModel
+
+<div class="container mt-4">
+    <div class="card custom-card center-card ">
+        <div class="card-header bg-primary text-white">
+            Student Batch Details
+        </div>
+
+        <div class="card-body">
+            <p><strong>Batch:</strong> @Model.BatchTitle</p>
+            <p><strong>Student:</strong> @Model.StudentName</p>
+
+            <hr />
+
+            @Html.ActionLink("Back", "Index", null,
+                new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>

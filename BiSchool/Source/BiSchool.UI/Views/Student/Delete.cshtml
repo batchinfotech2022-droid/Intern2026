@@ -1,0 +1,33 @@
+﻿@model BiSchool.UI.Models.StudentModel
+
+<div class="container mt-4">
+    <div class="card custom-card center-card text-center">
+        <div class="card-header bg-primary text-white">
+            Delete Student
+        </div>
+
+        <div class="card-body">
+
+            <p class="text-danger fw-bold">
+                Are you sure you want to delete this student?
+            </p>
+
+            <p><strong>Full Name:</strong> @Model.FullName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+
+            @using (Html.BeginForm("Delete", "Student", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+
+                <button type="submit" class="btn btn-danger me-2">
+                    Delete
+                </button>
+
+                @Html.ActionLink("Cancel", "Index", null,
+                    new { @class = "btn btn-secondary" })
+            }
+
+        </div>
+    </div>
+</div>

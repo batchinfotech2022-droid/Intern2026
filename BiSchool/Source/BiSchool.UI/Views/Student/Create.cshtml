@@ -1,0 +1,54 @@
+﻿@model BiSchool.UI.Models.StudentModel
+
+<div class="container mt-4">
+    <div class="card custom-card center-card">
+        <div class="card-header bg-primary text-white">
+            Create Student
+        </div>
+
+        <div class="card-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Full Name</label>
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Address</label>
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Phone</label>
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                </div>
+
+                <div class="form-check mb-3">
+                    @Html.CheckBoxFor(m => m.IsAdmin, new { @class = "form-check-input" })
+                    <label class="form-check-label">Is Admin</label>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    @Html.ActionLink("Back", "Index", null,
+                        new { @class = "btn btn-secondary" })
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model BiSchool.UI.Models.StudentModel
+
+<div class="container mt-4">
+    <div class="card custom-card center-card">
+        <div class="card-header bg-primary text-white">
+            Student Details
+        </div>
+
+        <div class="card-body">
+            <p><strong>Full Name:</strong> @Model.FullName</p>
+            <p><strong>Email:</strong> @Model.Email</p>
+            <p><strong>Address:</strong> @Model.Address</p>
+            <p><strong>Phone:</strong> @Model.Phone</p>
+            <p><strong>Is Admin:</strong> @Model.IsAdmin</p>
+
+            <hr />
+
+            @Html.ActionLink("Back", "Index", null,
+                new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>
