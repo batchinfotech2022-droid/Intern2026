@@ -1,33 +1,54 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model BiSchool.UI.ViewModels.HomeViewModel
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<div class="container mt-5">
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    <!-- Welcome Section -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Welcome to BiSchool Management System</h1>
+        <p class="lead text-muted">
+            Manage Students, Fees, Batches and Student-Batch Mapping efficiently.
+        </p>
     </div>
-</main>
+
+    <!-- Statistics Cards -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-success">Total Students</h5>
+                    <h1 class="fw-bold">@Model.TotalStudents</h1>
+                    <a href="/Student" class="btn btn-outline-success btn-sm mt-2">
+                        View Students
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-info">Total Fees Records</h5>
+                    <h1 class="fw-bold">@Model.TotalFees</h1>
+                    <a href="/Fees" class="btn btn-outline-info btn-sm mt-2">
+                        View Fees
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-warning">Total Batches</h5>
+                    <h1 class="fw-bold">@Model.TotalBatches</h1>
+                    <a href="/Batch" class="btn btn-outline-warning btn-sm mt-2">
+                        View Batches
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

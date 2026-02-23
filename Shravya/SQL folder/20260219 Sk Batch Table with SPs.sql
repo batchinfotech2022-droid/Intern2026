@@ -89,14 +89,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create     PROCEDURE [dbo].[Batch_ReadAll]
+CREATE OR ALTER    PROCEDURE [dbo].[Batch_ReadAll]
 
 AS 
 BEGIN
     SET NOCOUNT ON;
 
      SELECT 
-      Title, Timing, [Subject], 
+      Id,Title, Timing, [Subject], 
         CreatedBy, CreatedDate, ModifiedBy,  ModifiedDate,IsDeleted
 
      FROM 
@@ -112,14 +112,14 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create     PROCEDURE [dbo].[Batch_ReadByID]
+CREATE OR ALTER    PROCEDURE [dbo].[Batch_ReadByID]
    @Id INT
 AS 
 BEGIN
     SET NOCOUNT ON;
 
     SELECT 
-        Title, Timing, [Subject], 
+        Id,Title, Timing, [Subject], 
         CreatedBy, CreatedDate, ModifiedBy,  ModifiedDate,IsDeleted
     FROM Batch
     WHERE Id=@Id 
@@ -133,11 +133,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create     PROCEDURE [dbo].[Batch_Update]
+CREATE OR ALTER    PROCEDURE [dbo].[Batch_Update]
     @Title        VARCHAR(100),
     @Timing       VARCHAR(13),
     @Subject      VARCHAR(100),
-    @Address      VARCHAR(500),
     @CreatedBy    VARCHAR(100),
     @CreatedDate  DATETIME,
     @ModifiedBy   VARCHAR(100),

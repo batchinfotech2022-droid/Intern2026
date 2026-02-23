@@ -1,4 +1,5 @@
 ﻿using BiSchool.BL;
+using BiSchool.UI.IDEncryption;
 using BiSchool.UI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -75,7 +76,7 @@ namespace BiSchool.UI.Controllers
         }
 
 
-
+        [EncryptedActionParameter]
         public ActionResult Edit(int id)
         {
             var fee = Fees.RetrieveById( userName,id);
@@ -108,6 +109,7 @@ namespace BiSchool.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult Edit(FeesViewModel model)
         {
             if (ModelState.IsValid)
@@ -140,6 +142,7 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
+        [EncryptedActionParameter]
         public ActionResult Details(int id)
         {
             var fee = Fees.RetrieveById( userName,id);
@@ -159,6 +162,7 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
+        
         public ActionResult Delete(int id)
         {
             var fee = Fees.RetrieveById( userName,id);
@@ -179,6 +183,7 @@ namespace BiSchool.UI.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult DeleteConfirmed(int id)
         {
             Fees.Delete(userName, id);

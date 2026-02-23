@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BiSchool.BL;
+using BiSchool.UI.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,17 @@ namespace BiSchool.UI.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
-            return View();
-        }
+            var model = new HomeViewModel
+            {
+                TotalStudents = Student.RetrieveAll("Admin").Count(),
+                TotalFees = Fees.RetrieveAll("Admin").Count(),
+                TotalBatches = Batch.RetrieveAll("Admin").Count()
+            };
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(model);
         }
     }
-}
+    }

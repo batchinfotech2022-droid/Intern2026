@@ -1,14 +1,14 @@
 ﻿
 @model IEnumerable<BiSchool.UI.ViewModels.FeesViewModel>
-
+@using BiSchool.UI.IDEncryption
 
 
 
 <div class="container mt-4">
     <div class="card shadow">
         <div class="card-header bg-primary text-white d-flex justify-content-between">
-            <h5 class="mb-0">Fees List</h5>
-            @Html.ActionLink("Create New Fees", "Create", null, new { @class = "btn btn-light btn-sm" })
+            <h5 class="mb-0">Fees Pay List</h5>
+            @Html.ActionLink("+Create", "Create", null, new { @class = "btn btn-light btn-sm" })
         </div>
 
 
@@ -34,13 +34,13 @@
                                 <td>₹ @(item.Amount.ToString("N2"))</td>
                                 <td>@(item.Date?.ToString("dd MMM yyyy"))</td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id },
+                                    @Html.EncodedActionLink("Edit", "Edit","Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-primary me-1" })
 
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id },
+                                    @Html.EncodedActionLink("Details", "Details","Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-info text-white me-1" })
 
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                                    @Html.EncodedActionLink("Delete", "Delete","Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-danger" })
                                 </td>
                             </tr>
