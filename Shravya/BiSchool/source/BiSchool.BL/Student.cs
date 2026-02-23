@@ -163,7 +163,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = StudentData.Update(Id, FullName, Email, Password, Address, Phone,IsAdmin, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted);
+                    bool returnVal = StudentData.Update(Id, FullName, Email,Password,Address,Phone,IsAdmin, ModifiedBy, ModifiedDate, IsDeleted);
                 Activity.Create(usrName, "Student", "Update", DateTime.Now, true, "FullName:" + FullName.ToString() + " - " + "Email:" + Email.ToString() + " - " + "Password:" + Password.ToString() + " - " + "Address:" + Address.ToString() + " - " + "Phone:" + Phone.ToString() + " - " + "IsAdmin:" + IsAdmin.ToString() + " - " + "Createdby:" + CreatedBy.ToString() + " - " + "Createddate:" + CreatedDate.ToString() + " - " + "Modifiedby:" + ModifiedBy.ToString() + " - " + "Modifieddate:" + ModifiedDate.ToString() + " - " + "Isdeleted:" + IsDeleted.ToString());
                 return returnVal;
                 }
@@ -179,7 +179,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = StudentData.Delete(idValue);
+                    bool returnVal = StudentData.Delete(idValue,usrName);
                     Activity.Create(usrName, "Student", "Delete", DateTime.Now, true, idValue.ToString());
                     return returnVal;
                 }
@@ -195,7 +195,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = StudentData.Delete(this.Id);
+                    bool returnVal = StudentData.Delete(this.Id,usrName);
                     Activity.Create(usrName, "Student", "Delete", DateTime.Now, true, this.Id.ToString());
                     return returnVal;
                 }

@@ -88,14 +88,16 @@ namespace BiSchool.DL
                 } //close using statement
                 return result;
             }
-            public static Boolean Delete(int id)
+            public static Boolean Delete(int id,string modifiedBy)
             {
                 bool result = false;
                 using (SqlCommand cmd = new SqlCommand("Batch_Delete"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
                     cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
                     SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
                     if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1") result = true;

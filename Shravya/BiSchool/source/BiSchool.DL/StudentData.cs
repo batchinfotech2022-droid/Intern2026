@@ -11,7 +11,7 @@ namespace BiSchool.DL
 {
         public class StudentData
         {
-            public static int Create(string fullname, string email, string password, string address, string phone, bool isAdmin , string createdby,DateTime createddate, string modifiedby, DateTime modifieddate,  bool isdeleted)
+            public static int Create(string fullname, string email, string password, string address, string phone, bool isAdmin ,string createdBy,DateTime createdDate,  string modifiedBy, DateTime modifiedDate,  bool isdeleted)
             {
                 int returnValue;
                 using (SqlCommand cmd = new SqlCommand("Student_Create"))
@@ -25,10 +25,11 @@ namespace BiSchool.DL
                     cmd.Parameters.AddWithValue("@Address", address);
                     cmd.Parameters.AddWithValue("@IsAdmin", isAdmin);
                     cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createddate);
-                    cmd.Parameters.AddWithValue("@CreatedBy", createdby);
-                    cmd.Parameters.AddWithValue("@ModifiedDate", modifieddate);
-                    cmd.Parameters.AddWithValue("@ModifiedBy", modifiedby);
+                cmd.Parameters.AddWithValue("CreatedBy", createdBy);
+                cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+                    
                     cmd.Parameters.AddWithValue("@IsDeleted", isdeleted);
                     returnValue = DataAccess.RunCmdOutput_int(cmd);
                     cmd.Connection.Close();
@@ -51,13 +52,13 @@ namespace BiSchool.DL
                 } //close using statement
                 return dt;
             }
-            public static DataTable RetrieveById(int id)
+            public static DataTable RetrieveById(int Id)
             {
                 DataTable dt = null;
                 using (SqlCommand cmd = new SqlCommand("Student_ReadById"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@Id", Id);
                     DataSet dr = DataAccess.RunCMDGetDataSet(cmd);
                     dt = dr.Tables[0];
                     cmd.Connection.Close();
@@ -66,7 +67,7 @@ namespace BiSchool.DL
                 } //close using statement 
                 return dt;
             }
-            public static Boolean Update(int id, string fullname, string email, string password, string address, string phone, bool isAdmin, string createdby,DateTime createddate, string modifiedby, DateTime modifieddate, bool isdeleted)
+            public static Boolean Update(int id, string fullname, string email, string password, string address, string phone, bool isAdmin,  string modifiedBy, DateTime modifiedDate, bool isdeleted)
             {
                 bool result = false;
                 using (SqlCommand cmd = new SqlCommand("Student_Update"))
@@ -79,10 +80,8 @@ namespace BiSchool.DL
                 cmd.Parameters.AddWithValue("@Address", address);
                 cmd.Parameters.AddWithValue("@IsAdmin", isAdmin);
                 cmd.Parameters.AddWithValue("@Phone", phone);
-                cmd.Parameters.AddWithValue("@CreatedBy", createdby);
-                cmd.Parameters.AddWithValue("@CreatedDate", createddate);
-                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedby);
-                cmd.Parameters.AddWithValue("@ModifiedDate", modifieddate);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
                 
                 cmd.Parameters.AddWithValue("@IsDeleted", isdeleted);
                 cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
@@ -96,14 +95,16 @@ namespace BiSchool.DL
                 } //close using statement 
                 return result;
             }
-            public static Boolean Delete(int id)
+            public static Boolean Delete(int Id,string modifiedBy)
             {
                 bool result = false;
                 using (SqlCommand cmd = new SqlCommand("Student_Delete"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
                     cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
                     SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
                     if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1") result = true;

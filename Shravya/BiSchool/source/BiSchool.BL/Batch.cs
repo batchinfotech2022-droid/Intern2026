@@ -135,7 +135,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = BatchData.Delete(idValue);
+                    bool returnVal = BatchData.Delete(idValue,usrName);
                     Activity.Create(usrName, "Batch", "Delete", DateTime.Now, true, idValue.ToString());
                     return returnVal;
                 }
@@ -149,7 +149,7 @@ namespace BiSchool.BL
             {
                 try
                 {
-                    bool returnVal = BatchData.Delete(this.Id);
+                    bool returnVal = BatchData.Delete(this.Id,usrName);
                     Activity.Create(usrName, "Batch", "Delete", DateTime.Now, true, this.Id.ToString());
                     return returnVal;
                 }

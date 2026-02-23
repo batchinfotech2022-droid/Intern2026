@@ -29,7 +29,7 @@ namespace BiSchool.UI.Models
             public string Email { get { return _student.Email; } set { _student.Email = value; } }
 
             [Display(Name = "Password")]
-            [Required]
+           
             [DisplayFormat(ConvertEmptyStringToNull = false)]
 
             public string Password { get { return _student.Password; } set { _student.Password = value; } }

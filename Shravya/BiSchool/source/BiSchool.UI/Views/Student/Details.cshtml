@@ -1,6 +1,5 @@
 ﻿@model BiSchool.UI.Models.StudentModel
 @using BiSchool.UI.IDEncryption
-
 @{
     ViewBag.Title = "Student Details";
 }
@@ -27,10 +26,10 @@
         <dd>@(Model.IsAdmin ? "Yes" : "No")</dd>
 
     </dl>
+    <div class="form-group">
 
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-    </p>
+    </div>
 
 </div>
+}

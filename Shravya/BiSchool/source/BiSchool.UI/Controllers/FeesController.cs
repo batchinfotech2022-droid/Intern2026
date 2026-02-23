@@ -162,7 +162,7 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
-        
+        [EncryptedActionParameter]
         public ActionResult Delete(int id)
         {
             var fee = Fees.RetrieveById( userName,id);

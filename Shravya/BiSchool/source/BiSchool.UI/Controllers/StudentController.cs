@@ -27,8 +27,7 @@ namespace BiSchool.UI.Controllers
 
                     m.Id = s.Id;
                     m.FullName = s.FullName;
-                    m.Email = s.Email;
-                    m.Password = s.Password;
+                m.Email = s.Email;
                     m.Address = s.Address;
                     m.Phone = s.Phone;
                     m.IsAdmin = s.IsAdmin;
@@ -39,75 +38,115 @@ namespace BiSchool.UI.Controllers
                 return View(modelList);
             }
 
+        public ActionResult Create()
+        {
+            StudentModel model = new StudentModel();
+            return View(model);
+        }
 
 
-        [EncryptedActionParameter]
-        public ActionResult Edit(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(StudentModel model)
+        {
+            if (ModelState.IsValid)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 
-                Student s = Student.RetrieveById(usrName, id);
+                Student s = new Student();
 
-                StudentModel model = new StudentModel
-                {
-                    Id = s.Id,
-                    FullName = s.FullName,
-                    Email = s.Email,
-                    Password = s.Password,
-                    Address = s.Address,
-                    Phone = s.Phone,
-                    IsAdmin = s.IsAdmin,
-                    CreatedBy = s.CreatedBy,
-                    CreatedDate = s.CreatedDate,
-                    ModifiedBy = s.ModifiedBy,
-                    ModifiedDate = s.ModifiedDate,
-                    IsDeleted = s.IsDeleted
-                };
+                s.FullName = model.FullName;
+                s.Email = model.Email;
+                s.Password = model.Password;
+                s.Address = model.Address;
+                s.Phone = model.Phone;
+                s.IsAdmin = model.IsAdmin;
 
-                return View(model);
+                s.CreatedBy = usrName;
+                s.CreatedDate = DateTime.Now;
+                s.ModifiedBy = usrName;
+                s.ModifiedDate = DateTime.Now;
+                s.IsDeleted = false;
+
+                Student.Create(
+                    usrName,
+                    s.FullName,
+                    s.Email,
+                    s.Password,
+                    s.Address,
+                    s.Phone,
+                    s.IsAdmin
+                );
+
+                return RedirectToAction("Index");
             }
 
-            [HttpPost]
+            return View(model);
+        }
+
+        [EncryptedActionParameter]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            Student s = Student.RetrieveById(usrName, id.Value);
+
+            if (s == null)
+                return HttpNotFound();
+
+            StudentModel model = new StudentModel
+            {
+                Id = s.Id,
+                FullName = s.FullName,
+                Email = s.Email,
+                Address = s.Address,
+                Phone = s.Phone,
+                IsAdmin = s.IsAdmin,
+                CreatedBy = s.CreatedBy,
+                CreatedDate = s.CreatedDate,
+                ModifiedBy = s.ModifiedBy,
+                ModifiedDate = s.ModifiedDate,
+                IsDeleted = s.IsDeleted
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [EncryptedActionParameter]
-            public ActionResult Edit(StudentModel model)
+        public ActionResult Edit(StudentModel model)
+        {
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    string usrName = Session["UserName"]?.ToString() ?? "System";
+                string usrName = Session["UserName"]?.ToString() ?? "System";
 
-                    Student s = Student.RetrieveById(usrName, model.Id);
+                Student s = Student.RetrieveById(usrName, model.Id);
 
+                if (s == null)
+                    return HttpNotFound();
 
-                    if (s == null)
-                    {
-                        return HttpNotFound();
-                    }
+                s.FullName = model.FullName;
+                s.Email = model.Email;
+                s.Address = model.Address;
+                s.Phone = model.Phone;
+                s.IsAdmin = model.IsAdmin;
 
-                    s.FullName = model.FullName;
-                    s.Email = model.Email;
-                    s.Password = model.Password;
-                    s.Address = model.Address;
-                    s.Phone = model.Phone;
-                    s.IsAdmin = model.IsAdmin;
+                
 
+                s.ModifiedBy = usrName;
+                s.ModifiedDate = DateTime.Now;
 
-                    s.CreatedBy = model.CreatedBy;
-                    s.CreatedDate = model.CreatedDate;
+                s.Update(usrName);
 
-
-                    s.ModifiedBy = usrName;
-                    s.ModifiedDate = DateTime.Now;
-
-                    s.IsDeleted = model.IsDeleted;
-
-                    s.Update(usrName);
-
-                    return RedirectToAction("Index");
-                }
-
-                return View(model);
+                return RedirectToAction("Index");
             }
+
+            return View(model);
+        }
 
         [EncryptedActionParameter]
             public ActionResult Details(int id)
