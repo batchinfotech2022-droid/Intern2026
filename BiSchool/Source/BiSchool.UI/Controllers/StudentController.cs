@@ -60,13 +60,22 @@ namespace BiSchool.UI.Controllers
         [EncryptedActionParameter]
         public ActionResult Edit(StudentModel model)
         {
-            if (ModelState.IsValid)
-            {
-                model.student.Update(userName);
-                return RedirectToAction("Index");
-            }
+            if (!ModelState.IsValid)
+                return View(model);
 
-            return View(model);
+            
+            Student s = new Student();
+            s.Id = model.Id;
+            s.FullName = model.FullName;
+            s.Email = model.Email;
+            s.Password = model.Password;
+            s.Address = model.Address;
+            s.Phone = model.Phone;
+            s.IsAdmin = model.IsAdmin;
+
+            s.Update(userName);
+
+            return RedirectToAction("Index");
         }
         [EncryptedActionParameter]
         public ActionResult Details(int id)

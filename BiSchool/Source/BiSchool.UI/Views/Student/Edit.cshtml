@@ -1,5 +1,4 @@
 ﻿@model BiSchool.UI.Models.StudentModel
-   
 
 <div class="container mt-4">
     <div class="card custom-card center-card">
@@ -12,28 +11,34 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
+
                 @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.Password)
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Full Name</label>
                     @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Email</label>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
-
-                @Html.HiddenFor(m => m.Password)
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Address</label>
                     @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Phone</label>
                     @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-check mb-3">
@@ -46,7 +51,6 @@
 
                     @Html.ActionLink("Back", "Index", null,
                         new { @class = "btn btn-secondary" })
-
                 </div>
             }
 
