@@ -3,9 +3,11 @@
 }
 
 <style>
+    /* Home Page Styling */
+
     .home-container {
         background-color: #e3f2fd;
-        height: 70vh;
+        height: calc(100vh - 120px); /* full screen minus navbar/footer */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -18,27 +20,105 @@
     }
 
         .home-content img {
-            width: 180px;
+            width: 200px;
             height: auto;
         }
 
     .school-text {
-        font-size: 48px;
+        font-size: 50px;
         font-weight: bold;
         color: #0d6efd;
+    }
+    .chart-container {
+        width: 800px;
+        margin-top: 40px;
+        margin-left: 250px;
+       
     }
 </style>
 
 <div class="home-container">
-    <div class="home-content">
 
-        <!-- Image -->
+    <!-- TOP SECTION -->
+    <div class="home-content">
         <img src="https://cdn-icons-png.flaticon.com/512/201/201614.png" />
 
-        <!-- Side Text -->
         <div class="school-text">
             BiSchool
         </div>
-
     </div>
 </div>
+
+    <!-- CHART SECTION -->
+    <div class="chart-container">
+        <canvas id="studentChart"></canvas>
+    </div>
+
+
+
+@section scripts{
+
+    <script>
+$(document).ready(function () {
+
+    $.ajax({
+        url: '/Home/GetStudentChartData',
+        type: 'GET',
+        success: function (response) {
+
+            console.log(response);
+
+            var labels = [];
+            var values = [];
+
+            for (var key in response) {
+                labels.push(key);
+                values.push(response[key]);
+            }
+
+            createChart(labels, values);
+        }
+    });
+
+});
+
+function createChart(labels, values) {
+
+    var ctx = document.getElementById('studentChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+    label: 'Students',
+    data: values,
+    backgroundColor: [
+        '#0d6efd',
+        '#198754',
+        '#ffc107',
+        '#dc3545'
+    ],
+    borderColor: [
+        '#0a58ca',
+        '#146c43',
+        '#d39e00',
+        '#b02a37'
+    ],
+    borderWidth: 1
+}]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+    </script>
+
+}

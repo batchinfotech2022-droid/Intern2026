@@ -26,5 +26,17 @@ namespace BiSchool.UI.Controllers
 
             return View();
         }
+        public JsonResult GetStudentChartData()
+        {
+            // Dummy dictionary (Label, Value)
+            Dictionary<string, int> data = new Dictionary<string, int>();
+
+            data.Add("Class A", 10);
+            data.Add("Class B", 8);
+            data.Add("Class C", 12);
+            data.Add("Class D", 6);
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }

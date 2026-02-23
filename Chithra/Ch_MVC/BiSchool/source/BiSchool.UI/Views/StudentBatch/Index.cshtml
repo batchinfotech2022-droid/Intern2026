@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<BiSchool.UI.Models.StudentBatchModel>
-
+@using BiSchool.UI.IDEncription
 @{
     ViewBag.Title = "Student Batch";
 }
@@ -28,9 +28,9 @@
                 <td>@item.BatchTitle</td>
                 <td>@item.StudentName</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                    @Html.EncodedActionLink("Edit", "Edit","StudentBatch", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.EncodedActionLink("Details", "Details", "StudentBatch", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                    @Html.EncodedActionLink("Delete", "Delete", "StudentBatch", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
                 </td>
             </tr>
         }

@@ -1,4 +1,5 @@
 ﻿using BiSchool.BL;
+using BiSchool.UI.IDEncription;
 using BiSchool.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,8 @@ namespace BiSchool.UI.Controllers
                 return RedirectToAction("Index");
             }
 
-            public ActionResult Edit(int id)
+        [EncryptedActionParameter]
+        public ActionResult Edit(int id)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 
@@ -60,7 +62,8 @@ namespace BiSchool.UI.Controllers
             }
 
             [HttpPost]
-            public ActionResult Edit(FeesModel model)
+        [EncryptedActionParameter]
+        public ActionResult Edit(FeesModel model)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 
@@ -77,19 +80,23 @@ namespace BiSchool.UI.Controllers
 
                 return RedirectToAction("Index");
             }
+        [EncryptedActionParameter]
 
-            public ActionResult Details(int id)
+        public ActionResult Details(int id)
             {
                 return View(new FeesModel(Fees.RetrieveById(Session["UserName"]?.ToString() ?? "System", id)));
             }
 
-            public ActionResult Delete(int id)
+        [EncryptedActionParameter]
+        public ActionResult Delete(int id)
             {
                 return View(new FeesModel(Fees.RetrieveById(Session["UserName"]?.ToString() ?? "System", id)));
             }
+
 
             [HttpPost, ActionName("Delete")]
-            public ActionResult DeleteConfirmed(int id)
+        [EncryptedActionParameter]
+        public ActionResult DeleteConfirmed(int id)
             {
                 Fees.Delete(Session["UserName"]?.ToString() ?? "System", id);
                 return RedirectToAction("Index");

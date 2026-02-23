@@ -1,4 +1,5 @@
 ﻿using BiSchool.BL;
+using BiSchool.UI.IDEncription;
 using BiSchool.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,7 @@ namespace BiSchool.UI.Controllers
                 return View(model);
             }
 
+        [EncryptedActionParameter]
             public ActionResult Edit(int id)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
@@ -96,8 +98,8 @@ namespace BiSchool.UI.Controllers
 
                 return RedirectToAction("Index");
             }
-
-            public ActionResult Details(int id)
+        [EncryptedActionParameter]
+        public ActionResult Details(int id)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 
@@ -105,8 +107,9 @@ namespace BiSchool.UI.Controllers
 
                 return View(new BatchModel(b));
             }
+        [EncryptedActionParameter]
 
-            public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id)
             {
                 if (id == null)
                     return RedirectToAction("Index");
@@ -119,7 +122,8 @@ namespace BiSchool.UI.Controllers
             }
 
             [HttpPost, ActionName("Delete")]
-            public ActionResult DeleteConfirmed(int id)
+        [EncryptedActionParameter]
+        public ActionResult DeleteConfirmed(int id)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 

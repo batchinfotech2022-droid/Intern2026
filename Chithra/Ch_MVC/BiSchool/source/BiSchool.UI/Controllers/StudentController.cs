@@ -1,4 +1,5 @@
 ﻿using BiSchool.BL;
+using BiSchool.UI.IDEncription;
 using BiSchool.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -38,9 +39,14 @@ namespace BiSchool.UI.Controllers
 
                 return View(modelList);
             }
+        public ActionResult Create()
+        {
+            return View(new StudentModel());
+        }
 
 
-            public ActionResult Edit(int id)
+        [EncryptedActionParameter]
+        public ActionResult Edit(int id)
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
 
@@ -66,7 +72,7 @@ namespace BiSchool.UI.Controllers
             }
 
             [HttpPost]
-     
+        [EncryptedActionParameter]
         public ActionResult Edit(StudentModel model)
         {
             if (ModelState.IsValid)
@@ -75,7 +81,7 @@ namespace BiSchool.UI.Controllers
 
                 Student s = Student.RetrieveById(usrName, model.Id);
 
-                // Always check null (safety)
+              
                 if (s == null)
                 {
                     return HttpNotFound();
@@ -88,15 +94,15 @@ namespace BiSchool.UI.Controllers
                 s.Phone = model.Phone;
                 s.IsAdmin = model.IsAdmin;
 
-                // Preserve original created values
+                
                 s.CreatedBy = model.CreatedBy;
                 s.CreatedDate = model.CreatedDate;
 
-                // Update modified fields
+                
                 s.ModifiedBy = usrName;
                 s.ModifiedDate = DateTime.Now;
 
-                s.IsDeleted = model.IsDeleted;   // IMPORTANT
+                s.IsDeleted = model.IsDeleted;   
 
                 s.Update(usrName);
 
@@ -105,6 +111,7 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
+        [EncryptedActionParameter]
         public ActionResult Details(int id)
         {
             string usrName = Session["UserName"]?.ToString() ?? "System";
@@ -132,7 +139,7 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
-
+        [EncryptedActionParameter]
 
         public ActionResult Delete(int? id)
         {
@@ -167,6 +174,8 @@ namespace BiSchool.UI.Controllers
 
 
         [HttpPost, ActionName("Delete")]
+
+        [EncryptedActionParameter]
         public ActionResult DeleteConfirmed(int id)
         {
             string usrName = Session["UserName"]?.ToString() ?? "System";
