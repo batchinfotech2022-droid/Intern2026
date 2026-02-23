@@ -1,3 +1,9 @@
+CREATE master;
+GO
+
+CREATE DATABASE BiSchoolDB;
+GO
+
 USE [BiSchoolDB]
 GO
 /****** Object:  Table [dbo].[Activity]    Script Date: 23-02-2026 15:48:31 ******/
