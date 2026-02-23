@@ -1,0 +1,29 @@
+﻿@model BiSchool.UI.Models.FeesModel
+
+@{
+    ViewBag.Title = "Fees Details";
+}
+
+<h2>Fees Details</h2>
+
+<div class="form-horizontal">
+
+    <dl class="dl-horizontal">
+
+        <dt>Student</dt>
+        <dd>@Model.StudentName</dd>
+
+        <dt>Amount</dt>
+        <dd>@Model.Amount</dd>
+
+        <dt>Date</dt>
+        <dd>@Model.Date.ToShortDateString()</dd>
+
+    </dl>
+
+    <p>
+       
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </p>
+
+</div>

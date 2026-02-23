@@ -1,0 +1,26 @@
+﻿@model BiSchool.UI.Models.StudentBatchModel
+
+@{
+    ViewBag.Title = "Student Batch Details";
+}
+
+<h2>Student Batch Details</h2>
+
+<div class="form-horizontal">
+
+    <dl class="dl-horizontal">
+
+        <dt>Batch</dt>
+        <dd>@Model.BatchTitle</dd>
+
+        <dt>Student</dt>
+        <dd>@Model.StudentName</dd>
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </p>
+
+</div>

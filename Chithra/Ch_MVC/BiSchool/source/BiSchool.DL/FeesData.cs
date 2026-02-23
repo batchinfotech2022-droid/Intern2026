@@ -23,7 +23,7 @@ namespace BiSchool.DL
                 cmd.Parameters.AddWithValue("@Amount", Amount);
                 cmd.Parameters.AddWithValue("@Date", Date);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                cmd.Parameters.AddWithValue("@ModifiedDate", CreatedDate);
+                cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
                 cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
                 cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
                 cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted);
@@ -78,7 +78,7 @@ namespace BiSchool.DL
                 cmd.Parameters.AddWithValue("@Amount", Amount);
                 cmd.Parameters.AddWithValue("@Date", Date);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-                cmd.Parameters.AddWithValue("@ModifiedDate", CreatedDate);
+                cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
                 cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
                 cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
                 cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted);

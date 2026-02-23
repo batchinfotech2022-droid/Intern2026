@@ -1,0 +1,32 @@
+﻿@model BiSchool.UI.Models.StudentBatchModel
+
+@{
+    ViewBag.Title = "Delete Student Batch";
+}
+
+<h2>Delete Student Batch</h2>
+
+<h4>Are you sure you want to remove this student from the batch?</h4>
+
+<div>
+
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.Id)
+
+        <dt>Batch</dt>
+        <dd>@Model.BatchTitle</dd>
+
+        <dt>Student</dt>
+        <dd>@Model.StudentName</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
+    }
+
+</div>

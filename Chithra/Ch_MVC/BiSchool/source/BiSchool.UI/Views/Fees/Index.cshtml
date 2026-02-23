@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BiSchool.UI.Models.FeesModel>
+
+@{
+    ViewBag.Title = "Fees";
+}
+
+<h2>Fees List</h2>
+
+<p>
+    @Html.ActionLink("Create New Fees", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.StudentName</td>
+                <td>@item.Amount</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

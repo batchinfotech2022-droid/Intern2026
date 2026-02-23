@@ -120,13 +120,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BatchController.cs" />
+    <Compile Include="Controllers\FeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentBatchController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IDEncription\EncryptedActionParameterAttribute.cs" />
     <Compile Include="IDEncription\MyExtensions.cs" />
+    <Compile Include="Models\BatchModel.cs" />
+    <Compile Include="Models\FeesModel.cs" />
+    <Compile Include="Models\StudentBatchModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,6 +192,21 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Batch\Create.cshtml" />
+    <Content Include="Views\Batch\Edit.cshtml" />
+    <Content Include="Views\Batch\Details.cshtml" />
+    <Content Include="Views\Batch\Delete.cshtml" />
+    <Content Include="Views\Fees\Create.cshtml" />
+    <Content Include="Views\Fees\Delete.cshtml" />
+    <Content Include="Views\Fees\Details.cshtml" />
+    <Content Include="Views\Fees\Edit.cshtml" />
+    <Content Include="Views\StudentBatch\Create.cshtml" />
+    <Content Include="Views\StudentBatch\Delete.cshtml" />
+    <Content Include="Views\StudentBatch\Details.cshtml" />
+    <Content Include="Views\StudentBatch\Edit.cshtml" />
+    <Content Include="Views\Batch\Index.cshtml" />
+    <Content Include="Views\Fees\Index.cshtml" />
+    <Content Include="Views\StudentBatch\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
