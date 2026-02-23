@@ -1,4 +1,5 @@
 ﻿@model BiSchool.UI.Models.StudentModel
+   
 
 <div class="container mt-4">
     <div class="card custom-card center-card">
@@ -23,10 +24,7 @@
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label fw-semibold">Password</label>
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                </div>
+                @Html.HiddenFor(m => m.Password)
 
                 <div class="mb-3">
                     <label class="form-label fw-semibold">Address</label>
@@ -45,8 +43,10 @@
 
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Update</button>
+
                     @Html.ActionLink("Back", "Index", null,
                         new { @class = "btn btn-secondary" })
+
                 </div>
             }
 

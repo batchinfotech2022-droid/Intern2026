@@ -37,3 +37,9 @@ textarea {
     font-weight: 600;
     font-size: 18px;
 }
+.chart-container {
+    position: relative;
+    height: 300px; /* 👈 control height here */
+    width: 100%;
+    margin-bottom: 30px; /* 👈 space before footer */
+}

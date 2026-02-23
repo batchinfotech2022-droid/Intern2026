@@ -131,8 +131,9 @@
     <Compile Include="IDEncryption\EncryptedActionParameterAttribute.cs" />
     <Compile Include="IDEncryption\MyExtensions.cs" />
     <Compile Include="Models\BatchModel.cs" />
+    <Compile Include="Models\FeesChartModel.cs" />
     <Compile Include="Models\FeesModel.cs" />
-    <Compile Include="Models\StudentBatch.cs" />
+    <Compile Include="Models\StudentBatchModel.cs" />
     <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +166,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
@@ -175,6 +178,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\plugins\chartjs\chart.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

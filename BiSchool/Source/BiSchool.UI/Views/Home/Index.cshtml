@@ -8,7 +8,7 @@
 
         <div class="row align-items-center w-100">
 
-            <!-- Left Side -->
+
             <div class="col-md-6">
 
                 <h1 class="fw-bold text-primary mb-4">
@@ -27,7 +27,7 @@
 
             </div>
 
-           
+
             <div class="col-md-6 text-center">
 
                 <img src="~/Content/images/sc.jpg"
@@ -42,3 +42,66 @@
     </div>
 
 </div>
+
+<h3 class="mt-4">Fees Collection</h3>
+
+<div class="chart-container" style="height:300px;">
+    <canvas id="feesChart"></canvas>
+</div>
+
+@section Scripts {
+
+    <script>
+    $(document).ready(function () {
+        getFeesChartData();
+    });
+
+    function getFeesChartData() {
+        $.ajax({
+            url: '@Url.Action("GetFeesChartData", "Home")',
+            type: 'GET',
+            success: function (data) {
+                console.log("Chart Data:", data); // DEBUG
+
+                var labels = [];
+                var values = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    labels.push(data[i].Month);
+                    values.push(data[i].Amount);
+                }
+
+                renderChart(labels, values);
+            },
+            error: function () {
+                alert("Failed to load fees chart data");
+            }
+        });
+    }
+
+    function renderChart(labels, values) {
+        const ctx = document.getElementById('feesChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Fees Amount (₹)',
+                    data: values,
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+    </script>
+}

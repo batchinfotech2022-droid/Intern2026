@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BiSchool.BL;
+using BiSchool.UI.IDEncryption;
+using BiSchool.UI.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using BiSchool.BL;
-using BiSchool.UI.Models;
 
 namespace BiSchool.UI.Controllers
 {
@@ -46,6 +47,7 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
+        [EncryptedActionParameter]
         public ActionResult Edit(int id)
         {
             Batch batch = Batch.RetrieveById(userName, id);
@@ -54,6 +56,7 @@ namespace BiSchool.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult Edit(BatchModel model)
         {
             if (ModelState.IsValid)
@@ -64,6 +67,7 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
+        [EncryptedActionParameter]
         public ActionResult Details(int id)
         {
             Batch batch = Batch.RetrieveById(userName, id);
@@ -73,7 +77,8 @@ namespace BiSchool.UI.Controllers
 
             return View(new BatchModel(batch));
         }
-       
+
+        [EncryptedActionParameter]
         public ActionResult Delete(int id)
         {
             Batch batch = Batch.RetrieveById(userName, id);
@@ -83,6 +88,7 @@ namespace BiSchool.UI.Controllers
        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult DeleteConfirmed(int id)
         {
             Batch.Delete(userName, id);

@@ -25,7 +25,7 @@ namespace BiSchool.UI.Models
         }
 
         [Required]
-        [Display(Name = "Batch ID")]
+        [Display(Name = "Batch")]
         public int BatchId
         {
             get { return studentBatch.Batchid; }
@@ -36,10 +36,11 @@ namespace BiSchool.UI.Models
         public string BatchTitle
         {
             get { return studentBatch.Batchtitle; }
+            set { studentBatch.Batchtitle = value; }   
         }
 
         [Required]
-        [Display(Name = "Student ID")]
+        [Display(Name = "Student")]
         public int StudentId
         {
             get { return studentBatch.Studentid; }
@@ -50,11 +51,27 @@ namespace BiSchool.UI.Models
         public string StudentName
         {
             get { return studentBatch.Studentname; }
+            set { studentBatch.Studentname = value; }
         }
 
-        public DateTime CreatedDate => studentBatch.Createddate;
-        public string CreatedBy => studentBatch.Createdby;
-        public DateTime ModifiedDate => studentBatch.Modifieddate;
-        public string ModifiedBy => studentBatch.Modifiedby;
+        public DateTime CreatedDate
+        {
+            get { return studentBatch.Createddate; }
+        }
+
+        public string CreatedBy
+        {
+            get { return studentBatch.Createdby; }
+        }
+
+        public DateTime ModifiedDate
+        {
+            get { return studentBatch.Modifieddate; }
+        }
+
+        public string ModifiedBy
+        {
+            get { return studentBatch.Modifiedby; }
+        }
     }
 }

@@ -1,10 +1,7 @@
-﻿using Internsapp.BL;
-using Internsapp.UI.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Internsapp.BL;
+using Internsapp.UI.Models;
 
 namespace Internsapp.UI.Controllers
 {
@@ -14,20 +11,14 @@ namespace Internsapp.UI.Controllers
 
         public ActionResult Index()
         {
-            return View(GetLeaveModelList());
-        }
-
-        private IEnumerable<LeaveModel> GetLeaveModelList()
-        {
             List<LeaveModel> list = new List<LeaveModel>();
 
-            foreach (Leave l in Leave.RetrieveAll(userName)
-                                     .OrderBy(l => l.LeaveId))
+            foreach (Leave l in Leave.RetrieveAll(userName))
             {
                 list.Add(new LeaveModel(l));
             }
 
-            return list;
+            return View(list);
         }
 
         public ActionResult Create()
@@ -55,12 +46,6 @@ namespace Internsapp.UI.Controllers
             return View(model);
         }
 
-        public ActionResult Details(int id)
-        {
-            Leave leave = Leave.RetrieveById(userName, id);
-            return View(new LeaveModel(leave));
-        }
-
         public ActionResult Edit(int id)
         {
             Leave leave = Leave.RetrieveById(userName, id);
@@ -73,11 +58,21 @@ namespace Internsapp.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Leave.Update(userName);
+                model.leave.Update(userName);
                 return RedirectToAction("Index");
             }
 
             return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            Leave leave = Leave.RetrieveById(userName, id);
+
+            if (leave == null)
+                return HttpNotFound();
+
+            return View(new LeaveModel(leave));
         }
 
         public ActionResult Delete(int id)
@@ -86,7 +81,7 @@ namespace Internsapp.UI.Controllers
             return View(new LeaveModel(leave));
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

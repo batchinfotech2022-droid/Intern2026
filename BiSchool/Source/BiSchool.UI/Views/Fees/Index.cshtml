@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<BiSchool.UI.Models.FeesModel>
-
+@using BiSchool.UI.IDEncryption;
 <div class="container mt-4">
     <div class="card custom-card">
         <div class="card-header bg-primary text-white d-flex justify-content-between">
@@ -30,13 +30,13 @@
                                 <td>@item.Date.ToShortDateString()</td>
                                 <td class="text-center">
 
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id },
+                                    @Html.EncodedActionLink("Edit", "Edit","Fees", new { id = item.Id },
                                         new { @class = "btn btn-primary btn-sm me-1" })
 
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id },
+                                    @Html.EncodedActionLink("Details", "Details","Fees", new { id = item.Id },
                                         new { @class = "btn btn-outline-primary btn-sm me-1" })
 
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id },
+                                    @Html.EncodedActionLink("Delete", "Delete","Fees", new { id = item.Id },
                                         new { @class = "btn btn-danger btn-sm" })
                                 </td>
                             </tr>

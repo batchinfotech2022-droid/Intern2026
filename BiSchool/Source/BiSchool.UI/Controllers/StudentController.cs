@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using BiSchool.BL;
+using BiSchool.UI.IDEncryption;
 using BiSchool.UI.Models;
 
 namespace BiSchool.UI.Controllers
@@ -47,7 +48,7 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
-
+        [EncryptedActionParameter]
         public ActionResult Edit(int id)
         {
             Student student = Student.RetrieveById(userName, id);
@@ -56,6 +57,7 @@ namespace BiSchool.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult Edit(StudentModel model)
         {
             if (ModelState.IsValid)
@@ -66,7 +68,7 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
-
+        [EncryptedActionParameter]
         public ActionResult Details(int id)
         {
             Student student = Student.RetrieveById(userName, id);
@@ -75,13 +77,13 @@ namespace BiSchool.UI.Controllers
 
             return View(new StudentModel(student));
         }
-
+        [EncryptedActionParameter]
         public ActionResult Delete(int id)
         {
             Student student = Student.RetrieveById(userName, id);
             return View(new StudentModel(student));
         }
-
+        [EncryptedActionParameter]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

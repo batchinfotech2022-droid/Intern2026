@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using BiSchool.BL;
+﻿using BiSchool.BL;
+using BiSchool.UI.IDEncryption;
 using BiSchool.UI.Models;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace BiSchool.UI.Controllers
 {
@@ -11,18 +12,35 @@ namespace BiSchool.UI.Controllers
 
         public ActionResult Index()
         {
-            List<StudentBatchModel> list = new List<StudentBatchModel>();
+            string usrName = Session["UserName"]?.ToString() ?? "System";
 
-            foreach (StudentBatch sb in StudentBatch.RetrieveAll(userName))
+            List<StudentBatch> list = StudentBatch.RetrieveAll(usrName);
+            List<StudentBatchModel> modelList = new List<StudentBatchModel>();
+
+            foreach (StudentBatch sb in list)
             {
-                list.Add(new StudentBatchModel(sb));
+                StudentBatchModel m = new StudentBatchModel(sb);
+
+                m.Id = sb.Id;
+                m.BatchId = sb.Batchid;
+                m.StudentId = sb.Studentid;
+                m.BatchTitle = sb.Batchtitle;
+                m.StudentName = sb.Studentname;
+
+                modelList.Add(m);
             }
 
-            return View(list);
+            return View(modelList);
         }
+
 
         public ActionResult Create()
         {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            ViewBag.StudentList = new SelectList(Student.RetrieveAll(usrName), "Id", "FullName");
+            ViewBag.BatchList = new SelectList(Batch.RetrieveAll(usrName), "Id", "Title");
+
             return View(new StudentBatchModel());
         }
 
@@ -43,18 +61,34 @@ namespace BiSchool.UI.Controllers
 
             return View(model);
         }
-
-        public ActionResult Edit(int? id)
+        [EncryptedActionParameter]
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-                return RedirectToAction("Index");
+            string usrName = Session["UserName"]?.ToString() ?? "System";
 
-            StudentBatch sb = StudentBatch.RetrieveById(userName, id.Value);
+            StudentBatch sb = StudentBatch.RetrieveById(usrName, id);
+            if (sb == null)
+                return HttpNotFound();
+
+            ViewBag.StudentList = new SelectList(
+                Student.RetrieveAll(usrName),
+                "Id",
+                "FullName",
+                sb.Studentid   
+            );
+
+            ViewBag.BatchList = new SelectList(
+                Batch.RetrieveAll(usrName),
+                "Id",
+                "Title",
+                sb.Batchid     
+            );
+
             return View(new StudentBatchModel(sb));
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         public ActionResult Edit(StudentBatchModel model)
         {
             if (ModelState.IsValid)
@@ -66,6 +100,7 @@ namespace BiSchool.UI.Controllers
             return View(model);
         }
 
+        [EncryptedActionParameter]
         public ActionResult Details(int id)
         {
             StudentBatch sb = StudentBatch.RetrieveById(userName, id);
@@ -75,6 +110,7 @@ namespace BiSchool.UI.Controllers
             return View(new StudentBatchModel(sb));
         }
 
+        [EncryptedActionParameter]
         public ActionResult Delete(int id)
         {
             StudentBatch sb = StudentBatch.RetrieveById(userName, id);
@@ -86,6 +122,7 @@ namespace BiSchool.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [EncryptedActionParameter]
         [ActionName("Delete")]   
         public ActionResult DeleteConfirmed(int id)
         {

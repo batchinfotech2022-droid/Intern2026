@@ -1,9 +1,6 @@
-﻿using Internsapp.BL;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using Internsapp.BL;
 
 namespace Internsapp.UI.Models
 {
@@ -11,33 +8,36 @@ namespace Internsapp.UI.Models
     {
         private Attendance _attendance;
 
-        public int Id
-        {
-            get { return _attendance.Id; }
-            set { _attendance.Id = value; }
-        }
-
-        public int InternId
-        {
-            get { return _attendance.InternId; }
-            set { _attendance.InternId = value; }
-        }
+        [Display(Name = "Attendance ID")]
+        public int Id { get { return _attendance.Id; } set { _attendance.Id = value; } }
 
         [Required]
-        [DataType(DataType.Date)]
+        [Display(Name = "Intern ID")]
+        public int InternId { get { return _attendance.InternId; } set { _attendance.InternId = value; } }
+
+        [Required]
+        [Display(Name = "Attendance Date")]
         public DateTime AttendanceDate
         {
             get { return _attendance.AttendanceDate; }
             set { _attendance.AttendanceDate = value; }
         }
 
-        public bool Status
-        {
-            get { return _attendance.Status; }
-            set { _attendance.Status = value; }
-        }
+        [Required]
+        [Display(Name = "Status")]
+        public bool Status { get { return _attendance.Status; } set { _attendance.Status = value; } }
 
-        public Attendance Attendance
+        public string CreatedBy { get { return _attendance.CreatedBy; } set { _attendance.CreatedBy = value; } }
+
+        public DateTime CreatedDate { get { return _attendance.CreatedDate; } set { _attendance.CreatedDate = value; } }
+
+        public string ModifiedBy { get { return _attendance.ModifiedBy; } set { _attendance.ModifiedBy = value; } }
+
+        public DateTime ModifiedDate { get { return _attendance.ModifiedDate; } set { _attendance.ModifiedDate = value; } }
+
+        public bool IsDeleted { get { return _attendance.IsDeleted; } set { _attendance.IsDeleted = value; } }
+
+        public Attendance attendance
         {
             get { return _attendance; }
             set { _attendance = value; }
