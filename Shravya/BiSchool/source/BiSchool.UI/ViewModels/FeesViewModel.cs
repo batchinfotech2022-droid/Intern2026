@@ -26,9 +26,7 @@ namespace BiSchool.UI.ViewModels
 
         [Required(ErrorMessage = "Please select a Payment Date")]
         [DataType(DataType.Date)]
-        [Display(Name = "Payment Date")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         // For dropdown
         public IEnumerable<SelectListItem> Students { get; set; }

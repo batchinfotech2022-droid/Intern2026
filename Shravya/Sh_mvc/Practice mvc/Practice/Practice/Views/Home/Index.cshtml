@@ -31,3 +31,34 @@
         </section>
     </div>
 </main>
+
+<h3>Fees Chart</h3>
+
+
+<canvas id="feesChart" width="400" height="200"></canvas>
+
+
+@section Scripts {
+    <script>
+        var ctx = document.getElementById('feesChart').getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [{
+                    label: 'Fees Collected',
+                    data: [12000, 15000, 10000, 18000, 13000],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}

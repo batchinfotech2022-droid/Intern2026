@@ -53,11 +53,11 @@ namespace BiSchool.UI.Controllers
             if (ModelState.IsValid)
             {
                 Fees.Create(
-                    userName,
-                    model.StudentId,
-                    model.Amount,
-                    model.Date
-                );
+    userName,
+    model.StudentId,
+    model.Amount,
+    model.Date.Value
+);
 
                 return RedirectToAction("Index");
             }
@@ -112,16 +112,24 @@ namespace BiSchool.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var fees = new Fees();
-                fees.Update(
-                    userName);
+                var fees = new Fees
+                {
+                    Id = model.Id,
+                    StudentId = model.StudentId,
+                    Amount = model.Amount,
+                    Date = model.Date.Value,
+                    ModifiedBy = userName,
+                    ModifiedDate = DateTime.Now,
+                    IsDeleted = false
+                };
+
+                fees.Update(userName);
 
                 return RedirectToAction("Index");
             }
 
-            // Reload dropdown if validation fails
+            // reload dropdown if validation fails
             var students = Student.RetrieveAll(userName);
-
             model.Students = students.Select(s => new SelectListItem
             {
                 Value = s.Id.ToString(),
