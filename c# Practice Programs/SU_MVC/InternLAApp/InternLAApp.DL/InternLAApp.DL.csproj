@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,15 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivityData.cs" />
-    <Compile Include="AppExceptionData.cs" />
-    <Compile Include="AttendanceData.cs" />
-    <Compile Include="DataAccessCode.cs" />
-    <Compile Include="DataReaderExtensions.cs" />
-    <Compile Include="InternsData.cs" />
-    <Compile Include="LeaveData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

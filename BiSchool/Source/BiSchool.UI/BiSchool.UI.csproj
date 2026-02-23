@@ -131,7 +131,6 @@
     <Compile Include="IDEncryption\EncryptedActionParameterAttribute.cs" />
     <Compile Include="IDEncryption\MyExtensions.cs" />
     <Compile Include="Models\BatchModel.cs" />
-    <Compile Include="Models\FeesChartModel.cs" />
     <Compile Include="Models\FeesModel.cs" />
     <Compile Include="Models\StudentBatchModel.cs" />
     <Compile Include="Models\StudentModel.cs" />

@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using InternLAApp.DL;
 
 namespace InternLAApp.BL
@@ -102,9 +101,9 @@ namespace InternLAApp.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("RetrieveAll failed", ex);
+                throw;
             }
 
             return activitylist;
@@ -124,9 +123,9 @@ namespace InternLAApp.BL
                 dt.Dispose();
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("RetrieveById failed", ex);
+                throw;
             }
 
         }
@@ -138,9 +137,9 @@ namespace InternLAApp.BL
                 bool returnVal = ActivityData.Update(Activityid, Username, Activityon, Activityitem, Activitydate, Issuccess, Activitytext);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Update failed", ex);
+                throw;
             }
 
         }
@@ -153,9 +152,9 @@ namespace InternLAApp.BL
                 bool returnVal = ActivityData.Delete(activityidValue);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Delete failed", ex);
+                throw;
             }
 
         }
@@ -167,9 +166,9 @@ namespace InternLAApp.BL
                 bool returnVal = ActivityData.Delete(this.Activityid);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("Delete failed", ex);
+                throw;
             }
 
         }

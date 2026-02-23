@@ -1,32 +1,38 @@
-﻿@model InternLAApp.UI.Models.InternsModel
+﻿@model InternLAApp.UI.Models.LeaveModel
 
+@{
+    ViewBag.Title = "Create Leave";
+}
 
-<div class="card shadow p-3 mb-3">
-    <div class="card-header">
-        <h3>Create Intern</h3>
-    </div>
-    <div class="card-body">
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
+<div class="container mt-4">
+    <h2>Create Leave</h2>
 
-            <div class="mb-3">
-                <label for="FullName" class="form-label">Full Name</label>
-                <input type="text" name="FullName" class="form-control" />
-            </div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label>Intern Id</label>
+            @Html.TextBoxFor(m => m.InternId, new { @class = "form-control" })
+        </div>
 
-            <div class="mb-3">
-                <label for="DateOfJoining" class="form-label">Date of Joining</label>
-                <input type="date" name="DateOfJoining" class="form-control" />
-            </div>
+        <div class="form-group">
+            <label>From Date</label>
+            @Html.TextBoxFor(m => m.FromDate, "{0:yyyy-MM-dd}",
+                new { @class = "form-control", type = "date" })
+        </div>
 
-            <div class="mb-3">
-                <label for="AvailableLeave" class="form-label">Available Leave</label>
-                <input type="number" name="AvailableLeave" class="form-control" />
-            </div>
+        <div class="form-group">
+            <label>To Date</label>
+            @Html.TextBoxFor(m => m.ToDate, "{0:yyyy-MM-dd}",
+                new { @class = "form-control", type = "date" })
+        </div>
 
-            <button type="submit" class="btn btn-primary">Create</button>
-        }
+        <div class="form-group">
+            <label>Reason</label>
+            @Html.TextAreaFor(m => m.Reason, new { @class = "form-control" })
+        </div>
 
-       
-    </div>
+        <br />
+        <input type="submit" value="Create" class="btn btn-success" />
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    }
 </div>

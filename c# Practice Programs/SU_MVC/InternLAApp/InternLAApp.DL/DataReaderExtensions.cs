@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InternLAApp.DL
+namespace AttendanceTracker.DL
 {
     public static class DataReaderExtensions
     {

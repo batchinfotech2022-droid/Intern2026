@@ -1,55 +1,124 @@
-﻿@model IEnumerable<InternLAApp.UI.Models.InternsModel>
-
+﻿
 @{
     ViewBag.Title = "Interns";
 }
-
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h3>Interns List</h3>
-        <a href="@Url.Action("Create", "Interns")" class="btn btn-primary">Add New Intern</a>
-    </div>
-
+<div class="container" style="margin: auto; padding: 10px;">
     <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
+        <h4 class="text-center">Interns List</h4>
+
+        <table class="table table-bordered table-hover">
             <thead class="table-primary">
                 <tr>
                     <th>Sl. No</th>
                     <th>Full Name</th>
                     <th>Date Of Joining</th>
-                    <th>Available Leave</th>
+                    <th>Available Balance</th>
                     <th colspan="3" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model != null && Model.Any())
-                {
-                    foreach (var intern in Model)
-                    {
-                        <tr>
-                            <td>@intern.Id</td>
-                            <td>@intern.FullName</td>
-                            <td>@intern.DateOfJoining.ToString("yyyy-MM-dd")</td>
-                            <td>@intern.AvailableLeave</td>
-                            <td>
-                                <a href="@Url.Action("Edit", "Interns", new { id = intern.Id })" class="btn btn-success btn-sm">Edit</a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Details", "Interns", new { id = intern.Id })" class="btn btn-info btn-sm">View</a>
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Delete", "Attendance", new { id = intern.Id })"
-                                   class="btn btn-danger btn-sm">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="7" class="text-center text-muted">No interns found.</td>
-                    </tr>
-                }
+                <tr>
+                    <td>1</td>
+                    <td>Raghav Y</td>
+                    <td>2024-06-01</td>
+                    <td>10</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Chithra Acharya</td>
+                    <td>2024-06-05</td>
+                    <td>05</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Sulaksha Shetty</td>
+                    <td>2024-06-10</td>
+                    <td>15</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Prathiksha Sharma</td>
+                    <td>2024-06-12</td>
+                    <td>09</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Skanda Bhat</td>
+                    <td>2024-06-15</td>
+                    <td>11</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Shravya Kulal</td>
+                    <td>2024-06-18</td>
+                    <td>10</td>
+                    <td>
+                        <a href="editpage1.html" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+
+                    <td>
+                        <a href="viewpage1.html" class="btn btn-info btn-sm">View</a>
+                    </td>
+
+                    <td>
+                        <a href="deletepage1.html" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

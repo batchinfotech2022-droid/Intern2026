@@ -1,12 +1,11 @@
-﻿
-@model IEnumerable<InternLAApp.UI.Models.AttendanceModel>
+﻿@model IEnumerable<InternLAApp.UI.Models.LeaveModel>
 
 @{
-    ViewBag.Title = "Attendance List";
+    ViewBag.Title = "Leave List";
 }
 
 <div class="container mt-4">
-    <h2>Attendance</h2>
+    <h2>Leave</h2>
 
     <p>
         @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
@@ -15,8 +14,9 @@
     <table class="table table-bordered table-striped">
         <tr>
             <th>Intern Id</th>
-            <th>Date</th>
-            <th>Status</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Reason</th>
             <th></th>
         </tr>
 
@@ -24,8 +24,9 @@
         {
             <tr>
                 <td>@item.InternId</td>
-                <td>@item.AttendanceDate.ToShortDateString()</td>
-                <td>@item.Status</td>
+                <td>@item.FromDate.ToShortDateString()</td>
+                <td>@item.ToDate.ToShortDateString()</td>
+                <td>@item.Reason</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |

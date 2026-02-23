@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InternLAApp.DL;
 using System.Data.SqlClient;
 
+using InternLAApp.DL;
+
+//******************** AppException ****************************//
 
 
 namespace InternLAApp.BL
@@ -81,7 +80,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception insertion failed", ex);
+                throw new DLException("Exception insertion failed", ex);
             }
 
         }
@@ -100,7 +99,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("RetrieveAll failed", ex);
+                throw new DLException("RetrieveAll failed", ex);
             }
 
             return appexceptionlist;
@@ -120,7 +119,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("ReadForSearch failed", ex);
+                throw new DLException("ReadForSearch failed", ex);
             }
 
             return appexceptionlist;
@@ -142,7 +141,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("RetrieveById failed", ex);
+                throw new DLException("RetrieveById failed", ex);
             }
 
         }
@@ -156,7 +155,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("Update failed", ex);
+                throw new DLException("Update failed", ex);
             }
 
         }
@@ -171,7 +170,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("Delete failed", ex);
+                throw new DLException("Delete failed", ex);
             }
 
         }
@@ -185,7 +184,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("Delete failed", ex);
+                throw new DLException("Delete failed", ex);
             }
 
         }
@@ -199,7 +198,7 @@ namespace InternLAApp.BL
             {
                 AppExceptionData.CreateXML(xmlPath, exceptionsource, exceptiondesc, exceptiondate, issolved, remarks);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -222,7 +221,7 @@ namespace InternLAApp.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 //throw new DLException("GetXML failed", ex);
             }
@@ -249,7 +248,7 @@ namespace InternLAApp.BL
             }
             catch (Exception ex)
             {
-                throw new Exception("Retrieve failed", ex);
+                throw new DLException("Retrieve failed", ex);
             }
 
             return appexceptionlist;
