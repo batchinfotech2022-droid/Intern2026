@@ -19,59 +19,72 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="mt-4">
+                <div class="mt-4">
 
-                            <!-- Full Name -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.FullName,
-                                    new { @class = "form-control", placeholder = "Enter Full Name" })
-                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
-                            </div>
+                    <!-- Full Name -->
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.FullName,
+                            new { @class = "form-control", placeholder = "Enter Full Name" })
+                        @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                    </div>
 
-                            <!-- Email -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Email,
-                                    new { @class = "form-control", type = "email", placeholder = "you@example.com" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
 
-                            <!-- Phone -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Phone,
-                                    new { @class = "form-control", placeholder = "Enter Phone Number" })
-                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
-                            </div>
 
-                            <!-- City -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.City,
-                                    new { @class = "form-control", placeholder = "Enter City" })
-                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
-                            </div>
+                    <!-- Phone -->
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Phone,
+                            new { @class = "form-control", placeholder = "Enter Phone Number" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                    </div>
 
-                            <!-- Category -->
-                            <div class="mb-3">
-                                @Html.Label("Category", new { @class = "form-label" })
+                    <!-- City -->
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.City,
+                            new { @class = "form-control", placeholder = "Enter City" })
+                        @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                    </div>
 
-                                @Html.DropDownListFor(m => m.CategoryId,
-                                    (IEnumerable<SelectListItem>)ViewBag.CategoryList,
-                                    "Select Category",
-                                    new { @class = "form-select" })
+                    <!-- Email -->
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.UserName,
+                            new { @class = "form-control", type = "email", placeholder = "you@example.com" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
 
-                                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
-                            </div>
 
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    Submit
-                                </button>
-                            </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.PassWord, new { @class = "form-label" })
 
-                        </div>
+                        @Html.PasswordFor(m => m.PassWord,
+                            new { @class = "form-control", placeholder = "Enter Password" })
+
+                        @Html.ValidationMessageFor(m => m.PassWord,
+                            "", new { @class = "text-danger" })
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-3">
+                        @Html.Label("Category", new { @class = "form-label" })
+
+                        @Html.DropDownListFor(m => m.CategoryId,
+                           Model.CategoryList,
+                            "Select Category",
+                            new { @class = "form-select" })
+
+                        @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
                     }
 
                 </div>

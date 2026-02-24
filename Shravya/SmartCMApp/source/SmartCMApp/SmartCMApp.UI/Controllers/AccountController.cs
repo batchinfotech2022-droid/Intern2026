@@ -12,8 +12,68 @@ using System.Web.Security;
 
 namespace SmartCMApp.UI.Controllers
 {
+   
     public class AccountController : Controller
     {
+        private string userName = "Admin";
+
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            ContactModel model = new ContactModel();
+
+            var categories = Category.RetrieveAll(userName)
+                                     .Where(c => c.IsActive)
+                                     .ToList();
+
+            model.CategoryList = categories.Select(c =>
+                new SelectListItem
+                {
+                    Text = c.CategoryName,
+                    Value = c.Id.ToString()
+                }).ToList();
+
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(ContactModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var categories = Category.RetrieveAll(userName)
+                                         .Where(c => c.IsActive)
+                                         .ToList();
+
+                model.CategoryList = categories.Select(c =>
+                    new SelectListItem
+                    {
+                        Text = c.CategoryName,
+                        Value = c.Id.ToString()
+                    }).ToList();
+
+                return View(model);
+            }
+
+            model.Role = "User";
+
+            Contact.Create(
+                model.FullName,
+                model.Phone,
+                model.City,
+                model.CategoryId,
+                model.UserName,
+                model.PassWord,
+                model.Role);
+
+            return RedirectToAction("Login", "Account");
+        }
+
+
 
         [AllowAnonymous]
         public ActionResult Login()
@@ -33,14 +93,14 @@ namespace SmartCMApp.UI.Controllers
                 return View(model);
             }
 
-            Register user = Register.RetrieveByUserName(model.UserName);
+            Contact user = Contact.RetrieveByUserName(model.UserName);
 
             if (user == null || user.IsDeleted || !user.IsActive)
             {
                 ModelState.AddModelError("", "Invalid username or account inactive.");
                 return View(model);
             }
-            bool result = Register.Authenticate(model.UserName,model.Password);
+            bool result = Contact.Authenticate(model.UserName, model.Password);
             if (result == true)
             {
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
@@ -65,7 +125,7 @@ namespace SmartCMApp.UI.Controllers
                 return View(model);
             }
 
-            if (user.Password == model.Password)
+            if (user.PassWord == model.Password)
             {
 
 
@@ -114,36 +174,8 @@ namespace SmartCMApp.UI.Controllers
 
 
 
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(AccountModel model)
-
-        {
-            if (ModelState.IsValid)
-            {
-                Register obj = new Register();
-
-                obj.FirstName = model.FirstName;
-                obj.LastName = model.LastName;
-                obj.Address = model.Address;
-                obj.Phone = model.Phone;
-                obj.UserName = model.UserName;
-                obj.Password = model.Password;
-                obj.IsActive = true;
-
-                Register.Create(obj, "Admin");
-
-                return RedirectToAction("Login");
-
-            }
-
-            return View(model);
+         
         }
     }
-}
+

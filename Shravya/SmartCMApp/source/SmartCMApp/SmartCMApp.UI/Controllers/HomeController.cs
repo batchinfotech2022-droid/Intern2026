@@ -32,7 +32,7 @@ namespace SmartCMApp.UI.Controllers
                                 {
                                     Id = c.Id,
                                     FullName = c.FullName,
-                                    Email = c.Email,
+                                    UserName = c.UserName,
                                     City = c.City,
                                     Phone = c.Phone
                                 }).ToList();

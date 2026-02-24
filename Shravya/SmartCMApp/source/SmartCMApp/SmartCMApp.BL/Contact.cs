@@ -282,6 +282,73 @@ namespace SmartCMApp.BL
             }
         }
 
+        public static Contact RetrieveByUserName(string userName)
+        {
+            Contact result = null;
+
+            try
+            {
+                DataTable dt = ContactData.RetrieveByUserName(userName);
+                DataTableReader r = dt.CreateDataReader();
+
+                if (r.Read())
+                {
+                    result = ConvertReaderToObject(r);
+                }
+
+                r.Close();
+                dt.Dispose();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+
+
+        public static Boolean Authenticate(string UserName, string PassWord)
+        {
+            if (PassWord.Trim() == "")
+            {
+                return false;
+            }
+            bool bVal = false;
+            try
+            {
+
+                Contact user = Contact.RetrieveByUserName(UserName);
+                if (user != null)
+                {
+                    if (PasswordHash.VerifyPassword(PassWord, user.PassWord))
+                    {
+                        bVal = true;
+                    }
+                    else
+                    {
+                        if (PasswordHash.isHashedPassword(PassWord))
+                        {
+                            bVal = false;
+                        }
+                        else if (PassWord == user.PassWord)
+                        {
+                            bVal = true;
+                            user.PassWord = PasswordHash.GenerateHash(PassWord);
+                            user.Update(user.UserName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+            return bVal;
+        }
         #endregion
 
         #region Convert Reader

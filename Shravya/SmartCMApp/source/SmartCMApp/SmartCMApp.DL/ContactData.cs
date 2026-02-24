@@ -171,6 +171,25 @@ bool isDeleted)
                 return result;
             }
         }
+
+        public static DataTable RetrieveByUserName(string userName)
+        {
+            using (SqlCommand cmd = new SqlCommand("Contacts_RetrieveByUserName"))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@UserName", userName);
+
+                DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
+                DataTable dt = ds.Tables[0];
+
+                cmd.Connection.Close();
+                cmd.Connection.Dispose();
+                cmd.Dispose();
+
+                return dt;
+            }
+        }
     }
     }
 

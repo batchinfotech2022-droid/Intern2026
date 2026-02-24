@@ -1,10 +1,13 @@
-﻿using SmartCMApp.BL;
-using SmartCMApp.UI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.Ajax.Utilities;
+using SmartCMApp.BL;
+using SmartCMApp.UI.Models;
+using SmartCMApp.UI.ViewModel;
 
 namespace SmartCMApp.UI.Controllers
 {
@@ -14,6 +17,7 @@ namespace SmartCMApp.UI.Controllers
             private string userName = "Admin";
 
 
+        
         public ActionResult Index(string search, int? categoryId)
         {
             var list = Contact.RetrieveAll(userName);
@@ -31,7 +35,7 @@ namespace SmartCMApp.UI.Controllers
                            .ToList();
             }
 
-            // Load category dropdown
+           
             var categories = Category.RetrieveAll(userName)
                                      .Where(c => c.IsActive)
                                      .ToList();
@@ -55,43 +59,13 @@ namespace SmartCMApp.UI.Controllers
 
         public ActionResult Create()
         {
+            ContactModel model = new ContactModel();
+
             var categories = Category.RetrieveAll(userName)
                                      .Where(c => c.IsActive)
                                      .ToList();
 
-            ViewBag.CategoryList = categories.Select(c =>
-                new SelectListItem
-                {
-                    Text = c.CategoryName,
-                    Value = c.Id.ToString()
-                }).ToList();
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(ContactModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Contact.Create(userName,
-                               model.FullName,
-                               model.Phone,
-                               model.City,
-                               model.CategoryId,
-                               model.PassWord,
-                               model.Role);
-
-                return RedirectToAction("Index");
-            }
-
-            // Reload dropdown if validation fails
-            var categories = Category.RetrieveAll(userName)
-                                     .Where(c => c.IsActive)
-                                     .ToList();
-
-            ViewBag.CategoryList = categories.Select(c =>
+            model.CategoryList = categories.Select(c =>
                 new SelectListItem
                 {
                     Text = c.CategoryName,
@@ -99,6 +73,40 @@ namespace SmartCMApp.UI.Controllers
                 }).ToList();
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ContactModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var categories = Category.RetrieveAll(userName)
+                                         .Where(c => c.IsActive)
+                                         .ToList();
+
+                model.CategoryList = categories.Select(c =>
+                    new SelectListItem
+                    {
+                        Text = c.CategoryName,
+                        Value = c.Id.ToString()
+                    }).ToList();
+
+                return View(model);
+            }
+
+            model.Role = "User"; // default role
+
+            Contact.Create(
+                model.FullName,
+                model.Phone,
+                model.City,
+                model.CategoryId,
+                model.UserName,
+                model.PassWord,
+                model.Role);
+
+            return RedirectToAction("Index");
         }
         public ActionResult Delete(int id)
         {
@@ -139,11 +147,17 @@ namespace SmartCMApp.UI.Controllers
 
             ContactModel model = new ContactModel(contact);
 
-            ViewBag.CategoryList = new SelectList(
-                Category.RetrieveAll(userName),
-                "Id",
-                "CategoryName",
-                model.CategoryId);
+            var categories = Category.RetrieveAll(userName)
+                                     .Where(c => c.IsActive)
+                                     .ToList();
+
+            model.CategoryList = categories.Select(c =>
+                new SelectListItem
+                {
+                    Text = c.CategoryName,
+                    Value = c.Id.ToString(),
+                    Selected = (c.Id == model.CategoryId)
+                }).ToList();
 
             return View(model);
         }
@@ -151,24 +165,36 @@ namespace SmartCMApp.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ContactModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string userName = "Admin";
+                var categories = Category.RetrieveAll(userName)
+                                         .Where(c => c.IsActive)
+                                         .ToList();
 
-                Contact contact = new Contact();
-                contact.Id = model.Id;
-                contact.FullName = model.FullName;
-                contact.Email = model.Email;
-                contact.Phone = model.Phone;
-                contact.City = model.City;
-                contact.CategoryId = model.CategoryId;
+                model.CategoryList = categories.Select(c =>
+                    new SelectListItem
+                    {
+                        Text = c.CategoryName,
+                        Value = c.Id.ToString(),
+                        Selected = (c.Id == model.CategoryId)
+                    }).ToList();
 
-                contact.Update(userName);
-
-                return RedirectToAction("Index");
+                return View(model);
             }
 
-            return View(model);
+            
+
+            Contact contact = new Contact();
+            contact.Id = model.Id;
+            contact.FullName = model.FullName;
+            contact.UserName = model.UserName;
+            contact.Phone = model.Phone;
+            contact.City = model.City;
+            contact.CategoryId = model.CategoryId;
+
+            contact.Update(userName);
+
+            return RedirectToAction("Index");
         }
 
 

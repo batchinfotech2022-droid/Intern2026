@@ -26,13 +26,7 @@ namespace SmartCMApp.UI.Models
                 set { _contact.FullName = value; }
             }
 
-            [Required]
-            [EmailAddress]
-            public string UserName
-            {
-                get { return _contact.UserName; }
-                set { _contact.UserName = value; }
-            }
+           
 
             [Required]
             [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone must be 10 digits")]
@@ -42,6 +36,7 @@ namespace SmartCMApp.UI.Models
                 set { _contact.Phone = value; }
             }
 
+        [Required]
             public string City
             {
                 get { return _contact.City; }
@@ -55,16 +50,35 @@ namespace SmartCMApp.UI.Models
                 get { return _contact.CategoryId; }
                 set { _contact.CategoryId = value; }
             }
-        public int PassWord
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Username")]
+        public string UserName
+        {
+            get { return _contact.UserName; }
+            set { _contact.UserName = value; }
+        }
+        [Required]
+        public string PassWord
         {
             get { return _contact.PassWord; }
             set { _contact.PassWord = value; }
         }
-        public int Role
+        public string Role
         {
             get { return _contact.Role; }
             set { _contact.Role = value; }
         }
+
+        public bool IsActive { get { return _contact.IsActive; } set { _contact.IsActive = value; } }
+        public bool IsLogged { get { return _contact.IsLogged; } set { _contact.IsLogged = value; } }
+        public int NoOfAttempts { get { return _contact.NoOfAttempts; } set { _contact.NoOfAttempts = value; } }
+        public string CreatedBy { get { return _contact.CreatedBy; } set { _contact.CreatedBy = value; } }
+        public DateTime CreatedDate { get { return _contact.CreatedDate; } set { _contact.CreatedDate = value; } }
+        public string ModifiedBy { get { return _contact.ModifiedBy; } set { _contact.ModifiedBy = value; } }
+        public DateTime ModifiedDate { get { return _contact.ModifiedDate; } set { _contact.ModifiedDate = value; } }
+        public bool IsDeleted { get { return _contact.IsDeleted; } set { _contact.IsDeleted = value; } }
 
         public List<SelectListItem> CategoryList { get; set; }
 

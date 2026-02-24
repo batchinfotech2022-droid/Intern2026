@@ -32,7 +32,7 @@
                                 @Html.TextBoxFor(m => m.UserName,
                                     new
                                          {
-                                        @class = "form-control",
+                                        @class = "form-control w-100",
                                         placeholder = "email@example.com",
                                         type = "email"
                                     })
@@ -65,7 +65,7 @@
                     }
 
                     <div class="text-start px-4 pb-3">
-                        @Html.ActionLink("New User? Register", "Create", "Account",
+                        @Html.ActionLink("New User? Register", "Register", "Account",
                             null, new { @class = "text-info" })
                     </div>
 
