@@ -11,17 +11,23 @@ namespace SmartCMApp.DL
 {
         public class ContactData
         {
-            public static int Create(string fullName,
-                                     string email,
-                                     string phone,
-                                     string city,
-                                     int categoryId,
-                                     string createdBy,
-                                     DateTime createdDate,
-                                     string modifiedBy,
-                                     DateTime modifiedDate,
-                                     bool isDeleted)
-            {
+        public static int Create(
+string fullName,
+string userName,
+string phone,
+string city,
+int categoryId,
+string password,
+string role,
+bool isActive,
+bool isLogged,
+int noOfAttempts,
+string createdBy,
+DateTime createdDate,
+string modifiedBy,
+DateTime modifiedDate,
+bool isDeleted)
+        {
                 int returnValue;
 
                 using (SqlCommand cmd = new SqlCommand("Contact_Create"))
@@ -31,18 +37,23 @@ namespace SmartCMApp.DL
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int));
                     cmd.Parameters["@ID"].Direction = ParameterDirection.Output;
 
-                    cmd.Parameters.AddWithValue("@FullName", fullName);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@City", city);
-                    cmd.Parameters.AddWithValue("@CategoryId", categoryId);
-                    cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                    cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
-                    cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
-                    cmd.Parameters.AddWithValue("@IsDeleted", isDeleted);
+                cmd.Parameters.AddWithValue("@FullName", fullName);
+                cmd.Parameters.AddWithValue("@UserName", userName);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+                cmd.Parameters.AddWithValue("@City", city);
+                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+                cmd.Parameters.AddWithValue("@PassWord", password);
+                cmd.Parameters.AddWithValue("@Role", role);
+                cmd.Parameters.AddWithValue("@IsActive", isActive);
+                cmd.Parameters.AddWithValue("@IsLogged", isLogged);
+                cmd.Parameters.AddWithValue("@NoOfAttempts", noOfAttempts);
+                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+                cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
+                cmd.Parameters.AddWithValue("@IsDeleted", isDeleted);
 
-                    returnValue = DataAccess.RunCmdOutput_int(cmd);
+                returnValue = DataAccess.RunCmdOutput_int(cmd);
 
                     cmd.Connection.Close();
                     cmd.Connection.Dispose();
@@ -52,123 +63,115 @@ namespace SmartCMApp.DL
                 }
             }
 
-            public static DataTable RetrieveAll()
+        public static DataTable RetrieveAll()
+        {
+            using (SqlCommand cmd = new SqlCommand("Contact_ReadAll"))
             {
-                DataTable dt = null;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                using (SqlCommand cmd = new SqlCommand("Contact_ReadAll"))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
+                DataTable dt = ds.Tables[0];
 
-                    DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
-                    dt = ds.Tables[0];
-
-                    cmd.Connection.Close();
-                    cmd.Connection.Dispose();
-                    cmd.Dispose();
-                }
+                cmd.Connection.Close();
+                cmd.Connection.Dispose();
+                cmd.Dispose();
 
                 return dt;
             }
+        }
 
-            public static DataTable RetrieveById(int id)
+        public static DataTable RetrieveById(int id)
+        {
+            using (SqlCommand cmd = new SqlCommand("Contact_ReadByID"))
             {
-                DataTable dt = null;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
 
-                using (SqlCommand cmd = new SqlCommand("Contact_ReadByID"))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", id);
+                DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
+                DataTable dt = ds.Tables[0];
 
-                    DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
-                    dt = ds.Tables[0];
-
-                    cmd.Connection.Close();
-                    cmd.Connection.Dispose();
-                    cmd.Dispose();
-                }
+                cmd.Connection.Close();
+                cmd.Connection.Dispose();
+                cmd.Dispose();
 
                 return dt;
             }
+        }
 
-            public static Boolean Update(int id,
-                                         string fullName,
-                                         string email,
-                                         string phone,
-                                         string city,
-                                         int categoryId,
-                                         string createdBy,
-                                         DateTime createdDate,
-                                         string modifiedBy,
-                                         DateTime modifiedDate,
-                                         bool isDeleted)
+        public static bool Update(int id,
+                          string fullName,
+                          string userName,
+                          string phone,
+                          string city,
+                          int categoryId,
+                          string password,
+                          string role,
+                          bool isActive,
+                          bool isLogged,
+                          int noOfAttempts,
+                          string modifiedBy,
+                          DateTime modifiedDate)
+        {
+            using (SqlCommand cmd = new SqlCommand("Contact_Update"))
             {
-                bool result = false;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                using (SqlCommand cmd = new SqlCommand("Contact_Update"))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@FullName", fullName);
+                cmd.Parameters.AddWithValue("@UserName", userName);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+                cmd.Parameters.AddWithValue("@City", city);
+                cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@Role", role);
+                cmd.Parameters.AddWithValue("@IsActive", isActive);
+                cmd.Parameters.AddWithValue("@IsLogged", isLogged);
+                cmd.Parameters.AddWithValue("@NoOfAttempts", noOfAttempts);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
 
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@FullName", fullName);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@City", city);
-                    cmd.Parameters.AddWithValue("@CategoryId", categoryId);
-                    cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
-                    cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                    cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
-                    cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
-                    cmd.Parameters.AddWithValue("@IsDeleted", isDeleted);
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
+                cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
 
-                    cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
-                    cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
+                SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
 
-                    SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
+                bool result = cmd.Parameters["@rowsAffected"].Value.ToString() == "1";
 
-                    if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1")
-                        result = true;
-
-                    r.Close();
-
-                    cmd.Connection.Close();
-                    cmd.Connection.Dispose();
-                    cmd.Dispose();
-                }
-
-                return result;
-            }
-
-            public static Boolean Delete(int id)
-            {
-                bool result = false;
-
-                using (SqlCommand cmd = new SqlCommand("Contact_Delete"))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.Parameters.AddWithValue("@ModifiedBy", "Admin");
-                    cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
-
-                    cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
-                    cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
-
-                    SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
-
-                    if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1")
-                        result = true;
-
-                    r.Close();
-
-                    cmd.Connection.Close();
-                    cmd.Connection.Dispose();
-                    cmd.Dispose();
-                }
+                r.Close();
+                cmd.Connection.Close();
+                cmd.Connection.Dispose();
+                cmd.Dispose();
 
                 return result;
             }
         }
+
+        public static bool Delete(int id, string modifiedBy)
+        {
+            using (SqlCommand cmd = new SqlCommand("Contact_Delete"))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
+                cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
+
+                SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
+
+                bool result = cmd.Parameters["@rowsAffected"].Value.ToString() == "1";
+
+                r.Close();
+                cmd.Connection.Close();
+                cmd.Connection.Dispose();
+                cmd.Dispose();
+
+                return result;
+            }
+        }
+    }
     }
 
 

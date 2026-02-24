@@ -28,10 +28,10 @@ namespace SmartCMApp.UI.Models
 
             [Required]
             [EmailAddress]
-            public string Email
+            public string UserName
             {
-                get { return _contact.Email; }
-                set { _contact.Email = value; }
+                get { return _contact.UserName; }
+                set { _contact.UserName = value; }
             }
 
             [Required]
@@ -55,8 +55,18 @@ namespace SmartCMApp.UI.Models
                 get { return _contact.CategoryId; }
                 set { _contact.CategoryId = value; }
             }
+        public int PassWord
+        {
+            get { return _contact.PassWord; }
+            set { _contact.PassWord = value; }
+        }
+        public int Role
+        {
+            get { return _contact.Role; }
+            set { _contact.Role = value; }
+        }
 
-            public List<SelectListItem> CategoryList { get; set; }
+        public List<SelectListItem> CategoryList { get; set; }
 
             public Contact Contact
             {

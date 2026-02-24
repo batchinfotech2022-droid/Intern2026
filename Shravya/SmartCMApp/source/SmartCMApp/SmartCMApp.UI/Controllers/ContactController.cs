@@ -77,10 +77,11 @@ namespace SmartCMApp.UI.Controllers
             {
                 Contact.Create(userName,
                                model.FullName,
-                               model.Email,
                                model.Phone,
                                model.City,
-                               model.CategoryId);
+                               model.CategoryId,
+                               model.PassWord,
+                               model.Role);
 
                 return RedirectToAction("Index");
             }
