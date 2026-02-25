@@ -3,6 +3,7 @@
     margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+    flex:1;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -16,7 +17,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 100%;
 }
 
 .register-bg {
@@ -36,3 +37,25 @@ textarea {
     min-height: 100vh;
     padding-top: 60px;
 }
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+
+

@@ -8,20 +8,23 @@
     <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-8 col-lg-6">
 
-            <div class="card shadow">
-                <div class="card-body">
+            <div class="card shadow-lg rounded-3">
 
-                    <h2 class="p-3 bg-info text-center text-white rounded">
-                        Add Category
-                    </h2>
+                <!-- Header -->
+                <div class="card-header bg-success text-white text-center">
+                    <h2 class="mb-0 fw-bold">Add Category</h2>
+                </div>
 
-                    @using (Html.BeginForm("Create", "Category", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
+                @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
 
-                        <div class="mt-4">
+                    <div class="card-body">
 
-                            <div class="mb-3">
+                        <div class="w-75 mx-auto">
+
+                            <!-- Category Name -->
+                            <div class="mb-4">
                                 @Html.LabelFor(m => m.CategoryName, new { @class = "form-label" })
                                 @Html.TextBoxFor(m => m.CategoryName,
                                     new { @class = "form-control", placeholder = "Enter Category Name" })
@@ -29,7 +32,8 @@
                                     new { @class = "text-danger" })
                             </div>
 
-                            <div class="mb-3">
+                            <!-- Status -->
+                            <div class="mb-4">
                                 <label class="form-label">Status</label>
 
                                 @Html.DropDownListFor(m => m.IsActive,
@@ -44,21 +48,25 @@
                                     new { @class = "text-danger" })
                             </div>
 
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success">
-                                    Save Category
-                                </button>
-                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="card-footer bg-white px-4 py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            @Html.ActionLink("Back", "Index", "Category",
+                                null, new { @class = "btn btn-secondary px-4" })
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Save
+                            </button>
 
                         </div>
-                    }
+                    </div>
+                }
 
-                </div>
-            </div>
-
-            <div class="mt-3">
-                @Html.ActionLink("← Back", "Index", "Category",
-                    null, new { @class = "btn btn-secondary" })
             </div>
 
         </div>

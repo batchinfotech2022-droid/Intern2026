@@ -9,6 +9,7 @@ using SmartCMApp.UI.Models;
 
 namespace SmartCMApp.UI.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
             private string userName = "Admin"; 

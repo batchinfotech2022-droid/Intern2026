@@ -1,72 +1,124 @@
 ﻿@model SmartCMApp.UI.ViewModel.LoginViewModel
 
-
 @{
     ViewBag.Title = "Login";
     Layout = null;
 }
+
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
 
-<div class="login-bg">
-    <div class="container-fluid min-vh-100 d-flex align-items-center">
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
 
-        <div class="row w-100">
+    .login-wrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('/Content/images/login.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
-            <!-- Empty Left Space -->
-            <div class="col-lg-6"></div>
+    .login-card {
+        width: 400px;
+        padding: 40px;
+        border-radius: 20px;
+        background: #e8d5f7;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        color: #000;
+    }
 
-            <!-- Login Card -->
-            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #000;
+        }
 
-                <div class="card shadow-lg ms-lg-4">
-                    <h2 class="text-center p-4 login-title">LogIn</h2>
+        .login-card label {
+            color: #000;
+        }
 
-                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
+    .form-control {
+        width: 100%;
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: #000;
+    }
 
-                        <div class="px-4 py-4">
+        .form-control::placeholder {
+            color:#000;
+        }
 
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.UserName,
-                                    new
-                                         {
-                                        @class = "form-control",
-                                        placeholder = "email@example.com",
-                                        type = "email"
-                                    })
-                            </div>
+        .form-control:focus {
+            background: #764ba2;
+            box-shadow: none;
+            color: black;
+        }
 
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.Password, new { @class = "form-label" })
-                                @Html.PasswordFor(m => m.Password,
-                                    new
-                                         {
-                                        @class = "form-control",
-                                        placeholder = "Password"
-                                    })
-                            </div>
+    .btn-login {
+        width: 100%;
+        margin-top: 10px;
+        background: white;
+        color: #764ba2;
+        font-weight: bold;
+        border-radius: 10px;
+    }
 
-                            <div class="text-center mb-3">
-                                <button type="submit" class="btn btn-primary px-4">
-                                    Log in
-                                </button>
-                            </div>
+    .register-link {
+        text-align: center;
+        margin-top: 15px;
+    }
 
-                        </div>
-                    }
+        .register-link a {
+            color: black;
+        }
+</style>
 
-                    <div class="text-start px-4 pb-3">
-                        @Html.ActionLink("New User? Register", "Register", "Account",
-                            null, new { @class = "text-info" })
-                    </div>
+<div class="login-wrapper">
+    <div class="login-card">
 
-                </div>
+        <h2 >Welcome Back ✨</h2>
 
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName,
+                    new
+                         {
+                        @class = "form-control",
+                        placeholder = "Enter Email",
+                        type = "email"
+                    })
             </div>
 
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password,
+                    new
+                         {
+                        @class = "form-control",
+                        placeholder = "Enter Password"
+                    })
+            </div>
+
+            <button type="submit" class="btn btn-login">
+                Login
+            </button>
+        }
+
+        <div class="register-link">
+            @Html.ActionLink("New User? Register", "Register", "Account")
         </div>
+
     </div>
 </div>

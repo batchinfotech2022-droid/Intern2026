@@ -11,6 +11,7 @@ using SmartCMApp.UI.ViewModel;
 
 namespace SmartCMApp.UI.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         

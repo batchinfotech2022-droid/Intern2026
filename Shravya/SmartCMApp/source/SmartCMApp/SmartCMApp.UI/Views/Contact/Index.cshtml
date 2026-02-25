@@ -10,8 +10,15 @@
         <div class="card-header bg-info text-white py-3">
             <div class="row align-items-center">
 
-                <!-- SEARCH + FILTER -->
-                <div class="col-md-4">
+
+                
+                <div class="col-md-7 ">
+                    <h4 class="mb-0 fw-semibold">Contacts</h4>
+                </div>
+               
+
+
+                <div class="col-md-3">
                     @using (Html.BeginForm("Index", "Contact", FormMethod.Get))
                     {
                         <div class="d-flex gap-2">
@@ -26,14 +33,21 @@
                                        placeholder="Search by name" />
                             </div>
 
-                            <select name="categoryId"
-                                    class="form-select form-select-sm w-auto">
+                            @{
+                                var selectedCategory = Request.QueryString["categoryId"];
+                            }
+
+                            <select name="categoryId" class="form-select form-select-sm w-auto">
                                 <option value="">All</option>
+
                                 @if (ViewBag.CategoryList != null)
                                 {
                                     foreach (var item in ViewBag.CategoryList)
                                     {
-                                        <option value="@item.Value">@item.Text</option>
+                                        <option value="@item.Value"
+                                                @(selectedCategory == item.Value ? "selected" : "")>
+                                            @item.Text
+                                        </option>
                                     }
                                 }
                             </select>
@@ -46,14 +60,11 @@
                     }
                 </div>
 
-                <!-- TITLE -->
-                <div class="col-md-4 text-center">
-                    <h4 class="mb-0 fw-semibold">Contacts</h4>
-                </div>
+
 
                 <!-- CREATE BUTTON -->
-                <div class="col-md-4 text-end">
-                    @Html.ActionLink("+ Create", "Create", null,
+                <div class="col-md-2 text-center">
+                    @Html.ActionLink(" Add Contact", "Create", null,
                         new { @class = "btn btn-success btn-sm" })
                 </div>
 
@@ -93,7 +104,7 @@
 
                                 <td>
                                     @Html.ActionLink("Details", "Details", new { id = item.Id },
-    new { @class = "btn btn-success btn-sm" })
+    new { @class = "btn btn-warning btn-sm" })
 
                                 </td>
 
