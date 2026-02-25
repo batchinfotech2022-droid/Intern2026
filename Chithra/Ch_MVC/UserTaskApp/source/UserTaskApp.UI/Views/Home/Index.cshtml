@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<div class="bg-light">
 <div class="row">
     <div class="col-md-7">
         <figure class="text-center">
@@ -13,9 +13,11 @@
             </h1>
             <h3>What Is a Task Tracker and Why Do You Need One?</h3>
 
-            <a type="button" size="10" class="btn btn-outline-secondary mt-5" href="task.html">AssignTask</a>
-            <a type="button" class="btn btn-outline-success mt-5" href="status.html">TaskStatusMaster</a>
-            <a type="button" class="btn btn-outline-danger mt-5" href="history.html">TaskStatusHistory</a>
+            @Html.ActionLink("Assign Task", "Create", "Task", null,
+     new { @class = "btn btn-outline-primary btn-lg me-3" })
+
+            @Html.ActionLink("Manage Users", "Index", "User", null,
+                new { @class = "btn btn-outline-primary btn-lg" })
         </figure>
     </div>
     <div class="col-md-5">
@@ -26,6 +28,81 @@
 
 
     </div>
+</div>
 
 </div>
-    
+
+    <div class="container mt-5 hero-section bg-secondary bg-opacity-80">
+
+        <div class="row align-items-center">
+
+
+            <div class="col-md-6 text-center">
+
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/task-management-4268367-3561003.png"
+                     class="hero-img" />
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h2 class="fw-bold mb-3">What Is Task & Issue Tracker?</h2>
+
+                <ul class="hero-points">
+                    <li>✔ Web based system for managing tasks.</li>
+                    <li>✔ Assign work to users and track progress.</li>
+                    <li>✔ Employees update status directly.</li>
+                    <li>✔ Admin gets detailed reports.</li>
+                </ul>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="container feature-section mt-5 text-center">
+
+    <h2 class="feature-title">What Task & Issue Tracker Does</h2>
+    <div class="title-underline"></div>
+
+    <div class="row">
+
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h4 class="text-primary">Scheduled Tasks</h4>
+                <p>
+                    Assign daily, weekly and monthly tasks to users easily.
+                </p>
+            </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">📌</div>
+                <h4 class="text-primary">Easy Follow Ups</h4>
+                <p>
+                    Track progress and monitor deadlines in real time.
+                </p>
+            </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h4 class="text-primary">Performance Analysis</h4>
+                <p>
+                    Analyze employee performance through task completion reports.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

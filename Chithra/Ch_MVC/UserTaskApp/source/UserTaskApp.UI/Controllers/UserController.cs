@@ -5,83 +5,66 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using UserTaskApp.BL;
+using UserTaskApp.DL;
 using UserTaskApp.UI.ViewModels;
 using UserTaskApp.UI.Models;
+
+
+
+
 
 namespace UserTaskApp.UI.Controllers
 {
     public class UserController : Controller
         {
-            string usrName = "Admin";
 
-            public ActionResult Index()
-            {
-                List<UserTaskApp.BL.User> list = UserTaskApp.BL.User.RetrieveAll(usrName);
-                List<UserModel> model = list.Select(x => new UserModel(x)).ToList();
-                return View(model);
-            }
 
+
+        public ActionResult Index()
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+            List<AppUser> list = AppUser.RetrieveAll(usrName);
+            List<UserModel> model = list.Select(x => new UserModel(x)).ToList();
+            return View(model);
+        }
+
+
+       
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
-        [AllowAnonymous]
+        
         [ValidateAntiForgeryToken]
-        public ActionResult Login(RegisterViewModel model)
+        public ActionResult Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
-            User user = User.RetrieveByUserName(model.UserName);
+            AppUser user = AppUser.RetrieveByUserName(model.UserName);
+
             if (user == null)
             {
-                ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                ModelState.AddModelError("", "Invalid username or password");
                 return View(model);
             }
 
-            if (!user.UserName.Equals(model.UserName, StringComparison.OrdinalIgnoreCase))
-            {
-                ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                return View(model);
-            }
-
-
-            bool result = User.Authenticate(model.UserName, model.Password.Trim());
-
-            if (result == true)
-            {
-                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-                                1, model.UserName, DateTime.Now, DateTime.Now.AddMinutes(2880),
-                                false, FormsAuthentication.FormsCookiePath
-                );
-                string hash = FormsAuthentication.Encrypt(ticket);
-                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash)
-                {
-                    HttpOnly = true,
-                    Expires = ticket.Expiration
-                };
-
-                Response.Cookies.Add(authCookie);
-                return RedirectToAction("Index", "Home");
-            }
             if (user.NoAttempts >= 3)
             {
-                ModelState.AddModelError("", "Your account is locked due to multiple failed attempts.");
+                ModelState.AddModelError("", "Account locked due to multiple failed attempts.");
                 return View(model);
             }
 
-            if (user.Password == model.Password)
+            bool result = AppUser.Authenticate(model.UserName, model.Password.Trim());
+
+            if (result)
             {
-
-
                 user.NoAttempts = 0;
                 user.IsLogged = true;
                 user.ModifiedBy = user.UserName;
                 user.ModifiedDate = DateTime.Now;
-
                 user.Update(user.UserName);
 
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
@@ -90,26 +73,51 @@ namespace UserTaskApp.UI.Controllers
                 Session["UserId"] = user.Id;
 
                 return RedirectToAction("Index", "Home");
-
             }
             else
             {
                 user.NoAttempts += 1;
 
                 if (user.NoAttempts >= 3)
-                {
                     user.IsActive = false;
-                }
 
                 user.ModifiedBy = user.UserName;
                 user.ModifiedDate = DateTime.Now;
-
                 user.Update(user.UserName);
 
-                ModelState.AddModelError("", "Invalid username or password.");
+                ModelState.AddModelError("", "Invalid username or password");
                 return View(model);
             }
         }
+
+
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View(new UserModel());
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Register(UserModel model)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+            if (!ModelState.IsValid)
+                return View(model);
+
+            model.CreatedBy = model.UserName;
+            model.ModifiedBy = model.UserName;
+            model.CreatedDate = DateTime.Now;
+            model.ModifiedDate = DateTime.Now;
+            model.IsActive = true;
+            model.IsDeleted = false;
+            model.NoAttempts = 0;
+
+            AppUser.Create(usrName, model.UserName, model.FirstName, model.LastName, model.Password, model.Phone, model.Address, model.Role, model.IsActive, model.IsLogged, model.NoAttempts, model.IsLocked);
+
+            return RedirectToAction("Login");
+        }
+
 
         public ActionResult LogOff()
         {
@@ -118,59 +126,125 @@ namespace UserTaskApp.UI.Controllers
             return RedirectToAction("Login", "User");
         }
 
+
+
+
         public ActionResult Create()
-            {
-                return View(new UserModel());
-            }
+        {
+            return View(new UserModel());
+        }
 
         [HttpPost]
         public ActionResult Create(UserModel model)
         {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
             if (!ModelState.IsValid)
                 return View(model);
+            model.Role = "User";
+            model.IsLogged = false;
+            model.NoAttempts = 0;
+            model.IsLocked = false;
+            model.IsActive = true;
+            AppUser.Create(
+                usrName,
+                model.UserName,
+                model.FirstName,
+                model.LastName,
+                model.Password,
+                model.Phone,
+                model.Address,
+                model.Role,
+                model.IsActive,
+                model.IsLogged,
+                model.NoAttempts,
+                model.IsLocked
 
-              // or logged-in user
-
-            UserTaskApp.BL.User.Create( usrName,model.UserName, model.Role);
+            );
 
             return RedirectToAction("Index");
         }
 
-
         public ActionResult Edit(int id)
-            {
-                var user = UserTaskApp.BL.User.RetrieveById(usrName, id);
-                return View(new UserModel(user));
-            }
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+            var user = AppUser.RetrieveById(usrName, id);
+            return View(new UserModel(user));
+        }
 
-            [HttpPost]
-            public ActionResult Edit(UserModel model)
-            {
-                if (ModelState.IsValid)
-                {
-                    model.User.Update(usrName);
-                    return RedirectToAction("Index");
-                }
+        [HttpPost]
+     
+        public ActionResult Edit(UserModel model)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+            var user = AppUser.RetrieveById(usrName, model.Id);
+            model.Password = user.Password;
+            ModelState.Remove("Password");
+            if (!ModelState.IsValid)
                 return View(model);
-            }
 
-            public ActionResult Details(int id)
-            {
-                var user = UserTaskApp.BL.User.RetrieveById(usrName, id);
-                return View(new UserModel(user));
-            }
+            user.UserName = model.UserName;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Phone = model.Phone;
+            user.Address = model.Address;
+            user.IsActive = model.IsActive;
 
-            public ActionResult Delete(int id)
-            {
-                var user = UserTaskApp.BL.User.RetrieveById(usrName, id);
-                return View(new UserModel(user));
-            }
+            user.Update(usrName);
 
-            [HttpPost]
-            public ActionResult DeleteConfirmed(int id)
-            {
-                UserTaskApp.BL.User.Delete(usrName, id);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+            var user = AppUser.RetrieveById(usrName, id);
+            return View(new UserModel(user));
+        }
+        public ActionResult Delete(int? id)
+        {
+
+            if (id == null)
                 return RedirectToAction("Index");
-            }
+
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            AppUser s = AppUser.RetrieveById(usrName, id.Value);
+
+            if (s == null)
+                return HttpNotFound();
+
+            UserModel model = new UserModel
+            {
+                Id = s.Id,
+                UserName = s.UserName,
+                FirstName=s.FirstName,
+                LastName=s.LastName,
+                Password = s.Password,
+                Phone = s.Phone,
+                Address = s.Address,
+                Role=s.Role,
+                CreatedBy = s.CreatedBy,
+                CreatedDate = s.CreatedDate,
+                ModifiedBy = s.ModifiedBy,
+                ModifiedDate = s.ModifiedDate,
+                IsDeleted = s.IsDeleted
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+
+        
+        public ActionResult DeleteConfirmed(int id)
+        {
+            string usrName = Session["UserName"]?.ToString() ?? "System";
+
+            AppUser.Delete(usrName, id);
+
+            return RedirectToAction("Index");
         }
     }
+}
+    

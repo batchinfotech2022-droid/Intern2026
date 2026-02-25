@@ -14,3 +14,105 @@ textarea {
     max-width: 100%;
 }
 
+
+
+.action-cell {
+    white-space: nowrap;
+    min-width: 170px;
+}
+
+.btn-group .btn {
+    margin-right: 4px;
+}
+.home-hero {
+    background: linear-gradient(to right, #2b7cff, #4fa3ff);
+    padding: 120px 0;
+}
+
+.home-features {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.feature-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.home-steps {
+    padding: 80px 0;
+}
+
+.home-cta {
+    background-color: #eef5ff;
+    padding: 70px 0;
+}
+
+.hero-section {
+    background: #062b78;
+    padding: 60px;
+    border-radius: 20px;
+    color: white;
+}
+
+.hero-btn {
+    background: #ff7a00;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.hero-btn-outline {
+    border: 2px solid #ff7a00;
+    color: #ff7a00;
+    padding: 12px 25px;
+    border-radius: 8px;
+    background: none;
+}
+
+.hero-points li {
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+.hero-img {
+    max-width: 100%;
+}
+
+.feature-section {
+    background: #f5f8ff;
+    padding: 80px 20px;
+    border-radius: 20px;
+}
+
+.feature-title {
+    color: #1f3c88;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: #ff7a00;
+    margin: 15px auto 40px auto;
+    border-radius: 10px;
+}
+
+.feature-card {
+    padding: 30px;
+    transition: all .3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+    }
+
+.feature-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #ff7a00;
+}

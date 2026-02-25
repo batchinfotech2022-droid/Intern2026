@@ -66,15 +66,14 @@ namespace UserTaskApp.DL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id); 
                 cmd.Parameters.AddWithValue("@Title", title); 
-                cmd.Parameters.AddWithValue("@Description", description); 
-                
+                cmd.Parameters.AddWithValue("@Description", description);  
                 cmd.Parameters.AddWithValue("@AssignedTo", assignedTo); 
                 cmd.Parameters.AddWithValue("@Status", status); 
-                cmd.Parameters.AddWithValue("@Createdby", CreatedBy);
-                cmd.Parameters.AddWithValue("@Createddate", CreatedDate); 
-                cmd.Parameters.AddWithValue("@Modifiedby", ModifiedBy);
-                cmd.Parameters.AddWithValue("@Modifieddate", ModifiedDate);
-                cmd.Parameters.AddWithValue("@Isdeleted", IsDeleted); 
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate); 
+                cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
+                cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted); 
                 cmd.Parameters.Add("@rowsAffected", SqlDbType.Int); 
                 cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue; 
                 SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
@@ -87,13 +86,16 @@ namespace UserTaskApp.DL
             } 
               return result; 
         }
-        public static Boolean Delete(int id) 
+        
+        public static Boolean Delete(string usrName, int id) 
         { 
             bool result = false; 
             using (SqlCommand cmd = new SqlCommand("TASK_Delete")) 
             { 
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@ModifiedBy", usrName);
+                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
                 cmd.Parameters.Add("@rowsAffected", SqlDbType.Int); 
                 cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
                 SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);                

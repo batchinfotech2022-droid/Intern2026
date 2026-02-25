@@ -1,6 +1,6 @@
 USE [UserTaskApp]
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ BEGIN
 	SELECT @Activityid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +53,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +74,7 @@ BEGIN
 	ORDER BY Activityid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ BEGIN
 		Activityid = @Activityid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ BEGIN
 	SELECT @Exceptionid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +206,7 @@ BEGIN
 	ORDER BY Exceptionid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +229,7 @@ BEGIN
 		Exceptionid = @Exceptionid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +255,7 @@ BEGIN
 		ExceptionDesc Like '%' + @ExceptionSource + '%'
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,200 +289,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Register_Create]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE    PROCEDURE [dbo].[Register_Create]
-    @Id           INT OUTPUT, 
-    @UserName     VARCHAR(100),
-    @FirstName    VARCHAR(100),
-    @LastName     VARCHAR(100),
-    @Password     VARCHAR(100),
-    @Phone        VARCHAR(13),
-    @Address      VARCHAR(500),
-    @IsSystemAdmin BIT,
-    @IsSystemUser   BIT,
-    @IsSystemSupervisor BIT,
-    @IsActive      BIT,
-    @IsLocked      BIT,
-    @NoAttempts    INT,
-    @CreatedBy    VARCHAR(100),
-    @CreatedDate  DATETIME,
-    @ModifiedBy   VARCHAR(100),
-    @ModifiedDate DATETIME,
-    @IsDeleted    BIT
-    
-AS 
-BEGIN
-    SET NOCOUNT ON;
-
-    INSERT INTO [dbo].[Register] (
-        [UserName],[FirstName], [LastName], [Password], [Phone], [Address], [IsSystemAdmin],[IsSystemUser],[IsSystemSupervisor],[IsActive],[IsLocked],[NoAttempts], 
-        [CreatedBy] ,[CreatedDate],  [ModifiedBy], [ModifiedDate],[IsDeleted]
-    )
-    VALUES (
-        @UserName, @FirstName, @LastName, @Password, @Phone,@Address, @IsSystemAdmin, @IsSystemUser, @IsSystemSupervisor, @IsActive, @IsLocked, @NoAttempts , 
-        @CreatedBy,@CreatedDate,  @ModifiedBy,  @ModifiedDate,@IsDeleted
-    );
-
-    -- Assign the newly created Identity ID to the output variable
-    SELECT @Id = SCOPE_IDENTITY();
-END
-
-
-GO
-/****** Object:  StoredProcedure [dbo].[Register_Delete]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-Create PROCEDURE [dbo].[Register_Delete]
-   @Id INT,
-   @ModifiedBy VARCHAR(MAX),
-   @ModifiedDate  DATETIME
-
-   
-AS 
-BEGIN
-    SET NOCOUNT ON;
-    -- delete from Inters where ID=@ID
-    update Register
-    SET IsDeleted=1
-    ,ModifiedBy=@ModifiedBy
-    ,ModifiedDate=@ModifiedDate
-    where Id=@Id
-    and IsDeleted=0
-    RETURN @@ROWCOUNT
-END
-GO
-/****** Object:  StoredProcedure [dbo].[Register_ReadAll]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-Create     PROCEDURE [dbo].[Register_ReadAll]
-
-AS 
-BEGIN
-    SET NOCOUNT ON;
-
-     SELECT 
-      UserName, FirstName, LastName, [Password], Phone,[Address], IsSystemAdmin, IsSystemUser, IsSystemSupervisor, IsActive, IsLocked, NoAttempts , 
-        CreatedBy,CreatedDate,  ModifiedBy,  ModifiedDate, IsDeleted
-
-
-     FROM 
-     Register
-     
-     where IsDeleted=0
-END
-
-GO
-/****** Object:  StoredProcedure [dbo].[Register_ReadByID]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-Create     PROCEDURE [dbo].[Register_ReadByID]
-   @Id INT
-AS 
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT 
-        UserName, FirstName, LastName, [Password], Phone,[Address], IsSystemAdmin, IsSystemUser, IsSystemSupervisor, IsActive, IsLocked, NoAttempts , 
-        CreatedBy,CreatedDate,  ModifiedBy,  ModifiedDate, IsDeleted
-    FROM Register
-    WHERE Id=@Id 
-        AND IsDeleted=0
-    END
-
-GO
-/****** Object:  StoredProcedure [dbo].[Register_ReadByUserName]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE     PROCEDURE [dbo].[Register_ReadByUserName]
-   @UserName VARCHAR
-AS 
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT Id,
-        UserName, FirstName, LastName, [Password], Phone,[Address], IsSystemAdmin, IsSystemUser, IsSystemSupervisor, IsActive, IsLocked, NoAttempts , 
-        CreatedBy,CreatedDate,  ModifiedBy,  ModifiedDate, IsDeleted
-    FROM Register
-    WHERE 
-        UserName=@UserName 
-        AND IsDeleted=0
-    END
-
-GO
-/****** Object:  StoredProcedure [dbo].[Register_Update]    Script Date: 20-02-2026 14:07:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-Create     PROCEDURE [dbo].[Register_Update]
-    @Id           INT  ,
-    @UserName     VARCHAR(100),
-    @FirstName    VARCHAR(100),
-    @LastName     VARCHAR(100),
-    @Password     VARCHAR(100),
-    @Phone        VARCHAR(13),
-    @Address      VARCHAR(500),
-    @IsSystemAdmin BIT,
-    @IsSystemUser   BIT,
-    @IsSystemSupervisor BIT,
-    @IsActive      BIT,
-    @IsLocked      BIT,
-    @NoAttempts    INT,
-    @CreatedBy    VARCHAR(100),
-    @CreatedDate  DATETIME,
-    @ModifiedBy   VARCHAR(100),
-    @ModifiedDate DATETIME,
-    @IsDeleted    BIT
-AS 
-BEGIN
-    SET NOCOUNT ON;
-
-    update Register
-    set 
-    UserName=@UserName
-    ,FirstName=@FirstName
-    ,LastName=@LastName
-    ,[Password]=@Password
-    ,Phone=@Phone
-    ,[Address]=@Address
-    ,IsSystemAdmin=@IsSystemAdmin
-    ,IsSystemUser=@IsSystemUser
-    ,IsSystemSupervisor=@IsSystemSupervisor
-    ,IsActive=@IsActive
-    ,IsLocked=@IsLocked
-    ,NoAttempts=@NoAttempts
-    ,CreatedBy=@CreatedBy
-    ,CreatedDate=@CreatedDate
-    ,ModifiedBy=@ModifiedBy
-    ,ModifiedDate=@ModifiedDate
-    ,IsDeleted=@IsDeleted
-    where 
-    Id=@Id
-
-    RETURN @@ROWCOUNT
-
-
-END
-GO
-/****** Object:  StoredProcedure [dbo].[TASK_Create]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[TASK_Create]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -519,7 +326,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[TASK_Delete]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[TASK_Delete]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -543,7 +350,7 @@ BEGIN
     and IsDeleted=0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[TASK_ReadAll]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[TASK_ReadAll]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -567,7 +374,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[TASK_ReadByID]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[TASK_ReadByID]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -589,7 +396,7 @@ BEGIN
     END
 
 GO
-/****** Object:  StoredProcedure [dbo].[TASK_Update]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[TASK_Update]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -599,11 +406,11 @@ CREATE     PROCEDURE [dbo].[TASK_Update]
     @Title        VARCHAR(100),
     @Description  VARCHAR(500),
     @AssignedTo   VARCHAR(30),
-    @Status       VARCHAR(100), 
-    @CreatedDate  DATETIME,
-    @CreatedBy    VARCHAR(100),
+    @Status       VARCHAR(100),
+    @CreatedBy   VARCHAR(100),
+    @CreatedDate DATETIME,
+        @ModifiedBy   VARCHAR(100),
     @ModifiedDate DATETIME,
-    @ModifiedBy   VARCHAR(100),
     @IsDeleted    BIT,
     @Id          INT 
 AS 
@@ -616,10 +423,10 @@ BEGIN
    ,[Description] =@Description
     ,AssignedTo=@AssignedTo
     ,[Status]=@Status
+        ,CreatedBy=@CreatedBy
     ,CreatedDate=@CreatedDate
-    ,CreatedBy=@CreatedBy
+        ,ModifiedBy=@ModifiedBy
     ,ModifiedDate=@ModifiedDate
-    ,ModifiedBy=@ModifiedBy
     ,IsDeleted=@IsDeleted
     where 
     Id=@Id
@@ -629,14 +436,13 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[User_Create]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[User_Create]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE    PROCEDURE [dbo].[User_Create]
-    @Id           INT OUTPUT, 
+CREATE    PROCEDURE [dbo].[User_Create] 
     @UserName     VARCHAR(100),
     @FirstName    VARCHAR(100),
     @LastName     VARCHAR(100),
@@ -652,7 +458,9 @@ CREATE    PROCEDURE [dbo].[User_Create]
     @CreatedDate  DATETIME,
     @ModifiedBy   VARCHAR(100),
     @ModifiedDate DATETIME,
-    @IsDeleted    BIT
+    @IsDeleted    BIT,
+    @Id           INT OUTPUT
+
 AS 
 BEGIN
     SET NOCOUNT ON;
@@ -663,7 +471,7 @@ BEGIN
     )
     VALUES (
         @UserName, @FirstName, @LastName, @Password, @Phone,@Address,@Role,@IsActive,@IsLogged, @NoAttempts ,  @IsLocked,
-        @CreatedDate, @CreatedBy, @ModifiedDate, @ModifiedBy, @IsDeleted
+         @CreatedBy,@CreatedDate , @ModifiedBy, @ModifiedDate,@IsDeleted
     );
 
     -- Assign the newly created Identity ID to the output variable
@@ -672,7 +480,7 @@ END
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[User_Delete]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[User_Delete]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -696,12 +504,11 @@ BEGIN
     and IsDeleted=0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[User_ReadAll]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[User_ReadAll]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE     PROCEDURE [dbo].[User_ReadAll]
 
 AS 
@@ -711,7 +518,8 @@ BEGIN
      SELECT 
      Id,
 
-      [Name], [Role],
+      UserName,FirstName, LastName, [Password], Phone, [Address], [Role],IsActive,IsLogged,NoAttempts, IsLocked,
+       
       CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsDeleted
 
      FROM 
@@ -721,7 +529,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[User_ReadByID]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[User_ReadByID]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -734,7 +542,8 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT Id,
-        [Name], [Role],
+      UserName,FirstName, LastName, [Password], Phone, [Address], [Role],IsActive,IsLogged,NoAttempts, IsLocked,
+        
       CreatedDate,CreatedBy,ModifiedDate,ModifiedBy,IsDeleted
     FROM [User]
     WHERE Id=@Id
@@ -742,29 +551,82 @@ BEGIN
     END
 
 GO
-/****** Object:  StoredProcedure [dbo].[User_Update]    Script Date: 20-02-2026 14:07:27 ******/
+/****** Object:  StoredProcedure [dbo].[User_ReadByUserName]    Script Date: 25-02-2026 22:37:14 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-Create     PROCEDURE [dbo].[User_Update]
-    @Name        VARCHAR(100),
+CREATE PROCEDURE [dbo].[User_ReadByUserName]
+   @UserName VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT Id,
+           UserName,
+           FirstName,
+           LastName,
+           [Password],
+           Phone,
+           [Address],
+           [Role],
+           IsActive,
+           IsLogged,
+           NoAttempts,
+           IsLocked,
+           CreatedBy,
+           CreatedDate,
+           ModifiedBy,
+           ModifiedDate,
+           IsDeleted
+    FROM [User]
+    WHERE LTRIM(RTRIM(UserName)) = LTRIM(RTRIM(@UserName))
+      AND IsDeleted = 0
+END
+GO
+/****** Object:  StoredProcedure [dbo].[User_Update]    Script Date: 25-02-2026 22:37:14 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE     PROCEDURE [dbo].[User_Update]
+    @Id           INT , 
+    @UserName     VARCHAR(100),
+    @FirstName    VARCHAR(100),
+    @LastName     VARCHAR(100),
+    @Password     VARCHAR(100),
+    @Phone        VARCHAR(13),
+    @Address      VARCHAR(500),
     @Role         VARCHAR(100),
+    @IsActive      BIT,
+    @IsLogged      BIT,
+    @NoAttempts    INT,
+    @IsLocked      BIT,
     @CreatedDate  DATETIME,
     @CreatedBy    VARCHAR(100),
     @ModifiedDate DATETIME,
     @ModifiedBy   VARCHAR(100),
-    @IsDeleted    BIT,
-    @Id          INT 
+    @IsDeleted    BIT
+   
 AS 
 BEGIN
     SET NOCOUNT ON;
 
     update [User]
     set 
-    [Name]=@Name
+    [UserName]=@UserName
+    ,[FirstName]=@FirstName
+    ,[LastName]=@LastName
+    ,[Password]=@Password
+    ,[Phone]=@Phone
+    ,[Address]=@Address
     ,[Role]=@Role
+    ,[IsActive]=@IsActive      
+    ,[IsLogged]=@IsLogged    
+    ,[NoAttempts]=@NoAttempts    
+    ,[IsLocked]=@IsLocked      
     ,CreatedDate=@CreatedDate
     ,CreatedBy=@CreatedBy
     ,ModifiedDate=@ModifiedDate

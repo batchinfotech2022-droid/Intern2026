@@ -5,7 +5,7 @@ using UserTaskApp.DL;
 
 namespace UserTaskApp.BL
 {
-    public class Task
+    public class TaskApp
     {
         private int _id;
         private string _title;
@@ -35,7 +35,7 @@ namespace UserTaskApp.BL
 
         #region Constructors
 
-        public Task()
+        public TaskApp()
         {
             _id = 0;
             _title = string.Empty;
@@ -49,7 +49,7 @@ namespace UserTaskApp.BL
             _isDeleted = false;
         }
 
-        public Task(int id, string title, string description, string assignedTo,
+        public TaskApp(int id, string title, string description, string assignedTo,
                     string status, string createdBy, DateTime createdDate,
                     string modifiedBy, DateTime modifiedDate, bool isDeleted)
         {
@@ -101,9 +101,9 @@ namespace UserTaskApp.BL
             }
         }
 
-        public static List<Task> RetrieveAll(string usrName)
+        public static List<TaskApp> RetrieveAll(string usrName)
         {
-            List<Task> res = new List<Task>();
+            List<TaskApp> res = new List<TaskApp>();
 
             try
             {
@@ -126,9 +126,9 @@ namespace UserTaskApp.BL
             return res;
         }
 
-        public static Task RetrieveById(string usrName, int id)
+        public static TaskApp RetrieveById(string usrName, int id)
         {
-            Task result = null;
+            TaskApp result = null;
 
             try
             {
@@ -173,7 +173,7 @@ namespace UserTaskApp.BL
         {
             try
             {
-                bool returnVal = TaskData.Delete(idValue);
+                bool returnVal = TaskData.Delete(usrName,idValue);
                 Activity.Create(usrName, "Task", "Delete", DateTime.Now, true, idValue.ToString());
                 return returnVal;
             }
@@ -188,9 +188,9 @@ namespace UserTaskApp.BL
 
         #region Helper
 
-        private static Task convertReaderToObject(DataTableReader r)
+        private static TaskApp convertReaderToObject(DataTableReader r)
         {
-            return new Task(
+            return new TaskApp(
                 r.ToInt("Id"),
                 r.ToString("Title"),
                 r.ToString("Description"),

@@ -1,12 +1,12 @@
 USE [master]
 GO
 
-CREATE DATABASE UserTaskApp;
+CREATE DATABASE UseTaskApp;
 GO
 
 USE [UserTaskApp]
 GO
-/****** Object:  Table [dbo].[Activity]    Script Date: 20-02-2026 14:03:26 ******/
+/****** Object:  Table [dbo].[Activity]    Script Date: 25-02-2026 22:41:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[Activity](
 	[ActivityText] [varchar](250) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AppException]    Script Date: 20-02-2026 14:03:26 ******/
+/****** Object:  Table [dbo].[AppException]    Script Date: 25-02-2026 22:41:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,38 +35,7 @@ CREATE TABLE [dbo].[AppException](
 	[Remarks] [varchar](100) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Register]    Script Date: 20-02-2026 14:03:26 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[Register](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[UserName] [varchar](100) NOT NULL,
-	[FirstName] [varchar](100) NOT NULL,
-	[LastName] [varchar](100) NOT NULL,
-	[Password] [varchar](100) NOT NULL,
-	[Phone] [varchar](20) NOT NULL,
-	[Address] [varchar](200) NOT NULL,
-	[IsSystemAdmin] [bit] NOT NULL,
-	[IsSystemUser] [bit] NOT NULL,
-	[IsSystemSupervisor] [bit] NOT NULL,
-	[IsActive] [bit] NOT NULL,
-	[IsLocked] [bit] NOT NULL,
-	[NoAttempts] [int] NOT NULL,
-	[CreatedBy] [varchar](100) NOT NULL,
-	[CreatedDate] [datetime] NOT NULL,
-	[ModifiedBy] [varchar](100) NOT NULL,
-	[ModifiedDate] [datetime] NOT NULL,
-	[IsDeleted] [bit] NOT NULL,
-	[IsLogged] [bit] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[TASK]    Script Date: 20-02-2026 14:03:26 ******/
+/****** Object:  Table [dbo].[TASK]    Script Date: 25-02-2026 22:41:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +57,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 20-02-2026 14:03:26 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 25-02-2026 22:41:47 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,22 +85,4 @@ PRIMARY KEY CLUSTERED
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [IsSystemAdmin]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [IsSystemUser]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [IsSystemSupervisor]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((1)) FOR [IsActive]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [IsLocked]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [NoAttempts]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT (getdate()) FOR [CreatedDate]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT (getdate()) FOR [ModifiedDate]
-GO
-ALTER TABLE [dbo].[Register] ADD  DEFAULT ((0)) FOR [IsDeleted]
 GO

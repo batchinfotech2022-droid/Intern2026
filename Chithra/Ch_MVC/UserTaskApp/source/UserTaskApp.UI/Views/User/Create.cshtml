@@ -1,20 +1,78 @@
 ﻿@model UserTaskApp.UI.Models.UserModel
 
-<h2>Create User</h2>
-
-@using (Html.BeginForm())
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Role)
-        @Html.TextBoxFor(m => m.Role, new { @class = "form-control" })
-    </div>
-
-    <br />
-    <input type="submit" value="Create" class="btn btn-success" />
-    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+@{
+    ViewBag.Title = "Add User";
 }
+
+<div class="container mt-4">
+
+    <div class="card shadow col-md-8 mx-auto">
+
+
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-2 mt-2">Create User</h5>
+        </div>
+
+
+        <div class="card-body">
+
+            @using (Html.BeginForm("Create", "User", FormMethod.Post))
+            {
+                <div class="row">
+                    @Html.HiddenFor(m => m.Id)
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.Label("Is Active?")
+                        <div class="form-check mt-2">
+                            @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-check-input" })
+                            <label class="form-check-label ms-2">Active</label>
+                        </div>
+                    </div>
+
+                       
+                </div>
+
+                <div class="d-flex justify-content-between mt-3">
+
+                    @Html.ActionLink("Back to List", "Index", null,
+                        new { @class = "btn btn-primary" })
+
+                    <input type="submit" value="Create" class="btn btn-success" />
+
+
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</div>

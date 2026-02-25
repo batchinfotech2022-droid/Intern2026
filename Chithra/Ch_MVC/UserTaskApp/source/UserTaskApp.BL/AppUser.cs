@@ -10,7 +10,7 @@ using UserTaskApp.BL;
 using UserTaskApp.DL;
 namespace UserTaskApp.BL
 {
-    public class User
+    public class AppUser
     {
         private int _id;
         private string _userName;
@@ -47,7 +47,7 @@ namespace UserTaskApp.BL
         public string ModifiedBy { get { return _modifiedBy; } set { _modifiedBy = value; } }
         public DateTime ModifiedDate { get { return _modifiedDate; } set { _modifiedDate = value; } }
         public bool IsDeleted { get { return _isDeleted; } set { _isDeleted = value; } }
-        public User()
+        public AppUser()
         {
             _id = 0;
             _userName = string.Empty;
@@ -68,7 +68,7 @@ namespace UserTaskApp.BL
             _modifiedDate = DateTime.Now; 
             _isDeleted = false; 
         }
-        public User(int Id, string UserName, string FirstName, string LastName, string Password, string Phone, string Address, string Role, bool IsActive, bool IsLogged,int NoAttempts, bool IsLocked,string CreatedBy, DateTime CreatedDate, string ModifiedBy, DateTime ModifiedDate, bool IsDeleted) 
+        public AppUser(int Id, string UserName, string FirstName, string LastName, string Password, string Phone, string Address, string Role, bool IsActive, bool IsLogged,int NoAttempts, bool IsLocked,string CreatedBy, DateTime CreatedDate, string ModifiedBy, DateTime ModifiedDate, bool IsDeleted) 
         {
             _id = Id;
             _userName = UserName;
@@ -82,11 +82,12 @@ namespace UserTaskApp.BL
             _isLogged = IsLogged;
             _noAttempts = NoAttempts;
             _isLocked = IsLocked;
-            _createdBy = string.Empty; 
-            _createdDate = DateTime.Now; 
-            _modifiedBy = string.Empty; 
-            _modifiedDate = DateTime.Now;
-            _isDeleted = false; }
+            _createdBy = CreatedBy;         
+            _createdDate = CreatedDate;      
+            _modifiedBy = ModifiedBy;       
+            _modifiedDate = ModifiedDate;    
+            _isDeleted = IsDeleted;          
+        }
         public static int Create(string usrName, string UserName, string FirstName, string LastName, string Password, string Phone, string Address,string Role,
             bool IsActive, bool IsLogged, int NoAttempts, bool IsLocked)
         {
@@ -98,7 +99,7 @@ namespace UserTaskApp.BL
 
             try
             {
-                int res = RegisterData.Create(UserName, FirstName, LastName, Password, Phone, Address,Role,
+                int res = UserData.Create(UserName, FirstName, LastName, Password, Phone, Address,Role,
                     IsActive, IsLogged, NoAttempts, IsLocked,
                     CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted);
 
@@ -107,14 +108,14 @@ namespace UserTaskApp.BL
             }
             catch (Exception ex)
             {
-                Activity.Create(usrName, "Register", "Create", DateTime.Now, false, UserName);
+                Activity.Create(usrName, "User", "Create", DateTime.Now, false, UserName);
                 throw new Exception("Insert failed", ex);
             }
         }
 
-        public static List<User> RetrieveAll(string usrName)
+        public static List<AppUser> RetrieveAll(string usrName)
         {
-            List<User> res = new List<User>();
+            List<AppUser> res = new List<AppUser>();
 
             try
             {
@@ -126,19 +127,19 @@ namespace UserTaskApp.BL
 
                 r.Close(); dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Activity.Create(usrName, "User", "RetrieveAll", DateTime.Now, false, "All");
-                throw new Exception("RetrieveAll failed", ex);
+                throw;
             }
 
             Activity.Create(usrName, "User", "RetrieveAll", DateTime.Now, true, "All");
             return res;
         }
 
-        public static User RetrieveById(string usrName, int Id)
+        public static AppUser RetrieveById(string usrName, int Id)
         {
-            User result = null;
+            AppUser result = null;
 
             try
             {
@@ -165,6 +166,7 @@ namespace UserTaskApp.BL
             {
                 bool returnVal = UserData.Update(Id, UserName, FirstName, LastName, Password, Phone, Address, Role,
                     IsActive, IsLogged, NoAttempts, IsLocked,CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted);
+                
 
                 Activity.Create(usrName, "User", "Update", DateTime.Now, true, UserName);
                 return returnVal;
@@ -180,7 +182,7 @@ namespace UserTaskApp.BL
         {
             try
             {
-                bool returnVal = UserData.Delete(idValue);
+                bool returnVal = UserData.Delete(usrName,idValue);
                 Activity.Create(usrName, "User", "Delete", DateTime.Now, true, idValue.ToString());
                 return returnVal;
             }
@@ -190,9 +192,9 @@ namespace UserTaskApp.BL
                 throw new Exception("Delete failed", ex);
             }
         }
-        private static User convertReaderToObject(DataTableReader r)
+        private static AppUser convertReaderToObject(DataTableReader r)
         {
-            return new User(r.ToInt("Id"),
+            return new AppUser(r.ToInt("Id"),
             r.ToString("UserName"),
              r.ToString("FirstName"),
              r.ToString("LastName"),
@@ -206,11 +208,11 @@ namespace UserTaskApp.BL
              r.ToBool("IsLocked"),
             r.ToString("CreatedBy"),
             r.ToDateTime("CreatedDate"),
-            r.ToString("Modifiedby"),
+            r.ToString("ModifiedBy"),
             r.ToDateTime("ModifiedDate"),
             r.ToBool("IsDeleted"));
         }
-        public static User RetrieveByUserName(string UserName)
+        public static AppUser RetrieveByUserName(string UserName)
         {
             DataTable dt = UserData.RetrieveByUserName(UserName);
 
@@ -218,7 +220,7 @@ namespace UserTaskApp.BL
 
             if (r.Read())
             {
-                User result = convertReaderToObject(r);
+                AppUser result = convertReaderToObject(r);
                 r.Close();
                 dt.Dispose();
                 return result;
@@ -239,7 +241,7 @@ namespace UserTaskApp.BL
             try
             {
 
-                User user = User.RetrieveByUserName(UserName);
+                AppUser user = AppUser.RetrieveByUserName(UserName);
                 if (user != null)
                 {
                     if (PasswordHash.VerifyPassword(PassWord, user.Password))

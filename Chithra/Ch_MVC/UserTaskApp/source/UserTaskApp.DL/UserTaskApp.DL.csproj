@@ -47,7 +47,6 @@
     <Compile Include="DataAccessCode.cs" />
     <Compile Include="DataReaderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterData.cs" />
     <Compile Include="TaskData.cs" />
     <Compile Include="UserData.cs" />
   </ItemGroup>
