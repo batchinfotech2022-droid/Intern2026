@@ -59,7 +59,7 @@ namespace SmartCMApp.UI.Models
             get { return _contact.UserName; }
             set { _contact.UserName = value; }
         }
-        [Required]
+     
         public string PassWord
         {
             get { return _contact.PassWord; }

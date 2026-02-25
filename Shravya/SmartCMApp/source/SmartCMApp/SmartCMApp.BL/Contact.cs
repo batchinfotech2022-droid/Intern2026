@@ -74,7 +74,7 @@ namespace SmartCMApp.BL
                 _categoryId = 0;
             _password = "";
             _role = "";
-            _isActive = false;
+            _isActive = true;
             _isLogged = false;
             _noOfAttempts = 0;
             _createdBy = "";

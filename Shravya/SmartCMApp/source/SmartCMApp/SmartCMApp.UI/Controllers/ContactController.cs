@@ -161,6 +161,42 @@ namespace SmartCMApp.UI.Controllers
 
             return View(model);
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(ContactModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        var categories = Category.RetrieveAll(userName)
+        //                                 .Where(c => c.IsActive)
+        //                                 .ToList();
+
+        //        model.CategoryList = categories.Select(c =>
+        //            new SelectListItem
+        //            {
+        //                Text = c.CategoryName,
+        //                Value = c.Id.ToString(),
+        //                Selected = (c.Id == model.CategoryId)
+        //            }).ToList();
+
+        //        return View(model);
+        //    }
+
+            
+
+        //    Contact contact = new Contact();
+        //    contact.Id = model.Id;
+        //    contact.FullName = model.FullName;
+        //    contact.UserName = model.UserName;
+        //    contact.Phone = model.Phone;
+        //    contact.City = model.City;
+        //    contact.CategoryId = model.CategoryId;
+
+        //    contact.Update(userName);
+
+        //    return RedirectToAction("Index");
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ContactModel model)
@@ -182,17 +218,16 @@ namespace SmartCMApp.UI.Controllers
                 return View(model);
             }
 
-            
+            // 🔥 Retrieve first
+            Contact existing = Contact.RetrieveById(userName, model.Id);
 
-            Contact contact = new Contact();
-            contact.Id = model.Id;
-            contact.FullName = model.FullName;
-            contact.UserName = model.UserName;
-            contact.Phone = model.Phone;
-            contact.City = model.City;
-            contact.CategoryId = model.CategoryId;
+            existing.FullName = model.FullName;
+            existing.UserName = model.UserName;
+            existing.Phone = model.Phone;
+            existing.City = model.City;
+            existing.CategoryId = model.CategoryId;
 
-            contact.Update(userName);
+            existing.Update(userName);
 
             return RedirectToAction("Index");
         }

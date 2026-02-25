@@ -20,14 +20,11 @@ namespace SmartCMApp.UI.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ContactModel model = new ContactModel();
+            RegisterViewModel model = new RegisterViewModel();
 
-            var categories = Category.RetrieveAll(userName)
-                                     .Where(c => c.IsActive)
-                                     .ToList();
-
-            model.CategoryList = categories.Select(c =>
-                new SelectListItem
+            ViewBag.CategoryList = Category.RetrieveAll(userName)
+                .Where(c => c.IsActive)
+                .Select(c => new SelectListItem
                 {
                     Text = c.CategoryName,
                     Value = c.Id.ToString()
@@ -41,16 +38,13 @@ namespace SmartCMApp.UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(ContactModel model)
+        public ActionResult Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                var categories = Category.RetrieveAll(userName)
-                                         .Where(c => c.IsActive)
-                                         .ToList();
-
-                model.CategoryList = categories.Select(c =>
-                    new SelectListItem
+                ViewBag.CategoryList = Category.RetrieveAll(userName)
+                    .Where(c => c.IsActive)
+                    .Select(c => new SelectListItem
                     {
                         Text = c.CategoryName,
                         Value = c.Id.ToString()
@@ -59,8 +53,6 @@ namespace SmartCMApp.UI.Controllers
                 return View(model);
             }
 
-            model.Role = "User";
-
             Contact.Create(
                 model.FullName,
                 model.Phone,
@@ -68,9 +60,10 @@ namespace SmartCMApp.UI.Controllers
                 model.CategoryId,
                 model.UserName,
                 model.PassWord,
-                model.Role);
+                "User"
+            );
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Login","Account");
         }
 
 

@@ -122,7 +122,7 @@ bool isDeleted)
                 cmd.Parameters.AddWithValue("@Phone", phone);
                 cmd.Parameters.AddWithValue("@City", city);
                 cmd.Parameters.AddWithValue("@CategoryId", categoryId);
-                cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@PassWord", password);
                 cmd.Parameters.AddWithValue("@Role", role);
                 cmd.Parameters.AddWithValue("@IsActive", isActive);
                 cmd.Parameters.AddWithValue("@IsLogged", isLogged);
