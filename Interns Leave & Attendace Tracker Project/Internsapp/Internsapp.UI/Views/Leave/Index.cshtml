@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Internsapp.UI.Models.LeaveModel>
+
+@{
+    ViewBag.Title = "Leave Requests";
+}
+
+<div class="container mt-4">
+    <div class="card page-card">
+
+        <!-- HEADER -->
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="page-title mb-0">Leave Requests</h5>
+
+            <div class="d-flex gap-2">
+                <input type="text"
+                       id="leaveSearch"
+                       class="form-control form-control-sm"
+                       placeholder="Search intern..."
+                       style="width:200px" />
+
+                @Html.ActionLink(
+                    "Apply Leave",
+                    "Create",
+                    "Leave",
+                    null,
+                    new { @class = "btn btn-primary btn-sm" }
+                )
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="card-body table-responsive">
+            <table class="table table-hover leave-table">
+                <thead>
+                    <tr>
+                        <th>Intern</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Reason</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="leaveTableBody">
+                    @foreach (var item in Model)
+                    {
+                        <tr data-name="@item.InternName.ToLower()">
+                            <td>@item.InternName</td>
+                            <td>@item.FromDate.ToString("yyyy-MM-dd")</td>
+                            <td>@item.ToDate.ToString("yyyy-MM-dd")</td>
+                            <td>@item.Reason</td>
+
+                            <td class="text-center text-nowrap">
+                                <a class="action-btn edit"
+                                   href="@Url.Action("Edit", "Leave", new { id = item.Id })">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                                <a class="action-btn view"
+                                   href="@Url.Action("Details", "Leave", new { id = item.Id })">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
+                                <a class="action-btn delete"
+                                   href="@Url.Action("Delete", "Leave", new { id = item.Id })">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                    <!-- NO RECORDS -->
+                    <tr class="no-records d-none">
+                        <td colspan="5" class="text-center text-muted py-4">
+                            No records found
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

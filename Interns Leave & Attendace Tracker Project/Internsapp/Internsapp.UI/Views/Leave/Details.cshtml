@@ -1,0 +1,37 @@
+﻿@model Internsapp.UI.Models.LeaveModel
+
+@{
+    ViewBag.Title = "Leave Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow page-card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Leave Details</h5>
+        </div>
+
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-4">Intern</dt>
+                <dd class="col-sm-8">@Model.InternName</dd>
+
+                <dt class="col-sm-4">From</dt>
+                <dd class="col-sm-8">@Model.FromDate.ToString("yyyy-MM-dd")</dd>
+
+                <dt class="col-sm-4">To</dt>
+                <dd class="col-sm-8">@Model.ToDate.ToString("yyyy-MM-dd")</dd>
+
+                <dt class="col-sm-4">Reason</dt>
+                <dd class="col-sm-8">@Model.Reason</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between">
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+            </div>
+
+        </div>
+    </div>
+</div>

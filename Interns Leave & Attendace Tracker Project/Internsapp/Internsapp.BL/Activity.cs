@@ -80,7 +80,7 @@ namespace Internsapp.BL
                 int res = ActivityData.Create(username, activityon, activityitem, activitydate, issuccess, activitytext);
                 return res;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 throw;
             }
@@ -99,7 +99,7 @@ namespace Internsapp.BL
                 r.Close();
                 dt.Dispose();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -121,7 +121,7 @@ namespace Internsapp.BL
                 dt.Dispose();
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -135,7 +135,7 @@ namespace Internsapp.BL
                 bool returnVal = ActivityData.Update(Activityid, Username, Activityon, Activityitem, Activitydate, Issuccess, Activitytext);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -150,7 +150,7 @@ namespace Internsapp.BL
                 bool returnVal = ActivityData.Delete(activityidValue);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 throw;
             }
@@ -164,7 +164,7 @@ namespace Internsapp.BL
                 bool returnVal = ActivityData.Delete(this.Activityid);
                 return returnVal;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

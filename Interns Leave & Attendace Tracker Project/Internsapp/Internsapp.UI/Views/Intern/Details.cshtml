@@ -1,0 +1,31 @@
+﻿@model Internsapp.UI.Models.InternModel
+
+<div class="container mt-4">
+    <div class="card shadow page-card">
+        <div class="card-header bg-primary text-white">
+            <h5>Intern Details</h5>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Username</dt>
+                <dd class="col-sm-9">@Model.UserName</dd>
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9">@Model.FirstName</dd>
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9">@Model.LastName</dd>
+                <dt class="col-sm-3">Phone</dt>
+                <dd class="col-sm-9">@Model.Phone</dd>
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">@Model.Address</dd>
+                <dt class="col-sm-3">Active?</dt>
+                <dd class="col-sm-9">@(Model.IsActive ? "Yes" : "No")</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between mt-3">
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    </div>
+</div>

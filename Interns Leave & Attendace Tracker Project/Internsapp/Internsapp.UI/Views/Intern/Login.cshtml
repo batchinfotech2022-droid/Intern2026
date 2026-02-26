@@ -1,0 +1,145 @@
+﻿@model Internsapp.UI.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intern Login</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #F3E8FF, #E6E6FA);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .main-card {
+            width: 850px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            background: white;
+        }
+
+        .left-panel {
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover;
+            min-height: 520px;
+            color: white;
+            display: flex;
+            align-items: end;
+            padding: 30px;
+        }
+
+            .left-panel h3 {
+                font-weight: 600;
+            }
+
+        .right-panel {
+            padding: 50px 40px;
+        }
+
+        .form-control {
+            border-radius: 30px;
+            padding-left: 45px;
+            height: 45px;
+        }
+
+        .input-group-text {
+            position: absolute;
+            z-index: 10;
+            background: transparent;
+            border: none;
+            top: 8px;
+            left: 10px;
+            color: #6c63ff;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg,#6c63ff,#5a54d1);
+            border: none;
+            border-radius: 30px;
+            padding: 12px;
+            font-weight: 600;
+            color: white;
+            transition: 0.3s;
+        }
+
+            .login-btn:hover {
+                transform: scale(1.05);
+            }
+
+        .register-link a {
+            color: #6c63ff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-card row g-0">
+
+        <!-- LEFT IMAGE PANEL -->
+        <div class="col-md-6 left-panel">
+            <div>
+                <h3>Welcome Back 👋</h3>
+                <p>Track Intern Leave & Attendance Easily</p>
+            </div>
+        </div>
+
+        <!-- RIGHT FORM PANEL -->
+        <div class="col-md-6 right-panel">
+
+            <h4 class="mb-4 text-center">Intern Login</h4>
+
+            @using (Html.BeginForm("Login", "Intern", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- USERNAME -->
+                <div class="form-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                    </span>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="form-group mb-3">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="login-btn">LOGIN</button>
+                </div>
+            }
+
+            <div class="text-center mt-3 register-link">
+                New intern?
+                <a href="@Url.Action("Register","Intern")">Register</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

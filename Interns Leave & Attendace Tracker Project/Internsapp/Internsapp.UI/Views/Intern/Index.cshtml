@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Internsapp.UI.Models.InternModel>
+@{
+    ViewBag.Title = "Interns";
+}
+
+<div class="container mt-4">
+    <div class="card page-card">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+            <h5 class="page-title mb-0">Interns</h5>
+
+            <div class="header-tools">
+
+                <input type="text"
+                       id="internSearch"
+                       class="form-control form-control-sm"
+                       placeholder="Search intern..."
+                       style="width:200px" />
+
+                <select id="activeFilter"
+                        class="form-select form-select-sm"
+                        style="width:130px">
+                    <option value="">All</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+
+                @Html.ActionLink("Add Intern", "Create", "Intern",
+                    null,
+                    new { @class = "btn btn-primary btn-sm" })
+            </div>
+        </div>
+
+        <div class="card-body table-responsive">
+            <table class="table table-hover intern-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First</th>
+                        <th>Last</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th class="text-center">Active</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var intern in Model)
+                    {
+                        <tr>
+                            <td class="col-username">@intern.UserName</td>
+                            <td>@intern.FirstName</td>
+                            <td>@intern.LastName</td>
+                            <td>@intern.Phone</td>
+                            <td>@intern.Address</td>
+
+                            <td class="text-center">
+                                <input type="checkbox" disabled @(intern.IsActive ? "checked" : "") />
+                                <span class="d-none status-text">
+                                    @(intern.IsActive ? "active" : "inactive")
+                                </span>
+                            </td>
+
+                            <td class="text-center text-nowrap">
+                                <a class="action-btn edit" href="@Url.Action("Edit", new { id = intern.Id })">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a class="action-btn view" href="@Url.Action("Details", new { id = intern.Id })">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a class="action-btn delete" href="@Url.Action("Delete", new { id = intern.Id })">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                    <tr class="no-records d-none">
+                        <td colspan="7" class="text-center text-muted py-4">
+                            No records found
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

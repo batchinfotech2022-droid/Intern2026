@@ -8,36 +8,71 @@ namespace Internsapp.UI.Models
     {
         private Attendance _attendance;
 
-        [Display(Name = "Attendance ID")]
-        public int Id { get { return _attendance.Id; } set { _attendance.Id = value; } }
+        public int Id
+        {
+            get { return _attendance.Id; }
+            set { _attendance.Id = value; }
+        }
 
         [Required]
-        [Display(Name = "Intern ID")]
-        public int InternId { get { return _attendance.InternId; } set { _attendance.InternId = value; } }
+        public int InternId
+        {
+            get { return _attendance.InternId; }
+            set { _attendance.InternId = value; }
+        }
 
-        [Required]
-        [Display(Name = "Attendance Date")]
+        [StringLength(100)]
+        public string InternName
+        {
+            get { return _attendance.InternName; }
+            set { _attendance.InternName = value; }
+        }
+
+        [Required, DataType(DataType.Date)]
         public DateTime AttendanceDate
         {
             get { return _attendance.AttendanceDate; }
             set { _attendance.AttendanceDate = value; }
         }
 
-        [Required]
-        [Display(Name = "Status")]
-        public bool Status { get { return _attendance.Status; } set { _attendance.Status = value; } }
+        [Required, StringLength(20)]
+        public string Status
+        {
+            get { return _attendance.Status; }
+            set { _attendance.Status = value; }
+        }
 
-        public string CreatedBy { get { return _attendance.CreatedBy; } set { _attendance.CreatedBy = value; } }
+        public string CreatedBy
+        {
+            get { return _attendance.CreatedBy; }
+            set { _attendance.CreatedBy = value; }
+        }
 
-        public DateTime CreatedDate { get { return _attendance.CreatedDate; } set { _attendance.CreatedDate = value; } }
+        public DateTime CreatedDate
+        {
+            get { return _attendance.CreatedDate; }
+            set { _attendance.CreatedDate = value; }
+        }
 
-        public string ModifiedBy { get { return _attendance.ModifiedBy; } set { _attendance.ModifiedBy = value; } }
+        public string ModifiedBy
+        {
+            get { return _attendance.ModifiedBy; }
+            set { _attendance.ModifiedBy = value; }
+        }
 
-        public DateTime ModifiedDate { get { return _attendance.ModifiedDate; } set { _attendance.ModifiedDate = value; } }
+        public DateTime ModifiedDate
+        {
+            get { return _attendance.ModifiedDate; }
+            set { _attendance.ModifiedDate = value; }
+        }
 
-        public bool IsDeleted { get { return _attendance.IsDeleted; } set { _attendance.IsDeleted = value; } }
+        public bool IsDeleted
+        {
+            get { return _attendance.IsDeleted; }
+            set { _attendance.IsDeleted = value; }
+        }
 
-        public Attendance attendance
+        public Attendance Attendance
         {
             get { return _attendance; }
             set { _attendance = value; }

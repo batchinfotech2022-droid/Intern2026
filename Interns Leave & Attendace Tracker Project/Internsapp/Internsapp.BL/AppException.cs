@@ -77,7 +77,7 @@ namespace Internsapp.BL
                                                issolved,
                                                remarks);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return -1;
             }

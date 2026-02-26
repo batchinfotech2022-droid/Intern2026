@@ -1,0 +1,34 @@
+﻿@model Internsapp.UI.Models.AttendanceModel
+
+@{
+    ViewBag.Title = "Attendance Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow page-card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-2 mt-2">Attendance Details</h5>
+        </div>
+
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-4">Intern Name</dt>
+                <dd class="col-sm-8">@Model.InternName</dd>
+
+                <dt class="col-sm-4">Attendance Date</dt>
+                <dd class="col-sm-8">@Model.AttendanceDate.ToString("yyyy-MM-dd")</dd>
+
+                <dt class="col-sm-4">Status</dt>
+                <dd class="col-sm-8">@Model.Status</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between mt-4">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+            </div>
+
+        </div>
+    </div>
+</div>

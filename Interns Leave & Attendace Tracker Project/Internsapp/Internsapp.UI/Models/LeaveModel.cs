@@ -8,36 +8,79 @@ namespace Internsapp.UI.Models
     {
         private Leave _leave;
 
-        [Display(Name = "Leave ID")]
-        public int Id { get { return _leave.Id; } set { _leave.Id = value; } }
+        public int Id
+        {
+            get { return _leave.Id; }
+            set { _leave.Id = value; }
+        }
 
         [Required]
-        [Display(Name = "Intern ID")]
-        public int InternId { get { return _leave.InternId; } set { _leave.InternId = value; } }
+        public int InternId
+        {
+            get { return _leave.InternId; }
+            set { _leave.InternId = value; }
+        }
 
-        [Required]
-        [Display(Name = "From Date")]
-        public DateTime FromDate { get { return _leave.FromDate; } set { _leave.FromDate = value; } }
+        [StringLength(100)]
+        public string InternName
+        {
+            get { return _leave.InternName; }
+            set { _leave.InternName = value; }
+        }
 
-        [Required]
-        [Display(Name = "To Date")]
-        public DateTime ToDate { get { return _leave.ToDate; } set { _leave.ToDate = value; } }
+        [Required, DataType(DataType.Date)]
+        public DateTime FromDate
+        {
+            get { return _leave.FromDate; }
+            set { _leave.FromDate = value; }
+        }
 
-        [Display(Name = "Reason")]
-        [DisplayFormat(ConvertEmptyStringToNull = false)]
-        public string Reason { get { return _leave.Reason; } set { _leave.Reason = value; } }
+        [Required, DataType(DataType.Date)]
+        public DateTime ToDate
+        {
+            get { return _leave.ToDate; }
+            set { _leave.ToDate = value; }
+        }
 
-        public string CreatedBy { get { return _leave.CreatedBy; } set { _leave.CreatedBy = value; } }
+        [Required, StringLength(250)]
+        public string Reason
+        {
+            get { return _leave.Reason; }
+            set { _leave.Reason = value; }
+        }
+        public string Status { get; set; }
 
-        public DateTime CreatedDate { get { return _leave.CreatedDate; } set { _leave.CreatedDate = value; } }
+        public string CreatedBy
+        {
+            get { return _leave.CreatedBy; }
+            set { _leave.CreatedBy = value; }
+        }
 
-        public string ModifiedBy { get { return _leave.ModifiedBy; } set { _leave.ModifiedBy = value; } }
+        public DateTime CreatedDate
+        {
+            get { return _leave.CreatedDate; }
+            set { _leave.CreatedDate = value; }
+        }
 
-        public DateTime ModifiedDate { get { return _leave.ModifiedDate; } set { _leave.ModifiedDate = value; } }
+        public string ModifiedBy
+        {
+            get { return _leave.ModifiedBy; }
+            set { _leave.ModifiedBy = value; }
+        }
 
-        public bool IsDeleted { get { return _leave.IsDeleted; } set { _leave.IsDeleted = value; } }
+        public DateTime ModifiedDate
+        {
+            get { return _leave.ModifiedDate; }
+            set { _leave.ModifiedDate = value; }
+        }
 
-        public Leave leave
+        public bool IsDeleted
+        {
+            get { return _leave.IsDeleted; }
+            set { _leave.IsDeleted = value; }
+        }
+
+        public Leave Leave
         {
             get { return _leave; }
             set { _leave = value; }

@@ -10,152 +10,88 @@ namespace Internsapp.DL
 {
     public class AttendanceData
     {
-        public static int Create(int internId,
-                                 DateTime attendanceDate,
-                                 bool status,
-                                 string createdBy,
-                                 DateTime createdDate,
-                                 string modifiedBy,
-                                 DateTime modifiedDate,
-                                 bool isDeleted)
+        public static int Create(int InternId, DateTime AttendanceDate, string Status,
+                                 string CreatedBy, DateTime CreatedDate, string ModifiedBy, DateTime ModifiedDate, bool IsDeleted)
         {
-            int returnValue;
-
             using (SqlCommand cmd = new SqlCommand("Attendance_Create"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new SqlParameter("@Id", SqlDbType.Int));
-                cmd.Parameters["@Id"].Direction = ParameterDirection.Output;
+                cmd.Parameters.AddWithValue("@InternId", InternId);
+                cmd.Parameters.AddWithValue("@AttendanceDate", AttendanceDate);
+                cmd.Parameters.AddWithValue("@Status", Status);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+                cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
+                cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted);
 
-                cmd.Parameters.AddWithValue("@InternId", internId);
-                cmd.Parameters.AddWithValue("@AttendanceDate", attendanceDate);
-                cmd.Parameters.AddWithValue("@Status", status);
-                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
-                cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
-                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
-                cmd.Parameters.AddWithValue("@IsDeleted", isDeleted);
+                SqlParameter outParam = new SqlParameter("@Id", SqlDbType.Int);
+                outParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outParam);
 
-                returnValue = DataAccess.RunCmdOutput_int(cmd);
-
-                cmd.Connection.Close();
-                cmd.Connection.Dispose();
-                cmd.Dispose();
-
-                return returnValue;
+                return DataAccess.RunCmdOutput_int(cmd);
             }
         }
 
         public static DataTable RetrieveAll()
         {
-            DataTable dt;
-
             using (SqlCommand cmd = new SqlCommand("Attendance_ReadAll"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
-                dt = ds.Tables[0];
-
-                cmd.Connection.Close();
-                cmd.Connection.Dispose();
-                cmd.Dispose();
+                return DataAccess.RunCMDGetDataSet(cmd).Tables[0];
             }
-
-            return dt;
         }
 
-        public static DataTable RetrieveById(int id)
+        public static DataTable RetrieveById(int Id)
         {
-            DataTable dt;
-
             using (SqlCommand cmd = new SqlCommand("Attendance_ReadByID"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id", id);
-
-                DataSet ds = DataAccess.RunCMDGetDataSet(cmd);
-                dt = ds.Tables[0];
-
-                cmd.Connection.Close();
-                cmd.Connection.Dispose();
-                cmd.Dispose();
+                cmd.Parameters.AddWithValue("@Id", Id);
+                return DataAccess.RunCMDGetDataSet(cmd).Tables[0];
             }
-
-            return dt;
         }
 
-        public static bool Update(int id,
-                                  int internId,
-                                  DateTime attendanceDate,
-                                  bool status,
-                                  string createdBy,
-                                  DateTime createdDate,
-                                  string modifiedBy,
-                                  DateTime modifiedDate,
-                                  bool isDeleted)
+        public static bool Update(int Id, int InternId, DateTime AttendanceDate, string Status,
+                                  string ModifiedBy, DateTime ModifiedDate, bool IsDeleted)
         {
-            bool result = false;
-
             using (SqlCommand cmd = new SqlCommand("Attendance_Update"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@InternId", internId);
-                cmd.Parameters.AddWithValue("@AttendanceDate", attendanceDate);
-                cmd.Parameters.AddWithValue("@Status", status);
-                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
-                cmd.Parameters.AddWithValue("@CreatedDate", createdDate);
-                cmd.Parameters.AddWithValue("@ModifiedBy", modifiedBy);
-                cmd.Parameters.AddWithValue("@ModifiedDate", modifiedDate);
-                cmd.Parameters.AddWithValue("@IsDeleted", isDeleted);
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@InternId", InternId);
+                cmd.Parameters.AddWithValue("@AttendanceDate", AttendanceDate);
+                cmd.Parameters.AddWithValue("@Status", Status);
+                cmd.Parameters.AddWithValue("@ModifiedBy", ModifiedBy);
+                cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
+                cmd.Parameters.AddWithValue("@IsDeleted", IsDeleted);
 
-                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
-                cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
 
-                SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
+                DataAccess.RunCMDGetDataReader(cmd);
 
-                if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1")
-                    result = true;
-
-                r.Close();
-                cmd.Connection.Close();
-                cmd.Connection.Dispose();
-                cmd.Dispose();
+                return cmd.Parameters["@rowsAffected"].Value.ToString() == "1";
             }
-
-            return result;
         }
 
-        public static bool Delete(int id)
+        public static bool Delete(int Id, string usrName, DateTime ModifiedDate)
         {
-            bool result = false;
-
             using (SqlCommand cmd = new SqlCommand("Attendance_Delete"))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@ModifiedBy", "Admin");
-                cmd.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@ModifiedBy", usrName);
+                cmd.Parameters.AddWithValue("@ModifiedDate", ModifiedDate);
 
-                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int);
-                cmd.Parameters["@rowsAffected"].Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add("@rowsAffected", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
 
-                SqlDataReader r = DataAccess.RunCMDGetDataReader(cmd);
+                DataAccess.RunCMDGetDataReader(cmd);
 
-                if (cmd.Parameters["@rowsAffected"].Value.ToString() == "1")
-                    result = true;
-
-                r.Close();
-                cmd.Connection.Close();
-                cmd.Connection.Dispose();
-                cmd.Dispose();
+                return cmd.Parameters["@rowsAffected"].Value.ToString() == "1";
             }
-
-            return result;
         }
     }
 }

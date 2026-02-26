@@ -1,76 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using Internsapp.BL;
+﻿using Internsapp.BL;
 using Internsapp.UI.Models;
+using Internsapp.UI.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Internsapp.UI.Controllers
 {
     public class InternController : Controller
     {
-        private string userName = "Admin";
+        private string CurrentUser => Session["UserName"]?.ToString() ?? "System";
 
-        
-        public ActionResult Login()
-        {
-            return View(new LoginModel());
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Intern intern = Intern.RetrieveByUserName(userName, model.UserName);
-
-                if (intern != null && intern.Password == model.Password)
-                {
-                    if (!intern.IsActive)
-                    {
-                        ModelState.AddModelError("", "Account is inactive");
-                        return View(model);
-                    }
-
-                    if (intern.IsLocked)
-                    {
-                        ModelState.AddModelError("", "Account is locked");
-                        return View(model);
-                    }
-
-                    Session["UserId"] = intern.Id;
-                    Session["UserName"] = intern.UserName;
-                    Session["IsAdmin"] = intern.IsSystemAdmin;
-
-                    return RedirectToAction("Index");
-                }
-
-                ModelState.AddModelError("", "Invalid Username or Password");
-            }
-
-            return View(model);
-        }
-
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            Session.Abandon();
-            return RedirectToAction("Login");
-        }
-
-        
+        // ===================== INDEX =====================
         public ActionResult Index()
         {
-            List<InternModel> list = new List<InternModel>();
-
-            foreach (Intern i in Intern.RetrieveAll(userName))
-            {
-                list.Add(new InternModel(i));
-            }
+            var list = Intern.RetrieveAll(CurrentUser)
+                             .Select(i => new InternModel(i))
+                             .ToList();
 
             return View(list);
         }
 
-        
+        // ===================== CREATE =====================
         public ActionResult Create()
         {
             return View(new InternModel());
@@ -83,29 +37,31 @@ namespace Internsapp.UI.Controllers
             if (ModelState.IsValid)
             {
                 Intern.Create(
-                    userName,
+                    CurrentUser,
                     model.FirstName,
                     model.LastName,
                     model.UserName,
                     model.Password,
-                    model.DateOfJoining,
-                    model.AvailableLeave,
+                    model.DateOfJoining == DateTime.MinValue ? DateTime.Now : model.DateOfJoining,
+                    0,
                     model.Address,
                     model.Phone,
                     model.IsSystemAdmin,
-                    model.IsActive
+                    model.IsActive,
+                    false,
+                    0
                 );
 
-                return RedirectToAction("Login");
+                return RedirectToAction("Index");
             }
 
             return View(model);
         }
 
-        
+        // ===================== EDIT =====================
         public ActionResult Edit(int id)
         {
-            Intern intern = Intern.RetrieveById(userName, id);
+            var intern = Intern.RetrieveById(CurrentUser, id);
             return View(new InternModel(intern));
         }
 
@@ -115,37 +71,137 @@ namespace Internsapp.UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.intern.Update(userName);
+                var intern = Intern.RetrieveById(CurrentUser, model.Id);
+
+                intern.FirstName = model.FirstName;
+                intern.LastName = model.LastName;
+                intern.UserName = model.UserName;
+                intern.Password = model.Password;
+                intern.Phone = model.Phone;
+                intern.Address = model.Address;
+                intern.AvailableLeave = model.AvailableLeave;
+                intern.IsActive = model.IsActive;
+                intern.IsLocked = model.IsLocked;
+                intern.NoOfAttempts = model.NoOfAttempts;
+
+                intern.ModifiedBy = CurrentUser;
+                intern.ModifiedDate = DateTime.Now;
+
+                intern.Update(CurrentUser);
+
                 return RedirectToAction("Index");
             }
 
             return View(model);
         }
 
-        
+        // ===================== DETAILS =====================
         public ActionResult Details(int id)
         {
-            Intern intern = Intern.RetrieveById(userName, id);
-
-            if (intern == null)
-                return HttpNotFound();
-
+            var intern = Intern.RetrieveById(CurrentUser, id);
             return View(new InternModel(intern));
         }
 
-        
+        // ===================== DELETE =====================
         public ActionResult Delete(int id)
         {
-            Intern intern = Intern.RetrieveById(userName, id);
+            var intern = Intern.RetrieveById(CurrentUser, id);
             return View(new InternModel(intern));
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(InternModel model)
         {
-            Intern.Delete(userName, id);
+            Intern.Delete(CurrentUser, model.Id);
             return RedirectToAction("Index");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View(new InternModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(InternModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Intern.Register(
+                    model.UserName,
+                    model.FirstName,
+                    model.LastName,
+                    model.UserName,
+                    model.Password,
+                    DateTime.Now,
+                    0,
+                    model.Address,
+                    model.Phone
+                );
+
+                return RedirectToAction("Login");
+            }
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View(new LoginViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            bool isValid = Intern.Login(model.UserName, model.Password);
+
+            if (isValid)
+            {
+                Session["UserName"] = model.UserName;
+
+                string role = "Intern";
+
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
+                    1,
+                    model.UserName,
+                    DateTime.Now,
+                    DateTime.Now.AddMinutes(2880),
+                    false,
+                    role,
+                    FormsAuthentication.FormsCookiePath
+                );
+
+                string hash = FormsAuthentication.Encrypt(ticket);
+
+                HttpCookie authCookie = new HttpCookie(
+                    FormsAuthentication.FormsCookieName, hash)
+                {
+                    HttpOnly = true,
+                    Expires = ticket.Expiration
+                };
+
+                Response.Cookies.Add(authCookie);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Invalid username or password");
+            return View(model);
+        }
+
+        // ===================== LOGOUT =====================
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

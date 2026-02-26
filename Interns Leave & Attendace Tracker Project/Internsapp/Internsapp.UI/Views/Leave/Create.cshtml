@@ -1,0 +1,52 @@
+﻿@model Internsapp.UI.Models.LeaveModel
+
+@{
+    ViewBag.Title = "Apply Leave";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow page-card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Apply Leave</h5>
+        </div>
+
+        <div class="card-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.InternId)
+                    @Html.DropDownListFor(m => m.InternId, (SelectList)ViewBag.Interns, "Select Intern", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(m => m.InternId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.FromDate)
+                    @Html.TextBoxFor(m => m.FromDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.ToDate)
+                    @Html.TextBoxFor(m => m.ToDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                    @Html.ValidationMessageFor(m => m.ToDate)
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Reason)
+                    @Html.TextAreaFor(m => m.Reason, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(m => m.Reason)
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
+                    <input type="submit" value="Apply" class="btn btn-success" />
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

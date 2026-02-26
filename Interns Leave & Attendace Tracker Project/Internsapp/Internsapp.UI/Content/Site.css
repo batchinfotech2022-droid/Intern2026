@@ -1,20 +1,218 @@
-﻿/* Set padding to keep content from hitting the edges */
+﻿
+body {
+    background-color: #f8fafc;
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 15px;
+    color: #1f2937;
+}
+
 .body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    margin-top: 30px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+
+.navbar {
+    background:#1b114a
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.navbar-brand {
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: .5px;
+}
+
+.navbar .nav-link {
+    color: #e0e7ff !important;
+    font-weight: 500;
+    margin-right: 14px;
+}
+
+    .navbar .nav-link:hover {
+        color: #ffffff !important;
+    }
+
+.btn-logout {
+    border: 1.5px solid #e0e7ff;
+    border-radius: 22px;
+    padding: 6px 18px;
+    color: #fff !important;
+}
+
+    .btn-logout:hover {
+        background: #fff;
+        color: #4f46e5 !important;
+    }
+
+footer {
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    padding: 14px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url("https://images.unsplash.com/photo-1522071820081-009f0129c71c");
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    padding: 120px 30px;
+    color: #fff;
+    text-align: center;
+}
+
+    .hero-section h1 {
+        font-size: 42px;
+        font-weight: 700;
+    }
+
+    .hero-section p {
+        font-size: 18px;
+        opacity: .9;
+    }
+
+
+.section {
+    margin-top: 80px;
+}
+
+
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 30 15px 35px rgba(0,0,0,.08);
+}
+
+.page-card {
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.10), 0 20px 40px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4338ca, #4f46e5);
+    color: #fff;
+    padding: 16px 12px;
+    border-radius: 16px 16px 0 0;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.header-tools {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+    .header-tools input {
+        height: 36px;
+        border-radius: 10px;
+    }
+
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    .table thead th {
+        background: #f1f5f9;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: #334155;
+    }
+
+    .table th, .table td {
+        padding: 14px 16px;
+        vertical-align: middle;
+    }
+
+    .table tbody tr {
+        transition: background .2s;
+    }
+
+        .table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4px;
+    font-size: 16px;
+    transition: .2s;
+}
+
+    .action-btn.edit {
+        color: #16a34a;
+        background: #dcfce7;
+    }
+
+    .action-btn.view {
+        color: #2563eb;
+        background: #dbeafe;
+    }
+
+    .action-btn.delete {
+        color: #dc2626;
+        background: #fee2e2;
+    }
+
+    .action-btn:hover {
+        transform: scale(1.1);
+    }
+.status-text {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+    .status-text.present {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .status-text.absent {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+    .status-badge.present,
+    .status-badge.approved {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .status-badge.absent,
+    .status-badge.rejected {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+.form-control {
+    border-radius: 10px;
+    height: 42px;
+   
 }

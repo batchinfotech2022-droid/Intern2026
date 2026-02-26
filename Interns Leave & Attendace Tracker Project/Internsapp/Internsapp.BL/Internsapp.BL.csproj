@@ -44,7 +44,7 @@
     <Compile Include="Activity.cs" />
     <Compile Include="AppException.cs" />
     <Compile Include="Attendance.cs" />
-    <Compile Include="Interns.cs" />
+    <Compile Include="Intern.cs" />
     <Compile Include="Leave.cs" />
     <Compile Include="PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
