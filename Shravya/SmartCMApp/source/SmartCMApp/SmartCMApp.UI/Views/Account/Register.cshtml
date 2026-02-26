@@ -1,103 +1,130 @@
 ﻿@model SmartCMApp.UI.ViewModel.RegisterViewModel
-
 @{
-    ViewBag.Title = "Create";
-    Layout=null;
+    ViewBag.Title = "Register";
+    Layout = null;
 }
-
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
 
-            <div class="card shadow-lg rounded-3">
+<div class="page-bg register-page">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-                <!-- Header -->
-                <div class="card-header bg-danger text-white text-center">
-                    <h2 class="mb-0 fw-bold">Register</h2>
+    <div class="flip-scene">
+        <div class="flip-card" id="flipCard">
+
+            <!-- FRONT: placeholder -->
+            <div class="flip-front">
+                <div class="glass-card" style="display:flex;align-items:center;justify-content:center;min-height:200px;">
+                    <p style="color:rgba(255,255,255,0.5);">Going back…</p>
                 </div>
+            </div>
 
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
+            <!-- BACK: register form (drives height) -->
+            <div class="flip-back">
+                <div class="glass-card">
+                    <span class="card-badge">Get Started</span>
+                    <h2 class="card-title">Create your account 🚀</h2>
 
-                    <div class="card-body">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "registerForm" }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                        <div class="w-75 mx-auto">
-
-                            <!-- Full Name -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.FullName,
-                                    new { @class = "form-control", placeholder = "Enter Full Name" })
-                                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FullName)
+                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                    @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-
-
-                            <!-- Phone -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Phone,
-                                    new { @class = "form-control", placeholder = "Enter Phone Number" })
-                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Phone)
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone Number" })
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-                            <!-- City -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.City,
-                                    new { @class = "form-control", placeholder = "Enter City" })
-                                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.City)
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-                            <!-- Email -->
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.UserName,
-                                    new { @class = "form-control", type = "email", placeholder = "you@example.com" })
-                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserName)
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", type = "email", placeholder = "you@example.com" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-
-                            <div class="mb-3">
-                                @Html.LabelFor(m => m.PassWord, new { @class = "form-label" })
-
-                                @Html.PasswordFor(m => m.PassWord,
-                                    new { @class = "form-control", placeholder = "Enter Password" })
-
-                                @Html.ValidationMessageFor(m => m.PassWord,
-                                    "", new { @class = "text-danger" })
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PassWord)
+                                    @Html.PasswordFor(m => m.PassWord, new { @class = "form-control", placeholder = "Password" })
+                                    @Html.ValidationMessageFor(m => m.PassWord, "", new { @class = "text-danger" })
+                                </div>
                             </div>
-
-                            <!-- Category -->
-                            <div class="mb-3">
-                                @Html.Label("Category", new { @class = "form-label" })
-
-                                @Html.DropDownListFor(m => m.CategoryId,
-     ViewBag.CategoryList as IEnumerable<SelectListItem>,
-     "Select Category",
-     new { @class = "form-select" })
-
-                                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.Label("Category")
+                                    @Html.DropDownListFor(m => m.CategoryId,
+                                             ViewBag.CategoryList as IEnumerable<SelectListItem>,
+                                             "Select Category",
+                                             new { @class = "form-control form-select" })
+                                    @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
+
+                        <button type="button" class="btn-main" onclick="submitRegister()">Register →</button>
+                    }
+
+                    <div class="switch-link">
+                        Already have an account? <span onclick="flipToLogin()">Sign in</span>
                     </div>
-
-                    <div class="card-footer bg-white px-4 py-3">
-                        <div class="d-flex justify-content-center align-items-center">
-
-
-                            <button type="submit"
-                                    class="btn btn-success px-4">
-                                Register
-                            </button>
-
-                        </div>
-                    </div>
-                }
+                </div>
             </div>
 
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var card = document.getElementById('flipCard');
+        card.style.transition = 'none';
+        card.style.transform = 'rotateY(180deg)';
+
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('flip') === '1') {
+            card.style.transform = 'rotateY(360deg)';
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    card.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
+                    card.style.transform = 'rotateY(180deg)';
+                });
+            });
+        }
+    });
+
+    function flipToLogin() {
+        var card = document.getElementById('flipCard');
+        card.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
+        card.style.transform = 'rotateY(0deg)';
+        setTimeout(function () {
+            window.location.href = '@Url.Action("Login", "Account")';
+        }, 750);
+    }
+
+    function submitRegister() {
+        var card = document.getElementById('flipCard');
+        card.style.transition = 'transform 0.8s cubic-bezier(0.77, 0, 0.175, 1)';
+        card.style.transform = 'rotateY(0deg)';
+        setTimeout(function () {
+            document.getElementById('registerForm').submit();
+        }, 750);
+    }
+</script>
