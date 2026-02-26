@@ -1,6 +1,6 @@
 USE [Internsapp]
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ BEGIN
 	SELECT @Activityid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +53,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +74,7 @@ BEGIN
 	ORDER BY Activityid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ BEGIN
 		Activityid = @Activityid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ BEGIN
 	SELECT @Exceptionid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +206,7 @@ BEGIN
 	ORDER BY Exceptionid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +229,7 @@ BEGIN
 		Exceptionid = @Exceptionid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +255,7 @@ BEGIN
 		ExceptionDesc Like '%' + @ExceptionSource + '%'
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,65 +289,55 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Create]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Attendance_Create]
-    @InternId INT,
-    @AttendanceDate DATE,
-    @Status BIT,
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT OUTPUT
+(
+    @InternId int,
+    @AttendanceDate date,
+    @Status varchar(20),
+    @CreatedBy varchar(max),
+    @CreatedDate datetime,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit,
+    @Id int OUTPUT
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     INSERT INTO Attendance
     (
-        InternId,
-        AttendanceDate,
-        [Status],
-        CreatedBy,
-        CreatedDate,
-        ModifiedBy,
-        ModifiedDate,
-        IsDeleted
+        InternId, AttendanceDate, Status,
+        CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
     )
     VALUES
     (
-        @InternId,
-        @AttendanceDate,
-        @Status,
-        @CreatedBy,
-        @CreatedDate,
-        @ModifiedBy,
-        @ModifiedDate,
-        @IsDeleted
-    );
+        @InternId, @AttendanceDate, @Status,
+        @CreatedBy, @CreatedDate, @ModifiedBy, @ModifiedDate, @IsDeleted
+    )
 
-    SELECT @Id = SCOPE_IDENTITY();
+    SELECT @Id = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Delete]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE   PROCEDURE [dbo].[Attendance_Delete]
-    @Id INT,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME
+CREATE PROCEDURE [dbo].[Attendance_Delete]
+(
+    @Id int,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     UPDATE Attendance
     SET
@@ -355,131 +345,187 @@ BEGIN
         ModifiedBy = @ModifiedBy,
         ModifiedDate = @ModifiedDate
     WHERE Id = @Id
-      AND IsDeleted = 0;
+      AND IsDeleted = 0
 
-    RETURN @@ROWCOUNT;
+    RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_ReadAll]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE   PROCEDURE [dbo].[Attendance_ReadAll]
+CREATE PROCEDURE [dbo].[Attendance_ReadAll]
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     SELECT
-        InternId,
-        AttendanceDate,
-        [Status],
-        CreatedBy,
-        CreatedDate,
-        ModifiedBy,
-        ModifiedDate,
-        IsDeleted
-    FROM Attendance
-    WHERE IsDeleted = 0;
+        A.Id,
+        A.InternId,
+        I.FirstName + ' ' + I.LastName AS InternName,
+        A.AttendanceDate,
+        A.Status,
+        A.CreatedBy,
+        A.CreatedDate,
+        A.ModifiedBy,
+        A.ModifiedDate,
+        A.IsDeleted
+    FROM Attendance A
+    INNER JOIN Interns I ON A.InternId = I.Id
+    WHERE A.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_ReadByID]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE  PROCEDURE [dbo].[Attendance_ReadByID]
-    @Id INT
+CREATE PROCEDURE [dbo].[Attendance_ReadByID]
+    @Id int
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     SELECT
-        InternId,
-        AttendanceDate,
-        [Status],
-        CreatedBy,
-        CreatedDate,
-        ModifiedBy,
-        ModifiedDate,
-        IsDeleted
-    FROM Attendance
-    WHERE Id = @Id
-      AND IsDeleted = 0;
+        A.Id,
+        A.InternId,
+        I.FirstName + ' ' + I.LastName AS InternName,
+        A.AttendanceDate,
+        A.Status,
+        A.CreatedBy,
+        A.CreatedDate,
+        A.ModifiedBy,
+        A.ModifiedDate,
+        A.IsDeleted
+    FROM Attendance A
+    INNER JOIN Interns I ON A.InternId = I.Id
+    WHERE A.Id = @Id
+	AND A.IsDeleted = 0
+      
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Update]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-CREATE   PROCEDURE [dbo].[Attendance_Update]
-    @InternId INT,
-    @AttendanceDate DATE,
-    @Status BIT,
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT
+CREATE PROCEDURE [dbo].[Attendance_Update]
+(
+    @Id int,
+    @InternId int,
+    @AttendanceDate date,
+    @Status varchar(20),
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     UPDATE Attendance
     SET
-        InternId = @InternId,
-        AttendanceDate = @AttendanceDate,
-        [Status] = @Status,
-        CreatedBy = @CreatedBy,
-        CreatedDate = @CreatedDate,
-        ModifiedBy = @ModifiedBy,
-        ModifiedDate = @ModifiedDate,
-        IsDeleted = @IsDeleted
-    WHERE Id = @Id;
+        InternId=@InternId,
+        AttendanceDate=@AttendanceDate,
+        Status=@Status,
+        ModifiedBy=@ModifiedBy,
+        ModifiedDate=@ModifiedDate,
+        IsDeleted=@IsDeleted
+    WHERE Id=@Id
 
-    RETURN @@ROWCOUNT;
+    RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_Create]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Interns_Create]
-    @FirstName VARCHAR(MAX),
-    @LastName VARCHAR(MAX),
-    @UserName VARCHAR(MAX),
-    @Password VARCHAR(MAX),
-    @DateOfJoining DATE,
-    @AvailableLeave INT,
-    @Address VARCHAR(MAX),
-    @Phone VARCHAR(20),
-    @IsSystemAdmin BIT,
-    @IsActive BIT,
-    @IsLocked BIT,
-    @NoOfAttempts INT,
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT OUTPUT
+(
+    @FirstName varchar(max),
+    @LastName varchar(max),
+    @UserName varchar(50),
+    @Password varchar(max),
+    @DateOfJoining date,
+    @AvailableLeave int,
+    @Address varchar(max),
+    @Phone varchar(13),
+    @IsSystemAdmin bit,
+    @IsActive bit,
+    @IsLocked bit,
+    @NoOfAttempts int,
+    @CreatedBy varchar(max),
+    @CreatedDate datetime,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit,
+    @Id int OUTPUT
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     INSERT INTO Interns
     (
+        FirstName, LastName, UserName, Password, DateOfJoining,
+        AvailableLeave, Address, Phone, IsSystemAdmin, IsActive,
+        IsLocked, NoOfAttempts,
+        CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
+    )
+    VALUES
+    (
+        @FirstName, @LastName, @UserName, @Password, @DateOfJoining,
+        @AvailableLeave, @Address, @Phone, @IsSystemAdmin, @IsActive,
+        @IsLocked, @NoOfAttempts,
+        @CreatedBy, @CreatedDate, @ModifiedBy, @ModifiedDate, @IsDeleted
+    )
+
+    SELECT @Id = SCOPE_IDENTITY()
+END
+GO
+/****** Object:  StoredProcedure [dbo].[Interns_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[Interns_Delete]
+(
+    @Id int,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime
+)
+AS
+BEGIN
+    SET NOCOUNT ON
+
+    UPDATE Interns
+    SET
+        IsDeleted = 1,
+        ModifiedBy = @ModifiedBy,
+        ModifiedDate = @ModifiedDate
+    WHERE Id = @Id
+      AND IsDeleted = 0
+
+    RETURN @@ROWCOUNT
+END
+GO
+/****** Object:  StoredProcedure [dbo].[Interns_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE   PROCEDURE [dbo].[Interns_ReadAll]
+AS
+BEGIN
+    SELECT
+        Id,
         FirstName,
         LastName,
+        (FirstName + ' ' + LastName) AS InternName,  -- dynamically create InternName
         UserName,
-        [Password],
+        Password,
         DateOfJoining,
         AvailableLeave,
         Address,
@@ -493,91 +539,80 @@ BEGIN
         ModifiedBy,
         ModifiedDate,
         IsDeleted
-    )
-    VALUES
-    (
-        @FirstName,
-        @LastName,
-        @UserName,
-        @Password,
-        @DateOfJoining,
-        @AvailableLeave,
-        @Address,
-        @Phone,
-        @IsSystemAdmin,
-        @IsActive,
-        @IsLocked,
-        @NoOfAttempts,
-        @CreatedBy,
-        @CreatedDate,
-        @ModifiedBy,
-        @ModifiedDate,
-        @IsDeleted
-    );
-
-    SELECT @Id = SCOPE_IDENTITY();
-END
-GO
-/****** Object:  StoredProcedure [dbo].[Interns_Delete]    Script Date: 23-02-2026 08:44:03 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [dbo].[Interns_Delete]
-    @Id INT,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    UPDATE Interns
-    SET
-        IsDeleted = 1,
-        ModifiedBy = @ModifiedBy,
-        ModifiedDate = @ModifiedDate
-    WHERE Id = @Id
-      AND IsDeleted = 0;
-
-    RETURN @@ROWCOUNT;
-END
-GO
-/****** Object:  StoredProcedure [dbo].[Interns_ReadAll]    Script Date: 23-02-2026 08:44:03 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE PROCEDURE [dbo].[Interns_ReadAll]
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT *
     FROM Interns
-    WHERE IsDeleted = 0;
+	WHERE IsDeleted=0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_ReadByID]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Interns_ReadByID]
-    @Id INT
+    @Id int
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    SELECT *
+    SELECT
+        Id,
+        FirstName,
+        LastName,
+        FirstName + ' ' + LastName AS InternName,
+        UserName,
+        Password,
+        DateOfJoining,
+        AvailableLeave,
+        Address,
+        Phone,
+        IsSystemAdmin,
+        IsActive,
+        IsLocked,
+        NoOfAttempts,
+        CreatedBy,
+        CreatedDate,
+        ModifiedBy,
+        ModifiedDate,
+        IsDeleted
     FROM Interns
     WHERE Id = @Id
-      AND IsDeleted = 0;
+     
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByPassword]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_ReadByUserName]    Script Date: 26-02-2026 03:15:46 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE   PROCEDURE [dbo].[Interns_ReadByUserName]
+    @UserName NVARCHAR(50)
+AS
+BEGIN
+    SELECT
+        Id,
+        FirstName,
+        LastName,
+        (FirstName + ' ' + LastName) AS InternName,  -- dynamically create InternName
+        UserName,
+        Password,
+        DateOfJoining,
+        AvailableLeave,
+        Address,
+        Phone,
+        IsSystemAdmin,
+        IsActive,
+        IsLocked,
+        NoOfAttempts,
+        CreatedBy,
+        CreatedDate,
+        ModifiedBy,
+        ModifiedDate,
+        IsDeleted
+    FROM Interns
+    WHERE UserName = @UserName
+END
+GO
+/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByPassword]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -595,220 +630,243 @@ BEGIN
       AND IsDeleted = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByUserName]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByUserName]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Interns_RetrieveByUserName]
-    @UserName VARCHAR(MAX)
+	@UserName VARCHAR(50)
 AS
 BEGIN
-    SET NOCOUNT ON;
+	SET NOCOUNT ON
 
-    SELECT *
-    FROM Interns
-    WHERE UserName = @UserName
-      AND IsDeleted = 0
-      AND IsActive = 1;
+	SELECT
+		Id,
+		FirstName,
+		LastName,
+		UserName,
+		[Password],
+		DateOfJoining,
+		AvailableLeave,
+		[Address],
+		Phone,
+		IsSystemAdmin,
+		IsActive,
+		IsLocked,
+		NoOfAttempts,
+		CreatedBy,
+		CreatedDate,
+		ModifiedBy,
+		ModifiedDate,
+		IsDeleted
+	FROM Interns
+	WHERE
+		UserName = @UserName
+		AND IsDeleted = 0
+		AND IsActive = 1
 END
+
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_Update]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Interns_Update]
-    @FirstName VARCHAR(MAX),
-    @LastName VARCHAR(MAX),
-    @UserName VARCHAR(MAX),
-    @Password VARCHAR(MAX),
-    @DateOfJoining DATE,
-    @AvailableLeave INT,
-    @Address VARCHAR(MAX),
-    @Phone VARCHAR(20),
-    @IsSystemAdmin BIT,
-    @IsActive BIT,
-    @IsLocked BIT,
-    @NoOfAttempts INT,
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT
+(
+    @Id int,
+    @FirstName varchar(max),
+    @LastName varchar(max),
+    @UserName varchar(50),
+    @Password varchar(max),
+    @DateOfJoining date,
+    @AvailableLeave int,
+    @Address varchar(max),
+    @Phone varchar(13),
+    @IsSystemAdmin bit,
+    @IsActive bit,
+    @IsLocked bit,
+    @NoOfAttempts int,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     UPDATE Interns
     SET
-        FirstName = @FirstName,
-        LastName = @LastName,
-        UserName = @UserName,
-        [Password] = @Password,
-        DateOfJoining = @DateOfJoining,
-        AvailableLeave = @AvailableLeave,
-        Address = @Address,
-        Phone = @Phone,
-        IsSystemAdmin = @IsSystemAdmin,
-        IsActive = @IsActive,
-        IsLocked = @IsLocked,
-        NoOfAttempts = @NoOfAttempts,
-        CreatedBy = @CreatedBy,
-        CreatedDate = @CreatedDate,
-        ModifiedBy = @ModifiedBy,
-        ModifiedDate = @ModifiedDate,
-        IsDeleted = @IsDeleted
-    WHERE Id = @Id;
+        FirstName=@FirstName,
+        LastName=@LastName,
+        UserName=@UserName,
+        Password=@Password,
+        DateOfJoining=@DateOfJoining,
+        AvailableLeave=@AvailableLeave,
+        Address=@Address,
+        Phone=@Phone,
+        IsSystemAdmin=@IsSystemAdmin,
+        IsActive=@IsActive,
+        IsLocked=@IsLocked,
+        NoOfAttempts=@NoOfAttempts,
+        ModifiedBy=@ModifiedBy,
+        ModifiedDate=@ModifiedDate,
+        IsDeleted=@IsDeleted
+    WHERE Id=@Id
 
-    RETURN @@ROWCOUNT;
+    RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Create]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Leave_Create]
-    @InternId INT,
-    @FromDate DATETIME,
-    @ToDate DATETIME,
-    @Reason VARCHAR(250),
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT OUTPUT
+(
+    @InternId int,
+    @FromDate datetime,
+    @ToDate datetime,
+    @Reason varchar(250),
+    @CreatedBy varchar(max),
+    @CreatedDate datetime,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit,
+    @Id int OUTPUT
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    INSERT INTO Leave
+    INSERT INTO [Leave]
     (
-        InternId,
-        FromDate,
-        ToDate,
-        Reason,
-        CreatedBy,
-        CreatedDate,
-        ModifiedBy,
-        ModifiedDate,
-        IsDeleted
+        InternId, FromDate, ToDate, Reason,
+        CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, IsDeleted
     )
     VALUES
     (
-        @InternId,
-        @FromDate,
-        @ToDate,
-        @Reason,
-        @CreatedBy,
-        @CreatedDate,
-        @ModifiedBy,
-        @ModifiedDate,
-        @IsDeleted
-    );
+        @InternId, @FromDate, @ToDate, @Reason,
+        @CreatedBy, @CreatedDate, @ModifiedBy, @ModifiedDate, @IsDeleted
+    )
 
-    SELECT @Id = SCOPE_IDENTITY();
+    SELECT @Id = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Delete]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Leave_Delete]
-    @Id INT,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME
+(
+    @Id int,
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    UPDATE Leave
+    UPDATE [Leave]
     SET
         IsDeleted = 1,
         ModifiedBy = @ModifiedBy,
         ModifiedDate = @ModifiedDate
     WHERE Id = @Id
-      AND IsDeleted = 0;
+      AND IsDeleted = 0
 
-    RETURN @@ROWCOUNT;
+    RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_ReadAll]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Leave_ReadAll]
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    SELECT *
-    FROM Leave
-    WHERE IsDeleted = 0;
+    SELECT
+        L.Id,
+        L.InternId,
+        I.FirstName + ' ' + I.LastName AS InternName,
+        L.FromDate,
+        L.ToDate,
+        L.Reason,
+        L.CreatedBy,
+        L.CreatedDate,
+        L.ModifiedBy,
+        L.ModifiedDate,
+        L.IsDeleted
+    FROM [Leave] L
+    INNER JOIN Interns I ON L.InternId = I.Id
+    WHERE L.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_ReadByID]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Leave_ReadByID]
-    @Id INT
+    @Id int
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    SELECT *
-    FROM Leave
-    WHERE Id = @Id
-      AND IsDeleted = 0;
+    SELECT
+        L.Id,
+        L.InternId,
+        I.FirstName + ' ' + I.LastName AS InternName,
+        L.FromDate,
+        L.ToDate,
+        L.Reason,
+        L.CreatedBy,
+        L.CreatedDate,
+        L.ModifiedBy,
+        L.ModifiedDate,
+        L.IsDeleted
+    FROM [Leave] L
+    INNER JOIN Interns I ON L.InternId = I.Id
+    WHERE L.Id = @Id
+      AND L.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Update]    Script Date: 23-02-2026 08:44:03 AM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
 CREATE PROCEDURE [dbo].[Leave_Update]
-    @InternId INT,
-    @FromDate DATETIME,
-    @ToDate DATETIME,
-    @Reason VARCHAR(250),
-    @CreatedBy VARCHAR(MAX),
-    @CreatedDate DATETIME,
-    @ModifiedBy VARCHAR(MAX),
-    @ModifiedDate DATETIME,
-    @IsDeleted BIT,
-    @Id INT
+(
+    @Id int,
+    @InternId int,
+    @FromDate datetime,
+    @ToDate datetime,
+    @Reason varchar(250),
+    @ModifiedBy varchar(max),
+    @ModifiedDate datetime,
+    @IsDeleted bit
+)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
-    UPDATE Leave
+    UPDATE [Leave]
     SET
-        InternId = @InternId,
-        FromDate = @FromDate,
-        ToDate = @ToDate,
-        Reason = @Reason,
-        CreatedBy = @CreatedBy,
-        CreatedDate = @CreatedDate,
-        ModifiedBy = @ModifiedBy,
-        ModifiedDate = @ModifiedDate,
-        IsDeleted = @IsDeleted
-    WHERE Id = @Id;
+        InternId=@InternId,
+        FromDate=@FromDate,
+        ToDate=@ToDate,
+        Reason=@Reason,
+        ModifiedBy=@ModifiedBy,
+        ModifiedDate=@ModifiedDate,
+        IsDeleted=@IsDeleted
+    WHERE Id=@Id
 
-    RETURN @@ROWCOUNT;
+    RETURN @@ROWCOUNT
 END
 GO
