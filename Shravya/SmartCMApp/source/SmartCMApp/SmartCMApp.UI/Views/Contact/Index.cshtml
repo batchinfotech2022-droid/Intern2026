@@ -64,8 +64,10 @@
 
                 <!-- CREATE BUTTON -->
                 <div class="col-md-2 text-center">
-                    @Html.ActionLink(" Add Contact", "Create", null,
-                        new { @class = "btn btn-success btn-sm" })
+                    <a href="@Url.Action("Create", "Contact")"
+                       class="btn btn-success btn-sm rounded-pill px-3">
+                        <i class="bi bi-person-plus-fill me-1"></i> Add Contact
+                    </a>
                 </div>
 
             </div>
@@ -96,22 +98,46 @@
                                 <td>@item.City</td>
                                 <td>@item.Phone</td>
 
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit",
-                                        new { id = item.Id },
-                                        new { @class = "btn btn-primary btn-sm" })
+                                @*<td>
+                                        @Html.ActionLink("Edit", "Edit",
+                                            new { id = item.Id },
+                                            new { @class = "btn btn-primary btn-sm" })
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id },
+        new { @class = "btn btn-warning btn-sm" })
+
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Delete", "Delete",
+                                            new { id = item.Id },
+                                            new { @class = "btn btn-danger btn-sm" })
+                                    </td>*@
+
+                                <td class="text-center">
+                                    <a href="@Url.Action("Edit", new { id = item.Id })"
+                                       class="btn btn-sm btn-outline-primary action-icon"
+                                       title="Edit">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
                                 </td>
 
-                                <td>
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id },
-    new { @class = "btn btn-warning btn-sm" })
-
+                                <td class="text-center">
+                                    <a href="@Url.Action("Details", new { id = item.Id })"
+                                       class="btn btn-sm btn-outline-warning action-icon"
+                                       title="Details">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
                                 </td>
 
-                                <td>
-                                    @Html.ActionLink("Delete", "Delete",
-                                        new { id = item.Id },
-                                        new { @class = "btn btn-danger btn-sm" })
+                                <td class="text-center">
+                                    <a href="@Url.Action("Delete", new { id = item.Id })"
+                                       class="btn btn-sm btn-outline-danger action-icon"
+                                       title="Delete">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
                                 </td>
                             </tr>
 

@@ -254,6 +254,65 @@ body {
 }
 
 
+/* ===== Feature Cards Modern Hover ===== */
+
+#custom-cards .card {
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+    #custom-cards .card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Image zoom effect */
+    #custom-cards .card img {
+        transition: transform 0.5s ease;
+    }
+
+    #custom-cards .card:hover img {
+        transform: scale(1.07);
+    }
+
+/* Card body styling */
+#custom-cards .card-body {
+    padding: 22px;
+}
+
+#custom-cards .card-title {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+#custom-cards .card:hover .card-title {
+    color: #7c3aed; /* Soft purple hover */
+}
+
+/* Action Icon Buttons */
+.action-icon {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 6px 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+    .action-icon i {
+        font-size: 16px;
+    }
+
+    .action-icon:hover {
+        transform: scale(1.15);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
 
 @keyframes bounce {
     0%, 100% {
@@ -271,6 +330,8 @@ body {
 */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap');
 
+
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -281,11 +342,9 @@ html {
     height: 100%;
 }
 
-body {
-    min-height: 100%;
-    font-family: 'DM Sans', sans-serif;
-    overflow-y: auto;
+.auth-page {
     background: url('/Content/images/login.jpeg') center/cover no-repeat fixed;
+    min-height: 100vh;
 }
 
 .page-bg {
@@ -348,15 +407,26 @@ body {
 }
 
 /* ---- Glass card ---- */
-.glass-card {
+/*.glass-card {
     width: 100%;
-    background: #dbc0f6;
+    background: #cb6fed;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 24px;
     padding: 30px 36px 26px;
     box-shadow: 0 25px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+    color: #000;
+}*/
+
+.glass-card {
+    width: 100%;
+    background: #ffffff; /* pure white */
+    border-radius: 24px;
+    padding: 30px 36px 26px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    color: #000;
 }
 
 .card-badge {
@@ -365,14 +435,14 @@ body {
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: #555;
     margin-bottom: 6px;
 }
 
 .card-title {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
-    color: #fff;
+    color: #000;
     line-height: 1.25;
     margin-bottom: 18px;
 }
@@ -388,18 +458,18 @@ body {
         font-weight: 500;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.6);
+        color: #333;
         margin-bottom: 4px;
     }
 
     .form-group .form-control,
     .form-group .form-select {
         width: 100%;
-        background: rgba(255,255,255,0.1);
-        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 10px;
         padding: 9px 14px;
-        color: #fff;
+        color: #000; 
+        background: #ffffff; 
+        border: 1px solid #ccc;
         font-size: 13px;
         font-family: 'DM Sans', sans-serif;
         transition: all 0.3s;
@@ -409,7 +479,7 @@ body {
     }
 
         .form-group .form-control::placeholder {
-            color: rgba(255,255,255,0.35);
+            color: #888;
         }
 
         .form-group .form-select option {
@@ -457,7 +527,7 @@ body {
     text-align: center;
     margin-top: 14px;
     font-size: 13px;
-    color: rgba(255,255,255,0.5);
+    color: #555;
 }
 
     .switch-link span {

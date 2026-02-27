@@ -1,0 +1,79 @@
+when your switching between the pcs and pulling and pushing things sometimes you will find errors like  packages are not correct
+OR
+
+Could not find a part of the path 'D:\Shravya\git\Intern2026\Shravya\BiSchool\source\BiSchool.UI\bin\roslyn\csc.exe'.
+
+
+like rhis so first yo need to 
+Step 1 — Delete Packages Folder (Very Important)
+
+Close Visual Studio.
+
+Go to this folder:
+
+D:\Shravya\git\Intern2026\Shravya\BiSchool\source\
+
+Delete the entire folder named:
+
+packages
+
+Yes — delete completely.
+
+
+STEP 2 — Delete bin & obj folders
+
+Close browser.
+
+In File Explorer go to:
+
+BiSchool.UI
+
+Delete these two folders:
+
+bin
+obj
+
+(Delete completely)
+
+🔹 Step 3 — Open Visual Studio Again
+
+Open your solution again.
+
+Right-click on Solution
+
+Click Restore NuGet Packages
+
+Wait until it finishes.
+
+STEP 4 — Clean Solution
+
+Open Visual Studio:
+
+Build → Clean Solution
+🔹 STEP 5 — Rebuild Solution
+Build → Rebuild Solution
+
+Wait until build succeeds.
+
+🔹 STEP 6 — Very Important (Install Correct Version)
+
+Open:
+
+Tools → NuGet Package Manager → Package Manager Console
+
+Run this:
+
+Uninstall-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -Force
+Install-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -Version 2.0.1
+🔹 STEP 7 — Check After Build
+
+After rebuild, go to:
+
+BiSchool.UI → bin
+
+You MUST see:
+
+roslyn
+    csc.exe
+
+If that folder exists → Error solved ✅
