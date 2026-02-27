@@ -193,7 +193,7 @@
     <Content Include="Views\Attendance\Delete.cshtml" />
     <Content Include="Views\Leave\Create.cshtml" />
     <Content Include="Views\Leave\Delete.cshtml" />
-    <Content Include="Views\Leave\Details.cshtml" />
+    <Content Include="Views\Shared\Details.cshtml" />
     <Content Include="Views\Leave\Edit.cshtml" />
     <Content Include="Views\Leave\Index.cshtml" />
     <Content Include="Views\Intern\Create.cshtml" />

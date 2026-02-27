@@ -5,25 +5,26 @@
 }
 
 <div class="container mt-4">
+    <div class="card page-card">
 
-    <div class="card shadow page-card">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">Delete Leave</h5>
+        <!-- Header -->
+        <div class="card-header header-delete">
+            <h5 class="page-title mb-0">Delete Leave</h5>
         </div>
 
+        <!-- Body -->
         <div class="card-body">
 
             <div class="alert alert-warning">
-                Are you sure you want to delete this leave?
+                Are you sure you want to delete leave for
+                <strong>@Model.InternName</strong>?
             </div>
-            <dl class="row">
-                <dt class="col-sm-4">Intern</dt>
-                <dd class="col-sm-8">@Model.InternName</dd>
 
-                <dt class="col-sm-4">From</dt>
+            <dl class="row">
+                <dt class="col-sm-4">From Date</dt>
                 <dd class="col-sm-8">@Model.FromDate.ToString("yyyy-MM-dd")</dd>
 
-                <dt class="col-sm-4">To</dt>
+                <dt class="col-sm-4">To Date</dt>
                 <dd class="col-sm-8">@Model.ToDate.ToString("yyyy-MM-dd")</dd>
 
                 <dt class="col-sm-4">Reason</dt>
@@ -35,9 +36,9 @@
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.Id)
 
-                <div class="d-flex justify-content-between">
-                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
-                    <input type="submit" value="Delete" class="btn btn-danger" />
+                <div class="d-flex justify-content-between mt-4">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-back" })
+                    <input type="submit" value="Delete Leave" class="btn btn-danger" />
                 </div>
             }
 

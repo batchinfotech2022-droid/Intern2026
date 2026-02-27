@@ -1,31 +1,45 @@
 ﻿@model Internsapp.UI.Models.InternModel
+@{
+    ViewBag.Title = "Intern Details";
+}
 
 <div class="container mt-4">
-    <div class="card shadow page-card">
-        <div class="card-header bg-primary text-white">
-            <h5>Intern Details</h5>
-        </div>
+    
 
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Username</dt>
-                <dd class="col-sm-9">@Model.UserName</dd>
-                <dt class="col-sm-3">First Name</dt>
-                <dd class="col-sm-9">@Model.FirstName</dd>
-                <dt class="col-sm-3">Last Name</dt>
-                <dd class="col-sm-9">@Model.LastName</dd>
-                <dt class="col-sm-3">Phone</dt>
-                <dd class="col-sm-9">@Model.Phone</dd>
-                <dt class="col-sm-3">Address</dt>
-                <dd class="col-sm-9">@Model.Address</dd>
-                <dt class="col-sm-3">Active?</dt>
-                <dd class="col-sm-9">@(Model.IsActive ? "Yes" : "No")</dd>
-            </dl>
+        <div class="card page-card">
+            <div class="card-header header-details">
+                <h5 class="mb-0">📄 Intern Details</h5>
+            </div>
 
-            <div class="d-flex justify-content-between mt-3">
-                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-secondary" })
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Username</dt>
+                    <dd class="col-sm-8">@Model.UserName</dd>
+
+                    <dt class="col-sm-4">First Name</dt>
+                    <dd class="col-sm-8">@Model.FirstName</dd>
+
+                    <dt class="col-sm-4">Last Name</dt>
+                    <dd class="col-sm-8">@Model.LastName</dd>
+
+                    <dt class="col-sm-4">Phone</dt>
+                    <dd class="col-sm-8">@Model.Phone</dd>
+
+                    <dt class="col-sm-4">Address</dt>
+                    <dd class="col-sm-8">@Model.Address</dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        <span class="status-text @(Model.IsActive ? "active" : "inactive")">
+                            @(Model.IsActive ? "Active" : "Inactive")
+                        </span>
+                    </dd>
+                </dl>
+
+                <div class="d-flex justify-content-between mt-3">
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-soft-secondary" })
+                    @Html.ActionLink("Edit Intern", "Edit", new { id = Model.Id }, new { @class = "btn btn-success px-4" })
+                </div>
             </div>
         </div>
-    </div>
 </div>

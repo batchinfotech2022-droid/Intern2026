@@ -1,30 +1,51 @@
 ﻿@model Internsapp.UI.Models.InternModel
+@{
+    ViewBag.Title = "Delete Intern";
+}
 
 <div class="container mt-4">
-    <div class="card shadow page-card">
-        <div class="card-header bg-primary text-white">
-            <h5>Delete Intern</h5>
+    <div class="card page-card">
+
+        <div class="card-header header-delete">
+            <h5 class="mb-0">Delete Intern</h5>
         </div>
 
         <div class="card-body">
-            <div class="alert alert-warning">
-                Are you sure you want to delete this intern?
-            </div>            <dl class="row">
-                <dt class="col-sm-3">Username</dt>
-                <dd class="col-sm-9">@Model.UserName</dd>
-                <dt class="col-sm-3">First Name</dt>
-                <dd class="col-sm-9">@Model.FirstName</dd>
-                <dt class="col-sm-3">Last Name</dt>
-                <dd class="col-sm-9">@Model.LastName</dd>
-            </dl>
+
+            <!-- Warning message -->
+            <div class="d-flex align-items-start gap-3 mb-4">
+                <div class="text-danger fs-3">⚠️</div>
+                <div>
+                    <h6 class="fw-bold mb-1">
+                        Are you sure you want to delete intern
+                        <strong>@Model.UserName</strong>?
+                    </h6>
+                    <p class="mb-0 text-muted">
+                        
+                        This action cannot be undone.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Intern summary -->
+            <div class="border rounded-3 p-3  mb-4">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Username</dt>
+                    <dd class="col-sm-8">@Model.UserName</dd>
+
+                    <dt class="col-sm-4">Name</dt>
+                    <dd class="col-sm-8">@Model.FirstName @Model.LastName</dd>
+                </dl>
+            </div>
 
             @using (Html.BeginForm("Delete", "Intern", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 @Html.HiddenFor(m => m.Id)
-                <div class="d-flex justify-content-between mt-3">
-                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-secondary" })
-                    <input type="submit" value="Delete" class="btn btn-danger" />
+
+                <div class="d-flex justify-content-between">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-soft-secondary" })
+                    <input type="submit" value="Yes, Delete Intern" class="btn btn-danger px-4" />
                 </div>
             }
         </div>

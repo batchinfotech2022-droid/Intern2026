@@ -63,7 +63,8 @@ namespace Internsapp.UI.Controllers
                     model.ToDate,
                     model.Reason
                 );
-
+                TempData["ToastMessage"] = "Leave applied successfully 🌴";
+                TempData["ToastType"] = "success";
                 return RedirectToAction("Index");
             }
 
@@ -99,6 +100,8 @@ namespace Internsapp.UI.Controllers
             if (ModelState.IsValid)
             {
                 model.Leave.Update(userName);
+                TempData["ToastMessage"] = "Leave updated successfully ✏️";
+                TempData["ToastType"] = "success";
                 return RedirectToAction("Index");
             }
 
@@ -134,6 +137,8 @@ namespace Internsapp.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Leave.Delete(userName, id);
+            TempData["ToastMessage"] = "Leave deleted successfully 🗑️";
+            TempData["ToastType"] = "danger";
             return RedirectToAction("Index");
         }
     }

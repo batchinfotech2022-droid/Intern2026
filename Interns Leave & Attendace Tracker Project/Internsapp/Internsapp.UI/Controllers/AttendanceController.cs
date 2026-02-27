@@ -54,7 +54,8 @@ namespace Internsapp.UI.Controllers
                     model.AttendanceDate,
                     model.Status
                 );
-
+                TempData["ToastMessage"] = "Attendance saved successfully ✅";
+                TempData["ToastType"] = "success";
                 return RedirectToAction("Index");
             }
 
@@ -89,6 +90,8 @@ namespace Internsapp.UI.Controllers
                 model.Attendance.ModifiedDate = DateTime.Now;
 
                 model.Attendance.Update(userName);
+                TempData["ToastMessage"] = "Attendance updated successfully ✏️";
+                TempData["ToastType"] = "success";
 
                 return RedirectToAction("Index");
             }
@@ -125,6 +128,8 @@ namespace Internsapp.UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Attendance.Delete(userName, id);
+            TempData["ToastMessage"] = "Attendance record deleted 🗑️";
+            TempData["ToastType"] = "danger";
             return RedirectToAction("Index");
         }
 

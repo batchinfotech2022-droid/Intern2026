@@ -1,68 +1,65 @@
 ﻿@model Internsapp.UI.Models.InternModel
-
 @{
     ViewBag.Title = "Add Intern";
 }
 
 <div class="container mt-4">
-    <div class="card shadow page-card">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-2 mt-2">Create Intern</h5>
+
+
+    <<div class="card page-card">
+        <div class="card-header header-create">
+            <h5 class="mb-0"> Create Intern</h5>
         </div>
 
         <div class="card-body">
             @using (Html.BeginForm("Create", "Intern", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-                <div class="row">
 
+                <div class="row">
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.UserName)
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Username" })
                         @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.FirstName)
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First name" })
                     </div>
 
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.LastName)
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last name" })
                     </div>
 
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
                     </div>
 
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.Phone)
-                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Phone number" })
                     </div>
 
                     <div class="col-md-6 mb-3">
                         @Html.LabelFor(m => m.Address)
-                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address" })
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        @Html.Label("Is Active?")
+                        <label class="fw-semibold">Status</label>
                         <div class="form-check mt-2">
                             @Html.CheckBoxFor(m => m.IsActive, new { @class = "form-check-input" })
                             <label class="form-check-label ms-2">Active</label>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="d-flex justify-content-between mt-3">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                    <input type="submit" value="Save Intern" class="btn btn-success px-4" />
                 </div>
             }
         </div>

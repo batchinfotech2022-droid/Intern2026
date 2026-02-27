@@ -1,14 +1,13 @@
 ﻿@model Internsapp.UI.Models.AttendanceModel
-
 @{
     ViewBag.Title = "Edit Attendance";
 }
 
 <div class="container mt-4">
-
     <div class="card shadow page-card">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-2 mt-2">Edit Attendance</h5>
+
+        <div class="card-header header-edit">
+            <h5 class="mb-0">Edit Attendance</h5>
         </div>
 
         <div class="card-body">
@@ -19,28 +18,30 @@
 
                 <div class="mb-3">
                     @Html.LabelFor(m => m.InternId, "Intern")
-                    @Html.DropDownListFor(m => m.InternId, (SelectList)ViewBag.Interns, "Select Intern", new { @class = "form-select" })
-                    @Html.ValidationMessageFor(m => m.InternId, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(m => m.InternId,
+                        (SelectList)ViewBag.Interns,
+                        new { @class = "form-select" })
                 </div>
 
                 <div class="mb-3">
                     @Html.LabelFor(m => m.AttendanceDate)
-                    @Html.TextBoxFor(m => m.AttendanceDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
-                    @Html.ValidationMessageFor(m => m.AttendanceDate, "", new { @class = "text-danger" })
+                    @Html.TextBoxFor(m => m.AttendanceDate,
+                        "{0:yyyy-MM-dd}",
+                        new { @class = "form-control", type = "date" })
                 </div>
 
                 <div class="mb-3">
                     @Html.LabelFor(m => m.Status)
-                    @Html.DropDownListFor(m => m.Status, (SelectList)ViewBag.StatusList, "Select Status", new { @class = "form-select" })
-                    @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(m => m.Status,
+                        (SelectList)ViewBag.StatusList,
+                        new { @class = "form-select" })
                 </div>
 
                 <div class="d-flex justify-content-between mt-4">
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
-                    <input type="submit" value="Update" class="btn btn-success" />
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-back" })
+                    <button type="submit" class="btn btn-success px-4">Update</button>
                 </div>
             }
         </div>
-
     </div>
 </div>

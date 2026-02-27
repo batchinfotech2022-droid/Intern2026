@@ -6,16 +6,13 @@
 <div class="container mt-4">
     <div class="card page-card">
 
-        <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="card-header header-index d-flex justify-content-between align-items-center">
             <h5 class="page-title mb-0">Attendance Records</h5>
 
             <div class="header-tools">
-
-                <input type="text"
-                       id="attendanceSearch"
+                <input type="text" id="attendanceSearch"
                        class="form-control form-control-sm"
-                       placeholder="Search intern..."
-                       style="width:200px" />
+                       placeholder="Search intern..." style="width:200px" />
 
                 <select id="attendanceFilter" class="form-select form-select-sm">
                     <option value="">All</option>
@@ -25,16 +22,13 @@
                     <option value="half">Half Day</option>
                 </select>
 
-                
-
                 @Html.ActionLink("Add Attendance", "Create", "Attendance",
-                    null,
-                    new { @class = "btn btn-primary btn-sm" })
+                    null, new { @class = "btn btn-outline-light btn-sm" })
             </div>
         </div>
 
         <div class="card-body table-responsive">
-            <table class="table table-hover attendance-table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Intern</th>
@@ -49,44 +43,32 @@
                     {
                         <tr>
                             <td>@item.InternName</td>
-
-                            <td class="attendance-date">
-                                @item.AttendanceDate.ToString("yyyy-MM-dd")
-                            </td>
-
+                            <td>@item.AttendanceDate.ToString("yyyy-MM-dd")</td>
                             <td>
-                                <span class="status-text">
-                                    @item.Status.ToLower()  @* present / absent *@
+                                <span class="status-badge @item.Status.ToLower()">
+                                    @item.Status
                                 </span>
                             </td>
 
                             <td class="text-center text-nowrap">
-                                <a class="action-btn edit"
-                                   href="@Url.Action("Edit", new { id = item.Id })">
+                                <a class="action-btn edit" href="@Url.Action("Edit", new { id = item.Id })">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-
-                                <a class="action-btn view"
-                                   href="@Url.Action("Details", new { id = item.Id })">
+                                <a class="action-btn view" href="@Url.Action("Details", new { id = item.Id })">
                                     <i class="bi bi-eye"></i>
                                 </a>
-
-                                <a class="action-btn delete"
-                                   href="@Url.Action("Delete", new { id = item.Id })">
+                                <a class="action-btn delete" href="@Url.Action("Delete", new { id = item.Id })">
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td>
                         </tr>
                     }
 
-                    <!-- NO RECORDS -->
                     <tr class="no-records d-none">
-                        <td colspan="4"
-                            class="text-center text-muted py-4">
+                        <td colspan="4" class="text-center text-muted py-4">
                             No records found
                         </td>
                     </tr>
-
                 </tbody>
             </table>
         </div>

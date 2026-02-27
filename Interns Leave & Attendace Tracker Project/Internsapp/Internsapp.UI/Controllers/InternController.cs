@@ -51,6 +51,8 @@ namespace Internsapp.UI.Controllers
                     false,
                     0
                 );
+                TempData["ToastMessage"] = "Intern created successfully 🎉";
+                TempData["ToastType"] = "success";
 
                 return RedirectToAction("Index");
             }
@@ -88,9 +90,12 @@ namespace Internsapp.UI.Controllers
                 intern.ModifiedDate = DateTime.Now;
 
                 intern.Update(CurrentUser);
+                TempData["ToastMessage"] = "Intern updated successfully ✏️";
+                TempData["ToastType"] = "success";
 
                 return RedirectToAction("Index");
             }
+            
 
             return View(model);
         }
@@ -114,6 +119,8 @@ namespace Internsapp.UI.Controllers
         public ActionResult Delete(InternModel model)
         {
             Intern.Delete(CurrentUser, model.Id);
+            TempData["ToastMessage"] = "Intern deleted successfully 🗑️";
+            TempData["ToastType"] = "danger";
             return RedirectToAction("Index");
         }
 
