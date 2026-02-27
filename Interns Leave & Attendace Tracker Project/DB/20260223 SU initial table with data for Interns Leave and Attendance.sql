@@ -1,11 +1,11 @@
-use master;
+USE MASTER;
+CREATE DATABASE Internsapp;
 go
-create database Internsapp;
-go 
+
 
 USE [Internsapp]
 GO
-/****** Object:  Table [dbo].[Activity]    Script Date: 26-02-2026 03:01:23 PM ******/
+/****** Object:  Table [dbo].[Activity]    Script Date: 27-02-2026 10:04:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Activity](
 	[ActivityText] [varchar](250) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AppException]    Script Date: 26-02-2026 03:01:24 PM ******/
+/****** Object:  Table [dbo].[AppException]    Script Date: 27-02-2026 10:04:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[AppException](
 	[Remarks] [varchar](100) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Attendance]    Script Date: 26-02-2026 03:01:24 PM ******/
+/****** Object:  Table [dbo].[Attendance]    Script Date: 27-02-2026 10:04:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -55,7 +55,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Interns]    Script Date: 26-02-2026 03:01:24 PM ******/
+/****** Object:  Table [dbo].[Interns]    Script Date: 27-02-2026 10:04:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -85,7 +85,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Leave]    Script Date: 26-02-2026 03:01:24 PM ******/
+/****** Object:  Table [dbo].[Leave]    Script Date: 27-02-2026 10:04:27 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -809,6 +809,80 @@ INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem],
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1388, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T14:29:00.750' AS DateTime), 1, N'All')
 GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1389, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T15:01:26.743' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1390, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T15:01:34.303' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1391, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T15:01:38.113' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1392, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T15:01:52.800' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1393, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T15:01:59.250' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1394, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T15:02:04.277' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1395, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T15:02:17.770' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1396, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T15:02:39.120' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1397, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T21:56:09.003' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1398, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T21:56:27.620' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1399, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T21:56:29.737' AS DateTime), 1, N'2')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1400, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T21:56:31.683' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1401, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T21:56:34.663' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1402, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T21:56:41.647' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1403, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T21:56:47.800' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1404, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:24:20.680' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1405, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:28:54.987' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1406, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:30:05.953' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1407, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:30:22.790' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1408, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:31:52.517' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1409, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:32:08.267' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1410, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:32:26.663' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1411, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:32:52.493' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1412, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:34:43.567' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1413, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:37:47.240' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1414, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T22:38:48.387' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1415, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:38:56.087' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1416, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:39:59.763' AS DateTime), 1, N'9')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1417, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:40:06.507' AS DateTime), 1, N'9')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1426, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-26T22:41:13.633' AS DateTime), 1, N'divya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1427, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:41:13.663' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1428, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:41:22.033' AS DateTime), 1, N'6')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1429, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:41:24.530' AS DateTime), 1, N'6')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1430, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-26T22:41:24.543' AS DateTime), 1, N'aishu')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1431, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:41:24.567' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1432, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:41:44.653' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1433, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:41:46.640' AS DateTime), 1, N'All')
+GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1168, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T06:14:01.513' AS DateTime), 1, N'All')
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1169, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T06:14:03.760' AS DateTime), 1, N'1')
@@ -867,6 +941,210 @@ INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem],
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1370, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T14:16:05.973' AS DateTime), 1, N'All')
 GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1422, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-26T22:40:18.420' AS DateTime), 1, N'aishu')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1423, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:40:18.453' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1434, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T22:42:36.327' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1435, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:42:38.680' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1436, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T22:45:40.187' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1437, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:45:55.487' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1438, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:45:56.993' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1439, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:47:05.730' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1440, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:50:17.893' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1441, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:50:38.210' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1442, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:51:02.687' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1443, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:51:44.200' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1444, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:07.587' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1445, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:46.067' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1446, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:47.280' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1447, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:47.497' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1448, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:55.937' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1449, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:52:57.490' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1450, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:53:05.707' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1451, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:53:27.027' AS DateTime), 1, N'8')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1452, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:53:33.123' AS DateTime), 1, N'8')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1453, N'System', N'Intern', N'Update', CAST(N'2026-02-26T22:53:33.147' AS DateTime), 1, N'megha')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1454, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:53:33.193' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1455, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:53:36.233' AS DateTime), 1, N'4')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1456, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:54:01.347' AS DateTime), 1, N'4')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1457, N'System', N'Intern', N'Update', CAST(N'2026-02-26T22:54:01.360' AS DateTime), 1, N'prajna')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1458, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:54:01.373' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1459, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:00:58.993' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1460, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:01:01.683' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1461, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:01:06.513' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1462, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:01:08.877' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1463, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:01:57.420' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1464, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:01:59.743' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1465, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:02:05.967' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1466, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:02:37.600' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1467, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:02:39.943' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1468, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:03:14.100' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1469, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:03:16.207' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1470, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:03:18.953' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1471, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:11:06.050' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1472, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:11:14.877' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1473, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:11:16.480' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1474, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:11:19.843' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1475, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:11:21.557' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1476, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:11:25.387' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1477, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:11:29.313' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1478, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:11:30.977' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1479, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:12:18.133' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1480, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:12:21.213' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1481, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:12:25.603' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1482, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:12:27.703' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1483, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:12:29.143' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1484, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:12:42.527' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1485, N'sulaksha', N'Leave', N'RetrieveAll', CAST(N'2026-02-26T23:12:45.970' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1486, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:12:47.030' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1487, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:12:49.140' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1488, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:12:50.980' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1489, N'sulaksha', N'Attendance', N'RetrieveById', CAST(N'2026-02-26T23:13:12.913' AS DateTime), 1, N'4')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1490, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:13:12.923' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1491, N'sulaksha', N'Attendance', N'Update', CAST(N'2026-02-26T23:13:18.060' AS DateTime), 1, N'9')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1493, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:17:33.963' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1494, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:17:38.753' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1495, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:17:42.397' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1496, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:17:44.163' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1497, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:17:52.803' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1498, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:17:54.853' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1499, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:18:03.367' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1500, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:32:44.047' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1501, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:32:48.110' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1502, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:32:50.123' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1503, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:32:51.470' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1504, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:33:50.450' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1505, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:33:52.307' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1506, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:34:02.307' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1507, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:34:04.427' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1508, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:34:06.633' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1509, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:34:20.233' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1510, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:41:58.037' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1511, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:42:06.097' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1512, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:47:38.293' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1513, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:48:11.203' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1514, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:49:13.243' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1515, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:49:16.483' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1516, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:49:18.010' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1517, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:49:24.800' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1518, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:49:26.527' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1519, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:49:28.447' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1520, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:49:30.583' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1521, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:49:32.850' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1522, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:49:34.470' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1523, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:49:53.587' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1524, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:49:55.543' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1525, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:50:03.100' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1526, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:50:06.463' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1527, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:54:20.287' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1528, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:54:21.970' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1529, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:54:24.637' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1530, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:54:26.440' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1531, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:54:31.450' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1532, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:54:34.313' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1533, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:55:36.193' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1534, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:55:38.017' AS DateTime), 1, N'1')
+GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1186, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-26T06:26:21.297' AS DateTime), 1, N'sakshi')
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1187, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T06:26:21.313' AS DateTime), 1, N'All')
@@ -883,11 +1161,251 @@ INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem],
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1193, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T06:26:43.667' AS DateTime), 1, N'All')
 GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1492, N'sulaksha', N'Attendance', N'RetrieveAll', CAST(N'2026-02-26T23:13:18.117' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1535, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:55:48.313' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1536, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:56:30.353' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1537, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:56:32.267' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1538, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:56:34.967' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1539, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:56:36.910' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1540, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:56:45.807' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1541, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:56:48.297' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1542, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:56:55.940' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1543, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-26T23:56:57.980' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1544, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:57:04.607' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1545, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T23:59:33.480' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1546, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:02:27.080' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1547, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:32.087' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1548, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:02:33.943' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1549, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:36.450' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1550, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:02:39.560' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1551, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:02:41.723' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1552, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:41.730' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1553, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:02:44.113' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1554, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:45.677' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1555, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:02:47.330' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1556, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:49.210' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1557, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:02:51.190' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1558, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:52.773' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1559, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:02:56.433' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1560, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:03:11.090' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1561, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:03:30.357' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1562, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:05:12.590' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1563, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:05:21.620' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1564, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:05:24.390' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1565, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:05:26.773' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1566, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:05:26.783' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1567, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:05:29.157' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1568, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:05:34.960' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1569, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:05:38.003' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1570, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:05:40.353' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1571, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:06:28.807' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1572, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:06:32.627' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1573, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:06:35.200' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1574, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:06:39.200' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1575, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:06:41.293' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1576, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:07:00.763' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1577, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:16:04.553' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1578, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:16:16.107' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1579, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T00:16:19.637' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1580, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T00:16:21.297' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1581, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:16:23.717' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1582, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:16:27.593' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1583, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:16:33.450' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1584, N'System', N'Intern', N'Update', CAST(N'2026-02-27T00:16:33.513' AS DateTime), 1, N'Adhya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1585, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:16:33.557' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1589, N'System', N'Intern', N'Update', CAST(N'2026-02-27T00:16:46.793' AS DateTime), 1, N'Adhya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1590, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T00:16:46.817' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1591, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T06:16:20.790' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1592, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:16:30.340' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1593, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T06:16:34.850' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1594, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T06:16:38.373' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1595, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:16:38.393' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1596, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T06:16:41.223' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1597, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T06:16:43.190' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1598, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T06:16:45.400' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1599, N'System', N'Attendance', N'RetrieveById', CAST(N'2026-02-27T06:16:47.463' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1600, N'System', N'Attendance', N'RetrieveAll', CAST(N'2026-02-27T06:16:51.323' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1601, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:24:49.070' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1602, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T06:24:53.677' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1603, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T06:25:02.443' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1604, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-27T06:25:02.477' AS DateTime), 1, N'Adhya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1606, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T06:25:06.890' AS DateTime), 1, N'2')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1607, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T06:25:08.630' AS DateTime), 1, N'2')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1608, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:25:11.547' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1609, N'sulaksha', N'Intern', N'Create', CAST(N'2026-02-27T06:26:08.273' AS DateTime), 1, N'arya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1610, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:26:08.290' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1611, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:34:36.607' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1612, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:34:45.917' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1613, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:34:48.103' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1614, N'System', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:34:50.230' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1615, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:34:50.243' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1616, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:35:37.223' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1617, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:35:42.700' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1618, N'System', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:35:45.577' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1619, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:35:45.593' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1620, N'Admin', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:35:53.280' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1621, N'Admin', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:35:58.977' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1622, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:39:05.793' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1623, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:39:08.873' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1624, N'System', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:39:11.063' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1625, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:39:11.070' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1626, N'Admin', N'Leave', N'Update', CAST(N'2026-02-27T06:39:14.110' AS DateTime), 1, N'8')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1628, N'Admin', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:39:16.593' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1629, N'System', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:39:19.023' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1630, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:39:19.033' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1631, N'Admin', N'Leave', N'Update', CAST(N'2026-02-27T06:39:20.410' AS DateTime), 1, N'8')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1632, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:39:20.437' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1633, N'Admin', N'Leave', N'RetrieveById', CAST(N'2026-02-27T06:39:22.463' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1634, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:39:32.257' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1635, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:39:36.070' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1636, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:54:43.777' AS DateTime), 1, N'All')
+GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1371, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T14:16:07.660' AS DateTime), 1, N'1')
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1372, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T14:16:09.783' AS DateTime), 1, N'1')
 GO
 INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1373, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T14:16:11.440' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1418, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-26T22:40:06.557' AS DateTime), 1, N'shravya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1419, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-26T22:40:06.590' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1420, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:40:13.610' AS DateTime), 1, N'6')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1421, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:40:18.410' AS DateTime), 1, N'6')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1605, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T06:25:02.510' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1627, N'System', N'Leave', N'RetrieveAll', CAST(N'2026-02-27T06:39:14.180' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1424, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:40:22.057' AS DateTime), 1, N'10')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1425, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-26T22:41:13.617' AS DateTime), 1, N'10')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1586, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:16:37.317' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1587, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:16:40.207' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1588, N'System', N'Intern', N'RetrieveById', CAST(N'2026-02-27T00:16:46.777' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1637, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:14.163' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1639, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:14.163' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1644, N'sulaksha', N'Intern', N'Update', CAST(N'2026-02-27T09:55:47.367' AS DateTime), 1, N'Adhya')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1645, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:47.393' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1646, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T09:55:48.953' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1647, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:51.927' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1638, N'System', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:14.163' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1640, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:34.143' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1641, N'sulaksha', N'Intern', N'RetrieveAll', CAST(N'2026-02-27T09:55:43.043' AS DateTime), 1, N'All')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1642, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T09:55:44.587' AS DateTime), 1, N'1')
+GO
+INSERT [dbo].[Activity] ([ActivityID], [UserName], [ActivityOn], [ActivityItem], [ActivityDate], [IsSuccess], [ActivityText]) VALUES (1643, N'sulaksha', N'Intern', N'RetrieveById', CAST(N'2026-02-27T09:55:47.330' AS DateTime), 1, N'1')
 GO
 SET IDENTITY_INSERT [dbo].[Activity] OFF
 GO
@@ -899,39 +1417,41 @@ INSERT [dbo].[Attendance] ([Id], [InternId], [AttendanceDate], [Status], [Create
 GO
 INSERT [dbo].[Attendance] ([Id], [InternId], [AttendanceDate], [Status], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (3, 7, CAST(N'2026-02-26' AS Date), N'Leave', N'sulaksha', CAST(N'2026-02-26T06:27:18.010' AS DateTime), N'sulaksha', CAST(N'2026-02-26T06:27:18.010' AS DateTime), 0)
 GO
-INSERT [dbo].[Attendance] ([Id], [InternId], [AttendanceDate], [Status], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (4, 9, CAST(N'2026-02-26' AS Date), N'Leave', N'sulaksha', CAST(N'2026-02-26T06:27:27.430' AS DateTime), N'sulaksha', CAST(N'2026-02-26T06:27:27.430' AS DateTime), 0)
+INSERT [dbo].[Attendance] ([Id], [InternId], [AttendanceDate], [Status], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (4, 9, CAST(N'2026-02-26' AS Date), N'Absent', N'sulaksha', CAST(N'2026-02-26T06:27:27.430' AS DateTime), N'sulaksha', CAST(N'2026-02-26T23:13:18.030' AS DateTime), 0)
 GO
 SET IDENTITY_INSERT [dbo].[Attendance] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Interns] ON 
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (1, N'Adhya', N'Sharma', N'Adhya', N'admin123', CAST(N'2024-01-01' AS Date), 0, N'Mangalore', N'9987561225', 1, 1, 0, 0, N'system', CAST(N'2026-02-26T06:00:23.537' AS DateTime), N'sulaksha', CAST(N'2026-02-26T14:16:11.447' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (1, N'Adhya', N'Sharma', N'Adhya', N'admin123', CAST(N'2024-01-01' AS Date), 0, N'Mangalore', N'99877612445', 1, 1, 0, 0, N'system', CAST(N'2026-02-26T06:00:23.537' AS DateTime), N'sulaksha', CAST(N'2026-02-27T09:55:47.337' AS DateTime), 0)
 GO
 INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (2, N'Sulaksha', N'Shetty', N'sulaksha', N'123456', CAST(N'2024-06-01' AS Date), 12, N'Udupi', N'9876543210', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:00:23.537' AS DateTime), N'admin', CAST(N'2026-02-26T06:00:23.537' AS DateTime), 0)
 GO
 INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (3, N'Rahul', N'Rao', N'rahul', N'123456', CAST(N'2024-06-15' AS Date), 10, N'Mangalore', N'9876500001', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (4, N'Prajna', N'K', N'prajna', N'123456', CAST(N'2024-07-01' AS Date), 8, N'Bangalore', N'9876500002', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (4, N'Prajna', N'Kapoor', N'prajna', N'123456', CAST(N'2024-07-01' AS Date), 0, N'Bangalore', N'9876500002', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'System', CAST(N'2026-02-26T22:54:01.347' AS DateTime), 0)
 GO
 INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (5, N'Sakshi', N'Bhat', N'sakshi', N'123456', CAST(N'2024-07-10' AS Date), 0, N'Manipal', N'9876500003', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'sulaksha', CAST(N'2026-02-26T06:26:21.270' AS DateTime), 0)
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (6, N'Aishwarya', N'R', N'aishu', N'123456', CAST(N'2024-08-01' AS Date), 5, N'Udupi', N'9876500004', 0, 1, 1, 3, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (6, N'Aishwarya', N'Rao', N'aishu', N'123456', CAST(N'2024-08-01' AS Date), 0, N'Udupi', N'9876500004', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'sulaksha', CAST(N'2026-02-26T22:41:24.533' AS DateTime), 0)
 GO
 INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (7, N'Chithra', N'Acharya', N'chitra', N'123456', CAST(N'2024-08-05' AS Date), 12, N'Karkala', N'9876500005', 0, 0, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (8, N'Megha', N'P', N'megha', N'123456', CAST(N'2024-08-12' AS Date), 20, N'Moodbidri', N'9876500006', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (8, N'Megha', N'Poojary', N'megha', N'123456', CAST(N'2024-08-12' AS Date), 0, N'Moodbidri', N'9876500006', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'System', CAST(N'2026-02-26T22:53:33.130' AS DateTime), 0)
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (9, N'Shravya', N'B', N'shravya', N'123456', CAST(N'2024-09-01' AS Date), 7, N'Surathkal', N'9876500007', 0, 1, 1, 5, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (9, N'Shravya', N'Kulal', N'shravya', N'123456', CAST(N'2024-09-01' AS Date), 0, N'Surathkal', N'9876500007', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'sulaksha', CAST(N'2026-02-26T22:40:06.513' AS DateTime), 0)
 GO
-INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (10, N'Divya', N'S', N'divya', N'123456', CAST(N'2024-09-10' AS Date), 14, N'Bangalore', N'9876500008', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), 0)
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (10, N'Divya', N'Gowda', N'divya', N'123456', CAST(N'2024-09-10' AS Date), 0, N'Bangalore', N'9876500008', 0, 1, 0, 0, N'admin', CAST(N'2026-02-26T06:02:12.527' AS DateTime), N'sulaksha', CAST(N'2026-02-26T22:41:13.623' AS DateTime), 0)
 GO
 INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (11, N'Sara', N'Khan', N'sara', N'123456', CAST(N'2026-02-26' AS Date), 0, N'Delhi', N'7760847590', 0, 0, 0, 0, N'sulaksha', CAST(N'2026-02-26T06:08:25.887' AS DateTime), N'sulaksha', CAST(N'2026-02-26T06:15:33.090' AS DateTime), 1)
+GO
+INSERT [dbo].[Interns] ([Id], [FirstName], [LastName], [UserName], [Password], [DateOfJoining], [AvailableLeave], [Address], [Phone], [IsSystemAdmin], [IsActive], [IsLocked], [NoOfAttempts], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (12, N'Arya', N'Shet', N'arya', N'114477', CAST(N'2026-02-27' AS Date), 0, N'Goa', N'+917789487711', 0, 1, 0, 0, N'sulaksha', CAST(N'2026-02-27T06:26:08.267' AS DateTime), N'sulaksha', CAST(N'2026-02-27T06:26:08.267' AS DateTime), 0)
 GO
 SET IDENTITY_INSERT [dbo].[Interns] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Leave] ON 
 GO
-INSERT [dbo].[Leave] ([Id], [InternId], [FromDate], [ToDate], [Reason], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (1, 8, CAST(N'2026-02-25T00:00:00.000' AS DateTime), CAST(N'2026-02-28T00:00:00.000' AS DateTime), N'Sick Leave', N'Admin', CAST(N'2026-02-26T06:28:12.880' AS DateTime), N'', CAST(N'2026-02-26T06:28:19.870' AS DateTime), 0)
+INSERT [dbo].[Leave] ([Id], [InternId], [FromDate], [ToDate], [Reason], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (1, 8, CAST(N'2026-02-25T00:00:00.000' AS DateTime), CAST(N'2026-02-28T00:00:00.000' AS DateTime), N'Sick Leave', N'Admin', CAST(N'2026-02-26T06:28:12.880' AS DateTime), N'', CAST(N'2026-02-27T06:39:20.400' AS DateTime), 0)
 GO
 INSERT [dbo].[Leave] ([Id], [InternId], [FromDate], [ToDate], [Reason], [CreatedBy], [CreatedDate], [ModifiedBy], [ModifiedDate], [IsDeleted]) VALUES (2, 2, CAST(N'2026-02-22T00:00:00.000' AS DateTime), CAST(N'2026-02-26T00:00:00.000' AS DateTime), N'Casual Leave', N'Admin', CAST(N'2026-02-26T06:28:43.603' AS DateTime), N'', CAST(N'2026-02-26T06:28:52.830' AS DateTime), 0)
 GO
@@ -939,7 +1459,7 @@ SET IDENTITY_INSERT [dbo].[Leave] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_Contact_UserName]    Script Date: 26-02-2026 03:01:24 PM ******/
+/****** Object:  Index [UQ_Contact_UserName]    Script Date: 27-02-2026 10:04:27 ******/
 ALTER TABLE [dbo].[Interns] ADD  CONSTRAINT [UQ_Contact_UserName] UNIQUE NONCLUSTERED 
 (
 	[UserName] ASC

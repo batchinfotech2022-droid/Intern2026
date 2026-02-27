@@ -14,7 +14,6 @@ namespace Internsapp.UI.Controllers
     {
         private string CurrentUser => Session["UserName"]?.ToString() ?? "System";
 
-        // ===================== INDEX =====================
         public ActionResult Index()
         {
             var list = Intern.RetrieveAll(CurrentUser)
@@ -24,7 +23,6 @@ namespace Internsapp.UI.Controllers
             return View(list);
         }
 
-        // ===================== CREATE =====================
         public ActionResult Create()
         {
             return View(new InternModel());
@@ -60,7 +58,6 @@ namespace Internsapp.UI.Controllers
             return View(model);
         }
 
-        // ===================== EDIT =====================
         public ActionResult Edit(int id)
         {
             var intern = Intern.RetrieveById(CurrentUser, id);
@@ -100,14 +97,12 @@ namespace Internsapp.UI.Controllers
             return View(model);
         }
 
-        // ===================== DETAILS =====================
         public ActionResult Details(int id)
         {
             var intern = Intern.RetrieveById(CurrentUser, id);
             return View(new InternModel(intern));
         }
 
-        // ===================== DELETE =====================
         public ActionResult Delete(int id)
         {
             var intern = Intern.RetrieveById(CurrentUser, id);
@@ -203,7 +198,6 @@ namespace Internsapp.UI.Controllers
             return View(model);
         }
 
-        // ===================== LOGOUT =====================
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

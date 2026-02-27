@@ -1,6 +1,6 @@
 USE [Internsapp]
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ BEGIN
 	SELECT @Activityid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +53,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +74,7 @@ BEGIN
 	ORDER BY Activityid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ BEGIN
 		Activityid = @Activityid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ BEGIN
 	SELECT @Exceptionid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +206,7 @@ BEGIN
 	ORDER BY Exceptionid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +229,7 @@ BEGIN
 		Exceptionid = @Exceptionid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +255,7 @@ BEGIN
 		ExceptionDesc Like '%' + @ExceptionSource + '%'
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,7 +289,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Create]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -324,7 +324,7 @@ BEGIN
     SELECT @Id = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Delete]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -350,7 +350,7 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_ReadAll]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -376,7 +376,7 @@ BEGIN
     WHERE A.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_ReadByID]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -405,7 +405,7 @@ BEGIN
       
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Attendance_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Attendance_Update]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -437,7 +437,7 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_Create]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -485,7 +485,7 @@ BEGIN
     SELECT @Id = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_Delete]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -511,7 +511,7 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_ReadAll]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -543,7 +543,7 @@ BEGIN
 	WHERE IsDeleted=0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_ReadByID]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -579,7 +579,7 @@ BEGIN
      
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_ReadByUserName]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_ReadByUserName]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -612,7 +612,7 @@ BEGIN
     WHERE UserName = @UserName
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByPassword]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByPassword]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -630,7 +630,7 @@ BEGIN
       AND IsDeleted = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByUserName]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_RetrieveByUserName]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -668,7 +668,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [dbo].[Interns_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Interns_Update]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -718,7 +718,7 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Create]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Create]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -754,7 +754,7 @@ BEGIN
     SELECT @Id = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Delete]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Delete]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -780,7 +780,7 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_ReadAll]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_ReadAll]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -807,7 +807,7 @@ BEGIN
     WHERE L.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_ReadByID]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_ReadByID]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -836,7 +836,7 @@ BEGIN
       AND L.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Leave_Update]    Script Date: 26-02-2026 03:15:46 PM ******/
+/****** Object:  StoredProcedure [dbo].[Leave_Update]    Script Date: 27-02-2026 10:05:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
