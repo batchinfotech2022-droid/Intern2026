@@ -1,6 +1,6 @@
-USE [SmartContactManager]
+USE [SmartContactManagerr]
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Create]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ BEGIN
 	SELECT @Activityid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Delete]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +53,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadAll]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +74,7 @@ BEGIN
 	ORDER BY Activityid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_ReadById]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ BEGIN
 		Activityid = @Activityid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Activity_Update]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Create]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ BEGIN
 	SELECT @Exceptionid = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Delete]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,7 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadAll]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +206,7 @@ BEGIN
 	ORDER BY Exceptionid DESC
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadById]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -229,7 +229,7 @@ BEGIN
 		Exceptionid = @Exceptionid
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_ReadForSearch]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -255,7 +255,7 @@ BEGIN
 		ExceptionDesc Like '%' + @ExceptionSource + '%'
 END
 GO
-/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[AppException_Update]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -289,13 +289,13 @@ BEGIN
 	RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Category_Create]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Category_Create]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE    PROCEDURE [dbo].[Category_Create]
+CREATE       PROCEDURE [dbo].[Category_Create]
     @CategoryName  VARCHAR(MAX),
     @IsActive      BIT,
     @CreatedBy     VARCHAR(MAX),
@@ -332,13 +332,13 @@ BEGIN
     SELECT @ID = SCOPE_IDENTITY();
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Category_Delete]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Category_Delete]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Category_Delete]
+CREATE         PROCEDURE [dbo].[Category_Delete]
     @ID INT,
     @ModifiedBy VARCHAR(MAX),
     @ModifiedDate DATETIME
@@ -355,13 +355,13 @@ BEGIN
       AND IsDeleted = 0;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Category_ReadAll]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Category_ReadAll]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Category_ReadAll]
+CREATE        PROCEDURE [dbo].[Category_ReadAll]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -379,13 +379,13 @@ BEGIN
     WHERE IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Category_ReadByID]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Category_ReadByID]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Category_ReadByID]
+CREATE       PROCEDURE [dbo].[Category_ReadByID]
     @ID INT
 AS
 BEGIN
@@ -405,13 +405,13 @@ BEGIN
       AND IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Category_Update]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Category_Update]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE   PROCEDURE [dbo].[Category_Update]
+CREATE       PROCEDURE [dbo].[Category_Update]
     @CategoryName  VARCHAR(MAX),
     @IsActive      BIT,
     @CreatedBy     VARCHAR(MAX),
@@ -438,13 +438,13 @@ BEGIN
     RETURN @@ROWCOUNT;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contact_Create]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contact_Create]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Contact_Create]
+CREATE       PROCEDURE [dbo].[Contact_Create]
     @FullName VARCHAR(100),
     @UserName VARCHAR(100),
     @Phone VARCHAR(20),
@@ -479,13 +479,13 @@ BEGIN
     SELECT @ID = SCOPE_IDENTITY()
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contact_Delete]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contact_Delete]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Contact_Delete]
+CREATE       PROCEDURE [dbo].[Contact_Delete]
     @Id INT,
     @ModifiedBy VARCHAR(100),
     @ModifiedDate DATETIME
@@ -501,13 +501,13 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contact_ReadAll]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contact_ReadAll]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Contact_ReadAll]
+CREATE      PROCEDURE [dbo].[Contact_ReadAll]
 AS
 BEGIN
     SELECT
@@ -531,13 +531,13 @@ BEGIN
     WHERE IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contact_ReadByID]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contact_ReadByID]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Contact_ReadByID]
+CREATE        PROCEDURE [dbo].[Contact_ReadByID]
     @Id INT
 AS
 BEGIN
@@ -563,13 +563,13 @@ BEGIN
       AND IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contact_Update]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contact_Update]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROCEDURE [dbo].[Contact_Update]
+CREATE      PROCEDURE [dbo].[Contact_Update]
     @Id INT,
     @FullName VARCHAR(100),
     @UserName VARCHAR(100),
@@ -604,83 +604,77 @@ BEGIN
     RETURN @@ROWCOUNT
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contacts_Login]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contacts_Login]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-CREATE   PROCEDURE [dbo].[Contacts_Login]
+CREATE       PROCEDURE [dbo].[Contacts_Login]
     @UserName VARCHAR(100),
-    @PassWord VARCHAR(100)
+    @Password VARCHAR(100)
 AS
 BEGIN
     SELECT 
         c.Id,
         c.FullName,
+        c.UserName,
         c.Phone,
         c.City,
         c.CategoryId,
         cat.CategoryName,
-        c.CreatedDate,
-        c.CreatedBy,
-        c.ModifiedDate,
-        c.ModifiedBy,
-        c.IsDeleted,
-        c.[Address],
-        c.UserName,
         c.[PassWord],
         c.[Role],
         c.IsActive,
         c.IsLogged,
-        c.NoOfAttempts
+        c.NoOfAttempts,
+        c.CreatedDate,
+        c.CreatedBy,
+        c.ModifiedDate,
+        c.ModifiedBy,
+        c.IsDeleted
     FROM Contacts c
-INNER JOIN Category cat 
-ON c.CategoryId = cat.Id
+    INNER JOIN Category cat 
+        ON c.CategoryId = cat.Id
     WHERE c.UserName = @UserName
-      AND c.[PassWord] = @Password
+      AND c.Password = @Password
       AND c.IsActive = 1
-      AND c.IsDeleted = 0;
-
+      AND c.IsDeleted = 0
 END
 GO
-/****** Object:  StoredProcedure [dbo].[Contacts_RetrieveByUserName]    Script Date: 24-02-2026 07:25:54 ******/
+/****** Object:  StoredProcedure [dbo].[Contacts_RetrieveByUserName]    Script Date: 27-02-2026 09:49:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 
-CREATE   PROCEDURE [dbo].[Contacts_RetrieveByUserName]
+/****** Object:  StoredProcedure [dbo].[Contacts_RetrieveByUserName]    Script Date: 24-02-2026 07:25:54 ******/
+CREATE       PROCEDURE [dbo].[Contacts_RetrieveByUserName]
     @UserName VARCHAR(100)
 AS
 BEGIN
     SELECT 
         c.Id,
         c.FullName,
+        c.UserName,
         c.Phone,
         c.City,
         c.CategoryId,
         cat.CategoryName,
-        c.CreatedDate,
-        c.CreatedBy,
-        c.ModifiedDate,
-        c.ModifiedBy,
-        c.IsDeleted,
-        c.[Address],
-        c.UserName,
         c.[PassWord],
         c.[Role],
         c.IsActive,
         c.IsLogged,
-        c.NoOfAttempts
+        c.NoOfAttempts,
+        c.CreatedDate,
+        c.CreatedBy,
+        c.ModifiedDate,
+        c.ModifiedBy,
+        c.IsDeleted
     FROM Contacts c
-INNER JOIN Category cat 
-ON c.CategoryId = cat.Id
+    INNER JOIN Category cat 
+        ON c.CategoryId = cat.Id
     WHERE c.UserName = @UserName
-  AND c.IsDeleted = 0;
-
+      AND c.IsDeleted = 0
 END
-
 GO
