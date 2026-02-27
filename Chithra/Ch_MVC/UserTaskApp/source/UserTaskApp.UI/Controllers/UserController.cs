@@ -119,7 +119,7 @@ namespace UserTaskApp.UI.Controllers
         }
 
 
-        public ActionResult LogOff()
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             Session.Clear();
