@@ -14,7 +14,7 @@
 
 
         <div class="card-body">
-            <table class="table table-striped table-hover table-bordered text-center">
+            <table class="table table-striped table-hover table-bordered text-center" id="tblFees">
                 <thead class="table-dark">
 
                     <tr>
@@ -34,13 +34,13 @@
                                 <td>₹ @(item.Amount.ToString("N2"))</td>
                                 <td>@(item.Date?.ToString("dd MMM yyyy"))</td>
                                 <td>
-                                    @Html.EncodedActionLink("Edit", "Edit","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Edit", "Edit", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-primary me-1" })
 
-                                    @Html.EncodedActionLink("Details", "Details","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Details", "Details", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-info text-white me-1" })
 
-                                    @Html.EncodedActionLink("Delete", "Delete","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Delete", "Delete", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-sm btn-danger" })
                                 </td>
                             </tr>
@@ -64,34 +64,43 @@
 <h3>Monthly Fees Collection</h3>
 <canvas id="feesChart" height="100"></canvas>
 
-@section Scripts {
-    <script>
-        var ctx = document.getElementById('feesChart').getContext('2d');
 
-        var feesChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr'],
-                datasets: [{
-                    label: 'Fees Collection',
-                    data: [12000, 18000, 15000, 22000],
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(75, 192, 192, 0.6)',
-                        'rgba(255, 206, 86, 0.6)',
-                        'rgba(255, 99, 132, 0.6)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
+
+@section Scripts {
+
+    <script>
+        
+            $(document).ready(function() {
+                $('#tblFees').DataTable();
         });
+    
+
+    var ctx = document.getElementById('feesChart').getContext('2d');
+
+    var feesChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [{
+    label: 'Fees Collection',
+    data: [12000, 18000, 15000, 22000],
+    backgroundColor: [
+    'rgba(54, 162, 235, 0.6)',
+    'rgba(75, 192, 192, 0.6)',
+    'rgba(255, 206, 86, 0.6)',
+    'rgba(255, 99, 132, 0.6)'
+    ],
+    borderWidth: 1
+    }]
+    },
+    options: {
+    responsive: true,
+    scales: {
+    y: {
+    beginAtZero: true
+    }
+    }
+    }
+    });
     </script>
 }

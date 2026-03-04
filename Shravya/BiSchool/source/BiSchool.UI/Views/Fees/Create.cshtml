@@ -12,65 +12,78 @@
                 <div class="card-body">
 
                     <h2 class="p-3 bg-danger text-center text-white rounded">
-                       Create Fees 
+                        Create Fees
                     </h2>
 
                     @using (Html.BeginForm("Create", "Fees", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
-                <div class="mt-4">
+                        <div class="mt-4">
 
-                    <!-- StudentID -->
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.StudentId, "Student")
-                        @Html.DropDownListFor(
-                            m => m.StudentId,
-                            Model.Students,
-                            "-- Select Student --",
-                            new { @class = "form-control" }
-                        )
-                        @Html.ValidationMessageFor(m => m.StudentId, "", new { @class = "text-danger" })
-                    </div>
-
-
-                    <!-- Amount -->
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Amount)
-                        @Html.TextBoxFor(
-                            m => m.Amount,
-                            new { @class = "form-control", placeholder = "Enter Amount" }
-                        )
-                        @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
-                    </div>
-
-                    <!-- Date -->
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Date)
-                        @Html.TextBoxFor(
-                            m => m.Date,
-                            "{0:yyyy-MM-dd}",
-                            new { @class = "form-control", type = "date" }
-                        )
-                        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
-                    </div>
+                            <!-- StudentID -->
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.StudentId, "Student")
+                                @Html.DropDownListFor(
+                                    m => m.StudentId,
+                                    Model.Students,
+                                    "-- Select Student --",
+                                    new { @class = "form-control select2" }
+                                )
+                                @Html.ValidationMessageFor(m => m.StudentId, "", new { @class = "text-danger" })
+                            </div>
 
 
+                            <!-- Amount -->
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Amount)
+                                @Html.TextBoxFor(
+                                    m => m.Amount,
+                                    new { @class = "form-control", placeholder = "Enter Amount" }
+                                )
+                                @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
+                            </div>
+
+                            <!-- Date -->
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Date)
+                                @Html.TextBoxFor(
+                                    m => m.Date,
+                                    "{0:yyyy-MM-dd}",
+                                    new { @class = "form-control", type = "date" }
+                                )
+                                @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                            </div>
 
 
 
-                    <input type="submit" value="Create" class="btn btn-success" />
-                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
 
 
-                </div>
+                            <input type="submit" value="Create" class="btn btn-success" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+
+
+                        </div>
                     }
 
                 </div>
             </div>
 
-            
+
 
         </div>
     </div>
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+
+            $(".select2").select2({
+                placeholder: "Select Student",
+                allowClear: false
+            });
+
+        });
+    </script>
+}

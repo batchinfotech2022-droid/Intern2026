@@ -1,43 +1,61 @@
-﻿using BiSchool.BL;
-using BiSchool.UI.IDEncryption;
-using BiSchool.UI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BiSchool.BL;
+using BiSchool.UI.IDEncryption;
+using BiSchool.UI.Models;
+using BiSchool.UI.ViewModels;
 
 namespace BiSchool.UI.Controllers
 {
     public class StudentController : Controller
     {
+        public ActionResult Index(int pageIndex=1)
+        {
+            int pageSize = 20;
+            string usrName = Session["UserName"]?.ToString() ?? "System";
 
+            List<Student> students = Student.RetrieveAll(usrName);
 
-            public ActionResult Index()
+            List<StudentModel> modelList = new List<StudentModel>();
+
+            foreach (Student s in students)
             {
-                string usrName = Session["UserName"]?.ToString() ?? "System";
+                StudentModel m = new StudentModel();
 
-                List<Student> students = Student.RetrieveAll(usrName);
-
-                List<StudentModel> modelList = new List<StudentModel>();
-
-                foreach (Student s in students)
-                {
-                    StudentModel m = new StudentModel();
-
-                    m.Id = s.Id;
-                    m.FullName = s.FullName;
+                m.Id = s.Id;
+                m.FullName = s.FullName;
                 m.Email = s.Email;
-                    m.Address = s.Address;
-                    m.Phone = s.Phone;
-                    m.IsAdmin = s.IsAdmin;
+                m.Address = s.Address;
+                m.Phone = s.Phone;
+                m.IsAdmin = s.IsAdmin;
 
-                    modelList.Add(m);
-                }
-
-                return View(modelList);
+                modelList.Add(m);
             }
 
+            
+            // Create ViewModel
+            StudentListViewModel vm = new StudentListViewModel();
+
+            vm.Students = modelList;
+
+            vm._paginationPartialViewModel.PageIndex = pageIndex;
+            vm._paginationPartialViewModel.PageCount = (vm.Students.Count+pageSize-1)/pageSize;
+            vm._paginationPartialViewModel.TotalData = vm.Students.Count ;
+            vm._paginationPartialViewModel.ActionLink = "Index";
+            vm._paginationPartialViewModel.ControllerName = "Student";
+            vm._paginationPartialViewModel.search= string.Empty;
+            vm.Students = vm.Students.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            if(Request.IsAjaxRequest())
+            {
+                return PartialView("Index", vm);
+            }
+            return View(vm);
+
+          
+        }
         public ActionResult Create()
         {
             StudentModel model = new StudentModel();
