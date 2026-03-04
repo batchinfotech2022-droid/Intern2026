@@ -11,7 +11,7 @@
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-hover table-bordered table-striped align-middle">
+                <table class="table table-hover table-bordered table-striped align-middle" id="tblfees">
                     <thead class="table-primary text-dark">
                         <tr>
                             <th>Student</th>
@@ -30,13 +30,13 @@
                                 <td>@item.Date.ToShortDateString()</td>
                                 <td class="text-center">
 
-                                    @Html.EncodedActionLink("Edit", "Edit","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Edit", "Edit", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-primary btn-sm me-1" })
 
-                                    @Html.EncodedActionLink("Details", "Details","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Details", "Details", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-outline-primary btn-sm me-1" })
 
-                                    @Html.EncodedActionLink("Delete", "Delete","Fees", new { id = item.Id },
+                                    @Html.EncodedActionLink("Delete", "Delete", "Fees", new { id = item.Id },
                                         new { @class = "btn btn-danger btn-sm" })
                                 </td>
                             </tr>
@@ -48,3 +48,11 @@
         </div>
     </div>
 </div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            let table = new DataTable('#tblfees');
+        });
+    </script>
+
+}

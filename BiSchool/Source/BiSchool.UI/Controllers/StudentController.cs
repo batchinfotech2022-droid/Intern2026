@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using BiSchool.BL;
 using BiSchool.UI.IDEncryption;
 using BiSchool.UI.Models;
+using BiSchool.UI.ViewModels;
 
 namespace BiSchool.UI.Controllers
 {
@@ -10,17 +12,54 @@ namespace BiSchool.UI.Controllers
     {
         private string userName = "Admin";
 
-        public ActionResult Index()
+        public ActionResult Index(int pageIndex = 0)
         {
-            List<StudentModel> list = new List<StudentModel>();
+            int pageSize = 20;
+            string usrName = Session["UserName"]?.ToString() ?? "System";
 
-            foreach (Student s in Student.RetrieveAll(userName))
+            List<Student> students = Student.RetrieveAll(usrName);
+
+            List<StudentModel> modelList = new List<StudentModel>();
+
+            foreach (Student s in students)
             {
-                list.Add(new StudentModel(s));
+                StudentModel m = new StudentModel();
+
+                m.Id = s.Id;
+                m.FullName = s.FullName;
+                m.Email = s.Email;
+                m.Address = s.Address;
+                m.Phone = s.Phone;
+                m.IsAdmin = s.IsAdmin;
+
+                modelList.Add(m);
             }
 
-            return View(list);
+
+            // Create ViewModel
+            StudentViewModel vm = new StudentViewModel();
+
+            vm.Students = modelList;
+
+            vm._PaginationPartialViewModel.PageIndex = pageIndex;
+            vm._PaginationPartialViewModel.PageCount = (vm.Students.Count + pageSize - 1) / pageSize;
+            vm._PaginationPartialViewModel.TotalData = vm.Students.Count;
+            vm._PaginationPartialViewModel.ActionLink = "Index";
+            vm._PaginationPartialViewModel.ControllerName = "Student";
+            vm._PaginationPartialViewModel.search = string.Empty;
+            vm.Students = vm.Students.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("Index", vm);
+            }
+
+            return View(vm);
+
+
         }
+
+
+
 
         public ActionResult Create()
         {
