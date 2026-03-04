@@ -20,16 +20,44 @@ namespace UserTaskApp.UI.Controllers
 
 
 
-        public ActionResult Index()
+        public ActionResult Index(string search,int pageIndex=0)
         {
             string usrName = Session["UserName"]?.ToString() ?? "System";
+            int pageSize = 5;
             List<AppUser> list = AppUser.RetrieveAll(usrName);
-            List<UserModel> model = list.Select(x => new UserModel(x)).ToList();
+
+            List<UserModel> users = list.Select(x => new UserModel(x)).ToList();
+            // SEARCH FILTER
+            if (!string.IsNullOrEmpty(search))
+            {
+                users = users.Where(x =>
+                    x.UserName.ToLower().Contains(search.ToLower()) ||
+                    x.FirstName.ToLower().Contains(search.ToLower()) ||
+                    x.LastName.ToLower().Contains(search.ToLower())
+                ).ToList();
+            }
+
+            StudentlistViewModel model = new StudentlistViewModel
+            {
+                Users = users
+            };
+            model._paginationPartialViewModel.PageIndex = pageIndex;
+            model._paginationPartialViewModel.PageCount = (users.Count + pageSize - 1) / pageSize;
+            model._paginationPartialViewModel.TotalData = users.Count;
+            model._paginationPartialViewModel.ActionLink = "Index";
+            model._paginationPartialViewModel.ControllerName= "User";
+            model._paginationPartialViewModel.search = string.Empty;
+            model.Users = model.Users.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("Index", model);
+            }
+
             return View(model);
         }
 
 
-       
+
         public ActionResult Login()
         {
             return View();

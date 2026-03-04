@@ -18,7 +18,7 @@
 
         <div class="card-body">
             
-            <table class="table table-bordered table-hover table-responsive">
+            <table id="tbltask" class="table table-bordered table-hover table-responsive">
 
                 <thead class="table-light">
                     <tr>
@@ -66,3 +66,8 @@
     </div>
 
 </div>
+@section scripts{
+<script>$(document).ready(function () {
+        $('#tbltask').DataTable();
+    });</script>
+    }

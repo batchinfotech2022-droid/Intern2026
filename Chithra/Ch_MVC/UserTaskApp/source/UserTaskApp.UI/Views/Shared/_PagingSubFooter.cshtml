@@ -1,0 +1,105 @@
+﻿@model UserTaskApp.UI.ViewModels.PaginationPartialViewModel
+<table class="theFooter d-flex align-items-center justify-content-center">
+    <tr>
+        <td class="text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center flex-wrap">
+                    <li class="page-item disabled me-1">
+                        <span class="page-link">
+                            @{ int pageIndex = @Model.PageIndex + 1;
+                            }
+                            Page @pageIndex of @Model.PageCount
+                        </span>
+                    </li>
+                    @{
+                        string actionLink = string.IsNullOrEmpty(Model.ActionLink) ? "Index" : Model.ActionLink;
+                        string controllerName = Model.ControllerName;
+                        string search = Model.search;
+                    }
+                    @if (Model.PageIndex > 3)
+                    {
+                        <li class="page-item me-1">
+                            @*@Html.EncodedActionLink("<", actionLink, controllerName,
+                                new { id = ViewBag.SNo, pageIndex = ((ViewBag.PageIndex / 4 * 4) - 1) },
+                                new { @class = "page-link" })*@
+                            @Ajax.ActionLink("<", actionLink,
+                                     new { id = Model.IdValue, sortOrder = Model.sortOrder, pageIndex = ((Model.PageIndex / 4 * 4) - 1), search },
+                                     new AjaxOptions
+                                     {
+                                         UpdateTargetId = "SubBody",
+                                         InsertionMode = InsertionMode.Replace,
+                                         HttpMethod = "GET",
+                                         LoadingElementId = "MainBodyLoading"
+                                     },
+                                          new { @class = "page-link", onclick = $"savePageIndex({Model.PageIndex - 1})" })
+                        </li>
+                    }
+                    @for (int i = (Model.PageIndex / 4 * 4); i <= ((Model.PageIndex / 4 * 4) + 4); i++)
+                    {
+                        if (i < Model.PageCount)
+                        {
+                            if (Model.PageIndex == i)
+                            {
+                                <li class="page-item active me-1 " aria-current="page">
+                                    <span class="page-link">@((i + 1).ToString())</span>
+                                </li>
+                            }
+                            else if (i == ((Model.PageIndex / 4 * 4) + 4))
+                            {
+                                <li class="page-item me-1">
+                                    @*@Html.EncodedActionLink(">", actionLink, controllerName,
+                                        new { id = ViewBag.SNo,pageIndex = i },
+                                         new { @class = "page-link" })*@
+                                    @Ajax.ActionLink(">", actionLink,
+                                             new { id = Model.IdValue, sortOrder = Model.sortOrder, pageIndex = i, search },
+                                             new AjaxOptions
+                                             {
+                                                 UpdateTargetId = "SubBody",
+                                                 InsertionMode = InsertionMode.Replace,
+                                                 HttpMethod = "GET",
+                                                 LoadingElementId = "MainBodyLoading"
+                                             },
+                                                  new { @class = "page-link", onclick = $"savePageIndex({i})" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item me-1">
+                                    @*@Html.EncodedActionLink((i + 1).ToString(), actionLink, controllerName,
+                                                           new { id = ViewBag.SNo, pageIndex =i },
+                                        new { @class = "page-link" })*@
+                                    @Ajax.ActionLink((i + 1).ToString(), actionLink,
+                                             new { id = Model.IdValue, sortOrder = Model.sortOrder, pageIndex = i, search },
+                                             new AjaxOptions
+                                             {
+                                                 UpdateTargetId = "SubBody",
+                                                 InsertionMode = InsertionMode.Replace,
+                                                 HttpMethod = "GET",
+                                                 LoadingElementId = "MainBodyLoading"
+                                             },
+                                                  new { @class = "page-link", onclick = $"savePageIndex({i})" })
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+                <small class="text-muted"></small>
+            </nav>
+        </td>
+    </tr>
+</table>
+<script>function savePageIndex(index) {
+        localStorage.setItem("savedPageIndex", index);
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const savedPage = localStorage.getItem("savedPageIndex");
+        if (savedPage !== null) {
+            const link = document.querySelector(`.page-link[onclick='savePageIndex(${savedPage})']`);
+            if (link) {
+                link.click();
+            }
+        }
+    });</script>
+<!--<div id="MainBodyLoading" style="display:none">-->
+@*<img id="animatedgif" src="~/Content/images/loading.gif" alt="Loading..." />*@
+<!--</div>-->

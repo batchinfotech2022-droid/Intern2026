@@ -13,7 +13,7 @@ namespace BiSchool.UI.Controllers
     public class StudentController : Controller
     {
 
-   
+
             public ActionResult Index()
             {
                 string usrName = Session["UserName"]?.ToString() ?? "System";
@@ -41,7 +41,48 @@ namespace BiSchool.UI.Controllers
             }
         public ActionResult Create()
         {
-            return View(new StudentModel());
+            StudentModel model = new StudentModel();
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(StudentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string usrName = Session["UserName"]?.ToString() ?? "System";
+
+                Student s = new Student();
+
+                s.FullName = model.FullName;
+                s.Email = model.Email;
+                s.Password = model.Password;
+                s.Address = model.Address;
+                s.Phone = model.Phone;
+                s.IsAdmin = model.IsAdmin;
+
+                s.CreatedBy = usrName;
+                s.CreatedDate = DateTime.Now;
+                s.ModifiedBy = usrName;
+                s.ModifiedDate = DateTime.Now;
+                s.IsDeleted = false;
+
+                Student.Create(
+                    usrName,
+                    s.FullName,
+                    s.Email,
+                    s.Password,
+                    s.Address,
+                    s.Phone,
+                    s.IsAdmin
+                );
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
 
 

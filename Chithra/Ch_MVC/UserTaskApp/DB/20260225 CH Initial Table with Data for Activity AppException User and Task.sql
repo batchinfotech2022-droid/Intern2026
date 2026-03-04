@@ -1248,7 +1248,7 @@ BEGIN
     SET NOCOUNT ON;
 
     INSERT INTO [dbo].[TASK] (
-        Title, [Description], AssignedTo, [Status ], 
+        Title, [Description], AssignedTo, [Status], 
         [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy], [IsDeleted]
     )
     VALUES (
