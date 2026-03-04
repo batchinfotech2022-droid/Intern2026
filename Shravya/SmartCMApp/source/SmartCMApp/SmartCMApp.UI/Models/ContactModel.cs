@@ -50,6 +50,7 @@ namespace SmartCMApp.UI.Models
                 get { return _contact.CategoryId; }
                 set { _contact.CategoryId = value; }
             }
+        public string CategoryName { get; set; }
 
         [Required]
         [EmailAddress]
@@ -79,6 +80,7 @@ namespace SmartCMApp.UI.Models
         public string ModifiedBy { get { return _contact.ModifiedBy; } set { _contact.ModifiedBy = value; } }
         public DateTime ModifiedDate { get { return _contact.ModifiedDate; } set { _contact.ModifiedDate = value; } }
         public bool IsDeleted { get { return _contact.IsDeleted; } set { _contact.IsDeleted = value; } }
+
 
         public List<SelectListItem> CategoryList { get; set; }
 

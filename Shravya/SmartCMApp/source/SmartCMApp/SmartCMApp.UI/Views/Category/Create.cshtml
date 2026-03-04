@@ -36,16 +36,11 @@
                             <div class="mb-4">
                                 <label class="form-label">Status</label>
 
-                                @Html.DropDownListFor(m => m.IsActive,
-                                    new List<SelectListItem>
-                                    {
-                                        new SelectListItem{ Text="Active", Value="true" },
-                                        new SelectListItem{ Text="Inactive", Value="false" }
-                                    },
-                                    new { @class = "form-select" })
+                                <div class="form-control bg-light">
+                                    Active
+                                </div>
 
-                                @Html.ValidationMessageFor(m => m.IsActive, "",
-                                    new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.IsActive, new { Value = "true" })
                             </div>
 
                         </div>

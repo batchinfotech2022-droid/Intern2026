@@ -137,6 +137,12 @@ namespace SmartCMApp.UI.Controllers
 
             ContactModel model = new ContactModel(contact);
 
+            var category = Category.RetrieveAll(userName)
+                                   .FirstOrDefault(c => c.Id == contact.CategoryId);
+
+            if (category != null)
+                model.CategoryName = category.CategoryName;
+
             return View(model);
         }
         public ActionResult Edit(int id)

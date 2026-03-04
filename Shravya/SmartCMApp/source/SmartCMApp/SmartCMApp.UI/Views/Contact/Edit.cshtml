@@ -23,53 +23,53 @@
                     <div class="card-body">
 
                         <div class="w-75 mx-auto">
+                            <div class="row">
+                                <!-- Full Name -->
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.FullName,
+                                        new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.FullName, "",
+                                        new { @class = "text-danger" })
+                                </div>
 
-                            <!-- Full Name -->
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.FullName,
-                                    new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.FullName, "",
-                                    new { @class = "text-danger" })
+                                <!-- Username -->
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.UserName,
+                                        new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "",
+                                        new { @class = "text-danger" })
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.Phone,
+                                        new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Phone, "",
+                                        new { @class = "text-danger" })
+                                </div>
+
+                                <!-- City -->
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(m => m.City, new { @class = "form-label" })
+                                    @Html.TextBoxFor(m => m.City,
+                                        new { @class = "form-control" })
+                                </div>
+
+                                <!-- Keep Password Hidden -->
+                                @Html.HiddenFor(m => m.PassWord)
+
+                                <!-- Category -->
+                                <div class="col-md-6 mb-4">
+                                    @Html.LabelFor(m => m.CategoryId, new { @class = "form-label" })
+                                    @Html.DropDownListFor(m => m.CategoryId,
+                                        Model.CategoryList,
+                                        "Select Category",
+                                        new { @class = "form-select" })
+                                </div>
                             </div>
-
-                            <!-- Username -->
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.UserName,
-                                    new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.UserName, "",
-                                    new { @class = "text-danger" })
-                            </div>
-
-                            <!-- Phone -->
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.Phone,
-                                    new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Phone, "",
-                                    new { @class = "text-danger" })
-                            </div>
-
-                            <!-- City -->
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                                @Html.TextBoxFor(m => m.City,
-                                    new { @class = "form-control" })
-                            </div>
-
-                            <!-- Keep Password Hidden -->
-                            @Html.HiddenFor(m => m.PassWord)
-
-                            <!-- Category -->
-                            <div class="mb-4">
-                                @Html.LabelFor(m => m.CategoryId, new { @class = "form-label" })
-                                @Html.DropDownListFor(m => m.CategoryId,
-                                    Model.CategoryList,
-                                    "Select Category",
-                                    new { @class = "form-select" })
-                            </div>
-
                         </div>
                     </div>
 

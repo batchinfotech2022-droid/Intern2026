@@ -18,49 +18,50 @@
                 <div class="card-body">
 
                     <div class="w-75 mx-auto">
+                        <div class="row">
 
-                        <!-- ID -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.Id, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Id,
-                                new { @class = "form-control", @readonly = "readonly" })
+
+
+                            <!-- Full Name -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Full Name</label>
+                                <div class="form-control bg-light">
+                                    @Model.FullName
+                                </div>
+                            </div>
+
+                            <!-- Username -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Username</label>
+                                <div class="form-control bg-light">
+                                    @Model.UserName
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Phone</label>
+                                <div class="form-control bg-light">
+                                    @Model.Phone
+                                </div>
+                            </div>
+
+                            <!-- City -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">City</label>
+                                <div class="form-control bg-light">
+                                    @Model.City
+                                </div>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Category</label>
+                                <div class="form-control bg-light">
+                                    @Model.CategoryName
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Full Name -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.FullName, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.FullName,
-                                new { @class = "form-control", @readonly = "readonly" })
-                        </div>
-
-                        <!-- Username -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.UserName,
-                                new { @class = "form-control", @readonly = "readonly" })
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.Phone, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Phone,
-                                new { @class = "form-control", @readonly = "readonly" })
-                        </div>
-
-                        <!-- City -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.City, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.City,
-                                new { @class = "form-control", @readonly = "readonly" })
-                        </div>
-
-                        <!-- Category -->
-                        <div class="mb-4">
-                            @Html.LabelFor(m => m.CategoryId, new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.CategoryId,
-                                new { @class = "form-control", @readonly = "readonly" })
-                        </div>
-
                     </div>
                 </div>
 
