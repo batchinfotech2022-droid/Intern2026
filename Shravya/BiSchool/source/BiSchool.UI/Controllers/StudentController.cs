@@ -12,12 +12,22 @@ namespace BiSchool.UI.Controllers
 {
     public class StudentController : Controller
     {
-        public ActionResult Index(int pageIndex=1)
+        public ActionResult Index(string search = "", int pageIndex = 0)
         {
             int pageSize = 20;
             string usrName = Session["UserName"]?.ToString() ?? "System";
 
             List<Student> students = Student.RetrieveAll(usrName);
+
+            // 🔎 Apply search filter
+            if (!string.IsNullOrEmpty(search))
+            {
+                students = students
+                    .Where(x => x.FullName.ToLower().Contains(search.ToLower())
+                             || x.Email.ToLower().Contains(search.ToLower())
+                             || x.Phone.Contains(search))
+                    .ToList();
+            }
 
             List<StudentModel> modelList = new List<StudentModel>();
 
@@ -35,26 +45,29 @@ namespace BiSchool.UI.Controllers
                 modelList.Add(m);
             }
 
-            
-            // Create ViewModel
             StudentListViewModel vm = new StudentListViewModel();
 
             vm.Students = modelList;
 
+            // Pagination
             vm._paginationPartialViewModel.PageIndex = pageIndex;
-            vm._paginationPartialViewModel.PageCount = (vm.Students.Count+pageSize-1)/pageSize;
-            vm._paginationPartialViewModel.TotalData = vm.Students.Count ;
+            vm._paginationPartialViewModel.PageCount = (vm.Students.Count + pageSize - 1) / pageSize;
+            vm._paginationPartialViewModel.TotalData = vm.Students.Count;
             vm._paginationPartialViewModel.ActionLink = "Index";
             vm._paginationPartialViewModel.ControllerName = "Student";
-            vm._paginationPartialViewModel.search= string.Empty;
-            vm.Students = vm.Students.Skip(pageIndex * pageSize).Take(pageSize).ToList();
-            if(Request.IsAjaxRequest())
+            vm._paginationPartialViewModel.search = search;
+
+            vm.Students = vm.Students
+                .Skip(pageIndex * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            if (Request.IsAjaxRequest())
             {
                 return PartialView("Index", vm);
             }
-            return View(vm);
 
-          
+            return View(vm);
         }
         public ActionResult Create()
         {

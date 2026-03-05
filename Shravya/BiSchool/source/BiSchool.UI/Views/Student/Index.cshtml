@@ -6,13 +6,27 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 }
+
+
+
 <div id="SubBody">
     <h2>Student List</h2>
     <p>
         @Html.ActionLink("Create New Student", "Create", null, new { @class = "btn btn-success" })
     </p>
 
-    <table class="table table-bordered table-striped">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text"
+                   id="searchBox"
+                   name="search"
+                   value="@Model._paginationPartialViewModel.search"
+                   placeholder="Search Student..."
+                   class="form-control" />
+        </div>
+    </div>
+
+    <table id="studentTable" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -49,3 +63,11 @@
     @Html.Partial("_PagingSubFooter", Model._paginationPartialViewModel)
 </div>
 
+<script>
+    $(document).ready(function () {
+        $("#searchBox").keyup(function () {
+            var search = $(this).val();
+            window.location.href = "/Student/Index?search=" + search;
+        });
+    });
+</script>
