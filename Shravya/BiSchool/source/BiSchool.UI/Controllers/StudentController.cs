@@ -19,7 +19,7 @@ namespace BiSchool.UI.Controllers
 
             List<Student> students = Student.RetrieveAll(usrName);
 
-            // 🔎 Apply search filter
+            // 🔍 Apply search filter
             if (!string.IsNullOrEmpty(search))
             {
                 students = students
@@ -33,14 +33,15 @@ namespace BiSchool.UI.Controllers
 
             foreach (Student s in students)
             {
-                StudentModel m = new StudentModel();
-
-                m.Id = s.Id;
-                m.FullName = s.FullName;
-                m.Email = s.Email;
-                m.Address = s.Address;
-                m.Phone = s.Phone;
-                m.IsAdmin = s.IsAdmin;
+                StudentModel m = new StudentModel
+                {
+                    Id = s.Id,
+                    FullName = s.FullName,
+                    Email = s.Email,
+                    Address = s.Address,
+                    Phone = s.Phone,
+                    IsAdmin = s.IsAdmin
+                };
 
                 modelList.Add(m);
             }
@@ -49,7 +50,7 @@ namespace BiSchool.UI.Controllers
 
             vm.Students = modelList;
 
-            // Pagination
+            // Pagination info
             vm._paginationPartialViewModel.PageIndex = pageIndex;
             vm._paginationPartialViewModel.PageCount = (vm.Students.Count + pageSize - 1) / pageSize;
             vm._paginationPartialViewModel.TotalData = vm.Students.Count;
@@ -57,6 +58,7 @@ namespace BiSchool.UI.Controllers
             vm._paginationPartialViewModel.ControllerName = "Student";
             vm._paginationPartialViewModel.search = search;
 
+            // Apply pagination
             vm.Students = vm.Students
                 .Skip(pageIndex * pageSize)
                 .Take(pageSize)

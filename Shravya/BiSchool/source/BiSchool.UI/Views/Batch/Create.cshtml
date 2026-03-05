@@ -10,7 +10,7 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(m=>m.Id)
+                @Html.HiddenFor(m => m.Id)
                 <div class="mb-3">
                     @Html.LabelFor(m => m.Title, new { @class = "form-label fw-semibold" })
                     @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
@@ -36,18 +36,19 @@
         </div>
     </div>
 </div>
-@{
-    ViewBag.Title = "Create";
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            flatpickr(".timepicker", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "h:i K",
+                time_24hr: false
+            });
+
+        });
+    </script>
 }
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    flatpickr(".timepicker", {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
-    });
-});
-</script>

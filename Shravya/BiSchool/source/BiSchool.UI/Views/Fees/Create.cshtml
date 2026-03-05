@@ -48,9 +48,9 @@
                             <div class="form-group">
                                 @Html.LabelFor(m => m.Date)
                                 @Html.TextBoxFor(
-                                    m => m.Date,
-                                    "{0:yyyy-MM-dd}",
-                                    new { @class = "form-control", type = "date" }
+    m => m.Date,
+    new { @class = "form-control flatpickr-date", placeholder = "Select Date" }
+
                                 )
                                 @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
                             </div>
@@ -78,10 +78,15 @@
     <script>
         $(document).ready(function () {
 
-
+            
             $(".select2").select2({
                 placeholder: "Select Student",
                 allowClear: false
+            });
+
+            
+            flatpickr(".flatpickr-date", {
+                dateFormat: "Y-m-d"
             });
 
         });
