@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BiSchool.UI.Models.StudentBatchModel>
+
+@{
+    ViewBag.Title = "Student Batch";
+}
+
+<h2>Student Batch List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Batch</th>
+        <th>Student</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BatchTitle</td>
+            <td>@item.StudentName</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

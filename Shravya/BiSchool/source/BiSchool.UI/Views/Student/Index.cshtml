@@ -1,0 +1,68 @@
+﻿@model BiSchool.UI.ViewModels.StudentListViewModel
+@using BiSchool.UI.IDEncryption
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#studentTable').DataTable({
+                paging: false,       // because you already have your own pagination
+                lengthChange: false,
+                searching: true,     // enable search
+                info: false
+            });
+
+        });
+    </script>
+}
+
+
+
+<div id="SubBody">
+    <h2>Student List</h2>
+    <p>
+        @Html.ActionLink("Create New Student", "Create", null, new { @class = "btn btn-success" })
+    </p>
+
+    
+
+    <table id="studentTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Is Active</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FullName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Address</td>
+                    <td>
+                        <input type="checkbox" @(item.IsAdmin ? "checked" : "") disabled />
+                    </td>
+                    <td>
+                        @Html.EncodedActionLink("Edit", "Edit", "Student", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.EncodedActionLink("Details", "Details", "Student", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                        @Html.EncodedActionLink("Delete", "Delete", "Student", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Partial("_PagingSubFooter", Model._paginationPartialViewModel)
+</div>
+

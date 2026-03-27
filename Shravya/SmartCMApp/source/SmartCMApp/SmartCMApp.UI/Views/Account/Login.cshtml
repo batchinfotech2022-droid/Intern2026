@@ -1,0 +1,64 @@
+﻿@model SmartCMApp.UI.ViewModel.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+
+<div class="page-bg auth-page">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="flip-scene">
+        <div class="flip-card" id="flipCard">
+
+            <!-- FRONT: Login form -->
+            <div class="flip-front">
+                <div class="glass-card">
+                    <span class="card-badge">Welcome Back</span>
+                    <h2 class="card-title">Sign in to<br />your account ✨</h2>
+
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "you@example.com", type = "email", autocomplete = "email" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter password", autocomplete = "current-password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn-main">Login →</button>
+                    }
+
+                    <div class="switch-link">
+                        New here? <span onclick="flipToRegister()">Create an account</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK: placeholder during flip-out -->
+            <div class="flip-back">
+                <div class="glass-card" style="display:flex;align-items:center;justify-content:center;min-height:300px;">
+                    <p style="color:rgba(255,255,255,0.5);">Loading…</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function flipToRegister() {
+        var card = document.getElementById('flipCard');
+        card.style.transform = 'rotateY(180deg)';
+        setTimeout(function () {
+            window.location.href = '@Url.Action("Register", "Account")?flip=1';
+        }, 750);
+    }
+</script>

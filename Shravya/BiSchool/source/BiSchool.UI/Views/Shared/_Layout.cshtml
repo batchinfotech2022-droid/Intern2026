@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/2.3.7/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+<body>
+    <div id="loading"></div>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("BiSchool", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="nav navbar-nav" style="display:flex; gap:25px; margin-left:30px;">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @style = "text-decoration:none; font-weight:500; color:white;" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Student", "Index", "Student", null, new { @style = "text-decoration:none; font-weight:500; color:white;" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Fees", "Index", "Fees", null, new { @style = "text-decoration:none; font-weight:500; color:white;" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Batch", "Index", "Batch", null, new { @style = "text-decoration:none; font-weight:500; color:white;" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("StudentBatch", "Index", "StudentBatch", null, new { @style = "text-decoration:none; font-weight:500; color:white;" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - BiSchool</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"</script>
+    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/Scripts/chart.js"></script>
+
+    @RenderSection("scripts", required: false)
+    @*<script>
+            // In your Javascript (external .js resource or <script> tag)
+            $(document).ready(function () {
+
+                $(".select2").select2({
+                    placeholder: "Select Student name",
+                    allowClear: true
+                });
+            });
+        </script>*@
+
+    <script>
+        $(document).ajaxStart(function () {
+            $("#loading").show();
+        });
+
+        $(document).ajaxStop(function () {
+            $("#loading").hide();
+        });
+    </script>
+</body>
+</html>

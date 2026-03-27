@@ -1,0 +1,86 @@
+﻿@model SmartCMApp.UI.Models.ContactModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+            <div class="card shadow-lg rounded-3">
+
+                <!-- Header -->
+                <div class="card-header bg-success text-white text-center">
+                    <h2 class="mb-0 fw-bold">Contact Details</h2>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="w-75 mx-auto">
+                        <div class="row">
+
+
+
+                            <!-- Full Name -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Full Name</label>
+                                <div class="form-control bg-light">
+                                    @Model.FullName
+                                </div>
+                            </div>
+
+                            <!-- Username -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Username</label>
+                                <div class="form-control bg-light">
+                                    @Model.UserName
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Phone</label>
+                                <div class="form-control bg-light">
+                                    @Model.Phone
+                                </div>
+                            </div>
+
+                            <!-- City -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">City</label>
+                                <div class="form-control bg-light">
+                                    @Model.City
+                                </div>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label">Category</label>
+                                <div class="form-control bg-light">
+                                    @Model.CategoryName
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="card-footer bg-white px-4 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        @Html.ActionLink("Back to List", "Index", null,
+                            new { @class = "btn btn-secondary px-4" })
+
+                        @Html.ActionLink("Edit", "Edit",
+                            new { id = Model.Id },
+                            new { @class = "btn btn-primary px-4" })
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

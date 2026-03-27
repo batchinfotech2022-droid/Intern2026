@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Interns_mvc.ViewModels.ContactManagerViewModel>
+
+<h2>Contacts</h2>
+
+<div class="card">
+    <!-- CARD HEADER -->
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Contact List</span>
+
+        @Html.ActionLink(
+            "Create",
+            "Create",
+            "ContactManager",
+            null,
+ new { @class = "btn btn-success btn-sm" }
+        )
+    </div>
+
+    <!-- CARD BODY -->
+    <div class="card-body p-0">
+        <table class="table table-bordered table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th style="width:220px;">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.FirstName)</td>
+                        <td>@Html.DisplayFor(m => item.LastName)</td>
+                        <td>@Html.DisplayFor(m => item.Email)</td>
+                        <td>@Html.DisplayFor(m => item.Phone)</td>
+                        <td>
+                            @Html.ActionLink(
+                                "View",
+                                "view",
+                                "ContactManager",
+                                new { id = item.Id },
+                                new { @class = "btn btn-info btn-sm" })
+
+                            @Html.ActionLink(
+                                "Edit",
+                                "Edit",
+                                "ContactManager",
+                                new { id = item.Id },
+                                new { @class = "btn btn-warning btn-sm mx-1" })
+
+                            @Html.ActionLink("Delete", "Delete","ContactManager" ,new { id = item.Id }, new { @class = "btn btn-danger" })
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model BiSchool.UI.ViewModels.HomeViewModel
+
+<div class="container mt-5">
+
+    <!-- Welcome Section -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Welcome to BiSchool Management System</h1>
+        <p class="lead text-muted">
+            Manage Students, Fees, Batches and Student-Batch Mapping efficiently.
+        </p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-success">Total Students</h5>
+                    <h1 class="fw-bold">@Model.TotalStudents</h1>
+                    <a href="/Student" class="btn btn-outline-success btn-sm mt-2">
+                        View Students
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-info">Total Fees Records</h5>
+                    <h1 class="fw-bold">@Model.TotalFees</h1>
+                    <a href="/Fees" class="btn btn-outline-info btn-sm mt-2">
+                        View Fees
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body text-center">
+                    <h5 class="text-warning">Total Batches</h5>
+                    <h1 class="fw-bold">@Model.TotalBatches</h1>
+                    <a href="/Batch" class="btn btn-outline-warning btn-sm mt-2">
+                        View Batches
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

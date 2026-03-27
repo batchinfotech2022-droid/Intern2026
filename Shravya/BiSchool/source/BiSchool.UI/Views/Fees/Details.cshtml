@@ -1,0 +1,38 @@
+﻿@model BiSchool.UI.ViewModels.FeesViewModel
+
+@{
+    ViewBag.Title = "Fees Details";
+}
+
+<h2>Fees Details</h2>
+
+<div class="card p-3">
+    <dl class="row">
+
+        <dt class="col-sm-3">
+            Student Name
+        </dt>
+        <dd class="col-sm-9">
+            @Model.StudentName
+        </dd>
+
+        <dt class="col-sm-3">
+            Amount
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Amount
+        </dd>
+
+        <dt class="col-sm-3">
+            Date
+        </dt>
+        <dd class="col-sm-9">
+            @(Model.Date?.ToString("dd MMM yyyy"))
+        </dd>
+
+    </dl>
+</div>
+
+<br />
+
+@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })

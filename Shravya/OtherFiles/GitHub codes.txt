@@ -1,0 +1,21 @@
+GitHub codes
+
+git clone https://github.com/batchinfotech2022-droid/Intern2026.git   //to clone main branch
+
+git checkout shravya     //to go to my branch
+
+
+git pull origin shravya  //pull things
+
+git diff   //it shows the difference correctly
+
+git status   //it shows only the diffrenece in the file(use this)
+
+git add * // it add the files in the folder or directory
+
+git commit -m "comment"     //we can give comments
+
+git push origin shravya   //to push the code to github
+
+
+D:\Desktop\newww\CSharp console app\CSharp console app\Student.cs

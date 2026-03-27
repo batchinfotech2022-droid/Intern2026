@@ -1,0 +1,82 @@
+﻿@model SmartCMApp.UI.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+            <div class="card shadow-lg rounded-3">
+
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center">
+                    <h2 class="mb-0 fw-bold">Edit Category</h2>
+                </div>
+
+                @using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+
+                    <div class="card-body">
+
+                        <div class="w-75 mx-auto">
+
+                            <!-- ID -->
+                            <div class="mb-4">
+                                @Html.LabelFor(m => m.Id, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.Id,
+                                    new { @class = "form-control", @readonly = "readonly" })
+                            </div>
+
+                            <!-- Category Name -->
+                            <div class="mb-4">
+                                @Html.LabelFor(m => m.CategoryName, new { @class = "form-label" })
+                                @Html.TextBoxFor(m => m.CategoryName,
+                                    new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CategoryName,
+                                    "", new { @class = "text-danger" })
+                            </div>
+
+                            <!-- Status -->
+                            <div class="mb-4">
+                                <label class="form-label">Status</label>
+
+                                @Html.DropDownListFor(m => m.IsActive,
+                                    new List<SelectListItem>
+                                    {
+                                        new SelectListItem
+                                        { Text = "Active", Value = "true", Selected = Model.IsActive },
+
+                                        new SelectListItem
+                                        { Text = "Inactive", Value = "false", Selected = !Model.IsActive }
+                                    },
+                                    new { @class = "form-select" })
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="card-footer bg-white px-4 py-3">
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            @Html.ActionLink("Back", "Index",
+                                null, new { @class = "btn btn-secondary px-4" })
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Save
+                            </button>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
